@@ -1,4 +1,4 @@
-package s2rdfloader.sql;
+package s2rdfloader.loader.sql;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

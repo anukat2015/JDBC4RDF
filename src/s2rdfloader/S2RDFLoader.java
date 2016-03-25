@@ -1,6 +1,6 @@
 package s2rdfloader;
 
-import s2rdfloader.sql.SQLDataLoader;
+import s2rdfloader.loader.sql.SQLDataLoader;
 
 public class S2RDFLoader {
 

@@ -1,4 +1,4 @@
-package s2rdfloader.loader.sql;
+package jdbc4rdf.core.sql;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -7,50 +7,24 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Arrays;
+
+import jdbc4rdf.core.config.Config;
+
+
 
 public abstract class SQLWrapper {
 
 
-	/**
-	 * Hostname of the Database endpoint (e.g. localhost)
-	 */
-	protected String host = "localhost";
-
-	/**
-	 * Name of the database which should be used
-	 */
-	protected String db = "DBNAME";
-
-	/**
-	 * Name of the database user which should be used
-	 */
-	protected String dbuser = "root";
-
-	/**
-	 * Password of the database user which should be used
-	 */
-	protected String dbpw = "";
-
+	protected Config conf;
 	
 	/**
 	 * Initialize the SQL wrapper class
-	 * @param inHost Database host name
-	 * @param inUser User name
-	 * @param inPw Password of user
-	 * @param inDb Name of database which should be used
+	 * @param conf Connection configuration container
 	 */
-	public SQLWrapper(String inHost, String inUser, String inPw, String inDb) {
-		
-		// save connection properties
-		this.host = inHost;
-		this.dbuser = inUser;
-		this.dbpw = inPw;
-		this.db = inDb;
-		
+	public SQLWrapper(Config conf) {
 		// Try to load the driver class
 		try {
-			Class.forName("org.apache.hive.jdbc.HiveDriver");
+			Class.forName(conf.getDriver().getDriverClass());
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -74,28 +48,32 @@ public abstract class SQLWrapper {
 	public void runSql() {
 		
 		Connection conn = null;
-		Statement stmt = null;
+		//Statement stmt = null;
 		try {
 			// init
 			conn = init();
-			stmt = conn.createStatement();
 			
 			// do import
-			loadData(stmt);
+			loadData(conn);
 			
 		} catch (Exception e) {
 			rollback(conn);
 		} finally {
-			close(stmt);
 			close(conn);
 		}
 	}
 	
 	
-	protected abstract void loadData(Statement stmt) throws Exception;
+	protected abstract void loadData(Connection conn) throws Exception;
 
+	
 	protected Connection init() throws SQLException {
 
+		final String host = conf.getHost();
+		final String db = conf.getDbName();
+		final String dbuser = conf.getUser();
+		final String dbpw = conf.getPw();
+		
 		System.out.println("Connection with values host=" + host + ", db=" + db + ", user=" + dbuser + ", pw=" + dbpw);
 		
 		final int PORT = 10000;

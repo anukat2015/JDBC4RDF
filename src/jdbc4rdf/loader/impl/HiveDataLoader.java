@@ -10,6 +10,10 @@ public class HiveDataLoader extends SQLDataLoader {
 		super(loadConf);
 	}
 
+	
+	
+	
+	
 	@Override
 	protected String getDropSql() {
 		return "DROP TABLE IF EXISTS ?";
@@ -17,10 +21,11 @@ public class HiveDataLoader extends SQLDataLoader {
 
 	@Override
 	protected String getCreateTTSql() {
-		String createTT = "CREATE TABLE ? (sub string, pred string, obj string)"
+		final String createTT = "CREATE TABLE ? (sub string, pred string, obj string)"
 				+ " ROW FORMAT DELIMITED"
 		        + " FIELDS TERMINATED BY '\t'"
 		        + " LINES TERMINATED BY '\n'";
+		
 		return createTT;
 	}
 	
@@ -31,7 +36,8 @@ public class HiveDataLoader extends SQLDataLoader {
 		 * row format delimited fields terminated BY '\t' lines terminated BY '\n' 
 			tblproperties("skip.header.line.count"="1"); 
 		 */
-		String loadSql = "LOAD DATA LOCAL INPATH '?' INTO TABLE ? ";
+		final String loadSql = "LOAD DATA LOCAL INPATH '?' INTO TABLE ? ";
+		
 		return loadSql;
 	}
 
@@ -40,7 +46,31 @@ public class HiveDataLoader extends SQLDataLoader {
 		return "SELECT count(*) FROM ?";
 	}
 
-	
+	@Override
+	protected String getPredicateFilterSql() {
+		return "SELECT sub, obj FROM triples WHERE pred = '?'";
+	}
+
+	@Override
+	protected String getPredicatesSql() {
+		return "SELECT DISTINCT pred from ?";
+	}
+
+	@Override
+	protected String getVPInsertSql() {
+		final String insertSql = "INSERT INTO ? VALUES('?', '?')";
+		
+		return insertSql;
+	}
+
+	@Override
+	protected String getCreateVPSql() {
+		final String createSql = "CREATE TABLE ? (sub string, obj string)";
+		
+		return createSql;
+	}
+
+
 
 
 	

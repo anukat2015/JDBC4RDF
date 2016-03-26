@@ -1,12 +1,12 @@
 package jdbc4rdf;
 
 import java.util.logging.Logger;
-
 import java.util.logging.Level;
 
 import jdbc4rdf.core.config.DBDRIVER;
 import jdbc4rdf.core.config.LoaderConfig;
 import jdbc4rdf.loader.SQLDataLoader;
+import jdbc4rdf.loader.impl.HiveDataLoader;
 
 public class Main {
 
@@ -64,7 +64,15 @@ public class Main {
 				loadconf = new LoaderConfig(driver, file, user, pw, host, db);
 				
 				// load data
-				SQLDataLoader sql = new SQLDataLoader(loadconf);
+				SQLDataLoader sql = null; // = new SQLDataLoader(loadconf);
+				if (driver.equals(DBDRIVER.HIVE)) {
+					sql = new HiveDataLoader(loadconf);
+				} else if (driver.equals(DBDRIVER.MYSQL)) {
+					// TODO
+					// sql = new MySQLDataLoader(loadconf);
+				}
+				// run sql
+				sql.runSql();
 				
 			} else if (args[0].equals("exec")) {
 				// TODO: execConfig

@@ -1,6 +1,8 @@
 package jdbc4rdf.loader.io;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import jdbc4rdf.loader.Helper;
 
@@ -28,10 +30,20 @@ public class LoaderStatistics {
 	private String statsFile = "";
 	
 	
+	Map<String, Integer> vpPredSize = null;
+	
 	//private ArrayList<VPStat> vpStats = new ArrayList<VPStat>();
 	
 	// TODO: append to file while loading
-	private ArrayList<String> lines = new ArrayList<String>();
+	// this data structure is only used for testing purposes
+	private ArrayList<String> lines = null;
+	
+	
+	
+	public LoaderStatistics() {
+		vpPredSize = new HashMap<String, Integer>();
+		lines = new ArrayList<String>();
+	}
 	
 	
 	public void newFile(String statType) {
@@ -80,6 +92,9 @@ public class LoaderStatistics {
 		line += "\t" + Helper.getRatio(vpSize, size);
 		// TODO: Write to file!
 		// lines.add(line);
+		
+		// store the information for later
+		this.vpPredSize.put(pred, vpSize);
 	}
 	
 	

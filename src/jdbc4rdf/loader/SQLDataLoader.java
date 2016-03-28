@@ -168,29 +168,32 @@ public abstract class SQLDataLoader extends SQLWrapper {
 			
 			// create vp
 			runStaticSql(conn, getCreateVPSql(pred, stypeStr, otypeStr));
-			//createVP.setString(1, pred);
-			//createVP.executeUpdate();
-			
+
 			// get data which should be inserted
 			filterStmt.setString(1, pred);
 			ResultSet filtered = filterStmt.executeQuery();
 			
 			// table name of vp table
-			insertVP.setString(1, pred);
+			String insSql = this.getVPInsertSql(pred);
+			PreparedStatement insertVP = prepareStatement(conn, insSql); 
 			
 			int vpSize = 0;
 			while (filtered.next()) {
-				// // filterStmt.setObject(pos, val type_AS_INT)
-				// http://stackoverflow.com/questions/6437790/jdbc-get-the-sql-type-name-from-java-sql-type-code
+				// filterStmt.setObject(pos, val type_AS_INT)
 				String sub = filtered.getString(1);
 				String obj = filtered.getString(2);
-				insertVP.setString(2, sub);
-				insertVP.setString(3, obj);
+				insertVP.setString(1, sub);
+				insertVP.setObject(2, obj, otype);
+				// there is also a length parameter which might be useful for decimal/numerical
+				// but these values do not exist here
 				
 				// insert the data
 				insertVP.executeUpdate();
 				vpSize++;
 			}
+			
+			// close insertVP prepared statement
+			close(insertVP);
 			
 			// add statistics
 			stats.incSavedTables();
@@ -202,19 +205,14 @@ public abstract class SQLDataLoader extends SQLWrapper {
 		}
 		
 		
-
-		
-		close(insertVP);
-		
-		close(createVP);
-		
-		close(dropVP);
+		// close everything
 		
 		close(filterStmt);
-
-		close(predStmt);
 		
 		close(plistRs);
+		
+		
+		// return amount of predicates / vp tables
 		
 		return pcount;
 	}

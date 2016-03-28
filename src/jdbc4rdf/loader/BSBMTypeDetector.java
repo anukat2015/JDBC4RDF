@@ -16,6 +16,7 @@ public class BSBMTypeDetector extends TypeDetector {
 	
 	
 	public BSBMTypeDetector() {
+		super();
 		
 		/*
 		 * Initialize datetime types

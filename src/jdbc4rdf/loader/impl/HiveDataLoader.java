@@ -12,8 +12,6 @@ public class HiveDataLoader extends SQLDataLoader {
 
 	
 	
-	
-	
 	@Override
 	protected String getDropSql(String table) {
 		return "DROP TABLE IF EXISTS " + table;
@@ -21,7 +19,8 @@ public class HiveDataLoader extends SQLDataLoader {
 
 	@Override
 	protected String getCreateTTSql() {
-		final String createTT = "CREATE TABLE " + super.TT_NAME + " (sub string, pred string, obj string)"
+		final String createTT = "CREATE TABLE " 
+				+ super.TT_NAME + " (sub string, pred string, obj string)"
 				+ " ROW FORMAT DELIMITED"
 		        + " FIELDS TERMINATED BY '\t'"
 		        + " LINES TERMINATED BY '\n'";
@@ -48,7 +47,7 @@ public class HiveDataLoader extends SQLDataLoader {
 
 	@Override
 	protected String getPredicateFilterSql() {
-		return "SELECT sub, obj FROM triples WHERE pred = '?'";
+		return "SELECT sub, obj FROM " + super.TT_NAME + " WHERE pred = '?'";
 	}
 
 	@Override
@@ -58,18 +57,21 @@ public class HiveDataLoader extends SQLDataLoader {
 
 	@Override
 	protected String getVPInsertSql(String vpName) {
-		final String insertSql = "INSERT INTO " + vpName + " VALUES('?', '?')";
+		final String insertSql = "INSERT INTO " + vpName + " VALUES(?, ?)";
 		
 		return insertSql;
 	}
 
 	@Override
-	protected String getCreateVPSql() {
-		final String createSql = "CREATE TABLE ? (sub string, obj string)";
+	protected String getCreateVPSql(String vpTableName, String subjType, String objType) {
+		final String createSql = "CREATE TABLE " + vpTableName 
+				+ " (sub " + subjType + ", obj " + objType + ")";
 		
 		return createSql;
 	}
 
+	
+	
 
 
 

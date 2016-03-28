@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Types;
 import java.util.ArrayList;
 
 import jdbc4rdf.core.config.LoaderConfig;
@@ -25,7 +26,7 @@ public abstract class SQLDataLoader extends SQLWrapper {
 	
 	protected final String TT_NAME = "triples";
 	
-	
+	private final TypeDetector typeChecker = new BSBMTypeDetector();
 	
 	
 	public SQLDataLoader(LoaderConfig loaderConf) {
@@ -127,31 +128,16 @@ public abstract class SQLDataLoader extends SQLWrapper {
 		
 		stats.newFile("VP");
 		
-		// TODO: Change to statmenet objects (see createTT)
-		
 		int pcount = 0;
 		
 		// select distinct predicates from triples
 		String pSql = getPredicatesSql();
-		PreparedStatement predStmt = prepareStatement(conn, pSql);
-		predStmt.setString(1, TT_NAME);
-		ResultSet plistRs = predStmt.executeQuery();
+		Statement predStmt = conn.createStatement(); 
+		ResultSet plistRs = predStmt.executeQuery(pSql);
 		
 		// prepare filter SQL statements
 		String filterSql = getPredicateFilterSql();
 		PreparedStatement filterStmt = prepareStatement(conn, filterSql);
-		
-		// prepare drop table statement for given predicate
-		String dropVPSql = getDropSql("CHANGEME");
-		PreparedStatement dropVP = prepareStatement(conn, dropVPSql);
-		
-		// prepare create table statement for given predicate
-		String createVPSql = getCreateVPSql();
-		PreparedStatement createVP = prepareStatement(conn, createVPSql);
-		
-		// prepare vp insert SQL statements
-		String vpInsertSql = getVPInsertSql("CHANGEME");
-		PreparedStatement insertVP = prepareStatement(conn, vpInsertSql);
 		
 		// for each predicate
 		while (plistRs.next()) {
@@ -168,11 +154,11 @@ public abstract class SQLDataLoader extends SQLWrapper {
 			 */
 			
 			// drop vp
-			dropVP.setString(1, pred);
-			dropVP.executeUpdate();
+			runStaticSql(conn, getDropSql(pred));
 			
 			// TODO: HANDLE TYPES!!
-			
+			int[] types = detectBSBMTypes(pred);
+					
 			// create vp
 			createVP.setString(1, pred);
 			createVP.executeUpdate();
@@ -186,10 +172,13 @@ public abstract class SQLDataLoader extends SQLWrapper {
 			
 			int vpSize = 0;
 			while (filtered.next()) {
+				// // filterStmt.setObject(pos, val type_AS_INT)
+				// http://stackoverflow.com/questions/6437790/jdbc-get-the-sql-type-name-from-java-sql-type-code
 				String sub = filtered.getString(1);
 				String obj = filtered.getString(2);
 				insertVP.setString(2, sub);
 				insertVP.setString(3, obj);
+				
 				// insert the data
 				insertVP.executeUpdate();
 				vpSize++;
@@ -258,17 +247,22 @@ public abstract class SQLDataLoader extends SQLWrapper {
 	}
 	
 	
+	
+	
 	/**
 	 * Comfort function for execution a SQL statement which has 
 	 * no parameters / can not be executed as a prepared statement
 	 * @param conn
 	 * @param sql
+	 * @param storeRes set to true iff the result should be copied
+	 * in a List<String[]>
+	 * This parameter has no effect if there is no result
 	 * @return The result set returned by the execute function if
 	 * there is one. The first entry of the list will be the 
 	 * table header, all following entries will be the content.
 	 * @throws SQLException
 	 */
-	private ArrayList<String[]> runStaticSql(Connection conn, String sql) throws SQLException {
+	private ArrayList<String[]> runStaticSql(Connection conn, String sql, boolean storeRes) throws SQLException {
 		Statement stmt = conn.createStatement();
 		
 		boolean hasRes = stmt.execute(sql);
@@ -276,7 +270,7 @@ public abstract class SQLDataLoader extends SQLWrapper {
 		ArrayList<String[]> result = new ArrayList<String[]>();
 		
 		// retrieve the result
-		if (hasRes) {
+		if (hasRes && storeRes) {
 			ResultSet rs = stmt.getResultSet();
 			result = super.storeResultSet(rs);
 		}
@@ -287,6 +281,24 @@ public abstract class SQLDataLoader extends SQLWrapper {
 		
 	}
 	
+	
+	/**
+	 * Comfort function for execution a SQL statement which has 
+	 * no parameters / can not be executed as a prepared statement.
+	 * If there is a result, this function will store it in a list
+	 * and return it
+	 * @param conn
+	 * @param sql
+	 * @return The result set returned by the execute function if
+	 * there is one. The first entry of the list will be the 
+	 * table header, all following entries will be the content.
+	 * @throws SQLException
+	 */
+	private ArrayList<String[]> runStaticSql(Connection conn, String sql) throws SQLException {
+		return runStaticSql(conn, sql, true);
+	}
+	
+	
 	private PreparedStatement prepareStatement(Connection conn, String sql) throws SQLException {
 		PreparedStatement prepStmt = conn.prepareStatement(sql);
 		
@@ -295,7 +307,12 @@ public abstract class SQLDataLoader extends SQLWrapper {
 
 
 
-	protected abstract String getCreateVPSql();
+	private String getCreateVPSql(String vpTableName) {
+		return getCreateVPSql(vpTableName, "string", "string");
+	}
+	
+	protected abstract String getCreateVPSql(String vpTableName, String subjType, String objType);
+	
 	
 	protected abstract String getVPInsertSql(String vpName);
 	

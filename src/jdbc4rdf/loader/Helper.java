@@ -5,6 +5,8 @@ package jdbc4rdf.loader;
 public class Helper {
 
 	
+		  
+	
 	/*
 	public static String cleanPredicate(String pred) {
 		pred = pred.replace(":", "__");

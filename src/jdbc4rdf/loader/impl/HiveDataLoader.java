@@ -72,6 +72,11 @@ public class HiveDataLoader extends SQLDataLoader {
 
 	
 	
+	
+	@Override
+	protected boolean isStringSupported() {
+		return true;
+	}
 
 
 

@@ -8,6 +8,7 @@ import java.util.Map;
 public abstract class TypeDetector {
 
 	
+	private final int MAX_STR_SIZE = 1024;
 	private final Map<Integer, String> typeMap = new HashMap<Integer, String>();
 
 	
@@ -29,14 +30,32 @@ public abstract class TypeDetector {
 	
 	
 	
+	
 	public String getTypeName(int typeIdx) {
+		return getTypeName(typeIdx, false);
+	}
+
+
+	public String getTypeName(int typeIdx, boolean stringSupported) {
 
 		// look-up in the type map
-		
-		return this.typeMap.get(typeIdx);
+		String typeStr = this.typeMap.get(typeIdx);
+
+		// check if arguments are required
+		if ((typeIdx == Types.VARCHAR) 
+				|| (typeIdx == Types.CHAR)) {
+			// if the string datatype is supported by the driver
+			if (stringSupported) {
+				return "string";
+			} else {
+				typeStr += " (" + MAX_STR_SIZE + ")";
+			}
+		}
+
+		return typeStr;
 	}
-	
-	
+
+
 	
 	
 	

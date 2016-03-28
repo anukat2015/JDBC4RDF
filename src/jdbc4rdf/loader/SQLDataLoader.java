@@ -159,12 +159,17 @@ public abstract class SQLDataLoader extends SQLWrapper {
 			runStaticSql(conn, getDropSql(pred));
 			
 			// detect type
-			final JDBCType otype = typeChecker.detectObjectType(pred);
-					
+			final int otype = typeChecker.detectObjectType(pred);
+			final String otypeStr = typeChecker.getTypeName(otype, this.isStringSupported());
+			String stypeStr = "VARCHAR(256)";
+			if (isStringSupported()) {
+				stypeStr = "string";
+			}
+			
 			// create vp
-			runStaticSql(conn, getCreateVPSql(pred, "VARCHAR(256)", objType)
-			createVP.setString(1, pred);
-			createVP.executeUpdate();
+			runStaticSql(conn, getCreateVPSql(pred, stypeStr, otypeStr));
+			//createVP.setString(1, pred);
+			//createVP.executeUpdate();
 			
 			// get data which should be inserted
 			filterStmt.setString(1, pred);
@@ -357,4 +362,10 @@ public abstract class SQLDataLoader extends SQLWrapper {
 	 */
 	protected abstract String getRowCountSql(String tname);
 	
+	
+	/**
+	 * 
+	 * @return True iff the string datatype is supported
+	 */
+	protected abstract boolean isStringSupported();
 }

@@ -1,6 +1,7 @@
 package jdbc4rdf.loader;
 
 import java.sql.Connection;
+import java.sql.JDBCType;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -26,6 +27,7 @@ public abstract class SQLDataLoader extends SQLWrapper {
 	
 	protected final String TT_NAME = "triples";
 	
+	// TODO: add bm-type as a setting
 	private final TypeDetector typeChecker = new BSBMTypeDetector();
 	
 	
@@ -156,10 +158,11 @@ public abstract class SQLDataLoader extends SQLWrapper {
 			// drop vp
 			runStaticSql(conn, getDropSql(pred));
 			
-			// TODO: HANDLE TYPES!!
-			int[] types = detectBSBMTypes(pred);
+			// detect type
+			final JDBCType otype = typeChecker.detectObjectType(pred);
 					
 			// create vp
+			runStaticSql(conn, getCreateVPSql(pred, "VARCHAR(256)", objType)
 			createVP.setString(1, pred);
 			createVP.executeUpdate();
 			

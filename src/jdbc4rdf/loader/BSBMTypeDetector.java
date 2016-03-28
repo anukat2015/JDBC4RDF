@@ -3,7 +3,7 @@ package jdbc4rdf.loader;
 import java.sql.Types;
 import java.util.ArrayList;
 
-public class BSBMTypeDetector implements TypeDetector {
+public class BSBMTypeDetector extends TypeDetector {
 
 	
 	private final ArrayList<String> DATETIME_TYPES;

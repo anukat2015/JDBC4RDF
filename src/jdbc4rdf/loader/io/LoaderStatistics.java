@@ -99,6 +99,9 @@ public class LoaderStatistics {
 		this.savedTables++;
 	}
 	
+	public void incUnsavedNonEmptyTables() {
+		this.unsavedNonEmptyTables++;
+	}
 	
 	
 	public void addVPStatistic(String pred, int vpSize) {

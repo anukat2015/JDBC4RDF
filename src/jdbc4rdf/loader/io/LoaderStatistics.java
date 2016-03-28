@@ -1,6 +1,7 @@
 package jdbc4rdf.loader.io;
 
-import java.util.ArrayList;
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -27,27 +28,34 @@ public class LoaderStatistics {
 	private int allPossibleTables = 0;
 	
 	
-	private String statsFile = "";
+	private File statsFile;
 	
+	private FileAppender writer = new FileAppender();
 	
-	Map<String, Integer> vpPredSize = null;
-	
-	//private ArrayList<VPStat> vpStats = new ArrayList<VPStat>();
-	
-	// TODO: append to file while loading
-	// this data structure is only used for testing purposes
-	private ArrayList<String> lines = null;
-	
+	/**
+	 * Stores the amount of rows per predicate-vp table
+	 */
+	private Map<String, Integer> vpPredSize = null;
 	
 	
 	public LoaderStatistics() {
 		vpPredSize = new HashMap<String, Integer>();
-		lines = new ArrayList<String>();
 	}
 	
 	
 	public void newFile(String statType) {
-		statsFile = "stat_" + statType.toLowerCase() + ".txt";
+		statsFile = new File("stat_" + statType.toLowerCase() + ".txt");
+		
+		// create the file if it does not exist yet
+		if (!statsFile.exists()) {
+			try {
+				statsFile.createNewFile();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		
 		savedTables = 0;
 		unsavedNonEmptyTables = 0;
 		/*
@@ -58,8 +66,6 @@ public class LoaderStatistics {
 		}
 		moved to finish, because only then, the pcount is known
 		*/
-		
-		// TODO: create file
 	}
 	
 	
@@ -69,6 +75,14 @@ public class LoaderStatistics {
 		} else {
 			allPossibleTables = pcount * pcount;
 		}
+		
+		final int emptyTables = allPossibleTables - savedTables - unsavedNonEmptyTables;
+		
+		// write last view lines to file
+		writer.appendLine(statsFile, "---------------------------------------------------------\n");
+		writer.appendLine(statsFile, "Saved tabels ->" + savedTables + "\n");
+		writer.appendLine(statsFile, "Unsaved non-empty tables ->" + unsavedNonEmptyTables + "\n");
+		writer.appendLine(statsFile, "Empty tables ->" + emptyTables + "\n");
 	}
 	
 	
@@ -85,58 +99,27 @@ public class LoaderStatistics {
 		this.savedTables++;
 	}
 	
+	
+	
 	public void addVPStatistic(String pred, int vpSize) {
 		String line = "<" + pred + ">";
+		
 		line += "\t" + vpSize;
 		line += "\t" + size;
+		
 		line += "\t" + Helper.getRatio(vpSize, size);
-		// TODO: Write to file!
-		// lines.add(line);
+		
+		line += "\n";
+		
+		// Write to file!
+		writer.appendLine(statsFile, line);
 		
 		// store the information for later
 		this.vpPredSize.put(pred, vpSize);
 	}
 	
-	
-	/*
-	
-	private class VPStatEntry {
-		
-		private String pred = "";
-		
-		private int vpSize = -1;
-		
-		public VPStatEntry(String pred, int vpSize) {
-			this.pred = pred;
-			this.vpSize = vpSize;
-		}
-		
-		public String getPredicate() {
-			return this.pred;
-		}
-		
-		public int getVPSize() {
-			return this.vpSize;
-		}
-		
-	}
-	
-	private class ExtVPStatEntry extends VPStatEntry {
 
-		
-		private int extVPSize = 0;
-		
-		public ExtVPStatEntry(String pred, int vpSize, int extVPSize) {
-			super(pred, vpSize);
-		}
-		
-		public int getExtVPSize() {
-			return this.extVPSize;
-		}
-		
-	}
-	*/
-	
+
 	
 	
 }

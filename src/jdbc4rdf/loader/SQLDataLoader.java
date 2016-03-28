@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import jdbc4rdf.core.config.LoaderConfig;
 import jdbc4rdf.core.sql.SQLWrapper;
@@ -22,7 +23,7 @@ public abstract class SQLDataLoader extends SQLWrapper {
 	private final LoaderStatistics stats = new LoaderStatistics();
 	
 	
-	private final String TT_NAME = "triples";
+	protected final String TT_NAME = "triples";
 	
 	
 	
@@ -39,15 +40,37 @@ public abstract class SQLDataLoader extends SQLWrapper {
 	@Override
 	protected void loadData(Connection conn) throws Exception {
 		// stmt exec
+		
+		/*
+		 * Triple Table
+		 */
+		
 		// also work with prepareStatement method to improve performance
 		int tripleCount = createTripleTable(conn);
 		
+		/*
+		 * Vertical Partitioning
+		 */
+		
+		// if dataset_type=vp
 		int predCount = createVP(conn);
+		// else: retrieve the predicate count differently
 		
 		stats.setDatasetSize(tripleCount);
 		stats.setPredicateCount(predCount);
 		
 		stats.closeFile(true);
+		
+		/*
+		 * Extended Vertical Partitioning
+		 */
+		
+		// if dt = so
+		createExtVP(conn, "SO");
+		// if dt = os
+		createExtVP(conn, "OS");
+		// if dt = ss
+		createExtVP(conn, "SS");
 		
 		// createExtVP
 		// newFile
@@ -56,10 +79,55 @@ public abstract class SQLDataLoader extends SQLWrapper {
 	}
 	
 	
+	
+	private ResultSet getRelatedPredicates(String pred, String relType) {
+		
+		// TODO: Not yet implemented
+		
+		return null;
+	}
+	
+	
+	private void createExtVP(Connection conn, String relType) throws SQLException {
+		// Helper.createDirInHDFS(Settings.extVpDir+relType)
+		stats.newFile(relType);
+		
+		// retrieve all predicates from the dataset (distinct)
+		String pSql = getPredicatesSql();
+		PreparedStatement predStmt = prepareStatement(conn, pSql);
+		predStmt.setString(1, TT_NAME);
+		ResultSet plistRs = predStmt.executeQuery();
+		
+		// for each predicate
+		while (plistRs.next()) {
+			String pred1 = Helper.getPartName(plistRs.getString(1));
+			ResultSet relPred = getRelatedPredicates(pred1, relType);
+			
+			close(relPred);
+		}
+		
+		close(plistRs);
+		
+		close(predStmt);
+		
+		stats.closeFile(false);
+		
+	}
+	
+	
+	
+	/**
+	 * Creates vertical partitioning tables by using the given connection
+	 * @param conn
+	 * @return Amount of table created (this is equal to the amount
+	 * of distinct predicates in the triples dataset)
+	 * @throws SQLException
+	 */
 	private int createVP(Connection conn) throws SQLException {
 		
 		stats.newFile("VP");
 		
+		// TODO: Change to statmenet objects (see createTT)
 		
 		int pcount = 0;
 		
@@ -74,7 +142,7 @@ public abstract class SQLDataLoader extends SQLWrapper {
 		PreparedStatement filterStmt = prepareStatement(conn, filterSql);
 		
 		// prepare drop table statement for given predicate
-		String dropVPSql = getDropSql();
+		String dropVPSql = getDropSql("CHANGEME");
 		PreparedStatement dropVP = prepareStatement(conn, dropVPSql);
 		
 		// prepare create table statement for given predicate
@@ -82,12 +150,12 @@ public abstract class SQLDataLoader extends SQLWrapper {
 		PreparedStatement createVP = prepareStatement(conn, createVPSql);
 		
 		// prepare vp insert SQL statements
-		String vpInsertSql = getVPInsertSql();
+		String vpInsertSql = getVPInsertSql("CHANGEME");
 		PreparedStatement insertVP = prepareStatement(conn, vpInsertSql);
 		
 		// for each predicate
 		while (plistRs.next()) {
-			String pred = Helper.cleanPredicate(plistRs.getString(1));
+			String pred = Helper.getPartName(plistRs.getString(1));
 			
 			// get corresponding subj/obj and create a table
 			// off of it
@@ -102,6 +170,8 @@ public abstract class SQLDataLoader extends SQLWrapper {
 			// drop vp
 			dropVP.setString(1, pred);
 			dropVP.executeUpdate();
+			
+			// TODO: HANDLE TYPES!!
 			
 			// create vp
 			createVP.setString(1, pred);
@@ -165,46 +235,57 @@ public abstract class SQLDataLoader extends SQLWrapper {
 		int rows = -1;
 		
 		// remove table first
-		String dropSql = getDropSql();
-		PreparedStatement dropTable = prepareStatement(conn, dropSql);
-		dropTable.setString(1, TT_NAME);
-		dropTable.executeUpdate();
+		String sql = getDropSql(TT_NAME);
+		runStaticSql(conn, sql);
 		
-		close(dropTable);
-		
-		
-		// create table
-		String ctSql = getCreateTTSql();
-		PreparedStatement ctStmt = prepareStatement(conn, ctSql);
-		ctStmt.setString(1, TT_NAME);
-		ctStmt.executeUpdate();
-		
-		close(ctStmt);
+		// create triple table
+		sql = getCreateTTSql();
+		runStaticSql(conn, sql);
 		
 		
-		// load tsv
-		String loadSql = getLoadSql();
-		PreparedStatement st = prepareStatement(conn, loadSql);
-		st.setString(1, dataFile);
-		st.setString(2, TT_NAME);
-		st.executeUpdate();
 		
-		close(st);
-		
+		// load TSV
+		sql = getLoadSql(dataFile, TT_NAME);
+		runStaticSql(conn, sql);
+
 		
 		// count entries
-		String rcSql = getRowCountSql();
-		PreparedStatement countTriples = prepareStatement(conn, rcSql);
-		countTriples.setString(1, TT_NAME);
-		ResultSet rs = countTriples.executeQuery();
-		rows = rs.getInt(1);
-		
-		close(rs);
-		close(countTriples);
+		sql = getRowCountSql(TT_NAME);
+		ArrayList<String[]> res = runStaticSql(conn, sql);
+		rows = Integer.parseInt(res.get(1)[0]);
 		
 		return rows;
 	}
 	
+	
+	/**
+	 * Comfort function for execution a SQL statement which has 
+	 * no parameters / can not be executed as a prepared statement
+	 * @param conn
+	 * @param sql
+	 * @return The result set returned by the execute function if
+	 * there is one. The first entry of the list will be the 
+	 * table header, all following entries will be the content.
+	 * @throws SQLException
+	 */
+	private ArrayList<String[]> runStaticSql(Connection conn, String sql) throws SQLException {
+		Statement stmt = conn.createStatement();
+		
+		boolean hasRes = stmt.execute(sql);
+		
+		ArrayList<String[]> result = new ArrayList<String[]>();
+		
+		// retrieve the result
+		if (hasRes) {
+			ResultSet rs = stmt.getResultSet();
+			result = super.storeResultSet(rs);
+		}
+		
+		close(stmt);
+		
+		return result;
+		
+	}
 	
 	private PreparedStatement prepareStatement(Connection conn, String sql) throws SQLException {
 		PreparedStatement prepStmt = conn.prepareStatement(sql);
@@ -216,9 +297,16 @@ public abstract class SQLDataLoader extends SQLWrapper {
 
 	protected abstract String getCreateVPSql();
 	
-	protected abstract String getVPInsertSql();
+	protected abstract String getVPInsertSql(String vpName);
 	
+	
+	/**
+	 * 
+	 * @return Correct SQL Statement which retrieves all (distinct)
+	 * predicates in the triples table
+	 */
 	protected abstract String getPredicatesSql();
+	
 	
 	protected abstract String getPredicateFilterSql();
 	
@@ -227,7 +315,7 @@ public abstract class SQLDataLoader extends SQLWrapper {
 	 * @return A sql statement which drops a given table. The table should be
 	 * marked with a ?
 	 */
-	protected abstract String getDropSql();
+	protected abstract String getDropSql(String tname);
 	
 	/**
 	 * 
@@ -241,12 +329,12 @@ public abstract class SQLDataLoader extends SQLWrapper {
 	 * @return A sql statement which load a given (tab-separated) file 
 	 * into a given table. Both should be marked by ? place holders
 	 */
-	protected abstract String getLoadSql();
+	protected abstract String getLoadSql(String dataFile, String tname);
 	
 	/**
 	 * 
 	 * @return  A sql statement which counts the rows of a given table
 	 */
-	protected abstract String getRowCountSql();
+	protected abstract String getRowCountSql(String tname);
 	
 }

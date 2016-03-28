@@ -15,13 +15,13 @@ public class HiveDataLoader extends SQLDataLoader {
 	
 	
 	@Override
-	protected String getDropSql() {
-		return "DROP TABLE IF EXISTS ?";
+	protected String getDropSql(String table) {
+		return "DROP TABLE IF EXISTS " + table;
 	}
 
 	@Override
 	protected String getCreateTTSql() {
-		final String createTT = "CREATE TABLE ? (sub string, pred string, obj string)"
+		final String createTT = "CREATE TABLE " + super.TT_NAME + " (sub string, pred string, obj string)"
 				+ " ROW FORMAT DELIMITED"
 		        + " FIELDS TERMINATED BY '\t'"
 		        + " LINES TERMINATED BY '\n'";
@@ -30,20 +30,20 @@ public class HiveDataLoader extends SQLDataLoader {
 	}
 	
 	@Override
-	protected String getLoadSql() {
+	protected String getLoadSql(String dataFile, String table) {
 		/*
 		 * for skipping the first row:
 		 * row format delimited fields terminated BY '\t' lines terminated BY '\n' 
 			tblproperties("skip.header.line.count"="1"); 
 		 */
-		final String loadSql = "LOAD DATA LOCAL INPATH '?' INTO TABLE ? ";
+		final String loadSql = "LOAD DATA LOCAL INPATH '" + dataFile + "' INTO TABLE " + table + " ";
 		
 		return loadSql;
 	}
 
 	@Override
-	protected String getRowCountSql() { 
-		return "SELECT count(*) FROM ?";
+	protected String getRowCountSql(String table) { 
+		return "SELECT count(*) FROM " + table;
 	}
 
 	@Override
@@ -53,12 +53,12 @@ public class HiveDataLoader extends SQLDataLoader {
 
 	@Override
 	protected String getPredicatesSql() {
-		return "SELECT DISTINCT pred from ?";
+		return "SELECT DISTINCT pred from " + super.TT_NAME;
 	}
 
 	@Override
-	protected String getVPInsertSql() {
-		final String insertSql = "INSERT INTO ? VALUES('?', '?')";
+	protected String getVPInsertSql(String vpName) {
+		final String insertSql = "INSERT INTO " + vpName + " VALUES('?', '?')";
 		
 		return insertSql;
 	}

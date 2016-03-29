@@ -161,6 +161,7 @@ public abstract class SQLDataLoader extends SQLWrapper {
 			// detect type
 			final int otype = typeChecker.detectObjectType(pred);
 			final String otypeStr = typeChecker.getTypeName(otype, this.isStringSupported());
+			final boolean isTimestamp = otype == Types.TIMESTAMP;
 			String stypeStr = "VARCHAR(256)";
 			if (isStringSupported()) {
 				stypeStr = "string";
@@ -182,6 +183,9 @@ public abstract class SQLDataLoader extends SQLWrapper {
 				// filterStmt.setObject(pos, val type_AS_INT)
 				String sub = filtered.getString(1);
 				String obj = filtered.getString(2);
+				
+				obj = Helper.cleanObject(obj, isTimestamp);
+				
 				insertVP.setString(1, sub);
 				insertVP.setObject(2, obj, otype);
 				// there is also a length parameter which might be useful for decimal/numerical

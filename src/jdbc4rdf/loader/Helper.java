@@ -1,5 +1,8 @@
 package jdbc4rdf.loader;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 
 
 public class Helper {
@@ -24,6 +27,27 @@ public class Helper {
 		p = p.replaceAll("[<]|[>]", "");
 		
 		return p;
+	}
+	
+	
+	public static String cleanObject(String obj, boolean isTimestamp) {
+		String result = obj;
+		
+		// if there might be some kind of type definition
+		if (obj.contains("^^")) {
+			
+			final Pattern p = Pattern.compile("(?<=\").*?(?=\")");
+			final Matcher matcher = p.matcher(obj);
+			
+			result = matcher.group(1);
+			
+			if (isTimestamp) {
+				result = result.replace("T", " ");
+			}
+		}
+		
+		
+		return result;
 	}
 	
 	

@@ -17,9 +17,10 @@ public class Main {
 	
 	public static void showHelp() {
 		logger.info("> Loder Syntax:"); 
-		logger.info("load DRIVER FILE HOST [DB] USER PW");
-		logger.info("Supported drivers:");
+		logger.info("load DRIVER FILE HOST [DB] USER PW SCALEUB");
+		logger.info("Supported drivers: ");
 		logger.info(DBDRIVER.getDriverList() + "\n");
+		logger.info("SCALEUB should be a value between 0.0 and 1.0");
 		logger.info("> Executor Syntax:");
 		logger.info("exec TODO...TODO");
 	}
@@ -39,21 +40,24 @@ public class Main {
 				String db = "";
 				String user = "";
 				String pw = "";
-
-				if (args.length == 7) {
+				float scaleUb = 1;
+				
+				if (args.length == 8) {
 					driver = DBDRIVER.detectDriver(args[1]);
 					file = args[2];
 					host = args[3];
 					db = args[4];
 					user = args[5];
 					pw = args[6];
-				} else if (args.length == 6) {
+					scaleUb = Float.parseFloat(args[7]);
+				} else if (args.length == 7) {
 					driver = DBDRIVER.detectDriver(args[1]);
 					file = args[2];
 					host = args[3];
 					db = "";
 					user = args[4];
 					pw = args[5];
+					scaleUb = Float.parseFloat(args[6]);
 				} else {
 					logger.log(Level.SEVERE, "Not enough arguments given");
 					showHelp();
@@ -61,7 +65,7 @@ public class Main {
 				}
 				
 				// DBDRIVER driver, String file, String user, String pw, String host, String db
-				loadconf = new LoaderConfig(driver, file, user, pw, host, db);
+				loadconf = new LoaderConfig(driver, file, user, pw, host, db, scaleUb);
 				
 				// load data
 				SQLDataLoader sql = null; // = new SQLDataLoader(loadconf);

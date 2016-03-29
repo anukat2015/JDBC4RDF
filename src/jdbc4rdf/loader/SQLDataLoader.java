@@ -18,6 +18,8 @@ public abstract class SQLDataLoader extends SQLWrapper {
 
 	private String dataFile = "";
 	
+	private float scaleUB = 1;
+	
 	/**
 	 * Storage for the stats which are required for the query
 	 * translator
@@ -27,6 +29,11 @@ public abstract class SQLDataLoader extends SQLWrapper {
 	
 	protected final String TT_NAME = "triples";
 	
+	protected final String RELTYPE_SS = "SS";
+	protected final String RELTYPE_OS = "OS";
+	protected final String RELTYPE_SO = "SO";
+	
+	
 	// TODO: add bm-type as a setting
 	private final TypeDetector typeChecker = new BSBMTypeDetector();
 	
@@ -35,6 +42,8 @@ public abstract class SQLDataLoader extends SQLWrapper {
 		super(loaderConf);
 		
 		this.dataFile = loaderConf.getDatafile();
+		
+		this.scaleUB = loaderConf.getScaleUB();
 	}
 
 	
@@ -69,11 +78,11 @@ public abstract class SQLDataLoader extends SQLWrapper {
 		 */
 		
 		// if dt = so
-		createExtVP(conn, "SO");
+		createExtVP(conn, RELTYPE_SO);
 		// if dt = os
-		createExtVP(conn, "OS");
+		createExtVP(conn, RELTYPE_OS);
 		// if dt = ss
-		createExtVP(conn, "SS");
+		createExtVP(conn, RELTYPE_SS);
 		
 		// createExtVP
 		// newFile
@@ -83,30 +92,60 @@ public abstract class SQLDataLoader extends SQLWrapper {
 	
 	
 	
-	private ResultSet getRelatedPredicates(String pred, String relType) {
-		
-		// TODO: Not yet implemented
-		
-		return null;
-	}
-	
-	
 	private void createExtVP(Connection conn, String relType) throws SQLException {
 		// Helper.createDirInHDFS(Settings.extVpDir+relType)
 		stats.newFile(relType);
 		
+		
+		ArrayList<String> createdDirs = new ArrayList<String>();
+		
+		int savedTables = 0;
+		int unsavedNonEmptyTables = 0;
+			    
 		// retrieve all predicates from the dataset (distinct)
 		String pSql = getPredicatesSql();
-		PreparedStatement predStmt = prepareStatement(conn, pSql);
-		predStmt.setString(1, TT_NAME);
-		ResultSet plistRs = predStmt.executeQuery();
+		Statement predStmt = conn.createStatement();
+		ResultSet plistRs = predStmt.executeQuery(pSql);
 		
 		// for each predicate
 		while (plistRs.next()) {
 			String pred1 = Helper.getPartName(plistRs.getString(1));
-			ResultSet relPred = getRelatedPredicates(pred1, relType);
+			
+			// get related predicates
+			Statement relPredStmt = conn.createStatement();
+			ResultSet relPred = relPredStmt.executeQuery(getLeftJoinSql(pred1, relType));
+			
+			// for each related predicate
+			while(relPred.next()) {
+				String pred2 = Helper.getPartName(relPred.getString(1));
+			
+				int extVpTableSize = -1;
+				
+				// Dont create unnecessary tables
+				if (!(relType == RELTYPE_SS && pred1.equals(pred2))) {
+					String extVPSql = getExtVpSQLcommand(pred1, pred2, relType);
+					
+					// calculate size
+					extVpTableSize = runStaticSql(conn, extVPSql, true).size();
+					
+					Statement extVPStmt = conn.createStatement();
+					ResultSet extVPRes = extVPStmt.executeQuery(extVPSql);
+					
+					while (extVPRes.next()) {
+						// Dont use "/" in table names to avoid problems
+						
+					}
+					
+					close(extVPRes);
+					
+					close(extVPStmt);
+				}
+			}
+			
 			
 			close(relPred);
+			
+			close (relPredStmt);
 		}
 		
 		close(plistRs);
@@ -321,11 +360,6 @@ public abstract class SQLDataLoader extends SQLWrapper {
 		return prepStmt;
 	}
 
-
-
-	private String getCreateVPSql(String vpTableName) {
-		return getCreateVPSql(vpTableName, "string", "string");
-	}
 	
 	protected abstract String getCreateVPSql(String vpTableName, String subjType, String objType);
 	
@@ -369,6 +403,12 @@ public abstract class SQLDataLoader extends SQLWrapper {
 	 * @return  A sql statement which counts the rows of a given table
 	 */
 	protected abstract String getRowCountSql(String tname);
+	
+	
+	protected abstract String getLeftJoinSql(String vpName, String relType);
+	
+	
+	protected abstract String getExtVpSQLcommand(String pred1, String pred2, String relType);
 	
 	
 	/**

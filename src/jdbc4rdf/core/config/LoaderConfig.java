@@ -9,6 +9,8 @@ public class LoaderConfig extends Config {
 	private String dataFile = "";
 	
 	
+	private float scaleUB = 1.0f;
+	
 	
 	
 	/**
@@ -30,14 +32,20 @@ public class LoaderConfig extends Config {
 		
 
 		this.dataFile = "data.txt";
+		
+		this.scaleUB = 1.0f;
 	}
 	
 	
-	public LoaderConfig(DBDRIVER driver, String file, String user, String pw, String host, String db) {
+	public LoaderConfig(DBDRIVER driver, String file
+			, String user, String pw, String host, String db
+			, float scaleUBIn) {
 		
 		super(driver, user, pw, host, db);
 		
 		this.dataFile = file;
+		
+		this.scaleUB = scaleUBIn;
 	}
 	
 	
@@ -45,6 +53,11 @@ public class LoaderConfig extends Config {
 		return this.dataFile;
 	}
 	
+	
+	
+	public float getScaleUB() {
+		return this.scaleUB;
+	}
 
 
 	

@@ -80,5 +80,51 @@ public class HiveDataLoader extends SQLDataLoader {
 
 
 
+	@Override
+	protected String getLeftJoinSql(String vpName, String relType) {
+		String sql = "SELECT DISTINCT pred FROM " + this.TT_NAME + " t1 "
+				+ "LEFT SEMI JOIN " + vpName + " t2 "
+				+ "ON ";
+		
+		// add join condition
+		if (relType.equals(RELTYPE_SS)) {
+			sql += "(t1.sub=t2.sub)";
+			
+		} else if (relType.equals(RELTYPE_OS)) {
+			sql += "(t1.sub=t2.obj)";
+			
+		} else if (relType.equals(RELTYPE_SO)) {
+			sql += "(t1.obj=t2.sub)";
+		}
+		
+		return sql;
+	}
+
+
+
+	@Override
+	protected String getExtVpSQLcommand(String pred1, String pred2,
+			String relType) {
+		String sql = "SELECT t1.sub AS sub, t1.obj AS obj "
+				+ "FROM " + pred1 + " t1 "
+				+ "LEFT SEMI JOIN " + pred2 + " t2 "
+				+ "ON ";
+
+		// add join condition
+		if (relType.equals(RELTYPE_SS)) {
+			sql += "(t1.sub=t2.sub)";
+
+		} else if (relType.equals(RELTYPE_OS)) {
+			sql += "(t1.obj=t2.sub)";
+
+		} else if (relType.equals(RELTYPE_SO)) {
+			sql += "(t1.sub=t2.obj)";
+		}
+				
+		return sql;
+	}
+
+
+
 	
 }

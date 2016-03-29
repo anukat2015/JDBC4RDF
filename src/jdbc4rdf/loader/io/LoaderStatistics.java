@@ -27,7 +27,6 @@ public class LoaderStatistics {
 	
 	private int allPossibleTables = 0;
 	
-	
 	private File statsFile;
 	
 	private FileAppender writer = new FileAppender();

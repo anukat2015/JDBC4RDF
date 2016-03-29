@@ -1,9 +1,9 @@
 package jdbc4rdf.loader;
 
 import java.sql.Connection;
-import java.sql.JDBCType;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Types;
@@ -16,6 +16,13 @@ import jdbc4rdf.loader.io.LoaderStatistics;
 
 public abstract class SQLDataLoader extends SQLWrapper {
 
+	/*
+	 * This delimiter should be used as an alternative
+	 * to the "/" delimiter in the original implementation
+	 */
+	private String DELIM  = "____DELIM____";
+	
+	
 	private String dataFile = "";
 	
 	private float scaleUB = 1;
@@ -96,9 +103,6 @@ public abstract class SQLDataLoader extends SQLWrapper {
 		// Helper.createDirInHDFS(Settings.extVpDir+relType)
 		stats.newFile(relType);
 		
-		
-		ArrayList<String> createdDirs = new ArrayList<String>();
-		
 		int savedTables = 0;
 		int unsavedNonEmptyTables = 0;
 			    
@@ -132,8 +136,19 @@ public abstract class SQLDataLoader extends SQLWrapper {
 					ResultSet extVPRes = extVPStmt.executeQuery(extVPSql);
 					
 					while (extVPRes.next()) {
-						// Dont use "/" in table names to avoid problems
+						// Don't use "/" in table names to avoid problems
 						
+						if (extVpTableSize < (stats.getVPTableSize(pred1) * this.scaleUB) ) {
+							
+							// - omit directory check -
+							
+							// save the extVP table
+							final String tableName = relType + DELIM 
+									+ pred1 + DELIM + pred2;
+							
+							resultSetToTable(conn, extVPRes, tableName);
+							
+						}
 					}
 					
 					close(extVPRes);
@@ -296,6 +311,45 @@ public abstract class SQLDataLoader extends SQLWrapper {
 	}
 	
 	
+	
+	
+	private void resultSetToTable(Connection conn, ResultSet rs, String tableName) throws SQLException {
+		// adapted from
+		// http://stackoverflow.com/questions/11268057/how-to-create-table-based-on-jdbc-result-set
+		
+		final int COLUMNS = 2;
+		
+		/*
+		 * Step 1 - Create the table
+		 */
+		
+		ResultSetMetaData rsmd = rs.getMetaData();
+		String createSql = "CREATE TABLE " + tableName + " (";
+		
+		for (int i = 1; i <= COLUMNS; i++) {
+			if (i > 1) createSql += ",";
+			
+			createSql += " " + rsmd.getColumnLabel(i)  + " " + rsmd.getColumnTypeName(i);
+			
+			// check if there is a precision value
+			int precision = rsmd.getPrecision(i);
+		    if ( precision != 0 ) {
+		    	createSql += "(" + precision + ")";
+		    }
+		}
+		
+		createSql += " )";
+		
+		// finally, create the table
+		
+		runStaticSql(conn, createSql, false);
+		
+		
+		/*
+		 * Step 2 - Insert data
+		 */
+		
+	}
 	
 	
 	/**

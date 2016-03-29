@@ -121,6 +121,14 @@ public class LoaderStatistics {
 	}
 	
 
+	
+	public int getVPTableSize(String pred) {
+		if (vpPredSize.containsKey(pred)) {
+			return vpPredSize.get(pred);
+		} else {
+			return 0;
+		}
+	}
 
 	
 	

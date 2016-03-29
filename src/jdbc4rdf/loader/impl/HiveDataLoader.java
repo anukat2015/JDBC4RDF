@@ -56,8 +56,16 @@ public class HiveDataLoader extends SQLDataLoader {
 	}
 
 	@Override
-	protected String getVPInsertSql(String vpName) {
-		final String insertSql = "INSERT INTO " + vpName + " VALUES(?, ?)";
+	protected String getInsertSql(String tName, int colCount) {
+		String insertSql = "INSERT INTO " + tName + " VALUES(";
+		
+		for (int i = 0; i < colCount; i++) {
+			if (i > 0) insertSql += ",";
+			insertSql += " ?";
+		}
+			
+		
+		insertSql += " )";
 		
 		return insertSql;
 	}

@@ -114,10 +114,27 @@ public class LoaderStatistics {
 		line += "\n";
 		
 		// Write to file!
-		writer.appendLine(statsFile, line);
+		writer.appendLine(statsFile, line + "\n");
 		
 		// store the information for later
 		this.vpPredSize.put(pred, vpSize);
+	}
+	
+	
+	public void addExtVPStatistic(String pred1, String pred2, int extVPSize) {
+		
+		final int sizeVp = vpPredSize.get(pred1); 
+		
+		String line = "<" + pred1 + "><" + pred2 + ">";
+		
+		line += "\t" + extVPSize;
+		line += "\t" + sizeVp;
+		
+		line += "\t" + Helper.getRatio(extVPSize, sizeVp);
+		line += "\t" + Helper.getRatio(sizeVp, size);
+
+		
+		writer.appendLine(statsFile, line + "\n");
 	}
 	
 

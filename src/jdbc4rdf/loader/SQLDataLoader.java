@@ -96,81 +96,89 @@ public abstract class SQLDataLoader extends SQLWrapper {
 		// closeFile(false)
 		
 	}
-	
-	
-	
+
+
+
 	private void createExtVP(Connection conn, String relType) throws SQLException {
 		// Helper.createDirInHDFS(Settings.extVpDir+relType)
 		stats.newFile(relType);
-		
+
 		int savedTables = 0;
 		int unsavedNonEmptyTables = 0;
-			    
+
 		// retrieve all predicates from the dataset (distinct)
 		String pSql = getPredicatesSql();
 		Statement predStmt = conn.createStatement();
 		ResultSet plistRs = predStmt.executeQuery(pSql);
-		
+
 		// for each predicate
 		while (plistRs.next()) {
 			String pred1 = Helper.getPartName(plistRs.getString(1));
-			
+
 			// get related predicates
 			Statement relPredStmt = conn.createStatement();
 			ResultSet relPred = relPredStmt.executeQuery(getLeftJoinSql(pred1, relType));
-			
+
 			// for each related predicate
 			while(relPred.next()) {
 				String pred2 = Helper.getPartName(relPred.getString(1));
-			
+
 				int extVpTableSize = -1;
-				
+
 				// Dont create unnecessary tables
 				if (!(relType == RELTYPE_SS && pred1.equals(pred2))) {
 					String extVPSql = getExtVpSQLcommand(pred1, pred2, relType);
-					
+
 					// calculate size
 					extVpTableSize = runStaticSql(conn, extVPSql, true).size();
-					
+
 					Statement extVPStmt = conn.createStatement();
 					ResultSet extVPRes = extVPStmt.executeQuery(extVPSql);
-					
-					while (extVPRes.next()) {
-						// Don't use "/" in table names to avoid problems
+
+
+					if (extVpTableSize < (stats.getVPTableSize(pred1) * this.scaleUB) ) {
+
+						// - omit directory check -
+
+						// save the extVP table
+						final String tableName = relType + DELIM 
+								+ pred1 + DELIM + pred2;
+
+						resultSetToTable(conn, extVPRes, tableName);
 						
-						if (extVpTableSize < (stats.getVPTableSize(pred1) * this.scaleUB) ) {
-							
-							// - omit directory check -
-							
-							// save the extVP table
-							final String tableName = relType + DELIM 
-									+ pred1 + DELIM + pred2;
-							
-							resultSetToTable(conn, extVPRes, tableName);
-							
-						}
+						stats.incSavedTables();
+
+					} else {
+						stats.incUnsavedNonEmptyTables();
 					}
-					
+
 					close(extVPRes);
-					
+
 					close(extVPStmt);
+				} else {
+					extVpTableSize = stats.getVPTableSize(pred1);
 				}
+				
+				
+				// write statistics
+				stats.addExtVPStatistic(pred1, pred2, extVpTableSize);
+				
 			}
-			
-			
+
+
 			close(relPred);
-			
+
 			close (relPredStmt);
 		}
-		
+
 		close(plistRs);
-		
+
 		close(predStmt);
-		
+
 		stats.closeFile(false);
-		
+
 	}
-	
+
 	
 	
 	/**
@@ -215,8 +223,8 @@ public abstract class SQLDataLoader extends SQLWrapper {
 			// detect type
 			final int otype = typeChecker.detectObjectType(pred);
 			final String otypeStr = typeChecker.getTypeName(otype, this.isStringSupported());
-			final boolean isTimestamp = otype == Types.TIMESTAMP;
-			String stypeStr = "VARCHAR(256)";
+			final boolean isTimestamp = (otype == Types.TIMESTAMP);
+			String stypeStr = "VARCHAR(1024)";
 			if (isStringSupported()) {
 				stypeStr = "string";
 			}
@@ -229,7 +237,7 @@ public abstract class SQLDataLoader extends SQLWrapper {
 			ResultSet filtered = filterStmt.executeQuery();
 			
 			// table name of vp table
-			String insSql = this.getVPInsertSql(pred);
+			String insSql = this.getInsertSql(pred, 2);
 			PreparedStatement insertVP = prepareStatement(conn, insSql); 
 			
 			int vpSize = 0;
@@ -317,13 +325,15 @@ public abstract class SQLDataLoader extends SQLWrapper {
 		// adapted from
 		// http://stackoverflow.com/questions/11268057/how-to-create-table-based-on-jdbc-result-set
 		
-		final int COLUMNS = 2;
+		ResultSetMetaData rsmd = rs.getMetaData();
+		
+		final int COLUMNS = rsmd.getColumnCount();
 		
 		/*
 		 * Step 1 - Create the table
 		 */
 		
-		ResultSetMetaData rsmd = rs.getMetaData();
+		
 		String createSql = "CREATE TABLE " + tableName + " (";
 		
 		for (int i = 1; i <= COLUMNS; i++) {
@@ -349,7 +359,23 @@ public abstract class SQLDataLoader extends SQLWrapper {
 		 * Step 2 - Insert data
 		 */
 		
+		// prepare a insert statement
+		String insertSql = getInsertSql(tableName, COLUMNS);
+		PreparedStatement insertStmt = prepareStatement(conn, insertSql);
+		
+		// for each row...
+		while(rs.next()) {
+			for (int i = 1; i <= COLUMNS; i++) {
+				insertStmt.setObject(i, rs.getObject(i), rsmd.getColumnType(1));
+			}
+			// insert this row
+			insertStmt.executeUpdate();
+		}
+		
+		insertStmt.close();
 	}
+	
+	
 	
 	
 	/**
@@ -418,7 +444,7 @@ public abstract class SQLDataLoader extends SQLWrapper {
 	protected abstract String getCreateVPSql(String vpTableName, String subjType, String objType);
 	
 	
-	protected abstract String getVPInsertSql(String vpName);
+	protected abstract String getInsertSql(String tName, int colCount);
 	
 	
 	/**

@@ -279,10 +279,16 @@ public abstract class SQLDataLoader extends SQLWrapper {
 		
 		ArrayList<String[]> result = new ArrayList<String[]>();
 		
-		// retrieve the result
-		if (hasRes && storeRes) {
+		// retrieve the result, make sure it always gets closes
+		if (hasRes) {
 			ResultSet rs = stmt.getResultSet();
-			result = super.storeResultSet(rs);
+			if (storeRes) {
+				// close() happens in store() method
+				result = super.storeResultSet(rs);
+			} else {
+				// close result set manually
+				close(rs);
+			}
 		}
 		
 		close(stmt);

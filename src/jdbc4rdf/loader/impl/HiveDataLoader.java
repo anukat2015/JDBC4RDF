@@ -1,7 +1,6 @@
 package jdbc4rdf.loader.impl;
 
 import jdbc4rdf.core.config.Config;
-import jdbc4rdf.core.config.LoaderConfig;
 import jdbc4rdf.loader.SQLDataLoader;
 
 

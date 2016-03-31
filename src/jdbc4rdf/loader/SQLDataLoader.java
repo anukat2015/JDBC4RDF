@@ -21,7 +21,7 @@ public abstract class SQLDataLoader extends SQLWrapper {
 	 * This delimiter should be used as an alternative
 	 * to the "/" delimiter in the original implementation
 	 */
-	private String DELIM  = "____DELIM____";
+	private String DELIM  = "____X____";
 	
 	
 	private String dataFile = "";
@@ -107,9 +107,6 @@ public abstract class SQLDataLoader extends SQLWrapper {
 	private void createExtVP(Connection conn, String relType) throws SQLException {
 		// Helper.createDirInHDFS(Settings.extVpDir+relType)
 		stats.newFile(relType);
-
-		int savedTables = 0;
-		int unsavedNonEmptyTables = 0;
 
 		// retrieve all predicates from the dataset (distinct)
 		String pSql = getPredicatesSql();
@@ -229,9 +226,10 @@ public abstract class SQLDataLoader extends SQLWrapper {
 			final int otype = typeChecker.detectObjectType(pred);
 			final String otypeStr = typeChecker.getTypeName(otype, this.isStringSupported());
 			final boolean isTimestamp = (otype == Types.TIMESTAMP);
-			String stypeStr = "VARCHAR(1024)";
+			// max. uri length
+			String stypeStr = "VARCHAR(" + 1024 + ")";
 			if (isStringSupported()) {
-				stypeStr = "string";
+				stypeStr = "STRING";
 			}
 			
 			// create vp

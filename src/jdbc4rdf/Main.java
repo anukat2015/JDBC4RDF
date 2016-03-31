@@ -3,6 +3,7 @@ package jdbc4rdf;
 import java.util.logging.Logger;
 import java.util.logging.Level;
 
+import jdbc4rdf.core.config.Config;
 import jdbc4rdf.core.config.DBDRIVER;
 import jdbc4rdf.core.config.LoaderConfig;
 import jdbc4rdf.loader.SQLDataLoader;
@@ -27,14 +28,15 @@ public class Main {
 	
 	
 	public static void main(String[] args) {
-		// TODO: parse arguments!
+		// Parse all the arguments
 		
+		Config conf;
+		DBDRIVER driver;
 		
 		if (args.length > 0) {
 			if (args[0].equals("load")) {
-				// loadConfig
-				LoaderConfig loadconf;
-				DBDRIVER driver;
+				
+				// Initialize a loadConfig instance
 				String file = "";
 				String host = "";
 				String db = "";
@@ -65,21 +67,23 @@ public class Main {
 				}
 				
 				// DBDRIVER driver, String file, String user, String pw, String host, String db
-				loadconf = new LoaderConfig(driver, file, user, pw, host, db, scaleUb);
+				conf = new LoaderConfig(driver, file, user, pw, host, db, scaleUb);
 				
 				// load data
 				SQLDataLoader sql = null; // = new SQLDataLoader(loadconf);
 				if (driver.equals(DBDRIVER.HIVE)) {
-					sql = new HiveDataLoader(loadconf);
+					sql = new HiveDataLoader(conf);
 				} else if (driver.equals(DBDRIVER.MYSQL)) {
 					// TODO
-					// sql = new MySQLDataLoader(loadconf);
+					// sql = new MySQLDataLoader(conf);
 				}
 				// run sql
 				sql.runSql();
 				
 			} else if (args[0].equals("exec")) {
 				// TODO: execConfig
+				// conf = new ExecuterConfig(...);
+				// QueryExecuter qe = new  (Hive?)QueryExecuter(conf) ?? ....
 				logger.log(Level.INFO, "Not yet implemented!");
 			}
 		} else {

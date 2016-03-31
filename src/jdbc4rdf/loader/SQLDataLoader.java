@@ -9,6 +9,7 @@ import java.sql.Statement;
 import java.sql.Types;
 import java.util.ArrayList;
 
+import jdbc4rdf.core.config.Config;
 import jdbc4rdf.core.config.LoaderConfig;
 import jdbc4rdf.core.sql.SQLWrapper;
 import jdbc4rdf.loader.io.LoaderStatistics;
@@ -45,12 +46,16 @@ public abstract class SQLDataLoader extends SQLWrapper {
 	private final TypeDetector typeChecker = new BSBMTypeDetector();
 	
 	
-	public SQLDataLoader(LoaderConfig loaderConf) {
+	public SQLDataLoader(Config loaderConf) {
 		super(loaderConf);
 		
-		this.dataFile = loaderConf.getDatafile();
 		
-		this.scaleUB = loaderConf.getScaleUB();
+		// treat it as a loaderConfig instance in order to get
+		// all arguments
+		
+		this.dataFile = ((LoaderConfig) loaderConf).getDatafile();
+		
+		this.scaleUB = ((LoaderConfig) loaderConf).getScaleUB();
 	}
 
 	

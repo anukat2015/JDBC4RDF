@@ -133,8 +133,6 @@ public abstract class SQLDataLoader extends SQLWrapper {
 		// Helper.createDirInHDFS(Settings.extVpDir+relType)
 		stats.newFile(relType);
 
-		int tcount = 0;
-		
 		// retrieve all predicates from the dataset (distinct)
 		String pSql = getPredicatesSql();
 		Statement predStmt = conn.createStatement();
@@ -236,12 +234,12 @@ public abstract class SQLDataLoader extends SQLWrapper {
 		
 		// for each predicate
 		while (plistRs.next()) {
-			String pred = "";
+			String pred = Helper.getPartName(plistRs.getString(1));
+			
+			String tname = pred;
 			if (SHORTEN_TABLENAMES) {
-				pred = "vptable_" + tcount;
+				tname = "vptable_" + tcount;
 				tcount++;
-			} else {
-				pred = Helper.getPartName(plistRs.getString(1));
 			}
 			
 			// get corresponding subj/obj and create a table
@@ -255,7 +253,7 @@ public abstract class SQLDataLoader extends SQLWrapper {
 			 */
 			
 			// drop vp
-			runStaticSql(conn, getDropSql(pred), false);
+			runStaticSql(conn, getDropSql(tname), false);
 			
 			// detect type
 			final int otype = typeChecker.detectObjectType(pred);
@@ -268,14 +266,14 @@ public abstract class SQLDataLoader extends SQLWrapper {
 			}
 			
 			// create VP
-			runStaticSql(conn, getCreateVPSql(pred, stypeStr, otypeStr), false);
+			runStaticSql(conn, getCreateVPSql(tname, stypeStr, otypeStr), false);
 
 			// get data which should be inserted
 			filterStmt.setString(1, pred);
 			ResultSet filtered = filterStmt.executeQuery();
 
 			// insert into table
-			String insSql = this.getInsertSql(pred, 2);
+			String insSql = this.getInsertSql(tname, 2);
 			PreparedStatement insertVP = prepareStatement(conn, insSql); 
 			
 			int vpSize = 0;

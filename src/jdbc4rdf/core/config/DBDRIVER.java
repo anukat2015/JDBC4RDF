@@ -46,6 +46,27 @@ public enum DBDRIVER {
 		}
 	}
 	
+	
+	
+	public String getJDBCUri(String host, String db) {
+		String uri = "";
+		
+		
+		if (this.equals(HIVE)) {
+			// https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients
+			// example: jdbc:hive2://localhost:10000/dbxy
+			uri = "jdbc:hive://" + host + ":" + 10000 + "/" + db;
+		} else if (this.equals(MYSQL)) {
+			// https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-usagenotes-connect-drivermanager.html
+			// https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-reference-configuration-properties.html
+			// example: localhost:3310/dbxy
+			uri = "jdbc:mysql://" + host + ":" + 3306 + "/" + db;
+		}
+		
+		return uri;
+	}
+	
+	
 	public static String getDriverList() {
 		return "mysql, hive";
 	}

@@ -22,8 +22,8 @@ public class HiveDataLoader extends SQLDataLoader {
 		final String createTT = "CREATE TABLE " 
 				+ super.TT_NAME + " (sub string, pred string, obj string)"
 				+ " ROW FORMAT DELIMITED"
-		        + " FIELDS TERMINATED BY '\t'"
-		        + " LINES TERMINATED BY '\n'";
+		        + " FIELDS TERMINATED BY '\\t'"
+		        + " LINES TERMINATED BY '\\n'";
 		
 		return createTT;
 	}
@@ -47,7 +47,7 @@ public class HiveDataLoader extends SQLDataLoader {
 
 	@Override
 	protected String getPredicateFilterSql() {
-		return "SELECT sub, obj FROM " + super.TT_NAME + " WHERE pred = '?'";
+		return "SELECT sub, obj FROM " + super.TT_NAME + " WHERE pred = ?";
 	}
 
 	@Override

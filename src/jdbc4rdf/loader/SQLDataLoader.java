@@ -23,6 +23,13 @@ public abstract class SQLDataLoader extends SQLWrapper {
 	 */
 	private String DELIM  = "____X____";
 	
+	/**
+	 * this option is for debug purposes and shortens vp table names.
+	 * however, this does not work for extVP because the
+	 * extVp creation method will not be able to find
+	 * the tables
+	 */
+	private final boolean SHORTEN_TABLENAMES = true;
 	
 	private String dataFile = "";
 	
@@ -76,6 +83,8 @@ public abstract class SQLDataLoader extends SQLWrapper {
 		// also work with prepareStatement method to improve performance
 		int tripleCount = createTripleTable(conn);
 		
+		stats.setDatasetSize(tripleCount);
+		
 		/*
 		 * Vertical Partitioning
 		 */
@@ -84,7 +93,6 @@ public abstract class SQLDataLoader extends SQLWrapper {
 		int predCount = createVP(conn);
 		// else: retrieve the predicate count differently
 		
-		stats.setDatasetSize(tripleCount);
 		stats.setPredicateCount(predCount);
 		
 		stats.closeFile(true);
@@ -93,13 +101,14 @@ public abstract class SQLDataLoader extends SQLWrapper {
 		 * Extended Vertical Partitioning
 		 */
 		
-		// if dt = so
-		createExtVP(conn, RELTYPE_SO);
-		// if dt = os
-		createExtVP(conn, RELTYPE_OS);
-		// if dt = ss
-		createExtVP(conn, RELTYPE_SS);
-		
+		if (!SHORTEN_TABLENAMES) {
+			// if dt = so
+			createExtVP(conn, RELTYPE_SO);
+			// if dt = os
+			createExtVP(conn, RELTYPE_OS);
+			// if dt = ss
+			createExtVP(conn, RELTYPE_SS);
+		}
 		// createExtVP
 		// newFile
 		// closeFile(false)
@@ -124,6 +133,8 @@ public abstract class SQLDataLoader extends SQLWrapper {
 		// Helper.createDirInHDFS(Settings.extVpDir+relType)
 		stats.newFile(relType);
 
+		int tcount = 0;
+		
 		// retrieve all predicates from the dataset (distinct)
 		String pSql = getPredicatesSql();
 		Statement predStmt = conn.createStatement();
@@ -143,7 +154,7 @@ public abstract class SQLDataLoader extends SQLWrapper {
 
 				int extVpTableSize = -1;
 
-				// Dont create unnecessary tables
+				// Don't create unnecessary tables
 				if (!(relType == RELTYPE_SS && pred1.equals(pred2))) {
 					String extVPSql = getExtVpSQLcommand(pred1, pred2, relType);
 
@@ -159,9 +170,9 @@ public abstract class SQLDataLoader extends SQLWrapper {
 						// - omit directory check -
 
 						// save the extVP table
-						final String tableName = relType + DELIM 
-								+ pred1 + DELIM + pred2;
-
+						String tableName =  relType + DELIM 
+									+ pred1 + DELIM + pred2;
+						
 						resultSetToTable(conn, extVPRes, tableName);
 						
 						stats.incSavedTables();
@@ -210,6 +221,8 @@ public abstract class SQLDataLoader extends SQLWrapper {
 		
 		stats.newFile("VP");
 		
+		int tcount = 0;
+		
 		int pcount = 0;
 		
 		// select distinct predicates from triples
@@ -223,7 +236,13 @@ public abstract class SQLDataLoader extends SQLWrapper {
 		
 		// for each predicate
 		while (plistRs.next()) {
-			String pred = Helper.getPartName(plistRs.getString(1));
+			String pred = "";
+			if (SHORTEN_TABLENAMES) {
+				pred = "vptable_" + tcount;
+				tcount++;
+			} else {
+				pred = Helper.getPartName(plistRs.getString(1));
+			}
 			
 			// get corresponding subj/obj and create a table
 			// off of it
@@ -248,14 +267,14 @@ public abstract class SQLDataLoader extends SQLWrapper {
 				stypeStr = "STRING";
 			}
 			
-			// create vp
+			// create VP
 			runStaticSql(conn, getCreateVPSql(pred, stypeStr, otypeStr), false);
 
 			// get data which should be inserted
 			filterStmt.setString(1, pred);
 			ResultSet filtered = filterStmt.executeQuery();
-			
-			// table name of vp table
+
+			// insert into table
 			String insSql = this.getInsertSql(pred, 2);
 			PreparedStatement insertVP = prepareStatement(conn, insSql); 
 			
@@ -301,6 +320,7 @@ public abstract class SQLDataLoader extends SQLWrapper {
 		
 		return pcount;
 	}
+	
 	
 	
 	

@@ -1,6 +1,7 @@
 package jdbc4rdf.loader.impl;
 
 import jdbc4rdf.core.config.Config;
+import jdbc4rdf.loader.TypeDetector;
 
 
 /**
@@ -21,10 +22,7 @@ public class MySQLDataLoader extends HiveDataLoader {
 	@Override
 	protected String getCreateTTSql() {
 		final String createTT = "CREATE TABLE " 
-				+ super.TT_NAME + " (sub string, pred string, obj string)";
-				//+ " ROW FORMAT DELIMITED"
-		        //+ " FIELDS TERMINATED BY '\t'"
-		        //+ " LINES TERMINATED BY '\n'";
+				+ super.TT_NAME + " (sub VARCHAR(1024), pred VARCHAR(1024), obj VARCHAR(" + TypeDetector.MAX_STR_SIZE + "))";
 		
 		return createTT;
 	}
@@ -33,9 +31,9 @@ public class MySQLDataLoader extends HiveDataLoader {
 	@Override
 	protected String getLoadSql(String dataFile, String table) {
 		// the delimiter definitions are at the create table statement for hive
-		final String loadSql = "LOAD DATA LOCAL INPATH '" + dataFile + "' INTO TABLE " + table 
-				+ " FIELDS TERMINATED BY '\t'"
-				+ " LINES TERMINATED BY '\n'";
+		final String loadSql = "LOAD DATA LOCAL INFILE '" + dataFile + "' INTO TABLE " + table 
+				+ " FIELDS TERMINATED BY '\\t'"
+				+ " LINES TERMINATED BY '\\n'";
 		
 		return loadSql;
 	}

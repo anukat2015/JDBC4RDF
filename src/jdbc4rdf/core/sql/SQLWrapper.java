@@ -15,13 +15,21 @@ import jdbc4rdf.core.config.Config;
 public abstract class SQLWrapper {
 
 
-	protected Config conf;
+	protected final Config conf;
+	
+	
+	private final boolean AUTOCOMMIT = true;
+	
 	
 	/**
 	 * Initialize the SQL wrapper class
 	 * @param conf Connection configuration container
 	 */
-	public SQLWrapper(Config conf) {
+	public SQLWrapper(Config confIn) {
+		
+		// store configuration
+		this.conf = confIn;
+		
 		// Try to load the driver class
 		try {
 			Class.forName(conf.getDriver().getDriverClass());
@@ -53,10 +61,13 @@ public abstract class SQLWrapper {
 			// init
 			conn = init();
 			
+			conn.setAutoCommit(AUTOCOMMIT);
+			
 			// do import
 			loadData(conn);
 			
 		} catch (Exception e) {
+			e.printStackTrace();
 			rollback(conn);
 		} finally {
 			close(conn);
@@ -76,12 +87,13 @@ public abstract class SQLWrapper {
 		
 		System.out.println("Connection with values host=" + host + ", db=" + db + ", user=" + dbuser + ", pw=" + dbpw);
 		
-		final int PORT = 10000;
+		String connectionUrl = conf.getDriver().getJDBCUri(host, db);
 		
 		Connection conn = null;
 		try {
 			// jdbc:hive2://localhost:10000/default", "hive", ""
-			conn = DriverManager.getConnection("jdbc:hive2://" + host + ":" + PORT + "/" + db, dbuser, dbpw);
+			//conn = DriverManager.getConnection("jdbc:hive2://" + host + ":" + PORT + "/" + db, dbuser, dbpw);
+			conn = DriverManager.getConnection(connectionUrl, dbuser, dbpw);
 		} catch (SQLException sqle) {
 			sqle.printStackTrace(System.out);
 		}
@@ -93,6 +105,10 @@ public abstract class SQLWrapper {
 
 
 	protected void rollback(Connection conn) {
+		
+		// rollback is not possible for autocommit=true
+		if (AUTOCOMMIT) return;
+		
 		try {
 			if (conn != null) {
 				if (!conn.isClosed()) {

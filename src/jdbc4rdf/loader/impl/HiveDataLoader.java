@@ -134,5 +134,12 @@ public class HiveDataLoader extends SQLDataLoader {
 
 
 
+	@Override
+	protected String getCreateDbSql(String dbName) {
+		return ("CREATE DATABASE IF NOT EXISTS " + dbName);
+	}
+
+
+
 	
 }

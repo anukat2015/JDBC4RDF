@@ -63,7 +63,11 @@ public abstract class SQLDataLoader extends SQLWrapper {
 	
 	@Override
 	protected void loadData(Connection conn) throws Exception {
-		// stmt exec
+		/*
+		 * Create database if not exists
+		 */
+		
+		initDb(conn);
 		
 		/*
 		 * Triple Table
@@ -103,7 +107,19 @@ public abstract class SQLDataLoader extends SQLWrapper {
 	}
 
 
+	
+	private void initDb(Connection conn) throws Exception {
+		final String dbName = this.conf.getDbName();
+		
+		// default database is always there
+		if (!dbName.isEmpty()) {
+			String sql = getCreateDbSql(dbName);
+			runStaticSql(conn, sql, false);
+		}
+	}
 
+	
+	
 	private void createExtVP(Connection conn, String relType) throws SQLException {
 		// Helper.createDirInHDFS(Settings.extVpDir+relType)
 		stats.newFile(relType);
@@ -220,7 +236,7 @@ public abstract class SQLDataLoader extends SQLWrapper {
 			 */
 			
 			// drop vp
-			runStaticSql(conn, getDropSql(pred));
+			runStaticSql(conn, getDropSql(pred), false);
 			
 			// detect type
 			final int otype = typeChecker.detectObjectType(pred);
@@ -233,7 +249,7 @@ public abstract class SQLDataLoader extends SQLWrapper {
 			}
 			
 			// create vp
-			runStaticSql(conn, getCreateVPSql(pred, stypeStr, otypeStr));
+			runStaticSql(conn, getCreateVPSql(pred, stypeStr, otypeStr), false);
 
 			// get data which should be inserted
 			filterStmt.setString(1, pred);
@@ -300,17 +316,17 @@ public abstract class SQLDataLoader extends SQLWrapper {
 		
 		// remove table first
 		String sql = getDropSql(TT_NAME);
-		runStaticSql(conn, sql);
+		runStaticSql(conn, sql, false);
 		
 		// create triple table
 		sql = getCreateTTSql();
-		runStaticSql(conn, sql);
+		runStaticSql(conn, sql, false);
 		
 		
 		
 		// load TSV
 		sql = getLoadSql(dataFile, TT_NAME);
-		runStaticSql(conn, sql);
+		runStaticSql(conn, sql, false);
 
 		
 		// count entries
@@ -448,6 +464,9 @@ public abstract class SQLDataLoader extends SQLWrapper {
 	
 	
 	protected abstract String getInsertSql(String tName, int colCount);
+	
+	
+	protected abstract String getCreateDbSql(String dbName);
 	
 	
 	/**

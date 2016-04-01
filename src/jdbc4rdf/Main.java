@@ -8,6 +8,7 @@ import jdbc4rdf.core.config.DBDRIVER;
 import jdbc4rdf.core.config.LoaderConfig;
 import jdbc4rdf.loader.SQLDataLoader;
 import jdbc4rdf.loader.impl.HiveDataLoader;
+import jdbc4rdf.loader.impl.MySQLDataLoader;
 
 public class Main {
 
@@ -70,12 +71,11 @@ public class Main {
 				conf = new LoaderConfig(driver, file, user, pw, host, db, scaleUb);
 				
 				// load data
-				SQLDataLoader sql = null; // = new SQLDataLoader(loadconf);
+				SQLDataLoader sql = null;
 				if (driver.equals(DBDRIVER.HIVE)) {
 					sql = new HiveDataLoader(conf);
 				} else if (driver.equals(DBDRIVER.MYSQL)) {
-					// TODO
-					// sql = new MySQLDataLoader(conf);
+					sql = new MySQLDataLoader(conf);
 				}
 				// run sql
 				sql.runSql();

@@ -48,7 +48,7 @@
 
 
 	<properties>
-		<java.home>C:/Programme/Java/jdk1.8.0_72</java.home>
+		<java.home>/usr/lib/jvm/java-8-oracle</java.home>
 
 		<hive.version>2.0.0</hive.version>
 

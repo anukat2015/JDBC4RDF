@@ -1,0 +1,1954 @@
+>>>>>>sparql_qm0_q10--VP__restest
+SELECT  DISTINCT tab12.price AS price , tab12.offer AS offer 
+ FROM    (SELECT tab5.price AS price , tab1.vendor AS vendor , tab0.offer AS offer , tab6.date AS date , tab4.deliveryDays AS deliveryDays 
+ FROM    (SELECT sub AS offer 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_product$$1$$
+	 
+	 WHERE obj = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer16/Product740>'
+	) tab0
+ JOIN    (SELECT obj AS vendor , sub AS offer 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_vendor$$2$$
+	
+	) tab1
+ ON(tab0.offer=tab1.offer)
+ JOIN    (SELECT sub AS vendor 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_country$$4$$
+	 
+	 WHERE obj = '<http://downlode.org/rdf/iso-3166/countries#US>'
+	) tab3
+ ON(tab1.vendor=tab3.vendor)
+ JOIN    (SELECT sub AS offer , obj AS deliveryDays 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_deliveryDays$$5$$
+	
+	) tab4
+ ON(tab1.offer=tab4.offer)
+ JOIN    (SELECT obj AS price , sub AS offer 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_price$$6$$
+	
+	) tab5
+ ON(tab4.offer=tab5.offer)
+ JOIN    (SELECT sub AS offer , obj AS date 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_validTo$$7$$
+	
+	) tab6
+ ON(tab5.offer=tab6.offer)
+ JOIN    (SELECT obj AS vendor , sub AS offer 
+	 FROM http___purl_org_dc_elements_1_1_publisher$$3$$
+	
+	) tab2
+ ON(tab3.vendor=tab2.vendor AND tab6.offer=tab2.offer)
+ 
+ WHERE (tab4.deliveryDays <= 3) AND (tab6.date > '2008-06-20 00:00:00')
+  ORDER BY tab5.price
+ LIMIT 100000000
+) tab12
+
+ LIMIT 10
+
+++++++Tables Statistic
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_price$$6$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_price/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_price	2
+------
+http___purl_org_dc_elements_1_1_publisher$$3$$	0	VP	http___purl_org_dc_elements_1_1_publisher/
+	VP	http___purl_org_dc_elements_1_1_publisher	6
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_country$$4$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_country/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_country	3
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_deliveryDays$$5$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_deliveryDays/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_deliveryDays	2
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_product$$1$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_product/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_product	3
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_vendor$$2$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_vendor/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_vendor	2
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_validTo$$7$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_validTo/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_validTo	2
+------
+>>>>>>sparql_qm0_q10--SO-OS-SS-VP__restest
+SELECT  DISTINCT tab12.price AS price , tab12.offer AS offer 
+ FROM    (SELECT tab5.price AS price , tab3.vendor AS vendor , tab1.offer AS offer , tab6.date AS date , tab4.deliveryDays AS deliveryDays 
+ FROM    (SELECT sub AS vendor 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_country$$4$$
+	 
+	 WHERE obj = '<http://downlode.org/rdf/iso-3166/countries#US>'
+	) tab3
+ JOIN    (SELECT obj AS vendor , sub AS offer 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_vendor$$2$$
+	
+	) tab1
+ ON(tab3.vendor=tab1.vendor)
+ JOIN    (SELECT sub AS offer 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_product$$1$$
+	 
+	 WHERE obj = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer16/Product740>'
+	) tab0
+ ON(tab1.offer=tab0.offer)
+ JOIN    (SELECT obj AS vendor , sub AS offer 
+	 FROM http___purl_org_dc_elements_1_1_publisher$$3$$
+	
+	) tab2
+ ON(tab1.vendor=tab2.vendor AND tab0.offer=tab2.offer)
+ JOIN    (SELECT sub AS offer , obj AS deliveryDays 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_deliveryDays$$5$$
+	
+	) tab4
+ ON(tab2.offer=tab4.offer)
+ JOIN    (SELECT obj AS price , sub AS offer 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_price$$6$$
+	
+	) tab5
+ ON(tab4.offer=tab5.offer)
+ JOIN    (SELECT sub AS offer , obj AS date 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_validTo$$7$$
+	
+	) tab6
+ ON(tab5.offer=tab6.offer)
+ 
+ WHERE (tab4.deliveryDays <= 3) AND (tab6.date > '2008-06-20 00:00:00')
+  ORDER BY tab5.price
+ LIMIT 100000000
+) tab12
+
+ LIMIT 10
+
+++++++Tables Statistic
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_price$$6$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_price/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_price	2
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_pricehttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_product	2	1.0
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_pricehttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_vendor	2	1.0
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_pricehttp___purl_org_dc_elements_1_1_publisher	2	1.0
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_pricehttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_deliveryDays	2	1.0
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_pricehttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_validTo	2	1.0
+------
+http___purl_org_dc_elements_1_1_publisher$$3$$	1	SS	http___purl_org_dc_elements_1_1_publisher/http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_product
+	VP	http___purl_org_dc_elements_1_1_publisher	6
+	SS	http___purl_org_dc_elements_1_1_publisherhttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_product	2	0.33
+	SS	http___purl_org_dc_elements_1_1_publisherhttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_vendor	2	0.33
+	OS	http___purl_org_dc_elements_1_1_publisherhttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_country	3	0.5
+	SS	http___purl_org_dc_elements_1_1_publisherhttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_deliveryDays	2	0.33
+	SS	http___purl_org_dc_elements_1_1_publisherhttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_price	2	0.33
+	SS	http___purl_org_dc_elements_1_1_publisherhttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_validTo	2	0.33
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_country$$4$$	1	SO	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_country/http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_vendor
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_country	3
+	SO	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_countryhttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_vendor	2	0.67
+	SO	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_countryhttp___purl_org_dc_elements_1_1_publisher	2	0.67
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_deliveryDays$$5$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_deliveryDays/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_deliveryDays	2
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_deliveryDayshttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_product	2	1.0
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_deliveryDayshttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_vendor	2	1.0
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_deliveryDayshttp___purl_org_dc_elements_1_1_publisher	2	1.0
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_deliveryDayshttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_price	2	1.0
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_deliveryDayshttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_validTo	2	1.0
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_product$$1$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_product/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_product	3
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_producthttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_vendor	3	1.0
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_producthttp___purl_org_dc_elements_1_1_publisher	3	1.0
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_producthttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_deliveryDays	3	1.0
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_producthttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_price	3	1.0
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_producthttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_validTo	3	1.0
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_vendor$$2$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_vendor/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_vendor	2
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_vendorhttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_product	2	1.0
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_vendorhttp___purl_org_dc_elements_1_1_publisher	2	1.0
+	OS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_vendorhttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_country	2	1.0
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_vendorhttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_deliveryDays	2	1.0
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_vendorhttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_price	2	1.0
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_vendorhttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_validTo	2	1.0
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_validTo$$7$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_validTo/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_validTo	2
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_validTohttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_product	2	1.0
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_validTohttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_vendor	2	1.0
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_validTohttp___purl_org_dc_elements_1_1_publisher	2	1.0
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_validTohttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_deliveryDays	2	1.0
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_validTohttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_price	2	1.0
+------
+>>>>>>sparql_qm0_q4--VP__restest
+SELECT  DISTINCT UNION1.product AS product , UNION1.label AS label , UNION1.propertyTextual AS propertyTextual 
+ FROM (SELECT tab1.product AS product , null AS p2 , tab5.p1 AS p1 , tab0.label AS label , tab4.propertyTextual AS propertyTextual 
+ FROM    (SELECT sub AS product 
+	 FROM http___www_w3_org_1999_02_22_rdf_syntax_ns_type$$2$$
+	 
+	 WHERE obj = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductType138>'
+	) tab1
+ JOIN    (SELECT sub AS product 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature$$3$$
+	 
+	 WHERE obj = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductFeature4305>'
+	) tab2
+ ON(tab1.product=tab2.product)
+ JOIN    (SELECT sub AS product 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature$$4$$
+	 
+	 WHERE obj = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductFeature1427>'
+	) tab3
+ ON(tab2.product=tab3.product)
+ JOIN    (SELECT sub AS product , obj AS propertyTextual 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyTextual1$$5$$
+	
+	) tab4
+ ON(tab3.product=tab4.product)
+ JOIN    (SELECT sub AS product , obj AS p1 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric1$$6$$
+	
+	) tab5
+ ON(tab4.product=tab5.product)
+ JOIN    (SELECT sub AS product , obj AS label 
+	 FROM http___www_w3_org_2000_01_rdf_schema_label$$1$$
+	
+	) tab0
+ ON(tab5.product=tab0.product)
+ 
+ WHERE (tab5.p1 > 457)
+
+ UNION ALL SELECT tab12.product AS product , tab16.p2 AS p2 , null AS p1 , tab11.label AS label , tab15.propertyTextual AS propertyTextual 
+ FROM    (SELECT sub AS product 
+	 FROM http___www_w3_org_1999_02_22_rdf_syntax_ns_type$$8$$
+	 
+	 WHERE obj = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductType138>'
+	) tab12
+ JOIN    (SELECT sub AS product 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature$$9$$
+	 
+	 WHERE obj = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductFeature4305>'
+	) tab13
+ ON(tab12.product=tab13.product)
+ JOIN    (SELECT sub AS product 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature$$10$$
+	 
+	 WHERE obj = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductFeature1444>'
+	) tab14
+ ON(tab13.product=tab14.product)
+ JOIN    (SELECT sub AS product , obj AS p2 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric2$$12$$
+	
+	) tab16
+ ON(tab14.product=tab16.product)
+ JOIN    (SELECT sub AS product , obj AS propertyTextual 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyTextual1$$11$$
+	
+	) tab15
+ ON(tab16.product=tab15.product)
+ JOIN    (SELECT sub AS product , obj AS label 
+	 FROM http___www_w3_org_2000_01_rdf_schema_label$$7$$
+	
+	) tab11
+ ON(tab15.product=tab11.product)
+ 
+ WHERE (tab16.p2 > 488)
+) UNION1
+ ORDER BY label
+ LIMIT 10
+
+++++++Tables Statistic
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyTextual1$$11$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyTextual1/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyTextual1	14
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric2$$12$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric2/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric2	2
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature$$9$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature	31
+------
+http___www_w3_org_2000_01_rdf_schema_label$$7$$	0	VP	http___www_w3_org_2000_01_rdf_schema_label/
+	VP	http___www_w3_org_2000_01_rdf_schema_label	20
+------
+http___www_w3_org_1999_02_22_rdf_syntax_ns_type$$8$$	0	VP	http___www_w3_org_1999_02_22_rdf_syntax_ns_type/
+	VP	http___www_w3_org_1999_02_22_rdf_syntax_ns_type	21
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric1$$6$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric1/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric1	15
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyTextual1$$5$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyTextual1/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyTextual1	14
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature$$4$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature	31
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature$$10$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature	31
+------
+http___www_w3_org_1999_02_22_rdf_syntax_ns_type$$2$$	0	VP	http___www_w3_org_1999_02_22_rdf_syntax_ns_type/
+	VP	http___www_w3_org_1999_02_22_rdf_syntax_ns_type	21
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature$$3$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature	31
+------
+http___www_w3_org_2000_01_rdf_schema_label$$1$$	0	VP	http___www_w3_org_2000_01_rdf_schema_label/
+	VP	http___www_w3_org_2000_01_rdf_schema_label	20
+------
+>>>>>>sparql_qm0_q4--SO-OS-SS-VP__restest
+SELECT  DISTINCT UNION1.product AS product , UNION1.label AS label , UNION1.propertyTextual AS propertyTextual 
+ FROM (SELECT tab1.product AS product , null AS p2 , tab5.p1 AS p1 , tab0.label AS label , tab4.propertyTextual AS propertyTextual 
+ FROM    (SELECT sub AS product 
+	 FROM http___www_w3_org_1999_02_22_rdf_syntax_ns_type$$2$$
+	 
+	 WHERE obj = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductType138>'
+	) tab1
+ JOIN    (SELECT sub AS product 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature$$3$$
+	 
+	 WHERE obj = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductFeature4305>'
+	) tab2
+ ON(tab1.product=tab2.product)
+ JOIN    (SELECT sub AS product 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature$$4$$
+	 
+	 WHERE obj = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductFeature1427>'
+	) tab3
+ ON(tab2.product=tab3.product)
+ JOIN    (SELECT sub AS product , obj AS label 
+	 FROM http___www_w3_org_2000_01_rdf_schema_label$$1$$
+	
+	) tab0
+ ON(tab3.product=tab0.product)
+ JOIN    (SELECT sub AS product , obj AS propertyTextual 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyTextual1$$5$$
+	
+	) tab4
+ ON(tab0.product=tab4.product)
+ JOIN    (SELECT sub AS product , obj AS p1 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric1$$6$$
+	
+	) tab5
+ ON(tab4.product=tab5.product)
+ 
+ WHERE (tab5.p1 > 457)
+ UNION ALL SELECT tab12.product AS product , tab16.p2 AS p2 , null AS p1 , tab11.label AS label , tab15.propertyTextual AS propertyTextual 
+ FROM    (SELECT sub AS product 
+	 FROM http___www_w3_org_1999_02_22_rdf_syntax_ns_type$$8$$
+	 
+	 WHERE obj = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductType138>'
+	) tab12
+ JOIN    (SELECT sub AS product 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature$$9$$
+	 
+	 WHERE obj = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductFeature4305>'
+	) tab13
+ ON(tab12.product=tab13.product)
+ JOIN    (SELECT sub AS product 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature$$10$$
+	 
+	 WHERE obj = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductFeature1444>'
+	) tab14
+ ON(tab13.product=tab14.product)
+ JOIN    (SELECT sub AS product , obj AS p2 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric2$$12$$
+	
+	) tab16
+ ON(tab14.product=tab16.product)
+ JOIN    (SELECT sub AS product , obj AS label 
+	 FROM http___www_w3_org_2000_01_rdf_schema_label$$7$$
+	
+	) tab11
+ ON(tab16.product=tab11.product)
+ JOIN    (SELECT sub AS product , obj AS propertyTextual 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyTextual1$$11$$
+	
+	) tab15
+ ON(tab11.product=tab15.product)
+ 
+ WHERE (tab16.p2 > 488)
+) UNION1
+ ORDER BY label
+
+ LIMIT 10
+
+++++++Tables Statistic
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyTextual1$$11$$	5	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyTextual1/http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric2
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyTextual1	14
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyTextual1http___www_w3_org_2000_01_rdf_schema_label	14	1.0
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyTextual1http___www_w3_org_1999_02_22_rdf_syntax_ns_type	14	1.0
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyTextual1http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature	14	1.0
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyTextual1http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature	14	1.0
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyTextual1http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric2	2	0.14
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric2$$12$$	1	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric2/http___www_w3_org_2000_01_rdf_schema_label
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric2	2
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric2http___www_w3_org_2000_01_rdf_schema_label	1	0.5
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric2http___www_w3_org_1999_02_22_rdf_syntax_ns_type	1	0.5
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric2http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature	2	1.0
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric2http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature	2	1.0
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric2http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyTextual1	1	0.5
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature$$9$$	5	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature/http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric2
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature	31
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeaturehttp___www_w3_org_2000_01_rdf_schema_label	30	0.97
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeaturehttp___www_w3_org_1999_02_22_rdf_syntax_ns_type	30	0.97
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeaturehttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature	31	1.0
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeaturehttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyTextual1	30	0.97
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeaturehttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric2	6	0.19
+------
+http___www_w3_org_2000_01_rdf_schema_label$$7$$	5	SS	http___www_w3_org_2000_01_rdf_schema_label/http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric2
+	VP	http___www_w3_org_2000_01_rdf_schema_label	20
+	SS	http___www_w3_org_2000_01_rdf_schema_labelhttp___www_w3_org_1999_02_22_rdf_syntax_ns_type	15	0.75
+	SS	http___www_w3_org_2000_01_rdf_schema_labelhttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature	14	0.7
+	SS	http___www_w3_org_2000_01_rdf_schema_labelhttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature	14	0.7
+	SS	http___www_w3_org_2000_01_rdf_schema_labelhttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyTextual1	14	0.7
+	SS	http___www_w3_org_2000_01_rdf_schema_labelhttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric2	2	0.1
+------
+http___www_w3_org_1999_02_22_rdf_syntax_ns_type$$8$$	5	SS	http___www_w3_org_1999_02_22_rdf_syntax_ns_type/http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric2
+	VP	http___www_w3_org_1999_02_22_rdf_syntax_ns_type	21
+	SS	http___www_w3_org_1999_02_22_rdf_syntax_ns_typehttp___www_w3_org_2000_01_rdf_schema_label	17	0.81
+	SS	http___www_w3_org_1999_02_22_rdf_syntax_ns_typehttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature	16	0.76
+	SS	http___www_w3_org_1999_02_22_rdf_syntax_ns_typehttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature	16	0.76
+	SS	http___www_w3_org_1999_02_22_rdf_syntax_ns_typehttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyTextual1	16	0.76
+	SS	http___www_w3_org_1999_02_22_rdf_syntax_ns_typehttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric2	4	0.19
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric1$$6$$	1	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric1/http___www_w3_org_2000_01_rdf_schema_label
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric1	15
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric1http___www_w3_org_2000_01_rdf_schema_label	14	0.93
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric1http___www_w3_org_1999_02_22_rdf_syntax_ns_type	14	0.93
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric1http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature	15	1.0
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric1http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature	15	1.0
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric1http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyTextual1	14	0.93
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyTextual1$$5$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyTextual1/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyTextual1	14
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyTextual1http___www_w3_org_2000_01_rdf_schema_label	14	1.0
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyTextual1http___www_w3_org_1999_02_22_rdf_syntax_ns_type	14	1.0
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyTextual1http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature	14	1.0
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyTextual1http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature	14	1.0
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyTextual1http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric1	14	1.0
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature$$4$$	1	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature/http___www_w3_org_2000_01_rdf_schema_label
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature	31
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeaturehttp___www_w3_org_2000_01_rdf_schema_label	30	0.97
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeaturehttp___www_w3_org_1999_02_22_rdf_syntax_ns_type	30	0.97
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeaturehttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature	31	1.0
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeaturehttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyTextual1	30	0.97
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeaturehttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric1	31	1.0
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature$$10$$	5	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature/http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric2
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature	31
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeaturehttp___www_w3_org_2000_01_rdf_schema_label	30	0.97
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeaturehttp___www_w3_org_1999_02_22_rdf_syntax_ns_type	30	0.97
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeaturehttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature	31	1.0
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeaturehttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyTextual1	30	0.97
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeaturehttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric2	6	0.19
+------
+http___www_w3_org_1999_02_22_rdf_syntax_ns_type$$2$$	2	SS	http___www_w3_org_1999_02_22_rdf_syntax_ns_type/http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature
+	VP	http___www_w3_org_1999_02_22_rdf_syntax_ns_type	21
+	SS	http___www_w3_org_1999_02_22_rdf_syntax_ns_typehttp___www_w3_org_2000_01_rdf_schema_label	17	0.81
+	SS	http___www_w3_org_1999_02_22_rdf_syntax_ns_typehttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature	16	0.76
+	SS	http___www_w3_org_1999_02_22_rdf_syntax_ns_typehttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature	16	0.76
+	SS	http___www_w3_org_1999_02_22_rdf_syntax_ns_typehttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyTextual1	16	0.76
+	SS	http___www_w3_org_1999_02_22_rdf_syntax_ns_typehttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric1	16	0.76
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature$$3$$	1	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature/http___www_w3_org_2000_01_rdf_schema_label
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature	31
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeaturehttp___www_w3_org_2000_01_rdf_schema_label	30	0.97
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeaturehttp___www_w3_org_1999_02_22_rdf_syntax_ns_type	30	0.97
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeaturehttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature	31	1.0
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeaturehttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyTextual1	30	0.97
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeaturehttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric1	31	1.0
+------
+http___www_w3_org_2000_01_rdf_schema_label$$1$$	2	SS	http___www_w3_org_2000_01_rdf_schema_label/http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature
+	VP	http___www_w3_org_2000_01_rdf_schema_label	20
+	SS	http___www_w3_org_2000_01_rdf_schema_labelhttp___www_w3_org_1999_02_22_rdf_syntax_ns_type	15	0.75
+	SS	http___www_w3_org_2000_01_rdf_schema_labelhttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature	14	0.7
+	SS	http___www_w3_org_2000_01_rdf_schema_labelhttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature	14	0.7
+	SS	http___www_w3_org_2000_01_rdf_schema_labelhttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyTextual1	14	0.7
+	SS	http___www_w3_org_2000_01_rdf_schema_labelhttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric1	14	0.7
+------
+>>>>>>sparql_qm0_q7--VP__restest
+SELECT OPTIONAL3.revName AS revName , OPTIONAL3.price AS price , OPTIONAL3.vendor AS vendor , OPTIONAL3.rating1 AS rating1 , OPTIONAL3.rating2 AS rating2 , OPTIONAL3.reviewer AS reviewer , OPTIONAL3.vendorTitle AS vendorTitle , OPTIONAL3.productLabel AS productLabel , OPTIONAL3.offer AS offer , OPTIONAL3.revTitle AS revTitle , OPTIONAL3.review AS review 
+ FROM    (SELECT OPTIONAL2.revName AS revName , OPTIONAL0.price AS price , OPTIONAL0.vendor AS vendor , OPTIONAL2.rating1 AS rating1 , OPTIONAL2.rating2 AS rating2 , OPTIONAL2.reviewer AS reviewer , OPTIONAL0.productLabel AS productLabel , OPTIONAL0.vendorTitle AS vendorTitle , OPTIONAL0.offer AS offer , OPTIONAL0.date AS date , OPTIONAL2.revTitle AS revTitle , OPTIONAL2.review AS review 
+ FROM    (SELECT tab13.price AS price , tab13.vendor AS vendor , tab13.vendorTitle AS vendorTitle , tab0.productLabel AS productLabel , tab13.offer AS offer , tab13.date AS date 
+ FROM    (SELECT obj AS productLabel 
+	 FROM http___www_w3_org_2000_01_rdf_schema_label$$1$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer18/Product828>'
+	) tab0
+ CROSS JOIN    (SELECT tab2.price AS price , tab3.vendor AS vendor , tab4.vendorTitle AS vendorTitle , tab1.offer AS offer , tab7.date AS date 
+ FROM    (SELECT sub AS offer 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_product$$2$$
+	 
+	 WHERE obj = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer18/Product828>'
+	) tab1
+ JOIN    (SELECT obj AS price , sub AS offer 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_price$$3$$
+	
+	) tab2
+ ON(tab1.offer=tab2.offer)
+ JOIN    (SELECT obj AS vendor , sub AS offer 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_vendor$$4$$
+	
+	) tab3
+ ON(tab2.offer=tab3.offer)
+ JOIN    (SELECT sub AS vendor 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_country$$6$$
+	 
+	 WHERE obj = '<http://downlode.org/rdf/iso-3166/countries#DE>'
+	) tab5
+ ON(tab3.vendor=tab5.vendor)
+ JOIN    (SELECT sub AS offer , obj AS date 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_validTo$$8$$
+	
+	) tab7
+ ON(tab3.offer=tab7.offer)
+ JOIN    (SELECT obj AS vendor , sub AS offer 
+	 FROM http___purl_org_dc_elements_1_1_publisher$$7$$
+	
+	) tab6
+ ON(tab5.vendor=tab6.vendor AND tab7.offer=tab6.offer)
+ JOIN    (SELECT sub AS vendor , obj AS vendorTitle 
+	 FROM http___www_w3_org_2000_01_rdf_schema_label$$5$$
+	
+	) tab4
+ ON(tab6.vendor=tab4.vendor)
+
+) tab13
+ 
+ WHERE (tab13.date > '2008-06-20T00:00:00')
+) OPTIONAL0
+ CROSS JOIN    (SELECT OPTIONAL1.revName AS revName , OPTIONAL1.rating1 AS rating1 , tab22.rating2 AS rating2 , OPTIONAL1.reviewer AS reviewer , OPTIONAL1.revTitle AS revTitle , OPTIONAL1.review AS review 
+ FROM    (SELECT tab20.revName AS revName , tab21.rating1 AS rating1 , tab20.reviewer AS reviewer , tab20.revTitle AS revTitle , tab20.review AS review 
+ FROM    (SELECT tab16.revName AS revName , tab15.reviewer AS reviewer , tab17.revTitle AS revTitle , tab14.review AS review 
+ FROM    (SELECT sub AS review 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_reviewFor$$9$$
+	 
+	 WHERE obj = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer18/Product828>'
+	) tab14
+ JOIN    (SELECT obj AS revTitle , sub AS review 
+	 FROM http___purl_org_dc_elements_1_1_title$$12$$
+	
+	) tab17
+ ON(tab14.review=tab17.review)
+ JOIN    (SELECT obj AS reviewer , sub AS review 
+	 FROM http___purl_org_stuff_rev_reviewer$$10$$
+	
+	) tab15
+ ON(tab17.review=tab15.review)
+ JOIN    (SELECT obj AS revName , sub AS reviewer 
+	 FROM http___xmlns_com_foaf_0_1_name$$11$$
+	
+	) tab16
+ ON(tab15.reviewer=tab16.reviewer)
+
+) tab20
+ LEFT OUTER JOIN    (SELECT obj AS rating1 , sub AS review 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_rating1$$13$$
+	
+	) tab21
+ ON(tab20.review=tab21.review)
+
+) OPTIONAL1
+ LEFT OUTER JOIN    (SELECT obj AS rating2 , sub AS review 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_rating2$$14$$
+	
+	) tab22
+ ON(OPTIONAL1.review=tab22.review)
+
+) OPTIONAL2
+
+) OPTIONAL3
+
+
+++++++Tables Statistic
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_vendor$$4$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_vendor/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_vendor	2
+------
+http___purl_org_dc_elements_1_1_title$$12$$	0	VP	http___purl_org_dc_elements_1_1_title/
+	VP	http___purl_org_dc_elements_1_1_title	1
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_country$$6$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_country/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_country	3
+------
+http___www_w3_org_2000_01_rdf_schema_label$$1$$	0	VP	http___www_w3_org_2000_01_rdf_schema_label/
+	VP	http___www_w3_org_2000_01_rdf_schema_label	20
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_price$$3$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_price/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_price	2
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_rating2$$14$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_rating2/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_rating2	1
+------
+http___www_w3_org_2000_01_rdf_schema_label$$5$$	0	VP	http___www_w3_org_2000_01_rdf_schema_label/
+	VP	http___www_w3_org_2000_01_rdf_schema_label	20
+------
+http___xmlns_com_foaf_0_1_name$$11$$	0	VP	http___xmlns_com_foaf_0_1_name/
+	VP	http___xmlns_com_foaf_0_1_name	1
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_product$$2$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_product/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_product	3
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_rating1$$13$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_rating1/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_rating1	1
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_reviewFor$$9$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_reviewFor/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_reviewFor	2
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_validTo$$8$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_validTo/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_validTo	2
+------
+http___purl_org_dc_elements_1_1_publisher$$7$$	0	VP	http___purl_org_dc_elements_1_1_publisher/
+	VP	http___purl_org_dc_elements_1_1_publisher	6
+------
+http___purl_org_stuff_rev_reviewer$$10$$	0	VP	http___purl_org_stuff_rev_reviewer/
+	VP	http___purl_org_stuff_rev_reviewer	4
+------
+>>>>>>sparql_qm0_q7--SO-OS-SS-VP__restest
+SELECT OPTIONAL3.revName AS revName , OPTIONAL3.price AS price , OPTIONAL3.vendor AS vendor , OPTIONAL3.rating1 AS rating1 , OPTIONAL3.rating2 AS rating2 , OPTIONAL3.reviewer AS reviewer , OPTIONAL3.vendorTitle AS vendorTitle , OPTIONAL3.productLabel AS productLabel , OPTIONAL3.offer AS offer , OPTIONAL3.revTitle AS revTitle , OPTIONAL3.review AS review 
+ FROM    (SELECT OPTIONAL2.revName AS revName , OPTIONAL0.price AS price , OPTIONAL0.vendor AS vendor , OPTIONAL2.rating1 AS rating1 , OPTIONAL2.rating2 AS rating2 , OPTIONAL2.reviewer AS reviewer , OPTIONAL0.productLabel AS productLabel , OPTIONAL0.vendorTitle AS vendorTitle , OPTIONAL0.offer AS offer , OPTIONAL0.date AS date , OPTIONAL2.revTitle AS revTitle , OPTIONAL2.review AS review 
+ FROM    (SELECT tab13.price AS price , tab13.vendor AS vendor , tab13.vendorTitle AS vendorTitle , tab0.productLabel AS productLabel , tab13.offer AS offer , tab13.date AS date 
+ FROM    (SELECT obj AS productLabel 
+	 FROM http___www_w3_org_2000_01_rdf_schema_label$$1$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer18/Product828>'
+	) tab0
+ CROSS JOIN    (SELECT tab2.price AS price , tab5.vendor AS vendor , tab4.vendorTitle AS vendorTitle , tab3.offer AS offer , tab7.date AS date 
+ FROM    (SELECT sub AS vendor 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_country$$6$$
+	 
+	 WHERE obj = '<http://downlode.org/rdf/iso-3166/countries#DE>'
+	) tab5
+ JOIN    (SELECT sub AS vendor , obj AS vendorTitle 
+	 FROM http___www_w3_org_2000_01_rdf_schema_label$$5$$
+	
+	) tab4
+ ON(tab5.vendor=tab4.vendor)
+ JOIN    (SELECT obj AS vendor , sub AS offer 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_vendor$$4$$
+	
+	) tab3
+ ON(tab4.vendor=tab3.vendor)
+ JOIN    (SELECT sub AS offer 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_product$$2$$
+	 
+	 WHERE obj = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer18/Product828>'
+	) tab1
+ ON(tab3.offer=tab1.offer)
+ JOIN    (SELECT obj AS price , sub AS offer 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_price$$3$$
+	
+	) tab2
+ ON(tab1.offer=tab2.offer)
+ JOIN    (SELECT obj AS vendor , sub AS offer 
+	 FROM http___purl_org_dc_elements_1_1_publisher$$7$$
+	
+	) tab6
+ ON(tab3.vendor=tab6.vendor AND tab2.offer=tab6.offer)
+ JOIN    (SELECT sub AS offer , obj AS date 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_validTo$$8$$
+	
+	) tab7
+ ON(tab6.offer=tab7.offer)
+
+) tab13
+ 
+ WHERE (tab13.date > '2008-06-20T00:00:00')
+) OPTIONAL0
+ CROSS JOIN    (SELECT OPTIONAL1.revName AS revName , OPTIONAL1.rating1 AS rating1 , tab22.rating2 AS rating2 , OPTIONAL1.reviewer AS reviewer , OPTIONAL1.revTitle AS revTitle , OPTIONAL1.review AS review 
+ FROM    (SELECT tab20.revName AS revName , tab21.rating1 AS rating1 , tab20.reviewer AS reviewer , tab20.revTitle AS revTitle , tab20.review AS review 
+ FROM    (SELECT tab16.revName AS revName , tab15.reviewer AS reviewer , tab17.revTitle AS revTitle , tab14.review AS review 
+ FROM    (SELECT sub AS review 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_reviewFor$$9$$
+	 
+	 WHERE obj = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer18/Product828>'
+	) tab14
+ JOIN    (SELECT obj AS reviewer , sub AS review 
+	 FROM http___purl_org_stuff_rev_reviewer$$10$$
+	
+	) tab15
+ ON(tab14.review=tab15.review)
+ JOIN    (SELECT obj AS revName , sub AS reviewer 
+	 FROM http___xmlns_com_foaf_0_1_name$$11$$
+	
+	) tab16
+ ON(tab15.reviewer=tab16.reviewer)
+ JOIN    (SELECT obj AS revTitle , sub AS review 
+	 FROM http___purl_org_dc_elements_1_1_title$$12$$
+	
+	) tab17
+ ON(tab15.review=tab17.review)
+
+) tab20
+ LEFT OUTER JOIN    (SELECT obj AS rating1 , sub AS review 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_rating1$$13$$
+	
+	) tab21
+ ON(tab20.review=tab21.review)
+
+) OPTIONAL1
+ LEFT OUTER JOIN    (SELECT obj AS rating2 , sub AS review 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_rating2$$14$$
+	
+	) tab22
+ ON(OPTIONAL1.review=tab22.review)
+
+) OPTIONAL2
+
+) OPTIONAL3
+
+
+++++++Tables Statistic
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_vendor$$4$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_vendor/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_vendor	2
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_vendorhttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_product	2	1.0
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_vendorhttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_price	2	1.0
+	OS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_vendorhttp___www_w3_org_2000_01_rdf_schema_label	2	1.0
+	OS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_vendorhttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_country	2	1.0
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_vendorhttp___purl_org_dc_elements_1_1_publisher	2	1.0
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_vendorhttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_validTo	2	1.0
+------
+http___purl_org_dc_elements_1_1_title$$12$$	0	VP	http___purl_org_dc_elements_1_1_title/
+	VP	http___purl_org_dc_elements_1_1_title	1
+	SS	http___purl_org_dc_elements_1_1_titlehttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_reviewFor	1	1.0
+	SS	http___purl_org_dc_elements_1_1_titlehttp___purl_org_stuff_rev_reviewer	1	1.0
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_country$$6$$	1	SO	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_country/http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_vendor
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_country	3
+	SO	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_countryhttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_vendor	2	0.67
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_countryhttp___www_w3_org_2000_01_rdf_schema_label	2	0.67
+	SO	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_countryhttp___purl_org_dc_elements_1_1_publisher	2	0.67
+------
+http___www_w3_org_2000_01_rdf_schema_label$$1$$	0	VP	http___www_w3_org_2000_01_rdf_schema_label/
+	VP	http___www_w3_org_2000_01_rdf_schema_label	20
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_price$$3$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_price/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_price	2
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_pricehttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_product	2	1.0
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_pricehttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_vendor	2	1.0
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_pricehttp___purl_org_dc_elements_1_1_publisher	2	1.0
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_pricehttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_validTo	2	1.0
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_rating2$$14$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_rating2/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_rating2	1
+------
+http___www_w3_org_2000_01_rdf_schema_label$$5$$	1	SO	http___www_w3_org_2000_01_rdf_schema_label/http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_vendor
+	VP	http___www_w3_org_2000_01_rdf_schema_label	20
+	SO	http___www_w3_org_2000_01_rdf_schema_labelhttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_vendor	1	0.05
+	SS	http___www_w3_org_2000_01_rdf_schema_labelhttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_country	1	0.05
+	SO	http___www_w3_org_2000_01_rdf_schema_labelhttp___purl_org_dc_elements_1_1_publisher	2	0.1
+------
+http___xmlns_com_foaf_0_1_name$$11$$	0	VP	http___xmlns_com_foaf_0_1_name/
+	VP	http___xmlns_com_foaf_0_1_name	1
+	SO	http___xmlns_com_foaf_0_1_namehttp___purl_org_stuff_rev_reviewer	1	1.0
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_product$$2$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_product/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_product	3
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_producthttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_price	3	1.0
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_producthttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_vendor	3	1.0
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_producthttp___purl_org_dc_elements_1_1_publisher	3	1.0
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_producthttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_validTo	3	1.0
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_rating1$$13$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_rating1/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_rating1	1
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_reviewFor$$9$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_reviewFor/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_reviewFor	2
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_reviewForhttp___purl_org_stuff_rev_reviewer	2	1.0
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_reviewForhttp___purl_org_dc_elements_1_1_title	2	1.0
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_validTo$$8$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_validTo/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_validTo	2
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_validTohttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_product	2	1.0
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_validTohttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_price	2	1.0
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_validTohttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_vendor	2	1.0
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_validTohttp___purl_org_dc_elements_1_1_publisher	2	1.0
+------
+http___purl_org_dc_elements_1_1_publisher$$7$$	1	SS	http___purl_org_dc_elements_1_1_publisher/http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_product
+	VP	http___purl_org_dc_elements_1_1_publisher	6
+	SS	http___purl_org_dc_elements_1_1_publisherhttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_product	2	0.33
+	SS	http___purl_org_dc_elements_1_1_publisherhttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_price	2	0.33
+	SS	http___purl_org_dc_elements_1_1_publisherhttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_vendor	2	0.33
+	OS	http___purl_org_dc_elements_1_1_publisherhttp___www_w3_org_2000_01_rdf_schema_label	4	0.67
+	OS	http___purl_org_dc_elements_1_1_publisherhttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_country	3	0.5
+	SS	http___purl_org_dc_elements_1_1_publisherhttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_validTo	2	0.33
+------
+http___purl_org_stuff_rev_reviewer$$10$$	1	SS	http___purl_org_stuff_rev_reviewer/http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_reviewFor
+	VP	http___purl_org_stuff_rev_reviewer	4
+	SS	http___purl_org_stuff_rev_reviewerhttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_reviewFor	1	0.25
+	OS	http___purl_org_stuff_rev_reviewerhttp___xmlns_com_foaf_0_1_name	2	0.5
+	SS	http___purl_org_stuff_rev_reviewerhttp___purl_org_dc_elements_1_1_title	1	0.25
+------
+>>>>>>sparql_qm0_q11--VP__restest
+SELECT UNION1.hasValue AS hasValue , UNION1.property AS property , UNION1.isValueOf AS isValueOf 
+ FROM (SELECT obj AS hasValue , pred AS property , null AS isValueOf 
+	 FROM triples$$1$$ 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromVendor1/Offer1250>'
+	 UNION ALL SELECT null AS hasValue , pred AS property , sub AS isValueOf 
+	 FROM triples$$2$$ 
+	 WHERE obj = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromVendor1/Offer1250>'
+	) UNION1
+
+
+++++++Tables Statistic
+triples$$1$$	0	TT	triples
+	TT	triples	162
+------
+triples$$2$$	0	TT	triples
+	TT	triples	162
+------
+>>>>>>sparql_qm0_q11--SO-OS-SS-VP__restest
+SELECT UNION1.hasValue AS hasValue , UNION1.property AS property , UNION1.isValueOf AS isValueOf 
+ FROM (SELECT obj AS hasValue , pred AS property , null AS isValueOf 
+	 FROM triples$$1$$ 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromVendor1/Offer1250>'
+	 UNION ALL SELECT null AS hasValue , pred AS property , sub AS isValueOf 
+	 FROM triples$$2$$ 
+	 WHERE obj = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromVendor1/Offer1250>'
+	) UNION1
+
+
+++++++Tables Statistic
+triples$$1$$	0	TT	triples
+	TT	triples	162
+------
+triples$$2$$	0	TT	triples
+	TT	triples	162
+------
+>>>>>>sparql_qm0_q2--VP__restest
+SELECT OPTIONAL2.propertyTextual4 AS propertyTextual4 , OPTIONAL2.propertyTextual5 AS propertyTextual5 , OPTIONAL2.propertyTextual2 AS propertyTextual2 , OPTIONAL2.propertyTextual3 AS propertyTextual3 , OPTIONAL2.propertyTextual1 AS propertyTextual1 , OPTIONAL2.productFeature AS productFeature , OPTIONAL2.producer AS producer , OPTIONAL2.propertyNumeric4 AS propertyNumeric4 , OPTIONAL2.label AS label , OPTIONAL2.propertyNumeric2 AS propertyNumeric2 , OPTIONAL2.comment AS comment , OPTIONAL2.propertyNumeric1 AS propertyNumeric1 
+ FROM    (SELECT OPTIONAL1.f AS f , OPTIONAL1.propertyTextual4 AS propertyTextual4 , OPTIONAL1.propertyTextual5 AS propertyTextual5 , OPTIONAL1.propertyTextual2 AS propertyTextual2 , OPTIONAL1.propertyTextual3 AS propertyTextual3 , OPTIONAL1.propertyTextual1 AS propertyTextual1 , OPTIONAL1.productFeature AS productFeature , OPTIONAL1.label AS label , OPTIONAL1.p AS p , OPTIONAL1.producer AS producer , tab25.propertyNumeric4 AS propertyNumeric4 , OPTIONAL1.propertyNumeric2 AS propertyNumeric2 , OPTIONAL1.comment AS comment , OPTIONAL1.propertyNumeric1 AS propertyNumeric1 
+ FROM    (SELECT OPTIONAL0.f AS f , OPTIONAL0.propertyTextual4 AS propertyTextual4 , tab24.propertyTextual5 AS propertyTextual5 , OPTIONAL0.propertyTextual2 AS propertyTextual2 , OPTIONAL0.propertyTextual3 AS propertyTextual3 , OPTIONAL0.propertyTextual1 AS propertyTextual1 , OPTIONAL0.productFeature AS productFeature , OPTIONAL0.p AS p , OPTIONAL0.producer AS producer , OPTIONAL0.label AS label , OPTIONAL0.propertyNumeric2 AS propertyNumeric2 , OPTIONAL0.comment AS comment , OPTIONAL0.propertyNumeric1 AS propertyNumeric1 
+ FROM    (SELECT tab23.propertyTextual4 AS propertyTextual4 , tab22.f AS f , tab22.propertyTextual2 AS propertyTextual2 , tab22.propertyTextual3 AS propertyTextual3 , tab22.propertyTextual1 AS propertyTextual1 , tab22.productFeature AS productFeature , tab22.p AS p , tab22.producer AS producer , tab22.label AS label , tab22.comment AS comment , tab22.propertyNumeric2 AS propertyNumeric2 , tab22.propertyNumeric1 AS propertyNumeric1 
+ FROM    (SELECT tab5.f AS f , tab8.propertyTextual2 AS propertyTextual2 , tab9.propertyTextual3 AS propertyTextual3 , tab7.propertyTextual1 AS propertyTextual1 , tab6.productFeature AS productFeature , tab2.p AS p , tab3.producer AS producer , tab0.label AS label , tab11.propertyNumeric2 AS propertyNumeric2 , tab1.comment AS comment , tab10.propertyNumeric1 AS propertyNumeric1 
+ FROM    (SELECT obj AS p 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_producer$$3$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product211>'
+	) tab2
+ JOIN    (SELECT obj AS p 
+	 FROM http___purl_org_dc_elements_1_1_publisher$$5$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product211>'
+	) tab4
+ ON(tab2.p=tab4.p)
+ JOIN    (SELECT sub AS p , obj AS producer 
+	 FROM http___www_w3_org_2000_01_rdf_schema_label$$4$$
+	
+	) tab3
+ ON(tab4.p=tab3.p)
+ CROSS JOIN    (SELECT obj AS propertyTextual2 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyTextual2$$9$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product211>'
+	) tab8
+ CROSS JOIN    (SELECT obj AS propertyTextual3 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyTextual3$$10$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product211>'
+	) tab9
+ CROSS JOIN    (SELECT obj AS comment 
+	 FROM http___www_w3_org_2000_01_rdf_schema_comment$$2$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product211>'
+	) tab1
+ CROSS JOIN    (SELECT obj AS propertyNumeric2 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric2$$12$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product211>'
+	) tab11
+ CROSS JOIN    (SELECT obj AS propertyTextual1 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyTextual1$$8$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product211>'
+	) tab7
+ CROSS JOIN    (SELECT obj AS propertyNumeric1 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric1$$11$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product211>'
+	) tab10
+ CROSS JOIN    (SELECT obj AS label 
+	 FROM http___www_w3_org_2000_01_rdf_schema_label$$1$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product211>'
+	) tab0
+ CROSS JOIN    (SELECT obj AS f 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature$$6$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product211>'
+	) tab5
+ JOIN    (SELECT sub AS f , obj AS productFeature 
+	 FROM http___www_w3_org_2000_01_rdf_schema_label$$7$$
+	
+	) tab6
+ ON(tab5.f=tab6.f)
+
+) tab22
+ CROSS JOIN    (SELECT obj AS propertyTextual4 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyTextual4$$13$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product211>'
+	) tab23
+
+) OPTIONAL0
+ CROSS JOIN    (SELECT obj AS propertyTextual5 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyTextual5$$14$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product211>'
+	) tab24
+
+) OPTIONAL1
+ CROSS JOIN    (SELECT obj AS propertyNumeric4 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric4$$15$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product211>'
+	) tab25
+
+) OPTIONAL2
+
+
+++++++Tables Statistic
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyTextual5$$14$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyTextual5/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyTextual5	1
+------
+http___www_w3_org_2000_01_rdf_schema_label$$4$$	0	VP	http___www_w3_org_2000_01_rdf_schema_label/
+	VP	http___www_w3_org_2000_01_rdf_schema_label	20
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric1$$11$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric1/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric1	15
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyTextual4$$13$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyTextual4/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyTextual4	1
+------
+http___www_w3_org_2000_01_rdf_schema_label$$7$$	0	VP	http___www_w3_org_2000_01_rdf_schema_label/
+	VP	http___www_w3_org_2000_01_rdf_schema_label	20
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyTextual2$$9$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyTextual2/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyTextual2	1
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature$$6$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature	31
+------
+http___www_w3_org_2000_01_rdf_schema_label$$1$$	0	VP	http___www_w3_org_2000_01_rdf_schema_label/
+	VP	http___www_w3_org_2000_01_rdf_schema_label	20
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyTextual1$$8$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyTextual1/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyTextual1	14
+------
+http___purl_org_dc_elements_1_1_publisher$$5$$	0	VP	http___purl_org_dc_elements_1_1_publisher/
+	VP	http___purl_org_dc_elements_1_1_publisher	6
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric2$$12$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric2/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric2	2
+------
+http___www_w3_org_2000_01_rdf_schema_comment$$2$$	0	VP	http___www_w3_org_2000_01_rdf_schema_comment/
+	VP	http___www_w3_org_2000_01_rdf_schema_comment	2
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_producer$$3$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_producer/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_producer	1
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyTextual3$$10$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyTextual3/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyTextual3	1
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric4$$15$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric4/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric4	1
+------
+>>>>>>sparql_qm0_q2--SO-OS-SS-VP__restest
+SELECT OPTIONAL2.propertyTextual4 AS propertyTextual4 , OPTIONAL2.propertyTextual5 AS propertyTextual5 , OPTIONAL2.propertyTextual2 AS propertyTextual2 , OPTIONAL2.propertyTextual3 AS propertyTextual3 , OPTIONAL2.propertyTextual1 AS propertyTextual1 , OPTIONAL2.productFeature AS productFeature , OPTIONAL2.producer AS producer , OPTIONAL2.propertyNumeric4 AS propertyNumeric4 , OPTIONAL2.label AS label , OPTIONAL2.propertyNumeric2 AS propertyNumeric2 , OPTIONAL2.comment AS comment , OPTIONAL2.propertyNumeric1 AS propertyNumeric1 
+ FROM    (SELECT OPTIONAL1.f AS f , OPTIONAL1.propertyTextual4 AS propertyTextual4 , OPTIONAL1.propertyTextual5 AS propertyTextual5 , OPTIONAL1.propertyTextual2 AS propertyTextual2 , OPTIONAL1.propertyTextual3 AS propertyTextual3 , OPTIONAL1.propertyTextual1 AS propertyTextual1 , OPTIONAL1.productFeature AS productFeature , OPTIONAL1.label AS label , OPTIONAL1.p AS p , OPTIONAL1.producer AS producer , tab25.propertyNumeric4 AS propertyNumeric4 , OPTIONAL1.propertyNumeric2 AS propertyNumeric2 , OPTIONAL1.comment AS comment , OPTIONAL1.propertyNumeric1 AS propertyNumeric1 
+ FROM    (SELECT OPTIONAL0.f AS f , OPTIONAL0.propertyTextual4 AS propertyTextual4 , tab24.propertyTextual5 AS propertyTextual5 , OPTIONAL0.propertyTextual2 AS propertyTextual2 , OPTIONAL0.propertyTextual3 AS propertyTextual3 , OPTIONAL0.propertyTextual1 AS propertyTextual1 , OPTIONAL0.productFeature AS productFeature , OPTIONAL0.p AS p , OPTIONAL0.producer AS producer , OPTIONAL0.label AS label , OPTIONAL0.propertyNumeric2 AS propertyNumeric2 , OPTIONAL0.comment AS comment , OPTIONAL0.propertyNumeric1 AS propertyNumeric1 
+ FROM    (SELECT tab23.propertyTextual4 AS propertyTextual4 , tab22.f AS f , tab22.propertyTextual2 AS propertyTextual2 , tab22.propertyTextual3 AS propertyTextual3 , tab22.propertyTextual1 AS propertyTextual1 , tab22.productFeature AS productFeature , tab22.p AS p , tab22.producer AS producer , tab22.label AS label , tab22.comment AS comment , tab22.propertyNumeric2 AS propertyNumeric2 , tab22.propertyNumeric1 AS propertyNumeric1 
+ FROM    (SELECT tab5.f AS f , tab8.propertyTextual2 AS propertyTextual2 , tab9.propertyTextual3 AS propertyTextual3 , tab7.propertyTextual1 AS propertyTextual1 , tab6.productFeature AS productFeature , tab2.p AS p , tab3.producer AS producer , tab0.label AS label , tab11.propertyNumeric2 AS propertyNumeric2 , tab1.comment AS comment , tab10.propertyNumeric1 AS propertyNumeric1 
+ FROM    (SELECT obj AS p 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_producer$$3$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product211>'
+	) tab2
+ JOIN    (SELECT obj AS p 
+	 FROM http___purl_org_dc_elements_1_1_publisher$$5$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product211>'
+	) tab4
+ ON(tab2.p=tab4.p)
+ JOIN    (SELECT sub AS p , obj AS producer 
+	 FROM http___www_w3_org_2000_01_rdf_schema_label$$4$$
+	
+	) tab3
+ ON(tab4.p=tab3.p)
+ CROSS JOIN    (SELECT obj AS propertyTextual2 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyTextual2$$9$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product211>'
+	) tab8
+ CROSS JOIN    (SELECT obj AS propertyTextual3 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyTextual3$$10$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product211>'
+	) tab9
+ CROSS JOIN    (SELECT obj AS comment 
+	 FROM http___www_w3_org_2000_01_rdf_schema_comment$$2$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product211>'
+	) tab1
+ CROSS JOIN    (SELECT obj AS propertyNumeric2 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric2$$12$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product211>'
+	) tab11
+ CROSS JOIN    (SELECT obj AS f 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature$$6$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product211>'
+	) tab5
+ JOIN    (SELECT sub AS f , obj AS productFeature 
+	 FROM http___www_w3_org_2000_01_rdf_schema_label$$7$$
+	
+	) tab6
+ ON(tab5.f=tab6.f)
+ CROSS JOIN    (SELECT obj AS propertyTextual1 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyTextual1$$8$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product211>'
+	) tab7
+ CROSS JOIN    (SELECT obj AS propertyNumeric1 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric1$$11$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product211>'
+	) tab10
+ CROSS JOIN    (SELECT obj AS label 
+	 FROM http___www_w3_org_2000_01_rdf_schema_label$$1$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product211>'
+	) tab0
+
+) tab22
+ CROSS JOIN    (SELECT obj AS propertyTextual4 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyTextual4$$13$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product211>'
+	) tab23
+
+) OPTIONAL0
+ CROSS JOIN    (SELECT obj AS propertyTextual5 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyTextual5$$14$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product211>'
+	) tab24
+
+) OPTIONAL1
+ CROSS JOIN    (SELECT obj AS propertyNumeric4 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric4$$15$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product211>'
+	) tab25
+
+) OPTIONAL2
+
+
+++++++Tables Statistic
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyTextual5$$14$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyTextual5/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyTextual5	1
+------
+http___www_w3_org_2000_01_rdf_schema_label$$4$$	1	SO	http___www_w3_org_2000_01_rdf_schema_label/http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_producer
+	VP	http___www_w3_org_2000_01_rdf_schema_label	20
+	SO	http___www_w3_org_2000_01_rdf_schema_labelhttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_producer	1	0.05
+	SO	http___www_w3_org_2000_01_rdf_schema_labelhttp___purl_org_dc_elements_1_1_publisher	2	0.1
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric1$$11$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric1/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric1	15
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyTextual4$$13$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyTextual4/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyTextual4	1
+------
+http___www_w3_org_2000_01_rdf_schema_label$$7$$	1	SO	http___www_w3_org_2000_01_rdf_schema_label/http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature
+	VP	http___www_w3_org_2000_01_rdf_schema_label	20
+	SO	http___www_w3_org_2000_01_rdf_schema_labelhttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature	2	0.1
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyTextual2$$9$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyTextual2/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyTextual2	1
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature$$6$$	1	OS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature/http___www_w3_org_2000_01_rdf_schema_label
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature	31
+	OS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeaturehttp___www_w3_org_2000_01_rdf_schema_label	3	0.1
+------
+http___www_w3_org_2000_01_rdf_schema_label$$1$$	0	VP	http___www_w3_org_2000_01_rdf_schema_label/
+	VP	http___www_w3_org_2000_01_rdf_schema_label	20
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyTextual1$$8$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyTextual1/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyTextual1	14
+------
+http___purl_org_dc_elements_1_1_publisher$$5$$	1	OS	http___purl_org_dc_elements_1_1_publisher/http___www_w3_org_2000_01_rdf_schema_label
+	VP	http___purl_org_dc_elements_1_1_publisher	6
+	OS	http___purl_org_dc_elements_1_1_publisherhttp___www_w3_org_2000_01_rdf_schema_label	4	0.67
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric2$$12$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric2/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric2	2
+------
+http___www_w3_org_2000_01_rdf_schema_comment$$2$$	0	VP	http___www_w3_org_2000_01_rdf_schema_comment/
+	VP	http___www_w3_org_2000_01_rdf_schema_comment	2
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_producer$$3$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_producer/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_producer	1
+	OS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_producerhttp___www_w3_org_2000_01_rdf_schema_label	1	1.0
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyTextual3$$10$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyTextual3/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyTextual3	1
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric4$$15$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric4/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric4	1
+------
+>>>>>>sparql_qm0_q5--VP__restest
+SELECT  DISTINCT tab12.product AS product , tab12.productLabel AS productLabel 
+ FROM    (SELECT tab6.simProperty2 AS simProperty2 , tab2.product AS product , tab3.origProperty1 AS origProperty1 , tab4.simProperty1 AS simProperty1 , tab5.origProperty2 AS origProperty2 , tab0.productLabel AS productLabel , tab1.prodFeature AS prodFeature 
+ FROM    (SELECT obj AS origProperty2 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric2$$6$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer18/Product837>'
+	) tab5
+ CROSS JOIN    (SELECT obj AS origProperty1 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric1$$4$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer18/Product837>'
+	) tab3
+ CROSS JOIN    (SELECT obj AS prodFeature 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature$$2$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer18/Product837>'
+	) tab1
+ JOIN    (SELECT sub AS product , obj AS prodFeature 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature$$3$$
+	
+	) tab2
+ ON(tab1.prodFeature=tab2.prodFeature)
+ JOIN    (SELECT obj AS simProperty2 , sub AS product 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric2$$7$$
+	
+	) tab6
+ ON(tab2.product=tab6.product)
+ JOIN    (SELECT sub AS product , obj AS simProperty1 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric1$$5$$
+	
+	) tab4
+ ON(tab6.product=tab4.product)
+ JOIN    (SELECT sub AS product , obj AS productLabel 
+	 FROM http___www_w3_org_2000_01_rdf_schema_label$$1$$
+	
+	) tab0
+ ON(tab4.product=tab0.product)
+ 
+ WHERE ('<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer18/Product837>' != tab2.product) AND ((tab4.simProperty1 < (tab3.origProperty1+120)) AND (tab4.simProperty1 > (tab3.origProperty1-120))) AND ((tab6.simProperty2 < (tab5.origProperty2+170)) AND (tab6.simProperty2 > (tab5.origProperty2-170)))
+  ORDER BY productLabel
+ LIMIT 100000000
+) tab12
+
+ LIMIT 5
+
+++++++Tables Statistic
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature$$2$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature	31
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric1$$4$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric1/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric1	15
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric2$$6$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric2/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric2	2
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric1$$5$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric1/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric1	15
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature$$3$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature	31
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric2$$7$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric2/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric2	2
+------
+http___www_w3_org_2000_01_rdf_schema_label$$1$$	0	VP	http___www_w3_org_2000_01_rdf_schema_label/
+	VP	http___www_w3_org_2000_01_rdf_schema_label	20
+------
+>>>>>>sparql_qm0_q5--SO-OS-SS-VP__restest
+SELECT  DISTINCT tab12.product AS product , tab12.productLabel AS productLabel 
+ FROM    (SELECT tab6.simProperty2 AS simProperty2 , tab2.product AS product , tab3.origProperty1 AS origProperty1 , tab4.simProperty1 AS simProperty1 , tab5.origProperty2 AS origProperty2 , tab0.productLabel AS productLabel , tab1.prodFeature AS prodFeature 
+ FROM    (SELECT obj AS origProperty2 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric2$$6$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer18/Product837>'
+	) tab5
+ CROSS JOIN    (SELECT obj AS origProperty1 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric1$$4$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer18/Product837>'
+	) tab3
+ CROSS JOIN    (SELECT obj AS prodFeature 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature$$2$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer18/Product837>'
+	) tab1
+ JOIN    (SELECT sub AS product , obj AS prodFeature 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature$$3$$
+	
+	) tab2
+ ON(tab1.prodFeature=tab2.prodFeature)
+ JOIN    (SELECT obj AS simProperty2 , sub AS product 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric2$$7$$
+	
+	) tab6
+ ON(tab2.product=tab6.product)
+ JOIN    (SELECT sub AS product , obj AS productLabel 
+	 FROM http___www_w3_org_2000_01_rdf_schema_label$$1$$
+	
+	) tab0
+ ON(tab6.product=tab0.product)
+ JOIN    (SELECT sub AS product , obj AS simProperty1 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric1$$5$$
+	
+	) tab4
+ ON(tab0.product=tab4.product)
+ 
+ WHERE ('<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer18/Product837>' != tab2.product) AND ((tab4.simProperty1 < (tab3.origProperty1+120)) AND (tab4.simProperty1 > (tab3.origProperty1-120))) AND ((tab6.simProperty2 < (tab5.origProperty2+170)) AND (tab6.simProperty2 > (tab5.origProperty2-170)))
+  ORDER BY productLabel
+ LIMIT 100000000
+) tab12
+
+ LIMIT 5
+
+++++++Tables Statistic
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature$$2$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature	31
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric1$$4$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric1/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric1	15
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric2$$6$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric2/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric2	2
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric1$$5$$	3	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric1/http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric2
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric1	15
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric1http___www_w3_org_2000_01_rdf_schema_label	14	0.93
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric1http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature	15	1.0
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric1http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric2	3	0.2
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature$$3$$	3	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature/http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric2
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature	31
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeaturehttp___www_w3_org_2000_01_rdf_schema_label	30	0.97
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeaturehttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric1	31	1.0
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeaturehttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric2	6	0.19
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric2$$7$$	1	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric2/http___www_w3_org_2000_01_rdf_schema_label
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric2	2
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric2http___www_w3_org_2000_01_rdf_schema_label	1	0.5
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric2http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature	2	1.0
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric2http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric1	2	1.0
+------
+http___www_w3_org_2000_01_rdf_schema_label$$1$$	3	SS	http___www_w3_org_2000_01_rdf_schema_label/http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric2
+	VP	http___www_w3_org_2000_01_rdf_schema_label	20
+	SS	http___www_w3_org_2000_01_rdf_schema_labelhttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature	14	0.7
+	SS	http___www_w3_org_2000_01_rdf_schema_labelhttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric1	14	0.7
+	SS	http___www_w3_org_2000_01_rdf_schema_labelhttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric2	2	0.1
+------
+>>>>>>sparql_qm0_q12--VP__restest
+SELECT tab1.productlabel AS productlabel , tab8.validTo AS validTo , tab6.price AS price , tab3.vendorname AS vendorname , tab5.offerURL AS offerURL , tab2.vendorURI AS vendorURI , tab0.productURI AS productURI , tab4.vendorhomepage AS vendorhomepage , tab7.deliveryDays AS deliveryDays 
+ FROM    (SELECT obj AS vendorURI 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_vendor$$3$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromVendor5/Offer9035>'
+	) tab2
+ JOIN    (SELECT sub AS vendorURI , obj AS vendorhomepage 
+	 FROM http___xmlns_com_foaf_0_1_homepage$$5$$
+	
+	) tab4
+ ON(tab2.vendorURI=tab4.vendorURI)
+ JOIN    (SELECT obj AS vendorname , sub AS vendorURI 
+	 FROM http___www_w3_org_2000_01_rdf_schema_label$$4$$
+	
+	) tab3
+ ON(tab4.vendorURI=tab3.vendorURI)
+ CROSS JOIN    (SELECT obj AS price 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_price$$7$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromVendor5/Offer9035>'
+	) tab6
+ CROSS JOIN    (SELECT obj AS deliveryDays 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_deliveryDays$$8$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromVendor5/Offer9035>'
+	) tab7
+ CROSS JOIN    (SELECT obj AS validTo 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_validTo$$9$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromVendor5/Offer9035>'
+	) tab8
+ CROSS JOIN    (SELECT obj AS productURI 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_product$$1$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromVendor5/Offer9035>'
+	) tab0
+ JOIN    (SELECT obj AS productlabel , sub AS productURI 
+	 FROM http___www_w3_org_2000_01_rdf_schema_label$$2$$
+	
+	) tab1
+ ON(tab0.productURI=tab1.productURI)
+ CROSS JOIN    (SELECT obj AS offerURL 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_offerWebpage$$6$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromVendor5/Offer9035>'
+	) tab5
+
+
+++++++Tables Statistic
+http___www_w3_org_2000_01_rdf_schema_label$$4$$	0	VP	http___www_w3_org_2000_01_rdf_schema_label/
+	VP	http___www_w3_org_2000_01_rdf_schema_label	20
+------
+http___xmlns_com_foaf_0_1_homepage$$5$$	0	VP	http___xmlns_com_foaf_0_1_homepage/
+	VP	http___xmlns_com_foaf_0_1_homepage	1
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_offerWebpage$$6$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_offerWebpage/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_offerWebpage	3
+------
+http___www_w3_org_2000_01_rdf_schema_label$$2$$	0	VP	http___www_w3_org_2000_01_rdf_schema_label/
+	VP	http___www_w3_org_2000_01_rdf_schema_label	20
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_deliveryDays$$8$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_deliveryDays/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_deliveryDays	2
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_price$$7$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_price/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_price	2
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_vendor$$3$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_vendor/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_vendor	2
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_validTo$$9$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_validTo/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_validTo	2
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_product$$1$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_product/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_product	3
+------
+>>>>>>sparql_qm0_q12--SO-OS-SS-VP__restest
+SELECT tab8.validTo AS validTo , tab1.productlabel AS productlabel , tab6.price AS price , tab3.vendorname AS vendorname , tab5.offerURL AS offerURL , tab2.vendorURI AS vendorURI , tab0.productURI AS productURI , tab4.vendorhomepage AS vendorhomepage , tab7.deliveryDays AS deliveryDays 
+ FROM    (SELECT obj AS productURI 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_product$$1$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromVendor5/Offer9035>'
+	) tab0
+ JOIN    (SELECT obj AS productlabel , sub AS productURI 
+	 FROM http___www_w3_org_2000_01_rdf_schema_label$$2$$
+	
+	) tab1
+ ON(tab0.productURI=tab1.productURI)
+ CROSS JOIN    (SELECT obj AS vendorURI 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_vendor$$3$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromVendor5/Offer9035>'
+	) tab2
+ JOIN    (SELECT obj AS vendorname , sub AS vendorURI 
+	 FROM http___www_w3_org_2000_01_rdf_schema_label$$4$$
+	
+	) tab3
+ ON(tab2.vendorURI=tab3.vendorURI)
+ JOIN    (SELECT sub AS vendorURI , obj AS vendorhomepage 
+	 FROM http___xmlns_com_foaf_0_1_homepage$$5$$
+	
+	) tab4
+ ON(tab3.vendorURI=tab4.vendorURI)
+ CROSS JOIN    (SELECT obj AS price 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_price$$7$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromVendor5/Offer9035>'
+	) tab6
+ CROSS JOIN    (SELECT obj AS deliveryDays 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_deliveryDays$$8$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromVendor5/Offer9035>'
+	) tab7
+ CROSS JOIN    (SELECT obj AS validTo 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_validTo$$9$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromVendor5/Offer9035>'
+	) tab8
+ CROSS JOIN    (SELECT obj AS offerURL 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_offerWebpage$$6$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromVendor5/Offer9035>'
+	) tab5
+
+
+++++++Tables Statistic
+http___www_w3_org_2000_01_rdf_schema_label$$4$$	1	SO	http___www_w3_org_2000_01_rdf_schema_label/http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_vendor
+	VP	http___www_w3_org_2000_01_rdf_schema_label	20
+	SO	http___www_w3_org_2000_01_rdf_schema_labelhttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_vendor	1	0.05
+	SS	http___www_w3_org_2000_01_rdf_schema_labelhttp___xmlns_com_foaf_0_1_homepage	1	0.05
+------
+http___xmlns_com_foaf_0_1_homepage$$5$$	0	VP	http___xmlns_com_foaf_0_1_homepage/
+	VP	http___xmlns_com_foaf_0_1_homepage	1
+	SO	http___xmlns_com_foaf_0_1_homepagehttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_vendor	1	1.0
+	SS	http___xmlns_com_foaf_0_1_homepagehttp___www_w3_org_2000_01_rdf_schema_label	1	1.0
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_offerWebpage$$6$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_offerWebpage/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_offerWebpage	3
+------
+http___www_w3_org_2000_01_rdf_schema_label$$2$$	1	SO	http___www_w3_org_2000_01_rdf_schema_label/http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_product
+	VP	http___www_w3_org_2000_01_rdf_schema_label	20
+	SO	http___www_w3_org_2000_01_rdf_schema_labelhttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_product	2	0.1
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_deliveryDays$$8$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_deliveryDays/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_deliveryDays	2
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_price$$7$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_price/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_price	2
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_vendor$$3$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_vendor/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_vendor	2
+	OS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_vendorhttp___www_w3_org_2000_01_rdf_schema_label	2	1.0
+	OS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_vendorhttp___xmlns_com_foaf_0_1_homepage	2	1.0
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_validTo$$9$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_validTo/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_validTo	2
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_product$$1$$	1	OS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_product/http___www_w3_org_2000_01_rdf_schema_label
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_product	3
+	OS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_producthttp___www_w3_org_2000_01_rdf_schema_label	2	0.67
+------
+>>>>>>sparql_qm0_q9--VP__restest
+SELECT tab0.x AS x 
+ FROM    (SELECT obj AS x 
+	 FROM http___purl_org_stuff_rev_reviewer$$1$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromRatingSite1/Review8525>'
+	) tab0
+
+
+++++++Tables Statistic
+http___purl_org_stuff_rev_reviewer$$1$$	0	VP	http___purl_org_stuff_rev_reviewer/
+	VP	http___purl_org_stuff_rev_reviewer	4
+------
+>>>>>>sparql_qm0_q9--SO-OS-SS-VP__restest
+SELECT tab0.x AS x 
+ FROM    (SELECT obj AS x 
+	 FROM http___purl_org_stuff_rev_reviewer$$1$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromRatingSite1/Review8525>'
+	) tab0
+
+
+++++++Tables Statistic
+http___purl_org_stuff_rev_reviewer$$1$$	0	VP	http___purl_org_stuff_rev_reviewer/
+	VP	http___purl_org_stuff_rev_reviewer	4
+------
+>>>>>>sparql_qm0_q8--VP__restest
+SELECT OPTIONAL3.text AS text , OPTIONAL3.title AS title , OPTIONAL3.rating1 AS rating1 , OPTIONAL3.rating2 AS rating2 , OPTIONAL3.reviewerName AS reviewerName , OPTIONAL3.reviewDate AS reviewDate , OPTIONAL3.rating3 AS rating3 , OPTIONAL3.reviewer AS reviewer , OPTIONAL3.rating4 AS rating4 
+ FROM    (SELECT OPTIONAL2.text AS text , OPTIONAL2.title AS title , OPTIONAL2.rating1 AS rating1 , OPTIONAL2.rating2 AS rating2 , OPTIONAL2.reviewerName AS reviewerName , OPTIONAL2.reviewDate AS reviewDate , OPTIONAL2.reviewer AS reviewer , OPTIONAL2.rating3 AS rating3 , tab14.rating4 AS rating4 , OPTIONAL2.review AS review 
+ FROM    (SELECT OPTIONAL1.title AS title , OPTIONAL1.text AS text , OPTIONAL1.rating1 AS rating1 , OPTIONAL1.reviewDate AS reviewDate , OPTIONAL1.reviewerName AS reviewerName , OPTIONAL1.rating2 AS rating2 , tab13.rating3 AS rating3 , OPTIONAL1.reviewer AS reviewer , OPTIONAL1.review AS review 
+ FROM    (SELECT OPTIONAL0.text AS text , OPTIONAL0.title AS title , OPTIONAL0.rating1 AS rating1 , tab12.rating2 AS rating2 , OPTIONAL0.reviewerName AS reviewerName , OPTIONAL0.reviewDate AS reviewDate , OPTIONAL0.reviewer AS reviewer , OPTIONAL0.review AS review 
+ FROM    (SELECT tab10.title AS title , tab10.text AS text , tab11.rating1 AS rating1 , tab10.reviewDate AS reviewDate , tab10.reviewerName AS reviewerName , tab10.reviewer AS reviewer , tab10.review AS review 
+ FROM    (SELECT tab2.text AS text , tab1.title AS title , tab5.reviewerName AS reviewerName , tab3.reviewDate AS reviewDate , tab4.reviewer AS reviewer , tab0.review AS review 
+ FROM    (SELECT sub AS review 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_reviewFor$$1$$
+	 
+	 WHERE obj = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer13/Product632>'
+	) tab0
+ JOIN    (SELECT obj AS title , sub AS review 
+	 FROM http___purl_org_dc_elements_1_1_title$$2$$
+	
+	) tab1
+ ON(tab0.review=tab1.review)
+ JOIN    (SELECT obj AS text , sub AS review 
+	 FROM http___purl_org_stuff_rev_text$$3$$
+	
+	) tab2
+ ON(tab1.review=tab2.review)
+ JOIN    (SELECT obj AS reviewDate , sub AS review 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_reviewDate$$4$$
+	
+	) tab3
+ ON(tab2.review=tab3.review)
+ JOIN    (SELECT obj AS reviewer , sub AS review 
+	 FROM http___purl_org_stuff_rev_reviewer$$5$$
+	
+	) tab4
+ ON(tab3.review=tab4.review)
+ JOIN    (SELECT obj AS reviewerName , sub AS reviewer 
+	 FROM http___xmlns_com_foaf_0_1_name$$6$$
+	
+	) tab5
+ ON(tab4.reviewer=tab5.reviewer)
+
+) tab10
+ LEFT OUTER JOIN    (SELECT obj AS rating1 , sub AS review 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_rating1$$7$$
+	
+	) tab11
+ ON(tab10.review=tab11.review)
+
+) OPTIONAL0
+ LEFT OUTER JOIN    (SELECT obj AS rating2 , sub AS review 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_rating2$$8$$
+	
+	) tab12
+ ON(OPTIONAL0.review=tab12.review)
+
+) OPTIONAL1
+ LEFT OUTER JOIN    (SELECT obj AS rating3 , sub AS review 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_rating3$$9$$
+	
+	) tab13
+ ON(OPTIONAL1.review=tab13.review)
+
+) OPTIONAL2
+ LEFT OUTER JOIN    (SELECT obj AS rating4 , sub AS review 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_rating4$$10$$
+	
+	) tab14
+ ON(OPTIONAL2.review=tab14.review)
+ 
+ WHERE (OPTIONAL2.text LIKE '%@en')
+  ORDER BY reviewDate DESC
+ LIMIT 20
+) OPTIONAL3
+
+
+++++++Tables Statistic
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_rating2$$8$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_rating2/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_rating2	1
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_reviewDate$$4$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_reviewDate/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_reviewDate	1
+------
+http___purl_org_dc_elements_1_1_title$$2$$	0	VP	http___purl_org_dc_elements_1_1_title/
+	VP	http___purl_org_dc_elements_1_1_title	1
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_rating3$$9$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_rating3/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_rating3	1
+------
+http___purl_org_stuff_rev_reviewer$$5$$	0	VP	http___purl_org_stuff_rev_reviewer/
+	VP	http___purl_org_stuff_rev_reviewer	4
+------
+http___purl_org_stuff_rev_text$$3$$	0	VP	http___purl_org_stuff_rev_text/
+	VP	http___purl_org_stuff_rev_text	1
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_rating1$$7$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_rating1/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_rating1	1
+------
+http___xmlns_com_foaf_0_1_name$$6$$	0	VP	http___xmlns_com_foaf_0_1_name/
+	VP	http___xmlns_com_foaf_0_1_name	1
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_rating4$$10$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_rating4/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_rating4	1
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_reviewFor$$1$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_reviewFor/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_reviewFor	2
+------
+>>>>>>sparql_qm0_q8--SO-OS-SS-VP__restest
+SELECT OPTIONAL3.text AS text , OPTIONAL3.title AS title , OPTIONAL3.rating1 AS rating1 , OPTIONAL3.rating2 AS rating2 , OPTIONAL3.reviewerName AS reviewerName , OPTIONAL3.reviewDate AS reviewDate , OPTIONAL3.rating3 AS rating3 , OPTIONAL3.reviewer AS reviewer , OPTIONAL3.rating4 AS rating4 
+ FROM    (SELECT OPTIONAL2.text AS text , OPTIONAL2.title AS title , OPTIONAL2.rating1 AS rating1 , OPTIONAL2.rating2 AS rating2 , OPTIONAL2.reviewerName AS reviewerName , OPTIONAL2.reviewDate AS reviewDate , OPTIONAL2.reviewer AS reviewer , OPTIONAL2.rating3 AS rating3 , tab14.rating4 AS rating4 , OPTIONAL2.review AS review 
+ FROM    (SELECT OPTIONAL1.title AS title , OPTIONAL1.text AS text , OPTIONAL1.rating1 AS rating1 , OPTIONAL1.reviewDate AS reviewDate , OPTIONAL1.reviewerName AS reviewerName , OPTIONAL1.rating2 AS rating2 , tab13.rating3 AS rating3 , OPTIONAL1.reviewer AS reviewer , OPTIONAL1.review AS review 
+ FROM    (SELECT OPTIONAL0.text AS text , OPTIONAL0.title AS title , OPTIONAL0.rating1 AS rating1 , tab12.rating2 AS rating2 , OPTIONAL0.reviewerName AS reviewerName , OPTIONAL0.reviewDate AS reviewDate , OPTIONAL0.reviewer AS reviewer , OPTIONAL0.review AS review 
+ FROM    (SELECT tab10.title AS title , tab10.text AS text , tab11.rating1 AS rating1 , tab10.reviewDate AS reviewDate , tab10.reviewerName AS reviewerName , tab10.reviewer AS reviewer , tab10.review AS review 
+ FROM    (SELECT tab2.text AS text , tab1.title AS title , tab5.reviewerName AS reviewerName , tab3.reviewDate AS reviewDate , tab4.reviewer AS reviewer , tab0.review AS review 
+ FROM    (SELECT sub AS review 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_reviewFor$$1$$
+	 
+	 WHERE obj = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer13/Product632>'
+	) tab0
+ JOIN    (SELECT obj AS title , sub AS review 
+	 FROM http___purl_org_dc_elements_1_1_title$$2$$
+	
+	) tab1
+ ON(tab0.review=tab1.review)
+ JOIN    (SELECT obj AS text , sub AS review 
+	 FROM http___purl_org_stuff_rev_text$$3$$
+	
+	) tab2
+ ON(tab1.review=tab2.review)
+ JOIN    (SELECT obj AS reviewDate , sub AS review 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_reviewDate$$4$$
+	
+	) tab3
+ ON(tab2.review=tab3.review)
+ JOIN    (SELECT obj AS reviewer , sub AS review 
+	 FROM http___purl_org_stuff_rev_reviewer$$5$$
+	
+	) tab4
+ ON(tab3.review=tab4.review)
+ JOIN    (SELECT obj AS reviewerName , sub AS reviewer 
+	 FROM http___xmlns_com_foaf_0_1_name$$6$$
+	
+	) tab5
+ ON(tab4.reviewer=tab5.reviewer)
+
+) tab10
+ LEFT OUTER JOIN    (SELECT obj AS rating1 , sub AS review 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_rating1$$7$$
+	
+	) tab11
+ ON(tab10.review=tab11.review)
+
+) OPTIONAL0
+ LEFT OUTER JOIN    (SELECT obj AS rating2 , sub AS review 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_rating2$$8$$
+	
+	) tab12
+ ON(OPTIONAL0.review=tab12.review)
+
+) OPTIONAL1
+ LEFT OUTER JOIN    (SELECT obj AS rating3 , sub AS review 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_rating3$$9$$
+	
+	) tab13
+ ON(OPTIONAL1.review=tab13.review)
+
+) OPTIONAL2
+ LEFT OUTER JOIN    (SELECT obj AS rating4 , sub AS review 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_rating4$$10$$
+	
+	) tab14
+ ON(OPTIONAL2.review=tab14.review)
+ 
+ WHERE (OPTIONAL2.text LIKE '%@en')
+  ORDER BY reviewDate DESC
+ LIMIT 20
+) OPTIONAL3
+
+
+++++++Tables Statistic
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_rating2$$8$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_rating2/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_rating2	1
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_reviewDate$$4$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_reviewDate/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_reviewDate	1
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_reviewDatehttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_reviewFor	1	1.0
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_reviewDatehttp___purl_org_dc_elements_1_1_title	1	1.0
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_reviewDatehttp___purl_org_stuff_rev_text	1	1.0
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_reviewDatehttp___purl_org_stuff_rev_reviewer	1	1.0
+------
+http___purl_org_dc_elements_1_1_title$$2$$	0	VP	http___purl_org_dc_elements_1_1_title/
+	VP	http___purl_org_dc_elements_1_1_title	1
+	SS	http___purl_org_dc_elements_1_1_titlehttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_reviewFor	1	1.0
+	SS	http___purl_org_dc_elements_1_1_titlehttp___purl_org_stuff_rev_text	1	1.0
+	SS	http___purl_org_dc_elements_1_1_titlehttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_reviewDate	1	1.0
+	SS	http___purl_org_dc_elements_1_1_titlehttp___purl_org_stuff_rev_reviewer	1	1.0
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_rating3$$9$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_rating3/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_rating3	1
+------
+http___purl_org_stuff_rev_reviewer$$5$$	1	SS	http___purl_org_stuff_rev_reviewer/http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_reviewFor
+	VP	http___purl_org_stuff_rev_reviewer	4
+	SS	http___purl_org_stuff_rev_reviewerhttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_reviewFor	1	0.25
+	SS	http___purl_org_stuff_rev_reviewerhttp___purl_org_dc_elements_1_1_title	1	0.25
+	SS	http___purl_org_stuff_rev_reviewerhttp___purl_org_stuff_rev_text	1	0.25
+	SS	http___purl_org_stuff_rev_reviewerhttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_reviewDate	1	0.25
+	OS	http___purl_org_stuff_rev_reviewerhttp___xmlns_com_foaf_0_1_name	2	0.5
+------
+http___purl_org_stuff_rev_text$$3$$	0	VP	http___purl_org_stuff_rev_text/
+	VP	http___purl_org_stuff_rev_text	1
+	SS	http___purl_org_stuff_rev_texthttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_reviewFor	1	1.0
+	SS	http___purl_org_stuff_rev_texthttp___purl_org_dc_elements_1_1_title	1	1.0
+	SS	http___purl_org_stuff_rev_texthttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_reviewDate	1	1.0
+	SS	http___purl_org_stuff_rev_texthttp___purl_org_stuff_rev_reviewer	1	1.0
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_rating1$$7$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_rating1/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_rating1	1
+------
+http___xmlns_com_foaf_0_1_name$$6$$	0	VP	http___xmlns_com_foaf_0_1_name/
+	VP	http___xmlns_com_foaf_0_1_name	1
+	SO	http___xmlns_com_foaf_0_1_namehttp___purl_org_stuff_rev_reviewer	1	1.0
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_rating4$$10$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_rating4/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_rating4	1
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_reviewFor$$1$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_reviewFor/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_reviewFor	2
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_reviewForhttp___purl_org_dc_elements_1_1_title	2	1.0
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_reviewForhttp___purl_org_stuff_rev_text	2	1.0
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_reviewForhttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_reviewDate	2	1.0
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_reviewForhttp___purl_org_stuff_rev_reviewer	2	1.0
+------
+>>>>>>sparql_qm0_q1--VP__restest
+SELECT  DISTINCT tab8.product AS product , tab8.label AS label 
+ FROM    (SELECT tab1.product AS product , tab0.label AS label , tab4.value1 AS value1 
+ FROM    (SELECT sub AS product 
+	 FROM http___www_w3_org_1999_02_22_rdf_syntax_ns_type$$2$$
+	 
+	 WHERE obj = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductType66>'
+	) tab1
+ JOIN    (SELECT sub AS product 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature$$3$$
+	 
+	 WHERE obj = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductFeature3>'
+	) tab2
+ ON(tab1.product=tab2.product)
+ JOIN    (SELECT sub AS product 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature$$4$$
+	 
+	 WHERE obj = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductFeature1967>'
+	) tab3
+ ON(tab2.product=tab3.product)
+ JOIN    (SELECT sub AS product , obj AS value1 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric1$$5$$
+	
+	) tab4
+ ON(tab3.product=tab4.product)
+ JOIN    (SELECT sub AS product , obj AS label 
+	 FROM http___www_w3_org_2000_01_rdf_schema_label$$1$$
+	
+	) tab0
+ ON(tab4.product=tab0.product)
+ 
+ WHERE (tab4.value1 > 136)
+  ORDER BY label
+ LIMIT 100000000
+) tab8
+
+ LIMIT 10
+
+++++++Tables Statistic
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric1$$5$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric1/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric1	15
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature$$4$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature	31
+------
+http___www_w3_org_1999_02_22_rdf_syntax_ns_type$$2$$	0	VP	http___www_w3_org_1999_02_22_rdf_syntax_ns_type/
+	VP	http___www_w3_org_1999_02_22_rdf_syntax_ns_type	21
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature$$3$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature	31
+------
+http___www_w3_org_2000_01_rdf_schema_label$$1$$	0	VP	http___www_w3_org_2000_01_rdf_schema_label/
+	VP	http___www_w3_org_2000_01_rdf_schema_label	20
+------
+>>>>>>sparql_qm0_q1--SO-OS-SS-VP__restest
+SELECT  DISTINCT tab8.product AS product , tab8.label AS label 
+ FROM    (SELECT tab1.product AS product , tab0.label AS label , tab4.value1 AS value1 
+ FROM    (SELECT sub AS product 
+	 FROM http___www_w3_org_1999_02_22_rdf_syntax_ns_type$$2$$
+	 
+	 WHERE obj = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductType66>'
+	) tab1
+ JOIN    (SELECT sub AS product 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature$$3$$
+	 
+	 WHERE obj = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductFeature3>'
+	) tab2
+ ON(tab1.product=tab2.product)
+ JOIN    (SELECT sub AS product 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature$$4$$
+	 
+	 WHERE obj = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductFeature1967>'
+	) tab3
+ ON(tab2.product=tab3.product)
+ JOIN    (SELECT sub AS product , obj AS label 
+	 FROM http___www_w3_org_2000_01_rdf_schema_label$$1$$
+	
+	) tab0
+ ON(tab3.product=tab0.product)
+ JOIN    (SELECT sub AS product , obj AS value1 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric1$$5$$
+	
+	) tab4
+ ON(tab0.product=tab4.product)
+ 
+ WHERE (tab4.value1 > 136)
+  ORDER BY label
+ LIMIT 100000000
+) tab8
+
+ LIMIT 10
+
+++++++Tables Statistic
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric1$$5$$	1	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric1/http___www_w3_org_2000_01_rdf_schema_label
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric1	15
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric1http___www_w3_org_2000_01_rdf_schema_label	14	0.93
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric1http___www_w3_org_1999_02_22_rdf_syntax_ns_type	14	0.93
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric1http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature	15	1.0
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric1http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature	15	1.0
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature$$4$$	1	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature/http___www_w3_org_2000_01_rdf_schema_label
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature	31
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeaturehttp___www_w3_org_2000_01_rdf_schema_label	30	0.97
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeaturehttp___www_w3_org_1999_02_22_rdf_syntax_ns_type	30	0.97
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeaturehttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature	31	1.0
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeaturehttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric1	31	1.0
+------
+http___www_w3_org_1999_02_22_rdf_syntax_ns_type$$2$$	2	SS	http___www_w3_org_1999_02_22_rdf_syntax_ns_type/http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature
+	VP	http___www_w3_org_1999_02_22_rdf_syntax_ns_type	21
+	SS	http___www_w3_org_1999_02_22_rdf_syntax_ns_typehttp___www_w3_org_2000_01_rdf_schema_label	17	0.81
+	SS	http___www_w3_org_1999_02_22_rdf_syntax_ns_typehttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature	16	0.76
+	SS	http___www_w3_org_1999_02_22_rdf_syntax_ns_typehttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature	16	0.76
+	SS	http___www_w3_org_1999_02_22_rdf_syntax_ns_typehttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric1	16	0.76
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature$$3$$	1	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature/http___www_w3_org_2000_01_rdf_schema_label
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature	31
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeaturehttp___www_w3_org_2000_01_rdf_schema_label	30	0.97
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeaturehttp___www_w3_org_1999_02_22_rdf_syntax_ns_type	30	0.97
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeaturehttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature	31	1.0
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeaturehttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric1	31	1.0
+------
+http___www_w3_org_2000_01_rdf_schema_label$$1$$	2	SS	http___www_w3_org_2000_01_rdf_schema_label/http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature
+	VP	http___www_w3_org_2000_01_rdf_schema_label	20
+	SS	http___www_w3_org_2000_01_rdf_schema_labelhttp___www_w3_org_1999_02_22_rdf_syntax_ns_type	15	0.75
+	SS	http___www_w3_org_2000_01_rdf_schema_labelhttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature	14	0.7
+	SS	http___www_w3_org_2000_01_rdf_schema_labelhttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature	14	0.7
+	SS	http___www_w3_org_2000_01_rdf_schema_labelhttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric1	14	0.7
+------
+>>>>>>sparql_qm0_q3--VP__restest
+SELECT OPTIONAL0.product AS product , OPTIONAL0.label AS label 
+ FROM    (SELECT tab8.product AS product , tab8.p3 AS p3 , tab8.p1 AS p1 , tab11.testVar AS testVar , tab8.label AS label 
+ FROM    (SELECT tab1.product AS product , tab4.p3 AS p3 , tab3.p1 AS p1 , tab0.label AS label 
+ FROM    (SELECT sub AS product 
+	 FROM http___www_w3_org_1999_02_22_rdf_syntax_ns_type$$2$$
+	 
+	 WHERE obj = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductType87>'
+	) tab1
+ JOIN    (SELECT sub AS product 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature$$3$$
+	 
+	 WHERE obj = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductFeature541>'
+	) tab2
+ ON(tab1.product=tab2.product)
+ JOIN    (SELECT sub AS product , obj AS p3 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric3$$5$$
+	
+	) tab4
+ ON(tab2.product=tab4.product)
+ JOIN    (SELECT sub AS product , obj AS p1 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric1$$4$$
+	
+	) tab3
+ ON(tab4.product=tab3.product)
+ JOIN    (SELECT sub AS product , obj AS label 
+	 FROM http___www_w3_org_2000_01_rdf_schema_label$$1$$
+	
+	) tab0
+ ON(tab3.product=tab0.product)
+
+) tab8
+ LEFT OUTER JOIN    (SELECT tab9.product AS product , tab10.testVar AS testVar 
+ FROM    (SELECT sub AS product 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature$$6$$
+	 
+	 WHERE obj = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductFeature553>'
+	) tab9
+ JOIN    (SELECT sub AS product , obj AS testVar 
+	 FROM http___www_w3_org_2000_01_rdf_schema_label$$7$$
+	
+	) tab10
+ ON(tab9.product=tab10.product)
+
+) tab11
+ ON(tab8.product=tab11.product)
+ 
+ WHERE (tab8.p1 > 156) AND (tab8.p3 < 152) AND tab11.testVar is NULL
+  ORDER BY label
+ LIMIT 10
+) OPTIONAL0
+
+
+++++++Tables Statistic
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric1$$4$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric1/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric1	15
+------
+http___www_w3_org_2000_01_rdf_schema_label$$7$$	0	VP	http___www_w3_org_2000_01_rdf_schema_label/
+	VP	http___www_w3_org_2000_01_rdf_schema_label	20
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric3$$5$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric3/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric3	1
+------
+http___www_w3_org_1999_02_22_rdf_syntax_ns_type$$2$$	0	VP	http___www_w3_org_1999_02_22_rdf_syntax_ns_type/
+	VP	http___www_w3_org_1999_02_22_rdf_syntax_ns_type	21
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature$$3$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature	31
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature$$6$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature	31
+------
+http___www_w3_org_2000_01_rdf_schema_label$$1$$	0	VP	http___www_w3_org_2000_01_rdf_schema_label/
+	VP	http___www_w3_org_2000_01_rdf_schema_label	20
+------
+>>>>>>sparql_qm0_q3--SO-OS-SS-VP__restest
+SELECT OPTIONAL0.product AS product , OPTIONAL0.label AS label 
+ FROM    (SELECT tab8.product AS product , tab8.p3 AS p3 , tab8.p1 AS p1 , tab11.testVar AS testVar , tab8.label AS label 
+ FROM    (SELECT tab1.product AS product , tab4.p3 AS p3 , tab3.p1 AS p1 , tab0.label AS label 
+ FROM    (SELECT sub AS product 
+	 FROM http___www_w3_org_1999_02_22_rdf_syntax_ns_type$$2$$
+	 
+	 WHERE obj = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductType87>'
+	) tab1
+ JOIN    (SELECT sub AS product 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature$$3$$
+	 
+	 WHERE obj = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductFeature541>'
+	) tab2
+ ON(tab1.product=tab2.product)
+ JOIN    (SELECT sub AS product , obj AS p3 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric3$$5$$
+	
+	) tab4
+ ON(tab2.product=tab4.product)
+ JOIN    (SELECT sub AS product , obj AS label 
+	 FROM http___www_w3_org_2000_01_rdf_schema_label$$1$$
+	
+	) tab0
+ ON(tab4.product=tab0.product)
+ JOIN    (SELECT sub AS product , obj AS p1 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric1$$4$$
+	
+	) tab3
+ ON(tab0.product=tab3.product)
+
+) tab8
+ LEFT OUTER JOIN    (SELECT tab9.product AS product , tab10.testVar AS testVar 
+ FROM    (SELECT sub AS product 
+	 FROM http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature$$6$$
+	 
+	 WHERE obj = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductFeature553>'
+	) tab9
+ JOIN    (SELECT sub AS product , obj AS testVar 
+	 FROM http___www_w3_org_2000_01_rdf_schema_label$$7$$
+	
+	) tab10
+ ON(tab9.product=tab10.product)
+
+) tab11
+ ON(tab8.product=tab11.product)
+ 
+ WHERE (tab8.p1 > 156) AND (tab8.p3 < 152) AND tab11.testVar is NULL
+  ORDER BY label
+ LIMIT 10
+) OPTIONAL0
+
+
+++++++Tables Statistic
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric1$$4$$	4	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric1/http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric3
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric1	15
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric1http___www_w3_org_2000_01_rdf_schema_label	14	0.93
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric1http___www_w3_org_1999_02_22_rdf_syntax_ns_type	14	0.93
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric1http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature	15	1.0
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric1http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric3	2	0.13
+------
+http___www_w3_org_2000_01_rdf_schema_label$$7$$	1	SS	http___www_w3_org_2000_01_rdf_schema_label/http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature
+	VP	http___www_w3_org_2000_01_rdf_schema_label	20
+	SS	http___www_w3_org_2000_01_rdf_schema_labelhttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature	14	0.7
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric3$$5$$	0	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric3/
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric3	1
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric3http___www_w3_org_2000_01_rdf_schema_label	1	1.0
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric3http___www_w3_org_1999_02_22_rdf_syntax_ns_type	1	1.0
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric3http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature	1	1.0
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric3http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric1	1	1.0
+------
+http___www_w3_org_1999_02_22_rdf_syntax_ns_type$$2$$	4	SS	http___www_w3_org_1999_02_22_rdf_syntax_ns_type/http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric3
+	VP	http___www_w3_org_1999_02_22_rdf_syntax_ns_type	21
+	SS	http___www_w3_org_1999_02_22_rdf_syntax_ns_typehttp___www_w3_org_2000_01_rdf_schema_label	17	0.81
+	SS	http___www_w3_org_1999_02_22_rdf_syntax_ns_typehttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature	16	0.76
+	SS	http___www_w3_org_1999_02_22_rdf_syntax_ns_typehttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric1	16	0.76
+	SS	http___www_w3_org_1999_02_22_rdf_syntax_ns_typehttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric3	4	0.19
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature$$3$$	4	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature/http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric3
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature	31
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeaturehttp___www_w3_org_2000_01_rdf_schema_label	30	0.97
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeaturehttp___www_w3_org_1999_02_22_rdf_syntax_ns_type	30	0.97
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeaturehttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric1	31	1.0
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeaturehttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric3	5	0.16
+------
+http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature$$6$$	1	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature/http___www_w3_org_2000_01_rdf_schema_label
+	VP	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature	31
+	SS	http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeaturehttp___www_w3_org_2000_01_rdf_schema_label	30	0.97
+------
+http___www_w3_org_2000_01_rdf_schema_label$$1$$	4	SS	http___www_w3_org_2000_01_rdf_schema_label/http___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric3
+	VP	http___www_w3_org_2000_01_rdf_schema_label	20
+	SS	http___www_w3_org_2000_01_rdf_schema_labelhttp___www_w3_org_1999_02_22_rdf_syntax_ns_type	15	0.75
+	SS	http___www_w3_org_2000_01_rdf_schema_labelhttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productFeature	14	0.7
+	SS	http___www_w3_org_2000_01_rdf_schema_labelhttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric1	14	0.7
+	SS	http___www_w3_org_2000_01_rdf_schema_labelhttp___www4_wiwiss_fu_berlin_de_bizer_bsbm_v01_vocabulary_productPropertyNumeric3	2	0.1
+------

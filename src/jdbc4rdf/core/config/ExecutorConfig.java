@@ -11,4 +11,10 @@ public class ExecutorConfig extends Config {
 		this.compositeFile = file;
 	}
 
+	public String getCompositeFile() {
+		return compositeFile;
+	}
+	
+	
+
 }

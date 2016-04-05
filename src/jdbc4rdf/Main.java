@@ -11,6 +11,9 @@ import jdbc4rdf.core.config.ExecutorConfig;
 import jdbc4rdf.core.config.LoaderConfig;
 import jdbc4rdf.executor.ParseFile;
 import jdbc4rdf.executor.Query;
+import jdbc4rdf.executor.SQLExecutor;
+import jdbc4rdf.executor.impl.HiveExecutor;
+import jdbc4rdf.executor.impl.MySQLExecutor;
 import jdbc4rdf.loader.SQLDataLoader;
 import jdbc4rdf.loader.impl.HiveDataLoader;
 import jdbc4rdf.loader.impl.MySQLDataLoader;
@@ -117,17 +120,18 @@ public class Main {
 				// Create config
 				conf = new ExecutorConfig(driver, file, user, pw, host, db);
 				
-				/*
-				 * // Detect driver
-				SQLDataLoader sql = null;
+				// Detect driver
+				SQLExecutor sql = null;
+				
 				if (driver.equals(DBDRIVER.HIVE)) {
-					sql = new HiveDataLoader(conf);
+					sql = new HiveExecutor(conf);
 				} else if (driver.equals(DBDRIVER.MYSQL)) {
-					sql = new MySQLDataLoader(conf);
+					sql = new MySQLExecutor(conf);
 				}
+				
 				// run sql
-				sql.runSql();
-				 */
+				//sql.runSql();
+				
 				List<Query> queries = ParseFile.getQueries(file);
 				
 			}

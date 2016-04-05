@@ -21,7 +21,7 @@ public enum DBDRIVER {
 		if ((dstr.equalsIgnoreCase("mysql")) ||
 				dstr.equalsIgnoreCase(MYSQL_DRIVER)) {
 			return MYSQL;
-		} else if ((dstr.equalsIgnoreCase("mysql")) ||
+		} else if ((dstr.equalsIgnoreCase("hive")) ||
 				dstr.equalsIgnoreCase(HIVE_DRIVER)) {
 			return HIVE;
 		} else {

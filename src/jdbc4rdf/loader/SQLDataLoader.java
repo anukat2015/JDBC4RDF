@@ -29,7 +29,7 @@ public abstract class SQLDataLoader extends SQLWrapper {
 	 * extVp creation method will not be able to find
 	 * the tables
 	 */
-	private final boolean SHORTEN_TABLENAMES = true;
+	private final boolean SHORTEN_TABLENAMES = false;
 	
 	private String dataFile = "";
 	

@@ -130,9 +130,9 @@ public class Main {
 				}
 				
 				// run sql
-				//sql.runSql();
+				sql.runSql();
 				
-				List<Query> queries = ParseFile.getQueries(file);
+				
 				
 			}
 		} else {

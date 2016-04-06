@@ -12,7 +12,7 @@ public class ExecutorConfig extends Config {
 	}
 
 	public String getCompositeFile() {
-		return compositeFile;
+		return this.compositeFile;
 	}
 	
 	

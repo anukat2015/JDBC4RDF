@@ -4,8 +4,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import org.apache.logging.log4j.core.appender.AppenderLoggingException;
-
 import jdbc4rdf.loader.io.FileAppender;
 
 public class ResultWriter {

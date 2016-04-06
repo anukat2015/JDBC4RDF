@@ -18,7 +18,7 @@ public abstract class SQLWrapper {
 	protected final Config conf;
 	
 	
-	private final boolean AUTOCOMMIT = true;
+	protected final boolean AUTOCOMMIT = true;
 	
 	
 	/**
@@ -73,8 +73,8 @@ public abstract class SQLWrapper {
 			close(conn);
 		}
 	}
-	
-	
+
+
 	protected abstract void loadData(Connection conn) throws Exception;
 
 	

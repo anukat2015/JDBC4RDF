@@ -28,6 +28,9 @@ public class BSBMTypeDetector extends TypeDetector {
 		this.DATETIME_TYPES.add("http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/reviewDate");
 		this.DATETIME_TYPES.add("http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/validFrom");
 		this.DATETIME_TYPES.add("http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/validTo");
+		this.DATETIME_TYPES.add("url/vocabulary/reviewDate");
+		this.DATETIME_TYPES.add("url/vocabulary/validFrom");
+		this.DATETIME_TYPES.add("url/vocabulary/validTo");
 		
 		
 		/*
@@ -37,12 +40,12 @@ public class BSBMTypeDetector extends TypeDetector {
 		this.DATE_TYPES = new ArrayList<String>();
 		this.DATE_TYPES.add("http://purl.org/dc/elements/1.1/date");
 		
-		
 		/*
 		 * Initialize double types
 		 */
 		this.DOUBLE_TYPES = new ArrayList<String>();
 		this.DOUBLE_TYPES.add("http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/price");
+		this.DOUBLE_TYPES.add("url/vocabulary/price");
 		
 		
 		/*
@@ -61,13 +64,16 @@ public class BSBMTypeDetector extends TypeDetector {
 		 */
 		this.INTEGER_TYPES = new ArrayList<String>();
 		this.INTEGER_TYPES.add("http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/deliveryDays");
+		this.INTEGER_TYPES.add("url/vocabulary/deliveryDays");
 		// add numeric properties from 1 - 6
 		for (int i = 1; i < 7; i++) {
 			this.INTEGER_TYPES.add("http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/productPropertyNumeric" + i);
+			this.INTEGER_TYPES.add("url/vocabulary/productPropertyNumeric" + i);
 		}
 		// add ratings from 1 - 4
 		for (int i = 1; i < 5; i++) {
 			this.INTEGER_TYPES.add("http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/rating" + i);
+			this.INTEGER_TYPES.add("url/v01/vocabulary/rating" + i);
 		}
 		
 	}
@@ -77,9 +83,9 @@ public class BSBMTypeDetector extends TypeDetector {
 	public int detectObjectType(String predIn) {
 		String pred = predIn;
 		
-		// remove brackets
+		// remove brackets and special characters
 		if(pred.startsWith("<") && pred.endsWith(">")) {
-			pred = pred.substring(1, pred.length() - 2);
+			pred = pred.substring(1, pred.length() - 1);
 		}
 		
 		// check type
@@ -91,10 +97,12 @@ public class BSBMTypeDetector extends TypeDetector {
 			return Types.DATE;
 		} else if (DATETIME_TYPES.contains(pred)) {
 			return Types.TIMESTAMP;
+		} else{
+			// default type: string
+			return Types.VARCHAR;
 		}
 
-		// default type: string
-		return Types.VARCHAR;
+		
 	}
 
 

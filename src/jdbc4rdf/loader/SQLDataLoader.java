@@ -29,7 +29,7 @@ public abstract class SQLDataLoader extends SQLWrapper {
 	 * extVp creation method will not be able to find
 	 * the tables
 	 */
-	private final boolean SHORTEN_TABLENAMES = false;
+	private final boolean SHORTEN_TABLENAMES = true;
 	
 	private String dataFile = "";
 	
@@ -234,9 +234,9 @@ public abstract class SQLDataLoader extends SQLWrapper {
 		
 		// for each predicate
 		while (plistRs.next()) {
-			String pred = Helper.getPartName(plistRs.getString(1));
+			String pred = plistRs.getString(1);
 			
-			String tname = pred;
+			String tname = Helper.getPartName(pred);
 			if (SHORTEN_TABLENAMES) {
 				tname = "vptable_" + tcount;
 				tcount++;

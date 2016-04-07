@@ -36,10 +36,14 @@ public class Helper {
 		// if there might be some kind of type definition
 		if (obj.contains("^^")) {
 			
+			/*
 			final Pattern p = Pattern.compile("(?<=\").*?(?=\")");
 			final Matcher matcher = p.matcher(obj);
 			
 			result = matcher.group(1);
+			*/
+			obj = obj.substring(1);
+			result = obj.substring(0, obj.indexOf("\""));
 			
 			if (isTimestamp) {
 				result = result.replace("T", " ");

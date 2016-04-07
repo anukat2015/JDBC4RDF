@@ -111,8 +111,6 @@ public class LoaderStatistics {
 		
 		line += "\t" + Helper.getRatio(vpSize, size);
 		
-		line += "\n";
-		
 		// Write to file!
 		writer.appendLine(statsFile, line + "\n");
 		

@@ -33,7 +33,7 @@ public class ResultWriter {
 	
 	public void writeFile(ArrayList<String> data){
 		for(int i = 0; i < data.size(); i++){
-			writer.appendLine(resultFile, data.get(i));
+			writer.appendLine(resultFile, data.get(i)+"\n");
 		}
 	}
 	

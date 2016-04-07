@@ -2,6 +2,7 @@ package jdbc4rdf;
 
 import java.util.logging.Logger;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 
@@ -11,6 +12,7 @@ import jdbc4rdf.core.config.ExecutorConfig;
 import jdbc4rdf.core.config.LoaderConfig;
 import jdbc4rdf.executor.ParseFile;
 import jdbc4rdf.executor.Query;
+import jdbc4rdf.executor.ResultWriter;
 import jdbc4rdf.executor.SQLExecutor;
 import jdbc4rdf.executor.impl.HiveExecutor;
 import jdbc4rdf.executor.impl.MySQLExecutor;
@@ -130,9 +132,7 @@ public class Main {
 				}
 				
 				// run sql
-				sql.runSql();
-				
-				
+				sql.runSql();				
 				
 			}
 		} else {

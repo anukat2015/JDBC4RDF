@@ -1,162 +1,162 @@
-<url/instances/dataFromProducer6/Product211>	<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>	<url/vocabulary/Product>
-<url/instances/dataFromProducer6/Product211>	<http://www.w3.org/2000/01/rdf-schema#label>	"manner gatemen"
-<url/instances/dataFromProducer6/Product211>	<http://www.w3.org/2000/01/rdf-schema#comment>	"lordlings dialyzed hoardings palmitate resisters redesigned trowing fledging disinters occasionally refry objective comedown senders attendance calculous redux zed bidets subacute swinks berhymed pumping overassured outrush corteges chitters civilest chiffonniers kimonos protects epizootic centimos dismast boomage issues aggrieves sociably ammoniacs polliwogs labyrinths infatuates whiteout dissentients newmown flunkey titillated caduceus rediscovered breaststrokes schillings endorsement cheerleaders nonconcurrent intoned outpaces inkle superpowers habaneras subsoils paramours laughed"
-<url/instances/dataFromProducer6/Product211>	<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>	<url/instances/ProductType66>
-<url/instances/dataFromProducer6/Product211>	<url/vocabulary/producer>	<url/instances/dataFromProducer1/Producer1>
-<url/instances/dataFromProducer6/Product211>	<url/vocabulary/productPropertyNumeric1>	"831"^^http://www.w3.org/2001/XMLSchema#integer>
-<url/instances/dataFromProducer6/Product211>	<url/vocabulary/productPropertyNumeric2>	"512"^^http://www.w3.org/2001/XMLSchema#integer>
-<url/instances/dataFromProducer6/Product211>	<url/vocabulary/productPropertyNumeric3>	"35"^^http://www.w3.org/2001/XMLSchema#integer>
-<url/instances/dataFromProducer6/Product211>	<url/vocabulary/productPropertyNumeric4>	"444"^^http://www.w3.org/2001/XMLSchema#integer>
-<url/instances/dataFromProducer6/Product211>	<url/vocabulary/productPropertyNumeric5>	"150"^^http://www.w3.org/2001/XMLSchema#integer>
-<url/instances/dataFromProducer6/Product211>	<url/vocabulary/productPropertyTextual1>	"guzzling jillion psychotherapists substantiation nonuple deluded snowmelt interlards overrefinement annoyed stuntedness calcimining stereophonically"^^http://www.w3.org/2001/XMLSchema#string>
-<url/instances/dataFromProducer6/Product211>	<url/vocabulary/productPropertyTextual2>	"recommendation embezzler reconviction misproportions discountenances callings defacers crummiest triglyceride"^^http://www.w3.org/2001/XMLSchema#string>
-<url/instances/dataFromProducer6/Product211>	<url/vocabulary/productPropertyTextual3>	"decentralizations impacting promulgations bibliotherapy murexes professorships locomotes durning lyncher spoonier abhorrence assize goglets"^^http://www.w3.org/2001/XMLSchema#string>
-<url/instances/dataFromProducer6/Product211>	<url/vocabulary/productPropertyTextual4>	"distracts universally trashily enervator"^^http://www.w3.org/2001/XMLSchema#string>
-<url/instances/dataFromProducer6/Product211>	<url/vocabulary/productPropertyTextual5>	"PProp Textual 5"^^http://www.w3.org/2001/XMLSchema#string>
-<url/instances/dataFromProducer6/Product211>	<url/vocabulary/productFeature>	<url/instances/ProductFeature3>
-<url/instances/dataFromProducer6/Product211>	<url/vocabulary/productFeature>	<url/instances/ProductFeature1967>
-<url/instances/dataFromProducer6/Product211>	<http://purl.org/dc/elements/1.1/publisher>	<url/instances/dataFromProducer1/Producer1>
-<url/instances/dataFromProducer6/Product211>	<http://purl.org/dc/elements/1.1/date>	"2000-11-01"^^http://www.w3.org/2001/XMLSchema#date>
-<url/instances/ProductFeature3>	<http://www.w3.org/2000/01/rdf-schema#label>	"manner gatemen 3"
-<url/instances/ProductFeature1967>	<http://www.w3.org/2000/01/rdf-schema#label>	"manner gatemen 1967"
-<url/instances/dataFromProducer1/Producer1>	<http://www.w3.org/2000/01/rdf-schema#label>	"enzymologist neb falsehoods"
-<url/instances/dataFromProducer6/Product211>	<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>	<url/instances/ProductType87>
-<url/instances/dataFromProducer6/Product211>	<url/vocabulary/productFeature>	<url/instances/ProductFeature541>
-<url/instances/dataFromProducer6/Product411>	<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>	<url/instances/ProductType138>
-<url/instances/dataFromProducer6/Product411>	<http://www.w3.org/2000/01/rdf-schema#label>	"product query 4"
-<url/instances/dataFromProducer6/Product411>	<url/vocabulary/productPropertyTextual1>	"guzzling jillion psychotherapists substantiation nonuple deluded snowmelt interlards overrefinement annoyed stuntedness calcimining stereophonically"^^http://www.w3.org/2001/XMLSchema#string>
-<url/instances/dataFromProducer6/Product411>	<url/vocabulary/productPropertyNumeric1>	"831"^^http://www.w3.org/2001/XMLSchema#integer>
-<url/instances/dataFromProducer6/Product411>	<url/vocabulary/productFeature>	<url/instances/ProductFeature4305>
-<url/instances/dataFromProducer6/Product411>	<url/vocabulary/productFeature>	<url/instances/ProductFeature1427>
-<url/instances/dataFromProducer6/Product211>	<http://www.w3.org/2000/01/rdf-schema#label>	"manner gatemen"
-<url/instances/dataFromProducer6/Product211>	<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>	<url/instances/ProductType138>
-<url/instances/dataFromProducer6/Product211>	<url/vocabulary/productFeature>	<url/instances/ProductFeature4305>
-<url/instances/dataFromProducer6/Product211>	<url/vocabulary/productFeature>	<url/instances/ProductFeature1427>
-<url/instances/dataFromProducer6/Product211>	<url/vocabulary/productPropertyTextual1>	"TEXTUAL PROP No1"^^http://www.w3.org/2001/XMLSchema#string>
-<url/instances/dataFromProducer6/Product211>	<url/vocabulary/productPropertyNumeric1>	"831"^^http://www.w3.org/2001/XMLSchema#integer>
-<url/instances/dataFromProducer6/Product212>	<http://www.w3.org/2000/01/rdf-schema#label>	"manner gatemen"
-<url/instances/dataFromProducer6/Product212>	<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>	<url/instances/ProductType138>
-<url/instances/dataFromProducer6/Product212>	<url/vocabulary/productFeature>	<url/instances/ProductFeature4305>
-<url/instances/dataFromProducer6/Product212>	<url/vocabulary/productFeature>	<url/instances/ProductFeature1444>
-<url/instances/dataFromProducer6/Product212>	<url/vocabulary/productPropertyTextual1>	"TEXTUAL PROP No1"^^http://www.w3.org/2001/XMLSchema#string>
-<url/instances/dataFromProducer6/Product212>	<url/vocabulary/productPropertyNumeric1>	"777"^^http://www.w3.org/2001/XMLSchema#integer>
-<url/instances/dataFromProducer6/Product213>	<http://www.w3.org/2000/01/rdf-schema#label>	"manner gatemen"
-<url/instances/dataFromProducer6/Product213>	<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>	<url/instances/ProductType138>
-<url/instances/dataFromProducer6/Product213>	<url/vocabulary/productFeature>	<url/instances/ProductFeature4305>
-<url/instances/dataFromProducer6/Product213>	<url/vocabulary/productFeature>	<url/instances/ProductFeature1427>
-<url/instances/dataFromProducer6/Product213>	<url/vocabulary/productPropertyTextual1>	"TEXTUAL PROP No1"^^http://www.w3.org/2001/XMLSchema#string>
-<url/instances/dataFromProducer6/Product213>	<url/vocabulary/productPropertyNumeric1>	"831"^^http://www.w3.org/2001/XMLSchema#integer>
-<url/instances/dataFromProducer6/Product214>	<http://www.w3.org/2000/01/rdf-schema#label>	"manner gatemen"
-<url/instances/dataFromProducer6/Product214>	<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>	<url/instances/ProductType138>
-<url/instances/dataFromProducer6/Product214>	<url/vocabulary/productFeature>	<url/instances/ProductFeature4305>
-<url/instances/dataFromProducer6/Product214>	<url/vocabulary/productFeature>	<url/instances/ProductFeature1444>
-<url/instances/dataFromProducer6/Product214>	<url/vocabulary/productPropertyTextual1>	"TEXTUAL PROP No1"^^http://www.w3.org/2001/XMLSchema#string>
-<url/instances/dataFromProducer6/Product214>	<url/vocabulary/productPropertyNumeric1>	"777"^^http://www.w3.org/2001/XMLSchema#integer>
-<url/instances/dataFromProducer6/Product215>	<http://www.w3.org/2000/01/rdf-schema#label>	"manner gatemen"
-<url/instances/dataFromProducer6/Product215>	<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>	<url/instances/ProductType138>
-<url/instances/dataFromProducer6/Product215>	<url/vocabulary/productFeature>	<url/instances/ProductFeature4305>
-<url/instances/dataFromProducer6/Product215>	<url/vocabulary/productFeature>	<url/instances/ProductFeature1427>
-<url/instances/dataFromProducer6/Product215>	<url/vocabulary/productPropertyTextual1>	"TEXTUAL PROP No1"^^http://www.w3.org/2001/XMLSchema#string>
-<url/instances/dataFromProducer6/Product215>	<url/vocabulary/productPropertyNumeric1>	"831"^^http://www.w3.org/2001/XMLSchema#integer>
-<url/instances/dataFromProducer6/Product216>	<http://www.w3.org/2000/01/rdf-schema#label>	"manner gatemen"
-<url/instances/dataFromProducer6/Product216>	<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>	<url/instances/ProductType138>
-<url/instances/dataFromProducer6/Product216>	<url/vocabulary/productFeature>	<url/instances/ProductFeature4305>
-<url/instances/dataFromProducer6/Product216>	<url/vocabulary/productFeature>	<url/instances/ProductFeature1444>
-<url/instances/dataFromProducer6/Product216>	<url/vocabulary/productPropertyTextual1>	"TEXTUAL PROP No1"^^http://www.w3.org/2001/XMLSchema#string>
-<url/instances/dataFromProducer6/Product216>	<url/vocabulary/productPropertyNumeric1>	"777"^^http://www.w3.org/2001/XMLSchema#integer>
-<url/instances/dataFromProducer6/Product217>	<http://www.w3.org/2000/01/rdf-schema#label>	"manner gatemen"
-<url/instances/dataFromProducer6/Product217>	<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>	<url/instances/ProductType138>
-<url/instances/dataFromProducer6/Product217>	<url/vocabulary/productFeature>	<url/instances/ProductFeature4305>
-<url/instances/dataFromProducer6/Product217>	<url/vocabulary/productFeature>	<url/instances/ProductFeature1427>
-<url/instances/dataFromProducer6/Product217>	<url/vocabulary/productPropertyTextual1>	"TEXTUAL PROP No1"^^http://www.w3.org/2001/XMLSchema#string>
-<url/instances/dataFromProducer6/Product217>	<url/vocabulary/productPropertyNumeric1>	"831"^^http://www.w3.org/2001/XMLSchema#integer>
-<url/instances/dataFromProducer6/Product218>	<http://www.w3.org/2000/01/rdf-schema#label>	"manner gatemen"
-<url/instances/dataFromProducer6/Product218>	<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>	<url/instances/ProductType138>
-<url/instances/dataFromProducer6/Product218>	<url/vocabulary/productFeature>	<url/instances/ProductFeature4305>
-<url/instances/dataFromProducer6/Product218>	<url/vocabulary/productFeature>	<url/instances/ProductFeature1444>
-<url/instances/dataFromProducer6/Product218>	<url/vocabulary/productPropertyTextual1>	"TEXTUAL PROP No1"^^http://www.w3.org/2001/XMLSchema#string>
-<url/instances/dataFromProducer6/Product218>	<url/vocabulary/productPropertyNumeric1>	"777"^^http://www.w3.org/2001/XMLSchema#integer>
-<url/instances/dataFromProducer6/Product301>	<http://www.w3.org/2000/01/rdf-schema#label>	"manner gatemen"
-<url/instances/dataFromProducer6/Product301>	<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>	<url/instances/ProductType138>
-<url/instances/dataFromProducer6/Product301>	<url/vocabulary/productFeature>	<url/instances/ProductFeature4305>
-<url/instances/dataFromProducer6/Product301>	<url/vocabulary/productFeature>	<url/instances/ProductFeature1427>
-<url/instances/dataFromProducer6/Product301>	<url/vocabulary/productPropertyTextual1>	"TEXTUAL PROP No1"^^http://www.w3.org/2001/XMLSchema#string>
-<url/instances/dataFromProducer6/Product301>	<url/vocabulary/productPropertyNumeric1>	"831"^^http://www.w3.org/2001/XMLSchema#integer>
-<url/instances/dataFromProducer6/Product302>	<http://www.w3.org/2000/01/rdf-schema#label>	"manner gatemen"
-<url/instances/dataFromProducer6/Product302>	<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>	<url/instances/ProductType138>
-<url/instances/dataFromProducer6/Product302>	<url/vocabulary/productFeature>	<url/instances/ProductFeature4305>
-<url/instances/dataFromProducer6/Product302>	<url/vocabulary/productFeature>	<url/instances/ProductFeature1444>
-<url/instances/dataFromProducer6/Product302>	<url/vocabulary/productPropertyTextual1>	"TEXTUAL PROP No1"^^http://www.w3.org/2001/XMLSchema#string>
-<url/instances/dataFromProducer6/Product302>	<url/vocabulary/productPropertyNumeric1>	"777"^^http://www.w3.org/2001/XMLSchema#integer>
-<url/instances/dataFromProducer6/Product303>	<http://www.w3.org/2000/01/rdf-schema#label>	"manner gatemen"
-<url/instances/dataFromProducer6/Product303>	<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>	<url/instances/ProductType138>
-<url/instances/dataFromProducer6/Product303>	<url/vocabulary/productFeature>	<url/instances/ProductFeature4305>
-<url/instances/dataFromProducer6/Product303>	<url/vocabulary/productFeature>	<url/instances/ProductFeature1427>
-<url/instances/dataFromProducer6/Product303>	<url/vocabulary/productPropertyTextual1>	"TEXTUAL PROP No1"^^http://www.w3.org/2001/XMLSchema#string>
-<url/instances/dataFromProducer6/Product303>	<url/vocabulary/productPropertyNumeric1>	"831"^^http://www.w3.org/2001/XMLSchema#integer>
-<url/instances/dataFromProducer6/Product304>	<http://www.w3.org/2000/01/rdf-schema#label>	"manner gatemen"
-<url/instances/dataFromProducer6/Product304>	<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>	<url/instances/ProductType138>
-<url/instances/dataFromProducer6/Product304>	<url/vocabulary/productFeature>	<url/instances/ProductFeature4305>
-<url/instances/dataFromProducer6/Product304>	<url/vocabulary/productFeature>	<url/instances/ProductFeature1444>
-<url/instances/dataFromProducer6/Product304>	<url/vocabulary/productPropertyTextual1>	"TEXTUAL PROP No1"^^http://www.w3.org/2001/XMLSchema#string>
-<url/instances/dataFromProducer6/Product304>	<url/vocabulary/productPropertyNumeric1>	"777"^^http://www.w3.org/2001/XMLSchema#integer>
-<url/instances/dataFromProducer6/Product411>	<url/vocabulary/productFeature>	<url/instances/ProductFeature1444>
-<url/instances/dataFromProducer18/Product837>	<url/vocabulary/productFeature>	<url/instances/ProductFeature1967>
-<url/instances/dataFromProducer18/Product837>	<url/vocabulary/productPropertyNumeric1>	"832"^^http://www.w3.org/2001/XMLSchema#integer>
-<url/instances/dataFromProducer18/Product837>	<url/vocabulary/productPropertyNumeric2>	"511"^^http://www.w3.org/2001/XMLSchema#integer>
-<url/instances/dataFromProducer18/Product828>	<http://www.w3.org/2000/01/rdf-schema#label>	"manner gatemen"
-<url/instances/dataFromVendor1/Offer1>	<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>	<url/vocabulary/Offer>
-<url/instances/dataFromVendor1/Offer1>	<url/vocabulary/product>	<url/instances/dataFromProducer18/Product828>
-<url/instances/dataFromVendor1/Offer1>	<url/vocabulary/vendor>	<url/instances/dataFromVendor1/Vendor1>
-<url/instances/dataFromVendor1/Offer1>	<url/vocabulary/price>	"1234.53"^^url/vocabulary/USD>
-<url/instances/dataFromVendor1/Offer1>	<url/vocabulary/validFrom>	"2008-03-20T00:00:00"^^http://www.w3.org/2001/XMLSchema#dateTime>
-<url/instances/dataFromVendor1/Offer1>	<url/vocabulary/validTo>	"2008-11-21T00:00:00"^^http://www.w3.org/2001/XMLSchema#dateTime>
-<url/instances/dataFromVendor1/Offer1>	<url/vocabulary/deliveryDays>	"1"^^http://www.w3.org/2001/XMLSchema#integer>
-<url/instances/dataFromVendor1/Offer1>	<url/vocabulary/offerWebpage>	<url/instances/dataFromVendor1/Offer1/>
-<url/instances/dataFromVendor1/Offer1>	<http://purl.org/dc/elements/1.1/publisher>	<url/instances/dataFromVendor1/Vendor1>
-<url/instances/dataFromVendor1/Offer1>	<http://purl.org/dc/elements/1.1/date>	"2008-06-17"^^http://www.w3.org/2001/XMLSchema#date>
-<url/instances/dataFromVendor1/Vendor1>	<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>	<url/vocabulary/Vendor>
-<url/instances/dataFromVendor1/Vendor1>	<http://www.w3.org/2000/01/rdf-schema#label>	"coterie"
-<url/instances/dataFromVendor1/Vendor1>	<http://www.w3.org/2000/01/rdf-schema#comment>	"naughtiness illuminating careerers computerese brakeless mesozoa lineate fulminant batholiths mohawks exhalation paraguayan alcaldes foulings primordially almightily placed flukey improvises pommelled sententious bookmark rashers truces mordanted shunter praxeological"
-<url/instances/dataFromVendor1/Vendor1>	<http://xmlns.com/foaf/0.1/homepage>	<http://www.vendor1.com/>
-<url/instances/dataFromVendor1/Vendor1>	<url/vocabulary/country>	<http://downlode.org/rdf/iso-3166/countries#DE>
-<url/instances/dataFromVendor1/Vendor1>	<http://purl.org/dc/elements/1.1/publisher>	<url/instances/dataFromVendor1/Vendor1>
-<url/instances/dataFromVendor1/Vendor1>	<http://purl.org/dc/elements/1.1/date>	"2008-05-31"^^http://www.w3.org/2001/XMLSchema#date>
-<url/instances/dataFromRatingSite1/Review1>	<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>	<http://purl.org/stuff/rev#Review>
-<url/instances/dataFromRatingSite1/Review1>	<url/vocabulary/reviewFor>	<url/instances/dataFromProducer18/Product828>
-<url/instances/dataFromRatingSite1/Review1>	<http://purl.org/stuff/rev#reviewer>	<url/instances/dataFromRatingSite1/Reviewer1>
-<url/instances/dataFromRatingSite1/Review1>	<url/vocabulary/reviewDate>	"2007-12-17T00:00:00"^^http://www.w3.org/2001/XMLSchema#dateTime>
-<url/instances/dataFromRatingSite1/Review1>	<http://purl.org/dc/elements/1.1/title>	"causable compassed decertified transubstantiation automatize boxful befouling tragedienne visiting alliums triangulates hounders compressively"
-<url/instances/dataFromRatingSite1/Review1>	<http://purl.org/stuff/rev#text>	"camphorates mammons armories scrapes hanger nucleation loftless refractoriness nonhabitual paperer aridness jingliest sportswriters gained efficiently marshals tomogram tambura pureeing doughty compromised antineutrinos revertible picadors oddballs hominies drek irradiations fearlessness cortin hussy museful pupfish bulletproofing geminates nacre subsistence presifted abhors whereat wanes mooing refused biodegradability oghamic stouter venosities recopying supplantation buxomly foregoers pathologist welches comicality manifestos untangles mongols sluices demits inventers entitled taxability fancifulness claimed gastroenterology geotropically glenwood alack autochthonous nabob preempts alternativeness xviii fruiter deist electorally cooker voce abbeys composts jugsful glowing basset worshipfully rebait bushwhacker implorer jackknifing paraguayan enrolls blazonry dendrological pavilioned cully epistles foreshorten couth usurps legibilities yammered somnolently scalded decoct practitioners infolds levered quartan calcined untransferable auditoria charred payment linoleums cowsheds preconceive undergrounder nosier sawhorse coerces assn turgidities venins obliged homogenize componential redemonstrates dewberries pearlers triplicates planked goddaughters largeness citator palpal thoroughly enactive swimmiest syrups chanceman ventrals phlegmy vower matureness fictionalize iliads gasman tumours afeared tuneably insurrectionaries enfolds cisterns adduction leafage maharajas prancingly mannerless vitrines radiocast insulates stilbestrol compartmented appearers undercurrents"@en
-<url/instances/dataFromRatingSite1/Review1>	<url/vocabulary/rating1>	"1"^^http://www.w3.org/2001/XMLSchema#integer>
-<url/instances/dataFromRatingSite1/Review1>	<url/vocabulary/rating2>	"2"^^http://www.w3.org/2001/XMLSchema#integer>
-<url/instances/dataFromRatingSite1/Review1>	<url/vocabulary/rating3>	"3"^^http://www.w3.org/2001/XMLSchema#integer>
-<url/instances/dataFromRatingSite1/Review1>	<url/vocabulary/rating4>	"4"^^http://www.w3.org/2001/XMLSchema#integer>
-<url/instances/dataFromRatingSite1/Review1>	<url/vocabulary/rating5>	"5"^^http://www.w3.org/2001/XMLSchema#integer>
-<url/instances/dataFromRatingSite1/Review1>	<http://purl.org/dc/elements/1.1/publisher>	<url/instances/dataFromRatingSite1/RatingSite1>
-<url/instances/dataFromRatingSite1/Review1>	<http://purl.org/dc/elements/1.1/date>	"2008-06-06"^^http://www.w3.org/2001/XMLSchema#date>
-<url/instances/dataFromRatingSite1/Reviewer1>	<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>	<http://xmlns.com/foaf/0.1/Person>
-<url/instances/dataFromRatingSite1/Reviewer1>	<http://xmlns.com/foaf/0.1/name>	"Ruggiero-Delane"
-<url/instances/dataFromRatingSite1/Reviewer1>	<http://xmlns.com/foaf/0.1/mbox_sha1sum>	"fb3efd92e3c7a8d775a895ba476e11a3e8f3fac"
-<url/instances/dataFromRatingSite1/Reviewer1>	<url/vocabulary/country>	<http://downlode.org/rdf/iso-3166/countries#US>
-<url/instances/dataFromRatingSite1/Reviewer1>	<http://purl.org/dc/elements/1.1/publisher>	<url/instances/dataFromRatingSite1/RatingSite1>
-<url/instances/dataFromRatingSite1/Reviewer1>	<http://purl.org/dc/elements/1.1/date>	"2008-09-05"^^http://www.w3.org/2001/XMLSchema#date>
-<url/instances/dataFromRatingSite1/Review1>	<url/vocabulary/reviewFor>	<url/instances/dataFromProducer13/Product632>
-<url/instances/dataFromRatingSite1/Review8525>	<http://purl.org/stuff/rev#reviewer>	<url/instances/dataFromRatingSite1/Reviewer1>
-<url/instances/dataFromRatingSite1/Review8525>	<http://purl.org/stuff/rev#reviewer>	<url/instances/dataFromRatingSite1/Reviewer2>
-<url/instances/dataFromRatingSite1/Review8525>	<http://purl.org/stuff/rev#reviewer>	<url/instances/dataFromRatingSite1/Reviewer15>
-<url/instances/dataFromVendor1/Vendor1>	<url/vocabulary/country>	<http://downlode.org/rdf/iso-3166/countries#US>
-<url/instances/dataFromVendor1/Offer1>	<url/vocabulary/product>	<url/instances/dataFromProducer16/Product740>
-<url/instances/dataFromVendor1/Offer1250>	<url/vocabulary/offerWebpage>	<url/instances/dataFromVendor1/Offer1/>
-<url/instances/Customer1>	<url/vocabulary/interestedIn>	<url/instances/dataFromVendor1/Offer1250>
-<url/instances/dataFromVendor5/Offer9035>	<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>	<url/vocabulary/Offer>
-<url/instances/dataFromVendor5/Offer9035>	<url/vocabulary/product>	<url/instances/dataFromProducer5/Product9035>
-<url/instances/dataFromVendor5/Offer9035>	<url/vocabulary/vendor>	<url/instances/dataFromVendor1/Vendor1>
-<url/instances/dataFromVendor5/Offer9035>	<url/vocabulary/price>	"1234.53"^^url/vocabulary/USD>
-<url/instances/dataFromVendor5/Offer9035>	<url/vocabulary/validFrom>	"2008-03-20T00:00:00"^^http://www.w3.org/2001/XMLSchema#dateTime>
-<url/instances/dataFromVendor5/Offer9035>	<url/vocabulary/validTo>	"2008-11-21T00:00:00"^^http://www.w3.org/2001/XMLSchema#dateTime>
-<url/instances/dataFromVendor5/Offer9035>	<url/vocabulary/deliveryDays>	"1"^^http://www.w3.org/2001/XMLSchema#integer>
-<url/instances/dataFromVendor5/Offer9035>	<url/vocabulary/offerWebpage>	<url/instances/dataFromVendor5/Offer9035/>
-<url/instances/dataFromVendor5/Offer9035>	<http://purl.org/dc/elements/1.1/publisher>	<url/instances/dataFromVendor1/Vendor1>
-<url/instances/dataFromVendor5/Offer9035>	<http://purl.org/dc/elements/1.1/date>	"2008-06-17"^^http://www.w3.org/2001/XMLSchema#date>
-<url/instances/dataFromProducer5/Product9035>	<http://www.w3.org/2000/01/rdf-schema#label>	"another product to be returned by query 12"		
+<url/dataFromProducer6/Product211>	<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>	<url/vocabulary/Product>
+<url/dataFromProducer6/Product211>	<http://www.w3.org/2000/01/rdf-schema#label>	"manner gatemen"
+<url/dataFromProducer6/Product211>	<http://www.w3.org/2000/01/rdf-schema#comment>	"lordlings dialyzed hoardings palmitate resisters redesigned trowing fledging disinters occasionally refry objective comedown senders attendance calculous redux zed bidets subacute swinks berhymed pumping overassured outrush corteges chitters civilest chiffonniers kimonos protects epizootic centimos dismast boomage issues aggrieves sociably ammoniacs polliwogs labyrinths infatuates whiteout dissentients newmown flunkey titillated caduceus rediscovered breaststrokes schillings endorsement cheerleaders nonconcurrent intoned outpaces inkle superpowers habaneras subsoils paramours laughed"
+<url/dataFromProducer6/Product211>	<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>	<url/ProductType66>
+<url/dataFromProducer6/Product211>	<url/vocabulary/producer>	<url/dataFromProducer1/Producer1>
+<url/dataFromProducer6/Product211>	<url/vocabulary/productPropertyNumeric1>	"831"^^http://www.w3.org/2001/XMLSchema#integer>
+<url/dataFromProducer6/Product211>	<url/vocabulary/productPropertyNumeric2>	"512"^^http://www.w3.org/2001/XMLSchema#integer>
+<url/dataFromProducer6/Product211>	<url/vocabulary/productPropertyNumeric3>	"35"^^http://www.w3.org/2001/XMLSchema#integer>
+<url/dataFromProducer6/Product211>	<url/vocabulary/productPropertyNumeric4>	"444"^^http://www.w3.org/2001/XMLSchema#integer>
+<url/dataFromProducer6/Product211>	<url/vocabulary/productPropertyNumeric5>	"150"^^http://www.w3.org/2001/XMLSchema#integer>
+<url/dataFromProducer6/Product211>	<url/vocabulary/productPropertyTextual1>	"guzzling jillion psychotherapists substantiation nonuple deluded snowmelt interlards overrefinement annoyed stuntedness calcimining stereophonically"^^http://www.w3.org/2001/XMLSchema#string>
+<url/dataFromProducer6/Product211>	<url/vocabulary/productPropertyTextual2>	"recommendation embezzler reconviction misproportions discountenances callings defacers crummiest triglyceride"^^http://www.w3.org/2001/XMLSchema#string>
+<url/dataFromProducer6/Product211>	<url/vocabulary/productPropertyTextual3>	"decentralizations impacting promulgations bibliotherapy murexes professorships locomotes durning lyncher spoonier abhorrence assize goglets"^^http://www.w3.org/2001/XMLSchema#string>
+<url/dataFromProducer6/Product211>	<url/vocabulary/productPropertyTextual4>	"distracts universally trashily enervator"^^http://www.w3.org/2001/XMLSchema#string>
+<url/dataFromProducer6/Product211>	<url/vocabulary/productPropertyTextual5>	"PProp Textual 5"^^http://www.w3.org/2001/XMLSchema#string>
+<url/dataFromProducer6/Product211>	<url/vocabulary/productFeature>	<url/ProductFeature3>
+<url/dataFromProducer6/Product211>	<url/vocabulary/productFeature>	<url/ProductFeature1967>
+<url/dataFromProducer6/Product211>	<org/publisher>	<url/dataFromProducer1/Producer1>
+<url/dataFromProducer6/Product211>	<org/date>	"2000-11-01"^^http://www.w3.org/2001/XMLSchema#date>
+<url/ProductFeature3>	<http://www.w3.org/2000/01/rdf-schema#label>	"manner gatemen 3"
+<url/ProductFeature1967>	<http://www.w3.org/2000/01/rdf-schema#label>	"manner gatemen 1967"
+<url/dataFromProducer1/Producer1>	<http://www.w3.org/2000/01/rdf-schema#label>	"enzymologist neb falsehoods"
+<url/dataFromProducer6/Product211>	<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>	<url/ProductType87>
+<url/dataFromProducer6/Product211>	<url/vocabulary/productFeature>	<url/ProductFeature541>
+<url/dataFromProducer6/Product411>	<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>	<url/ProductType138>
+<url/dataFromProducer6/Product411>	<http://www.w3.org/2000/01/rdf-schema#label>	"product query 4"
+<url/dataFromProducer6/Product411>	<url/vocabulary/productPropertyTextual1>	"guzzling jillion psychotherapists substantiation nonuple deluded snowmelt interlards overrefinement annoyed stuntedness calcimining stereophonically"^^http://www.w3.org/2001/XMLSchema#string>
+<url/dataFromProducer6/Product411>	<url/vocabulary/productPropertyNumeric1>	"831"^^http://www.w3.org/2001/XMLSchema#integer>
+<url/dataFromProducer6/Product411>	<url/vocabulary/productFeature>	<url/ProductFeature4305>
+<url/dataFromProducer6/Product411>	<url/vocabulary/productFeature>	<url/ProductFeature1427>
+<url/dataFromProducer6/Product211>	<http://www.w3.org/2000/01/rdf-schema#label>	"manner gatemen"
+<url/dataFromProducer6/Product211>	<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>	<url/ProductType138>
+<url/dataFromProducer6/Product211>	<url/vocabulary/productFeature>	<url/ProductFeature4305>
+<url/dataFromProducer6/Product211>	<url/vocabulary/productFeature>	<url/ProductFeature1427>
+<url/dataFromProducer6/Product211>	<url/vocabulary/productPropertyTextual1>	"TEXTUAL PROP No1"^^http://www.w3.org/2001/XMLSchema#string>
+<url/dataFromProducer6/Product211>	<url/vocabulary/productPropertyNumeric1>	"831"^^http://www.w3.org/2001/XMLSchema#integer>
+<url/dataFromProducer6/Product212>	<http://www.w3.org/2000/01/rdf-schema#label>	"manner gatemen"
+<url/dataFromProducer6/Product212>	<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>	<url/ProductType138>
+<url/dataFromProducer6/Product212>	<url/vocabulary/productFeature>	<url/ProductFeature4305>
+<url/dataFromProducer6/Product212>	<url/vocabulary/productFeature>	<url/ProductFeature1444>
+<url/dataFromProducer6/Product212>	<url/vocabulary/productPropertyTextual1>	"TEXTUAL PROP No1"^^http://www.w3.org/2001/XMLSchema#string>
+<url/dataFromProducer6/Product212>	<url/vocabulary/productPropertyNumeric1>	"777"^^http://www.w3.org/2001/XMLSchema#integer>
+<url/dataFromProducer6/Product213>	<http://www.w3.org/2000/01/rdf-schema#label>	"manner gatemen"
+<url/dataFromProducer6/Product213>	<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>	<url/ProductType138>
+<url/dataFromProducer6/Product213>	<url/vocabulary/productFeature>	<url/ProductFeature4305>
+<url/dataFromProducer6/Product213>	<url/vocabulary/productFeature>	<url/ProductFeature1427>
+<url/dataFromProducer6/Product213>	<url/vocabulary/productPropertyTextual1>	"TEXTUAL PROP No1"^^http://www.w3.org/2001/XMLSchema#string>
+<url/dataFromProducer6/Product213>	<url/vocabulary/productPropertyNumeric1>	"831"^^http://www.w3.org/2001/XMLSchema#integer>
+<url/dataFromProducer6/Product214>	<http://www.w3.org/2000/01/rdf-schema#label>	"manner gatemen"
+<url/dataFromProducer6/Product214>	<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>	<url/ProductType138>
+<url/dataFromProducer6/Product214>	<url/vocabulary/productFeature>	<url/ProductFeature4305>
+<url/dataFromProducer6/Product214>	<url/vocabulary/productFeature>	<url/ProductFeature1444>
+<url/dataFromProducer6/Product214>	<url/vocabulary/productPropertyTextual1>	"TEXTUAL PROP No1"^^http://www.w3.org/2001/XMLSchema#string>
+<url/dataFromProducer6/Product214>	<url/vocabulary/productPropertyNumeric1>	"777"^^http://www.w3.org/2001/XMLSchema#integer>
+<url/dataFromProducer6/Product215>	<http://www.w3.org/2000/01/rdf-schema#label>	"manner gatemen"
+<url/dataFromProducer6/Product215>	<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>	<url/ProductType138>
+<url/dataFromProducer6/Product215>	<url/vocabulary/productFeature>	<url/ProductFeature4305>
+<url/dataFromProducer6/Product215>	<url/vocabulary/productFeature>	<url/ProductFeature1427>
+<url/dataFromProducer6/Product215>	<url/vocabulary/productPropertyTextual1>	"TEXTUAL PROP No1"^^http://www.w3.org/2001/XMLSchema#string>
+<url/dataFromProducer6/Product215>	<url/vocabulary/productPropertyNumeric1>	"831"^^http://www.w3.org/2001/XMLSchema#integer>
+<url/dataFromProducer6/Product216>	<http://www.w3.org/2000/01/rdf-schema#label>	"manner gatemen"
+<url/dataFromProducer6/Product216>	<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>	<url/ProductType138>
+<url/dataFromProducer6/Product216>	<url/vocabulary/productFeature>	<url/ProductFeature4305>
+<url/dataFromProducer6/Product216>	<url/vocabulary/productFeature>	<url/ProductFeature1444>
+<url/dataFromProducer6/Product216>	<url/vocabulary/productPropertyTextual1>	"TEXTUAL PROP No1"^^http://www.w3.org/2001/XMLSchema#string>
+<url/dataFromProducer6/Product216>	<url/vocabulary/productPropertyNumeric1>	"777"^^http://www.w3.org/2001/XMLSchema#integer>
+<url/dataFromProducer6/Product217>	<http://www.w3.org/2000/01/rdf-schema#label>	"manner gatemen"
+<url/dataFromProducer6/Product217>	<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>	<url/ProductType138>
+<url/dataFromProducer6/Product217>	<url/vocabulary/productFeature>	<url/ProductFeature4305>
+<url/dataFromProducer6/Product217>	<url/vocabulary/productFeature>	<url/ProductFeature1427>
+<url/dataFromProducer6/Product217>	<url/vocabulary/productPropertyTextual1>	"TEXTUAL PROP No1"^^http://www.w3.org/2001/XMLSchema#string>
+<url/dataFromProducer6/Product217>	<url/vocabulary/productPropertyNumeric1>	"831"^^http://www.w3.org/2001/XMLSchema#integer>
+<url/dataFromProducer6/Product218>	<http://www.w3.org/2000/01/rdf-schema#label>	"manner gatemen"
+<url/dataFromProducer6/Product218>	<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>	<url/ProductType138>
+<url/dataFromProducer6/Product218>	<url/vocabulary/productFeature>	<url/ProductFeature4305>
+<url/dataFromProducer6/Product218>	<url/vocabulary/productFeature>	<url/ProductFeature1444>
+<url/dataFromProducer6/Product218>	<url/vocabulary/productPropertyTextual1>	"TEXTUAL PROP No1"^^http://www.w3.org/2001/XMLSchema#string>
+<url/dataFromProducer6/Product218>	<url/vocabulary/productPropertyNumeric1>	"777"^^http://www.w3.org/2001/XMLSchema#integer>
+<url/dataFromProducer6/Product301>	<http://www.w3.org/2000/01/rdf-schema#label>	"manner gatemen"
+<url/dataFromProducer6/Product301>	<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>	<url/ProductType138>
+<url/dataFromProducer6/Product301>	<url/vocabulary/productFeature>	<url/ProductFeature4305>
+<url/dataFromProducer6/Product301>	<url/vocabulary/productFeature>	<url/ProductFeature1427>
+<url/dataFromProducer6/Product301>	<url/vocabulary/productPropertyTextual1>	"TEXTUAL PROP No1"^^http://www.w3.org/2001/XMLSchema#string>
+<url/dataFromProducer6/Product301>	<url/vocabulary/productPropertyNumeric1>	"831"^^http://www.w3.org/2001/XMLSchema#integer>
+<url/dataFromProducer6/Product302>	<http://www.w3.org/2000/01/rdf-schema#label>	"manner gatemen"
+<url/dataFromProducer6/Product302>	<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>	<url/ProductType138>
+<url/dataFromProducer6/Product302>	<url/vocabulary/productFeature>	<url/ProductFeature4305>
+<url/dataFromProducer6/Product302>	<url/vocabulary/productFeature>	<url/ProductFeature1444>
+<url/dataFromProducer6/Product302>	<url/vocabulary/productPropertyTextual1>	"TEXTUAL PROP No1"^^http://www.w3.org/2001/XMLSchema#string>
+<url/dataFromProducer6/Product302>	<url/vocabulary/productPropertyNumeric1>	"777"^^http://www.w3.org/2001/XMLSchema#integer>
+<url/dataFromProducer6/Product303>	<http://www.w3.org/2000/01/rdf-schema#label>	"manner gatemen"
+<url/dataFromProducer6/Product303>	<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>	<url/ProductType138>
+<url/dataFromProducer6/Product303>	<url/vocabulary/productFeature>	<url/ProductFeature4305>
+<url/dataFromProducer6/Product303>	<url/vocabulary/productFeature>	<url/ProductFeature1427>
+<url/dataFromProducer6/Product303>	<url/vocabulary/productPropertyTextual1>	"TEXTUAL PROP No1"^^http://www.w3.org/2001/XMLSchema#string>
+<url/dataFromProducer6/Product303>	<url/vocabulary/productPropertyNumeric1>	"831"^^http://www.w3.org/2001/XMLSchema#integer>
+<url/dataFromProducer6/Product304>	<http://www.w3.org/2000/01/rdf-schema#label>	"manner gatemen"
+<url/dataFromProducer6/Product304>	<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>	<url/ProductType138>
+<url/dataFromProducer6/Product304>	<url/vocabulary/productFeature>	<url/ProductFeature4305>
+<url/dataFromProducer6/Product304>	<url/vocabulary/productFeature>	<url/ProductFeature1444>
+<url/dataFromProducer6/Product304>	<url/vocabulary/productPropertyTextual1>	"TEXTUAL PROP No1"^^http://www.w3.org/2001/XMLSchema#string>
+<url/dataFromProducer6/Product304>	<url/vocabulary/productPropertyNumeric1>	"777"^^http://www.w3.org/2001/XMLSchema#integer>
+<url/dataFromProducer6/Product411>	<url/vocabulary/productFeature>	<url/ProductFeature1444>
+<url/dataFromProducer18/Product837>	<url/vocabulary/productFeature>	<url/ProductFeature1967>
+<url/dataFromProducer18/Product837>	<url/vocabulary/productPropertyNumeric1>	"832"^^http://www.w3.org/2001/XMLSchema#integer>
+<url/dataFromProducer18/Product837>	<url/vocabulary/productPropertyNumeric2>	"511"^^http://www.w3.org/2001/XMLSchema#integer>
+<url/dataFromProducer18/Product828>	<http://www.w3.org/2000/01/rdf-schema#label>	"manner gatemen"
+<url/dataFromVendor1/Offer1>	<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>	<url/vocabulary/Offer>
+<url/dataFromVendor1/Offer1>	<url/vocabulary/product>	<url/dataFromProducer18/Product828>
+<url/dataFromVendor1/Offer1>	<url/vocabulary/vendor>	<url/dataFromVendor1/Vendor1>
+<url/dataFromVendor1/Offer1>	<url/vocabulary/price>	"1234.53"^^url/vocabulary/USD>
+<url/dataFromVendor1/Offer1>	<url/vocabulary/validFrom>	"2008-03-20T00:00:00"^^http://www.w3.org/2001/XMLSchema#dateTime>
+<url/dataFromVendor1/Offer1>	<url/vocabulary/validTo>	"2008-11-21T00:00:00"^^http://www.w3.org/2001/XMLSchema#dateTime>
+<url/dataFromVendor1/Offer1>	<url/vocabulary/deliveryDays>	"1"^^http://www.w3.org/2001/XMLSchema#integer>
+<url/dataFromVendor1/Offer1>	<url/vocabulary/offerWebpage>	<url/dataFromVendor1/Offer1/>
+<url/dataFromVendor1/Offer1>	<org/publisher>	<url/dataFromVendor1/Vendor1>
+<url/dataFromVendor1/Offer1>	<org/date>	"2008-06-17"^^http://www.w3.org/2001/XMLSchema#date>
+<url/dataFromVendor1/Vendor1>	<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>	<url/vocabulary/Vendor>
+<url/dataFromVendor1/Vendor1>	<http://www.w3.org/2000/01/rdf-schema#label>	"coterie"
+<url/dataFromVendor1/Vendor1>	<http://www.w3.org/2000/01/rdf-schema#comment>	"naughtiness illuminating careerers computerese brakeless mesozoa lineate fulminant batholiths mohawks exhalation paraguayan alcaldes foulings primordially almightily placed flukey improvises pommelled sententious bookmark rashers truces mordanted shunter praxeological"
+<url/dataFromVendor1/Vendor1>	<http://xmlns.com/foaf/0.1/homepage>	<http://www.vendor1.com/>
+<url/dataFromVendor1/Vendor1>	<url/vocabulary/country>	<http://downlode.org/rdf/iso-3166/countries#DE>
+<url/dataFromVendor1/Vendor1>	<org/publisher>	<url/dataFromVendor1/Vendor1>
+<url/dataFromVendor1/Vendor1>	<org/date>	"2008-05-31"^^http://www.w3.org/2001/XMLSchema#date>
+<url/dataFromRatingSite1/Review1>	<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>	<http://purl.org/stuff/rev#Review>
+<url/dataFromRatingSite1/Review1>	<url/vocabulary/reviewFor>	<url/dataFromProducer18/Product828>
+<url/dataFromRatingSite1/Review1>	<http://purl.org/stuff/rev#reviewer>	<url/dataFromRatingSite1/Reviewer1>
+<url/dataFromRatingSite1/Review1>	<url/vocabulary/reviewDate>	"2007-12-17T00:00:00"^^http://www.w3.org/2001/XMLSchema#dateTime>
+<url/dataFromRatingSite1/Review1>	<org/title>	"causable compassed decertified transubstantiation automatize boxful befouling tragedienne visiting alliums triangulates hounders compressively"
+<url/dataFromRatingSite1/Review1>	<http://purl.org/stuff/rev#text>	"camphorates mammons armories scrapes hanger nucleation loftless refractoriness nonhabitual paperer aridness jingliest sportswriters gained efficiently marshals tomogram tambura pureeing doughty compromised antineutrinos revertible picadors oddballs hominies drek irradiations fearlessness cortin hussy museful pupfish bulletproofing geminates nacre subsistence presifted abhors whereat wanes mooing refused biodegradability oghamic stouter venosities recopying supplantation buxomly foregoers pathologist welches comicality manifestos untangles mongols sluices demits inventers entitled taxability fancifulness claimed gastroenterology geotropically glenwood alack autochthonous nabob preempts alternativeness xviii fruiter deist electorally cooker voce abbeys composts jugsful glowing basset worshipfully rebait bushwhacker implorer jackknifing paraguayan enrolls blazonry dendrological pavilioned cully epistles foreshorten couth usurps legibilities yammered somnolently scalded decoct practitioners infolds levered quartan calcined untransferable auditoria charred payment linoleums cowsheds preconceive undergrounder nosier sawhorse coerces assn turgidities venins obliged homogenize componential redemonstrates dewberries pearlers triplicates planked goddaughters largeness citator palpal thoroughly enactive swimmiest syrups chanceman ventrals phlegmy vower matureness fictionalize iliads gasman tumours afeared tuneably insurrectionaries enfolds cisterns adduction leafage maharajas prancingly mannerless vitrines radiocast insulates stilbestrol compartmented appearers undercurrents"@en
+<url/dataFromRatingSite1/Review1>	<url/vocabulary/rating1>	"1"^^http://www.w3.org/2001/XMLSchema#integer>
+<url/dataFromRatingSite1/Review1>	<url/vocabulary/rating2>	"2"^^http://www.w3.org/2001/XMLSchema#integer>
+<url/dataFromRatingSite1/Review1>	<url/vocabulary/rating3>	"3"^^http://www.w3.org/2001/XMLSchema#integer>
+<url/dataFromRatingSite1/Review1>	<url/vocabulary/rating4>	"4"^^http://www.w3.org/2001/XMLSchema#integer>
+<url/dataFromRatingSite1/Review1>	<url/vocabulary/rating5>	"5"^^http://www.w3.org/2001/XMLSchema#integer>
+<url/dataFromRatingSite1/Review1>	<org/publisher>	<url/dataFromRatingSite1/RatingSite1>
+<url/dataFromRatingSite1/Review1>	<org/date>	"2008-06-06"^^http://www.w3.org/2001/XMLSchema#date>
+<url/dataFromRatingSite1/Reviewer1>	<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>	<http://xmlns.com/foaf/0.1/Person>
+<url/dataFromRatingSite1/Reviewer1>	<http://xmlns.com/foaf/0.1/name>	"Ruggiero-Delane"
+<url/dataFromRatingSite1/Reviewer1>	<http://xmlns.com/foaf/0.1/mbox_sha1sum>	"fb3efd92e3c7a8d775a895ba476e11a3e8f3fac"
+<url/dataFromRatingSite1/Reviewer1>	<url/vocabulary/country>	<http://downlode.org/rdf/iso-3166/countries#US>
+<url/dataFromRatingSite1/Reviewer1>	<org/publisher>	<url/dataFromRatingSite1/RatingSite1>
+<url/dataFromRatingSite1/Reviewer1>	<org/date>	"2008-09-05"^^http://www.w3.org/2001/XMLSchema#date>
+<url/dataFromRatingSite1/Review1>	<url/vocabulary/reviewFor>	<url/dataFromProducer13/Product632>
+<url/dataFromRatingSite1/Review8525>	<http://purl.org/stuff/rev#reviewer>	<url/dataFromRatingSite1/Reviewer1>
+<url/dataFromRatingSite1/Review8525>	<http://purl.org/stuff/rev#reviewer>	<url/dataFromRatingSite1/Reviewer2>
+<url/dataFromRatingSite1/Review8525>	<http://purl.org/stuff/rev#reviewer>	<url/dataFromRatingSite1/Reviewer15>
+<url/dataFromVendor1/Vendor1>	<url/vocabulary/country>	<http://downlode.org/rdf/iso-3166/countries#US>
+<url/dataFromVendor1/Offer1>	<url/vocabulary/product>	<url/dataFromProducer16/Product740>
+<url/dataFromVendor1/Offer1250>	<url/vocabulary/offerWebpage>	<url/dataFromVendor1/Offer1/>
+<url/Customer1>	<url/vocabulary/interestedIn>	<url/dataFromVendor1/Offer1250>
+<url/dataFromVendor5/Offer9035>	<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>	<url/vocabulary/Offer>
+<url/dataFromVendor5/Offer9035>	<url/vocabulary/product>	<url/dataFromProducer5/Product9035>
+<url/dataFromVendor5/Offer9035>	<url/vocabulary/vendor>	<url/dataFromVendor1/Vendor1>
+<url/dataFromVendor5/Offer9035>	<url/vocabulary/price>	"1234.53"^^url/vocabulary/USD>
+<url/dataFromVendor5/Offer9035>	<url/vocabulary/validFrom>	"2008-03-20T00:00:00"^^http://www.w3.org/2001/XMLSchema#dateTime>
+<url/dataFromVendor5/Offer9035>	<url/vocabulary/validTo>	"2008-11-21T00:00:00"^^http://www.w3.org/2001/XMLSchema#dateTime>
+<url/dataFromVendor5/Offer9035>	<url/vocabulary/deliveryDays>	"1"^^http://www.w3.org/2001/XMLSchema#integer>
+<url/dataFromVendor5/Offer9035>	<url/vocabulary/offerWebpage>	<url/dataFromVendor5/Offer9035/>
+<url/dataFromVendor5/Offer9035>	<org/publisher>	<url/dataFromVendor1/Vendor1>
+<url/dataFromVendor5/Offer9035>	<org/date>	"2008-06-17"^^http://www.w3.org/2001/XMLSchema#date>
+<url/dataFromProducer5/Product9035>	<http://www.w3.org/2000/01/rdf-schema#label>	"another product to be returned by query 12"		

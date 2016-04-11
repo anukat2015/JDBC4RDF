@@ -21,7 +21,7 @@ public abstract class SQLDataLoader extends SQLWrapper {
 	 * This delimiter should be used as an alternative
 	 * to the "/" delimiter in the original implementation
 	 */
-	private String DELIM  = "__X__";
+	private String DELIM  = "_X_";
 	
 	/**
 	 * this option is for debug purposes and shortens vp table names.
@@ -167,7 +167,7 @@ public abstract class SQLDataLoader extends SQLWrapper {
 					ResultSet extVPRes = extVPStmt.executeQuery(extVPSql);
 
 
-					if (extVpTableSize < (stats.getVPTableSize(pred1Table) * this.scaleUB) ) {
+					if (extVpTableSize < (stats.getVPTableSize(pred1) * this.scaleUB) ) {
 
 						// - omit directory check -
 
@@ -175,7 +175,7 @@ public abstract class SQLDataLoader extends SQLWrapper {
 						String tableName =  relType + DELIM 
 									+ pred1Table + DELIM + pred2Table;
 						
-						resultSetToTable(conn, extVPRes, tableName);
+						//resultSetToTable(conn, extVPRes, tableName);
 						
 						stats.incSavedTables();
 

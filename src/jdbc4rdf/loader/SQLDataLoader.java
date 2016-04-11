@@ -21,7 +21,7 @@ public abstract class SQLDataLoader extends SQLWrapper {
 	 * This delimiter should be used as an alternative
 	 * to the "/" delimiter in the original implementation
 	 */
-	private String DELIM  = "____X____";
+	private String DELIM  = "__X__";
 	
 	/**
 	 * this option is for debug purposes and shortens vp table names.
@@ -140,21 +140,25 @@ public abstract class SQLDataLoader extends SQLWrapper {
 
 		// for each predicate
 		while (plistRs.next()) {
-			String pred1 = Helper.getPartName(plistRs.getString(1));
-
+			// String pred1 = Helper.getPartName(plistRs.getString(1));
+			String pred1 = plistRs.getString(1);
+			String pred1Table = Helper.getPartName(pred1);
+			
 			// get related predicates
 			Statement relPredStmt = conn.createStatement();
-			ResultSet relPred = relPredStmt.executeQuery(getLeftJoinSql(pred1, relType));
+			ResultSet relPred = relPredStmt.executeQuery(getLeftJoinSql(pred1Table, relType));
 
 			// for each related predicate
 			while(relPred.next()) {
-				String pred2 = Helper.getPartName(relPred.getString(1));
+				//String pred2 = Helper.getPartName(relPred.getString(1));
+				String pred2 = relPred.getString(1);
+				String pred2Table = Helper.getPartName(pred2);
 
 				int extVpTableSize = -1;
 
 				// Don't create unnecessary tables
 				if (!(relType == RELTYPE_SS && pred1.equals(pred2))) {
-					String extVPSql = getExtVpSQLcommand(pred1, pred2, relType);
+					String extVPSql = getExtVpSQLcommand(pred1Table, pred2Table, relType);
 
 					// calculate size
 					extVpTableSize = runStaticSql(conn, extVPSql, true).size();
@@ -163,13 +167,13 @@ public abstract class SQLDataLoader extends SQLWrapper {
 					ResultSet extVPRes = extVPStmt.executeQuery(extVPSql);
 
 
-					if (extVpTableSize < (stats.getVPTableSize(pred1) * this.scaleUB) ) {
+					if (extVpTableSize < (stats.getVPTableSize(pred1Table) * this.scaleUB) ) {
 
 						// - omit directory check -
 
 						// save the extVP table
 						String tableName =  relType + DELIM 
-									+ pred1 + DELIM + pred2;
+									+ pred1Table + DELIM + pred2Table;
 						
 						resultSetToTable(conn, extVPRes, tableName);
 						
@@ -183,7 +187,7 @@ public abstract class SQLDataLoader extends SQLWrapper {
 
 					close(extVPStmt);
 				} else {
-					extVpTableSize = stats.getVPTableSize(pred1);
+					extVpTableSize = stats.getVPTableSize(pred1Table);
 				}
 				
 				

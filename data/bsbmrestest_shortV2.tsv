@@ -1,0 +1,162 @@
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product211>	-rdf-syntax-ns#type>	<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/Product>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product211>	01/rdf-schema#label>	"manner gatemen"
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product211>	/rdf-schema#comment>	"lordlings dialyzed hoardings palmitate resisters redesigned trowing fledging disinters occasionally refry objective comedown senders attendance calculous redux zed bidets subacute swinks berhymed pumping overassured outrush corteges chitters civilest chiffonniers kimonos protects epizootic centimos dismast boomage issues aggrieves sociably ammoniacs polliwogs labyrinths infatuates whiteout dissentients newmown flunkey titillated caduceus rediscovered breaststrokes schillings endorsement cheerleaders nonconcurrent intoned outpaces inkle superpowers habaneras subsoils paramours laughed"
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product211>	-rdf-syntax-ns#type>	<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductType66>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product211>	vocabulary/producer>	<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer1/Producer1>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product211>	uctPropertyNumeric1>	"831"^^http://www.w3.org/2001/XMLSchema#integer>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product211>	uctPropertyNumeric2>	"512"^^http://www.w3.org/2001/XMLSchema#integer>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product211>	uctPropertyNumeric3>	"35"^^http://www.w3.org/2001/XMLSchema#integer>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product211>	uctPropertyNumeric4>	"444"^^http://www.w3.org/2001/XMLSchema#integer>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product211>	uctPropertyNumeric5>	"150"^^http://www.w3.org/2001/XMLSchema#integer>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product211>	uctPropertyTextual1>	"guzzling jillion psychotherapists substantiation nonuple deluded snowmelt interlards overrefinement annoyed stuntedness calcimining stereophonically"^^http://www.w3.org/2001/XMLSchema#string>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product211>	uctPropertyTextual2>	"recommendation embezzler reconviction misproportions discountenances callings defacers crummiest triglyceride"^^http://www.w3.org/2001/XMLSchema#string>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product211>	uctPropertyTextual3>	"decentralizations impacting promulgations bibliotherapy murexes professorships locomotes durning lyncher spoonier abhorrence assize goglets"^^http://www.w3.org/2001/XMLSchema#string>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product211>	uctPropertyTextual4>	"distracts universally trashily enervator"^^http://www.w3.org/2001/XMLSchema#string>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product211>	uctPropertyTextual5>	"PProp Textual 5"^^http://www.w3.org/2001/XMLSchema#string>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product211>	lary/productFeature>	<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductFeature3>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product211>	lary/productFeature>	<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductFeature1967>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product211>	ments/1.1/publisher>	<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer1/Producer1>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product211>	c/elements/1.1/date>	"2000-11-01"^^http://www.w3.org/2001/XMLSchema#date>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductFeature3>	01/rdf-schema#label>	"manner gatemen 3"
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductFeature1967>	01/rdf-schema#label>	"manner gatemen 1967"
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer1/Producer1>	01/rdf-schema#label>	"enzymologist neb falsehoods"
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product211>	-rdf-syntax-ns#type>	<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductType87>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product211>	lary/productFeature>	<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductFeature541>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product411>	-rdf-syntax-ns#type>	<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductType138>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product411>	01/rdf-schema#label>	"product query 4"
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product411>	uctPropertyTextual1>	"guzzling jillion psychotherapists substantiation nonuple deluded snowmelt interlards overrefinement annoyed stuntedness calcimining stereophonically"^^http://www.w3.org/2001/XMLSchema#string>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product411>	uctPropertyNumeric1>	"831"^^http://www.w3.org/2001/XMLSchema#integer>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product411>	lary/productFeature>	<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductFeature4305>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product411>	lary/productFeature>	<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductFeature1427>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product211>	01/rdf-schema#label>	"manner gatemen"
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product211>	-rdf-syntax-ns#type>	<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductType138>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product211>	lary/productFeature>	<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductFeature4305>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product211>	lary/productFeature>	<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductFeature1427>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product211>	uctPropertyTextual1>	"TEXTUAL PROP No1"^^http://www.w3.org/2001/XMLSchema#string>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product211>	uctPropertyNumeric1>	"831"^^http://www.w3.org/2001/XMLSchema#integer>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product212>	01/rdf-schema#label>	"manner gatemen"
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product212>	-rdf-syntax-ns#type>	<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductType138>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product212>	lary/productFeature>	<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductFeature4305>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product212>	lary/productFeature>	<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductFeature1444>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product212>	uctPropertyTextual1>	"TEXTUAL PROP No1"^^http://www.w3.org/2001/XMLSchema#string>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product212>	uctPropertyNumeric1>	"777"^^http://www.w3.org/2001/XMLSchema#integer>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product213>	01/rdf-schema#label>	"manner gatemen"
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product213>	-rdf-syntax-ns#type>	<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductType138>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product213>	lary/productFeature>	<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductFeature4305>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product213>	lary/productFeature>	<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductFeature1427>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product213>	uctPropertyTextual1>	"TEXTUAL PROP No1"^^http://www.w3.org/2001/XMLSchema#string>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product213>	uctPropertyNumeric1>	"831"^^http://www.w3.org/2001/XMLSchema#integer>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product214>	01/rdf-schema#label>	"manner gatemen"
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product214>	-rdf-syntax-ns#type>	<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductType138>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product214>	lary/productFeature>	<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductFeature4305>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product214>	lary/productFeature>	<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductFeature1444>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product214>	uctPropertyTextual1>	"TEXTUAL PROP No1"^^http://www.w3.org/2001/XMLSchema#string>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product214>	uctPropertyNumeric1>	"777"^^http://www.w3.org/2001/XMLSchema#integer>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product215>	01/rdf-schema#label>	"manner gatemen"
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product215>	-rdf-syntax-ns#type>	<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductType138>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product215>	lary/productFeature>	<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductFeature4305>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product215>	lary/productFeature>	<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductFeature1427>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product215>	uctPropertyTextual1>	"TEXTUAL PROP No1"^^http://www.w3.org/2001/XMLSchema#string>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product215>	uctPropertyNumeric1>	"831"^^http://www.w3.org/2001/XMLSchema#integer>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product216>	01/rdf-schema#label>	"manner gatemen"
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product216>	-rdf-syntax-ns#type>	<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductType138>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product216>	lary/productFeature>	<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductFeature4305>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product216>	lary/productFeature>	<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductFeature1444>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product216>	uctPropertyTextual1>	"TEXTUAL PROP No1"^^http://www.w3.org/2001/XMLSchema#string>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product216>	uctPropertyNumeric1>	"777"^^http://www.w3.org/2001/XMLSchema#integer>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product217>	01/rdf-schema#label>	"manner gatemen"
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product217>	-rdf-syntax-ns#type>	<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductType138>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product217>	lary/productFeature>	<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductFeature4305>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product217>	lary/productFeature>	<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductFeature1427>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product217>	uctPropertyTextual1>	"TEXTUAL PROP No1"^^http://www.w3.org/2001/XMLSchema#string>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product217>	uctPropertyNumeric1>	"831"^^http://www.w3.org/2001/XMLSchema#integer>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product218>	01/rdf-schema#label>	"manner gatemen"
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product218>	-rdf-syntax-ns#type>	<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductType138>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product218>	lary/productFeature>	<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductFeature4305>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product218>	lary/productFeature>	<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductFeature1444>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product218>	uctPropertyTextual1>	"TEXTUAL PROP No1"^^http://www.w3.org/2001/XMLSchema#string>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product218>	uctPropertyNumeric1>	"777"^^http://www.w3.org/2001/XMLSchema#integer>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product301>	01/rdf-schema#label>	"manner gatemen"
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product301>	-rdf-syntax-ns#type>	<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductType138>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product301>	lary/productFeature>	<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductFeature4305>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product301>	lary/productFeature>	<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductFeature1427>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product301>	uctPropertyTextual1>	"TEXTUAL PROP No1"^^http://www.w3.org/2001/XMLSchema#string>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product301>	uctPropertyNumeric1>	"831"^^http://www.w3.org/2001/XMLSchema#integer>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product302>	01/rdf-schema#label>	"manner gatemen"
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product302>	-rdf-syntax-ns#type>	<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductType138>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product302>	lary/productFeature>	<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductFeature4305>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product302>	lary/productFeature>	<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductFeature1444>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product302>	uctPropertyTextual1>	"TEXTUAL PROP No1"^^http://www.w3.org/2001/XMLSchema#string>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product302>	uctPropertyNumeric1>	"777"^^http://www.w3.org/2001/XMLSchema#integer>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product303>	01/rdf-schema#label>	"manner gatemen"
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product303>	-rdf-syntax-ns#type>	<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductType138>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product303>	lary/productFeature>	<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductFeature4305>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product303>	lary/productFeature>	<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductFeature1427>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product303>	uctPropertyTextual1>	"TEXTUAL PROP No1"^^http://www.w3.org/2001/XMLSchema#string>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product303>	uctPropertyNumeric1>	"831"^^http://www.w3.org/2001/XMLSchema#integer>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product304>	01/rdf-schema#label>	"manner gatemen"
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product304>	-rdf-syntax-ns#type>	<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductType138>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product304>	lary/productFeature>	<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductFeature4305>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product304>	lary/productFeature>	<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductFeature1444>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product304>	uctPropertyTextual1>	"TEXTUAL PROP No1"^^http://www.w3.org/2001/XMLSchema#string>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product304>	uctPropertyNumeric1>	"777"^^http://www.w3.org/2001/XMLSchema#integer>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product411>	lary/productFeature>	<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductFeature1444>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer18/Product837>	lary/productFeature>	<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductFeature1967>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer18/Product837>	uctPropertyNumeric1>	"832"^^http://www.w3.org/2001/XMLSchema#integer>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer18/Product837>	uctPropertyNumeric2>	"511"^^http://www.w3.org/2001/XMLSchema#integer>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer18/Product828>	01/rdf-schema#label>	"manner gatemen"
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromVendor1/Offer1>	-rdf-syntax-ns#type>	<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/Offer>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromVendor1/Offer1>	/vocabulary/product>	<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer18/Product828>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromVendor1/Offer1>	1/vocabulary/vendor>	<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromVendor1/Vendor1>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromVendor1/Offer1>	01/vocabulary/price>	"1234.53"^^http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/USD>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromVendor1/Offer1>	ocabulary/validFrom>	"2008-03-20T00:00:00"^^http://www.w3.org/2001/XMLSchema#dateTime>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromVendor1/Offer1>	/vocabulary/validTo>	"2008-11-21T00:00:00"^^http://www.w3.org/2001/XMLSchema#dateTime>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromVendor1/Offer1>	bulary/deliveryDays>	"1"^^http://www.w3.org/2001/XMLSchema#integer>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromVendor1/Offer1>	bulary/offerWebpage>	<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromVendor1/Offer1/>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromVendor1/Offer1>	ments/1.1/publisher>	<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromVendor1/Vendor1>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromVendor1/Offer1>	c/elements/1.1/date>	"2008-06-17"^^http://www.w3.org/2001/XMLSchema#date>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromVendor1/Vendor1>	-rdf-syntax-ns#type>	<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/Vendor>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromVendor1/Vendor1>	01/rdf-schema#label>	"coterie"
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromVendor1/Vendor1>	/rdf-schema#comment>	"naughtiness illuminating careerers computerese brakeless mesozoa lineate fulminant batholiths mohawks exhalation paraguayan alcaldes foulings primordially almightily placed flukey improvises pommelled sententious bookmark rashers truces mordanted shunter praxeological"
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromVendor1/Vendor1>	m/foaf/0.1/homepage>	<http://www.vendor1.com/>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromVendor1/Vendor1>	/vocabulary/country>	<http://downlode.org/rdf/iso-3166/countries#DE>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromVendor1/Vendor1>	ments/1.1/publisher>	<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromVendor1/Vendor1>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromVendor1/Vendor1>	c/elements/1.1/date>	"2008-05-31"^^http://www.w3.org/2001/XMLSchema#date>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromRatingSite1/Review1>	-rdf-syntax-ns#type>	<http://purl.org/stuff/rev#Review>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromRatingSite1/Review1>	ocabulary/reviewFor>	<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer18/Product828>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromRatingSite1/Review1>	/stuff/rev#reviewer>	<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromRatingSite1/Reviewer1>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromRatingSite1/Review1>	cabulary/reviewDate>	"2007-12-17T00:00:00"^^http://www.w3.org/2001/XMLSchema#dateTime>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromRatingSite1/Review1>	/elements/1.1/title>	"causable compassed decertified transubstantiation automatize boxful befouling tragedienne visiting alliums triangulates hounders compressively"
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromRatingSite1/Review1>	.org/stuff/rev#text>	"camphorates mammons armories scrapes hanger nucleation loftless refractoriness nonhabitual paperer aridness jingliest sportswriters gained efficiently marshals tomogram tambura pureeing doughty compromised antineutrinos revertible picadors oddballs hominies drek irradiations fearlessness cortin hussy museful pupfish bulletproofing geminates nacre subsistence presifted abhors whereat wanes mooing refused biodegradability oghamic stouter venosities recopying supplantation buxomly foregoers pathologist welches comicality manifestos untangles mongols sluices demits inventers entitled taxability fancifulness claimed gastroenterology geotropically glenwood alack autochthonous nabob preempts alternativeness xviii fruiter deist electorally cooker voce abbeys composts jugsful glowing basset worshipfully rebait bushwhacker implorer jackknifing paraguayan enrolls blazonry dendrological pavilioned cully epistles foreshorten couth usurps legibilities yammered somnolently scalded decoct practitioners infolds levered quartan calcined untransferable auditoria charred payment linoleums cowsheds preconceive undergrounder nosier sawhorse coerces assn turgidities venins obliged homogenize componential redemonstrates dewberries pearlers triplicates planked goddaughters largeness citator palpal thoroughly enactive swimmiest syrups chanceman ventrals phlegmy vower matureness fictionalize iliads gasman tumours afeared tuneably insurrectionaries enfolds cisterns adduction leafage maharajas prancingly mannerless vitrines radiocast insulates stilbestrol compartmented appearers undercurrents"@en
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromRatingSite1/Review1>	/vocabulary/rating1>	"1"^^http://www.w3.org/2001/XMLSchema#integer>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromRatingSite1/Review1>	/vocabulary/rating2>	"2"^^http://www.w3.org/2001/XMLSchema#integer>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromRatingSite1/Review1>	/vocabulary/rating3>	"3"^^http://www.w3.org/2001/XMLSchema#integer>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromRatingSite1/Review1>	/vocabulary/rating4>	"4"^^http://www.w3.org/2001/XMLSchema#integer>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromRatingSite1/Review1>	/vocabulary/rating5>	"5"^^http://www.w3.org/2001/XMLSchema#integer>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromRatingSite1/Review1>	ments/1.1/publisher>	<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromRatingSite1/RatingSite1>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromRatingSite1/Review1>	c/elements/1.1/date>	"2008-06-06"^^http://www.w3.org/2001/XMLSchema#date>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromRatingSite1/Reviewer1>	-rdf-syntax-ns#type>	<http://xmlns.com/foaf/0.1/Person>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromRatingSite1/Reviewer1>	s.com/foaf/0.1/name>	"Ruggiero-Delane"
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromRatingSite1/Reviewer1>	af/0.1/mbox_sha1sum>	"fb3efd92e3c7a8d775a895ba476e11a3e8f3fac"
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromRatingSite1/Reviewer1>	/vocabulary/country>	<http://downlode.org/rdf/iso-3166/countries#US>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromRatingSite1/Reviewer1>	ments/1.1/publisher>	<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromRatingSite1/RatingSite1>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromRatingSite1/Reviewer1>	c/elements/1.1/date>	"2008-09-05"^^http://www.w3.org/2001/XMLSchema#date>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromRatingSite1/Review1>	ocabulary/reviewFor>	<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer13/Product632>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromRatingSite1/Review8525>	/stuff/rev#reviewer>	<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromRatingSite1/Reviewer1>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromRatingSite1/Review8525>	/stuff/rev#reviewer>	<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromRatingSite1/Reviewer2>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromRatingSite1/Review8525>	/stuff/rev#reviewer>	<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromRatingSite1/Reviewer15>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromVendor1/Vendor1>	/vocabulary/country>	<http://downlode.org/rdf/iso-3166/countries#US>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromVendor1/Offer1>	/vocabulary/product>	<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer16/Product740>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromVendor1/Offer1250>	bulary/offerWebpage>	<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromVendor1/Offer1/>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/Customer1>	bulary/interestedIn>	<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromVendor1/Offer1250>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromVendor5/Offer9035>	-rdf-syntax-ns#type>	<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/Offer>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromVendor5/Offer9035>	/vocabulary/product>	<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer5/Product9035>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromVendor5/Offer9035>	1/vocabulary/vendor>	<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromVendor1/Vendor1>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromVendor5/Offer9035>	01/vocabulary/price>	"1234.53"^^http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/USD>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromVendor5/Offer9035>	ocabulary/validFrom>	"2008-03-20T00:00:00"^^http://www.w3.org/2001/XMLSchema#dateTime>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromVendor5/Offer9035>	/vocabulary/validTo>	"2008-11-21T00:00:00"^^http://www.w3.org/2001/XMLSchema#dateTime>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromVendor5/Offer9035>	bulary/deliveryDays>	"1"^^http://www.w3.org/2001/XMLSchema#integer>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromVendor5/Offer9035>	bulary/offerWebpage>	<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromVendor5/Offer9035/>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromVendor5/Offer9035>	ments/1.1/publisher>	<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromVendor1/Vendor1>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromVendor5/Offer9035>	c/elements/1.1/date>	"2008-06-17"^^http://www.w3.org/2001/XMLSchema#date>
+<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer5/Product9035>	01/rdf-schema#label>	"another product to be returned by query 12"

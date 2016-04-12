@@ -1,0 +1,1820 @@
+>>>>>>sparql_qm0_q12--VP__restest2
+SELECT tab2.vendorURI AS vendorURI , tab0.productURI AS productURI , tab1.productlabel AS productlabel , tab5.offerURL AS offerURL , tab7.deliveryDays AS deliveryDays , tab6.price AS price , tab4.vendorhomepage AS vendorhomepage , tab3.vendorname AS vendorname , tab8.validTo AS validTo 
+ FROM    (SELECT obj AS vendorURI 
+	 FROM 1_vocabulary_vendor$$3$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromVendor5/Offer9035>'
+	) tab2
+ JOIN    (SELECT sub AS vendorURI , obj AS vendorhomepage 
+	 FROM m_foaf_0_1_homepage$$5$$
+	
+	) tab4
+ ON(tab2.vendorURI=tab4.vendorURI)
+ JOIN    (SELECT sub AS vendorURI , obj AS vendorname 
+	 FROM 01_rdf_schema_label$$4$$
+	
+	) tab3
+ ON(tab4.vendorURI=tab3.vendorURI)
+ CROSS JOIN    (SELECT obj AS price 
+	 FROM 01_vocabulary_price$$7$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromVendor5/Offer9035>'
+	) tab6
+ CROSS JOIN    (SELECT obj AS deliveryDays 
+	 FROM bulary_deliveryDays$$8$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromVendor5/Offer9035>'
+	) tab7
+ CROSS JOIN    (SELECT obj AS validTo 
+	 FROM _vocabulary_validTo$$9$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromVendor5/Offer9035>'
+	) tab8
+ CROSS JOIN    (SELECT obj AS productURI 
+	 FROM _vocabulary_product$$1$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromVendor5/Offer9035>'
+	) tab0
+ JOIN    (SELECT sub AS productURI , obj AS productlabel 
+	 FROM 01_rdf_schema_label$$2$$
+	
+	) tab1
+ ON(tab0.productURI=tab1.productURI)
+ CROSS JOIN    (SELECT obj AS offerURL 
+	 FROM bulary_offerWebpage$$6$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromVendor5/Offer9035>'
+	) tab5
+
+
+++++++Tables Statistic
+01_rdf_schema_label$$2$$	0	VP	01_rdf_schema_label/
+	VP	01_rdf_schema_label	20
+------
+bulary_offerWebpage$$6$$	0	VP	bulary_offerWebpage/
+	VP	bulary_offerWebpage	3
+------
+01_rdf_schema_label$$4$$	0	VP	01_rdf_schema_label/
+	VP	01_rdf_schema_label	20
+------
+m_foaf_0_1_homepage$$5$$	0	VP	m_foaf_0_1_homepage/
+	VP	m_foaf_0_1_homepage	1
+------
+01_vocabulary_price$$7$$	0	VP	01_vocabulary_price/
+	VP	01_vocabulary_price	2
+------
+bulary_deliveryDays$$8$$	0	VP	bulary_deliveryDays/
+	VP	bulary_deliveryDays	2
+------
+_vocabulary_product$$1$$	0	VP	_vocabulary_product/
+	VP	_vocabulary_product	3
+------
+_vocabulary_validTo$$9$$	0	VP	_vocabulary_validTo/
+	VP	_vocabulary_validTo	2
+------
+1_vocabulary_vendor$$3$$	0	VP	1_vocabulary_vendor/
+	VP	1_vocabulary_vendor	2
+------
+>>>>>>sparql_qm0_q12--SO-OS-SS-VP__restest2
+SELECT tab0.productURI AS productURI , tab2.vendorURI AS vendorURI , tab1.productlabel AS productlabel , tab5.offerURL AS offerURL , tab7.deliveryDays AS deliveryDays , tab6.price AS price , tab4.vendorhomepage AS vendorhomepage , tab3.vendorname AS vendorname , tab8.validTo AS validTo 
+ FROM    (SELECT obj AS productURI 
+	 FROM _vocabulary_product$$1$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromVendor5/Offer9035>'
+	) tab0
+ JOIN    (SELECT sub AS productURI , obj AS productlabel 
+	 FROM 01_rdf_schema_label$$2$$
+	
+	) tab1
+ ON(tab0.productURI=tab1.productURI)
+ CROSS JOIN    (SELECT obj AS vendorURI 
+	 FROM 1_vocabulary_vendor$$3$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromVendor5/Offer9035>'
+	) tab2
+ JOIN    (SELECT sub AS vendorURI , obj AS vendorname 
+	 FROM 01_rdf_schema_label$$4$$
+	
+	) tab3
+ ON(tab2.vendorURI=tab3.vendorURI)
+ JOIN    (SELECT sub AS vendorURI , obj AS vendorhomepage 
+	 FROM m_foaf_0_1_homepage$$5$$
+	
+	) tab4
+ ON(tab3.vendorURI=tab4.vendorURI)
+ CROSS JOIN    (SELECT obj AS price 
+	 FROM 01_vocabulary_price$$7$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromVendor5/Offer9035>'
+	) tab6
+ CROSS JOIN    (SELECT obj AS deliveryDays 
+	 FROM bulary_deliveryDays$$8$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromVendor5/Offer9035>'
+	) tab7
+ CROSS JOIN    (SELECT obj AS validTo 
+	 FROM _vocabulary_validTo$$9$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromVendor5/Offer9035>'
+	) tab8
+ CROSS JOIN    (SELECT obj AS offerURL 
+	 FROM bulary_offerWebpage$$6$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromVendor5/Offer9035>'
+	) tab5
+
+
+++++++Tables Statistic
+01_rdf_schema_label$$2$$	1	SO	01_rdf_schema_label/_vocabulary_product
+	VP	01_rdf_schema_label	20
+	SO	01_rdf_schema_label_vocabulary_product	2	0.1
+------
+bulary_offerWebpage$$6$$	0	VP	bulary_offerWebpage/
+	VP	bulary_offerWebpage	3
+------
+01_rdf_schema_label$$4$$	1	SO	01_rdf_schema_label/1_vocabulary_vendor
+	VP	01_rdf_schema_label	20
+	SO	01_rdf_schema_label1_vocabulary_vendor	1	0.05
+	SS	01_rdf_schema_labelm_foaf_0_1_homepage	1	0.05
+------
+m_foaf_0_1_homepage$$5$$	0	VP	m_foaf_0_1_homepage/
+	VP	m_foaf_0_1_homepage	1
+	SO	m_foaf_0_1_homepage1_vocabulary_vendor	1	1.0
+	SS	m_foaf_0_1_homepage01_rdf_schema_label	1	1.0
+------
+01_vocabulary_price$$7$$	0	VP	01_vocabulary_price/
+	VP	01_vocabulary_price	2
+------
+bulary_deliveryDays$$8$$	0	VP	bulary_deliveryDays/
+	VP	bulary_deliveryDays	2
+------
+_vocabulary_product$$1$$	1	OS	_vocabulary_product/01_rdf_schema_label
+	VP	_vocabulary_product	3
+	OS	_vocabulary_product01_rdf_schema_label	2	0.6666667
+------
+_vocabulary_validTo$$9$$	0	VP	_vocabulary_validTo/
+	VP	_vocabulary_validTo	2
+------
+1_vocabulary_vendor$$3$$	0	VP	1_vocabulary_vendor/
+	VP	1_vocabulary_vendor	2
+	OS	1_vocabulary_vendor01_rdf_schema_label	2	1.0
+	OS	1_vocabulary_vendorm_foaf_0_1_homepage	2	1.0
+------
+>>>>>>sparql_qm0_q10--VP__restest2
+SELECT  DISTINCT tab12.offer AS offer , tab12.price AS price 
+ FROM    (SELECT tab0.offer AS offer , tab6.date AS date , tab4.deliveryDays AS deliveryDays , tab1.vendor AS vendor , tab5.price AS price 
+ FROM    (SELECT sub AS offer 
+	 FROM _vocabulary_product$$1$$
+	 
+	 WHERE obj = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer16/Product740>'
+	) tab0
+ JOIN    (SELECT sub AS offer , obj AS vendor 
+	 FROM 1_vocabulary_vendor$$2$$
+	
+	) tab1
+ ON(tab0.offer=tab1.offer)
+ JOIN    (SELECT sub AS vendor 
+	 FROM _vocabulary_country$$4$$
+	 
+	 WHERE obj = '<http://downlode.org/rdf/iso-3166/countries#US>'
+	) tab3
+ ON(tab1.vendor=tab3.vendor)
+ JOIN    (SELECT sub AS offer , obj AS deliveryDays 
+	 FROM bulary_deliveryDays$$5$$
+	
+	) tab4
+ ON(tab1.offer=tab4.offer)
+ JOIN    (SELECT sub AS offer , obj AS price 
+	 FROM 01_vocabulary_price$$6$$
+	
+	) tab5
+ ON(tab4.offer=tab5.offer)
+ JOIN    (SELECT sub AS offer , obj AS date 
+	 FROM _vocabulary_validTo$$7$$
+	
+	) tab6
+ ON(tab5.offer=tab6.offer)
+ JOIN    (SELECT sub AS offer , obj AS vendor 
+	 FROM ments_1_1_publisher$$3$$
+	
+	) tab2
+ ON(tab6.offer=tab2.offer AND tab3.vendor=tab2.vendor)
+ 
+ WHERE (tab4.deliveryDays <= 3) AND (tab6.date > '2008-06-20 00:00:00')
+  ORDER BY tab5.price
+ LIMIT 100000000
+) tab12
+
+ LIMIT 10
+
+++++++Tables Statistic
+1_vocabulary_vendor$$2$$	0	VP	1_vocabulary_vendor/
+	VP	1_vocabulary_vendor	2
+------
+_vocabulary_country$$4$$	0	VP	_vocabulary_country/
+	VP	_vocabulary_country	3
+------
+01_vocabulary_price$$6$$	0	VP	01_vocabulary_price/
+	VP	01_vocabulary_price	2
+------
+ments_1_1_publisher$$3$$	0	VP	ments_1_1_publisher/
+	VP	ments_1_1_publisher	6
+------
+_vocabulary_product$$1$$	0	VP	_vocabulary_product/
+	VP	_vocabulary_product	3
+------
+_vocabulary_validTo$$7$$	0	VP	_vocabulary_validTo/
+	VP	_vocabulary_validTo	2
+------
+bulary_deliveryDays$$5$$	0	VP	bulary_deliveryDays/
+	VP	bulary_deliveryDays	2
+------
+>>>>>>sparql_qm0_q10--SO-OS-SS-VP__restest2
+SELECT  DISTINCT tab12.offer AS offer , tab12.price AS price 
+ FROM    (SELECT tab1.offer AS offer , tab6.date AS date , tab4.deliveryDays AS deliveryDays , tab3.vendor AS vendor , tab5.price AS price 
+ FROM    (SELECT sub AS vendor 
+	 FROM _vocabulary_country$$4$$
+	 
+	 WHERE obj = '<http://downlode.org/rdf/iso-3166/countries#US>'
+	) tab3
+ JOIN    (SELECT sub AS offer , obj AS vendor 
+	 FROM 1_vocabulary_vendor$$2$$
+	
+	) tab1
+ ON(tab3.vendor=tab1.vendor)
+ JOIN    (SELECT sub AS offer 
+	 FROM _vocabulary_product$$1$$
+	 
+	 WHERE obj = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer16/Product740>'
+	) tab0
+ ON(tab1.offer=tab0.offer)
+ JOIN    (SELECT sub AS offer , obj AS vendor 
+	 FROM ments_1_1_publisher$$3$$
+	
+	) tab2
+ ON(tab0.offer=tab2.offer AND tab1.vendor=tab2.vendor)
+ JOIN    (SELECT sub AS offer , obj AS deliveryDays 
+	 FROM bulary_deliveryDays$$5$$
+	
+	) tab4
+ ON(tab2.offer=tab4.offer)
+ JOIN    (SELECT sub AS offer , obj AS price 
+	 FROM 01_vocabulary_price$$6$$
+	
+	) tab5
+ ON(tab4.offer=tab5.offer)
+ JOIN    (SELECT sub AS offer , obj AS date 
+	 FROM _vocabulary_validTo$$7$$
+	
+	) tab6
+ ON(tab5.offer=tab6.offer)
+ 
+ WHERE (tab4.deliveryDays <= 3) AND (tab6.date > '2008-06-20 00:00:00')
+  ORDER BY tab5.price
+ LIMIT 100000000
+) tab12
+
+ LIMIT 10
+
+++++++Tables Statistic
+1_vocabulary_vendor$$2$$	0	VP	1_vocabulary_vendor/
+	VP	1_vocabulary_vendor	2
+	SS	1_vocabulary_vendor_vocabulary_product	2	1.0
+	SS	1_vocabulary_vendorments_1_1_publisher	2	1.0
+	OS	1_vocabulary_vendor_vocabulary_country	2	1.0
+	SS	1_vocabulary_vendorbulary_deliveryDays	2	1.0
+	SS	1_vocabulary_vendor01_vocabulary_price	2	1.0
+	SS	1_vocabulary_vendor_vocabulary_validTo	2	1.0
+------
+_vocabulary_country$$4$$	1	SO	_vocabulary_country/1_vocabulary_vendor
+	VP	_vocabulary_country	3
+	SO	_vocabulary_country1_vocabulary_vendor	2	0.6666667
+	SO	_vocabulary_countryments_1_1_publisher	2	0.6666667
+------
+01_vocabulary_price$$6$$	0	VP	01_vocabulary_price/
+	VP	01_vocabulary_price	2
+	SS	01_vocabulary_price_vocabulary_product	2	1.0
+	SS	01_vocabulary_price1_vocabulary_vendor	2	1.0
+	SS	01_vocabulary_pricements_1_1_publisher	2	1.0
+	SS	01_vocabulary_pricebulary_deliveryDays	2	1.0
+	SS	01_vocabulary_price_vocabulary_validTo	2	1.0
+------
+ments_1_1_publisher$$3$$	1	SS	ments_1_1_publisher/_vocabulary_product
+	VP	ments_1_1_publisher	6
+	SS	ments_1_1_publisher_vocabulary_product	2	0.33333334
+	SS	ments_1_1_publisher1_vocabulary_vendor	2	0.33333334
+	OS	ments_1_1_publisher_vocabulary_country	3	0.5
+	SS	ments_1_1_publisherbulary_deliveryDays	2	0.33333334
+	SS	ments_1_1_publisher01_vocabulary_price	2	0.33333334
+	SS	ments_1_1_publisher_vocabulary_validTo	2	0.33333334
+------
+_vocabulary_product$$1$$	0	VP	_vocabulary_product/
+	VP	_vocabulary_product	3
+	SS	_vocabulary_product1_vocabulary_vendor	3	1.0
+	SS	_vocabulary_productments_1_1_publisher	3	1.0
+	SS	_vocabulary_productbulary_deliveryDays	3	1.0
+	SS	_vocabulary_product01_vocabulary_price	3	1.0
+	SS	_vocabulary_product_vocabulary_validTo	3	1.0
+------
+_vocabulary_validTo$$7$$	0	VP	_vocabulary_validTo/
+	VP	_vocabulary_validTo	2
+	SS	_vocabulary_validTo_vocabulary_product	2	1.0
+	SS	_vocabulary_validTo1_vocabulary_vendor	2	1.0
+	SS	_vocabulary_validToments_1_1_publisher	2	1.0
+	SS	_vocabulary_validTobulary_deliveryDays	2	1.0
+	SS	_vocabulary_validTo01_vocabulary_price	2	1.0
+------
+bulary_deliveryDays$$5$$	0	VP	bulary_deliveryDays/
+	VP	bulary_deliveryDays	2
+	SS	bulary_deliveryDays_vocabulary_product	2	1.0
+	SS	bulary_deliveryDays1_vocabulary_vendor	2	1.0
+	SS	bulary_deliveryDaysments_1_1_publisher	2	1.0
+	SS	bulary_deliveryDays01_vocabulary_price	2	1.0
+	SS	bulary_deliveryDays_vocabulary_validTo	2	1.0
+------
+>>>>>>sparql_qm0_q5--VP__restest2
+SELECT  DISTINCT tab12.productLabel AS productLabel , tab12.product AS product 
+ FROM    (SELECT tab1.prodFeature AS prodFeature , tab0.productLabel AS productLabel , tab2.product AS product , tab5.origProperty2 AS origProperty2 , tab6.simProperty2 AS simProperty2 , tab4.simProperty1 AS simProperty1 , tab3.origProperty1 AS origProperty1 
+ FROM    (SELECT obj AS origProperty2 
+	 FROM uctPropertyNumeric2$$6$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer18/Product837>'
+	) tab5
+ CROSS JOIN    (SELECT obj AS origProperty1 
+	 FROM uctPropertyNumeric1$$4$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer18/Product837>'
+	) tab3
+ CROSS JOIN    (SELECT obj AS prodFeature 
+	 FROM lary_productFeature$$2$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer18/Product837>'
+	) tab1
+ JOIN    (SELECT obj AS prodFeature , sub AS product 
+	 FROM lary_productFeature$$3$$
+	
+	) tab2
+ ON(tab1.prodFeature=tab2.prodFeature)
+ JOIN    (SELECT sub AS product , obj AS simProperty2 
+	 FROM uctPropertyNumeric2$$7$$
+	
+	) tab6
+ ON(tab2.product=tab6.product)
+ JOIN    (SELECT sub AS product , obj AS simProperty1 
+	 FROM uctPropertyNumeric1$$5$$
+	
+	) tab4
+ ON(tab6.product=tab4.product)
+ JOIN    (SELECT obj AS productLabel , sub AS product 
+	 FROM 01_rdf_schema_label$$1$$
+	
+	) tab0
+ ON(tab4.product=tab0.product)
+ 
+ WHERE ('<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer18/Product837>' != tab2.product) AND ((tab4.simProperty1 < (tab3.origProperty1+120)) AND (tab4.simProperty1 > (tab3.origProperty1-120))) AND ((tab6.simProperty2 < (tab5.origProperty2+170)) AND (tab6.simProperty2 > (tab5.origProperty2-170)))
+  ORDER BY productLabel
+ LIMIT 100000000
+) tab12
+
+ LIMIT 5
+
+++++++Tables Statistic
+uctPropertyNumeric1$$5$$	0	VP	uctPropertyNumeric1/
+	VP	uctPropertyNumeric1	15
+------
+01_rdf_schema_label$$1$$	0	VP	01_rdf_schema_label/
+	VP	01_rdf_schema_label	20
+------
+uctPropertyNumeric1$$4$$	0	VP	uctPropertyNumeric1/
+	VP	uctPropertyNumeric1	15
+------
+lary_productFeature$$3$$	0	VP	lary_productFeature/
+	VP	lary_productFeature	31
+------
+lary_productFeature$$2$$	0	VP	lary_productFeature/
+	VP	lary_productFeature	31
+------
+uctPropertyNumeric2$$7$$	0	VP	uctPropertyNumeric2/
+	VP	uctPropertyNumeric2	2
+------
+uctPropertyNumeric2$$6$$	0	VP	uctPropertyNumeric2/
+	VP	uctPropertyNumeric2	2
+------
+>>>>>>sparql_qm0_q5--SO-OS-SS-VP__restest2
+SELECT  DISTINCT tab12.productLabel AS productLabel , tab12.product AS product 
+ FROM    (SELECT tab1.prodFeature AS prodFeature , tab0.productLabel AS productLabel , tab2.product AS product , tab5.origProperty2 AS origProperty2 , tab6.simProperty2 AS simProperty2 , tab4.simProperty1 AS simProperty1 , tab3.origProperty1 AS origProperty1 
+ FROM    (SELECT obj AS origProperty2 
+	 FROM uctPropertyNumeric2$$6$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer18/Product837>'
+	) tab5
+ CROSS JOIN    (SELECT obj AS origProperty1 
+	 FROM uctPropertyNumeric1$$4$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer18/Product837>'
+	) tab3
+ CROSS JOIN    (SELECT obj AS prodFeature 
+	 FROM lary_productFeature$$2$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer18/Product837>'
+	) tab1
+ JOIN    (SELECT obj AS prodFeature , sub AS product 
+	 FROM lary_productFeature$$3$$
+	
+	) tab2
+ ON(tab1.prodFeature=tab2.prodFeature)
+ JOIN    (SELECT sub AS product , obj AS simProperty2 
+	 FROM uctPropertyNumeric2$$7$$
+	
+	) tab6
+ ON(tab2.product=tab6.product)
+ JOIN    (SELECT obj AS productLabel , sub AS product 
+	 FROM 01_rdf_schema_label$$1$$
+	
+	) tab0
+ ON(tab6.product=tab0.product)
+ JOIN    (SELECT sub AS product , obj AS simProperty1 
+	 FROM uctPropertyNumeric1$$5$$
+	
+	) tab4
+ ON(tab0.product=tab4.product)
+ 
+ WHERE ('<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer18/Product837>' != tab2.product) AND ((tab4.simProperty1 < (tab3.origProperty1+120)) AND (tab4.simProperty1 > (tab3.origProperty1-120))) AND ((tab6.simProperty2 < (tab5.origProperty2+170)) AND (tab6.simProperty2 > (tab5.origProperty2-170)))
+  ORDER BY productLabel
+ LIMIT 100000000
+) tab12
+
+ LIMIT 5
+
+++++++Tables Statistic
+uctPropertyNumeric1$$5$$	3	SS	uctPropertyNumeric1/uctPropertyNumeric2
+	VP	uctPropertyNumeric1	15
+	SS	uctPropertyNumeric101_rdf_schema_label	14	0.93333334
+	SS	uctPropertyNumeric1lary_productFeature	15	1.0
+	SS	uctPropertyNumeric1uctPropertyNumeric2	3	0.2
+------
+01_rdf_schema_label$$1$$	3	SS	01_rdf_schema_label/uctPropertyNumeric2
+	VP	01_rdf_schema_label	20
+	SS	01_rdf_schema_labellary_productFeature	14	0.7
+	SS	01_rdf_schema_labeluctPropertyNumeric1	14	0.7
+	SS	01_rdf_schema_labeluctPropertyNumeric2	2	0.1
+------
+uctPropertyNumeric1$$4$$	0	VP	uctPropertyNumeric1/
+	VP	uctPropertyNumeric1	15
+------
+lary_productFeature$$3$$	3	SS	lary_productFeature/uctPropertyNumeric2
+	VP	lary_productFeature	31
+	SS	lary_productFeature01_rdf_schema_label	30	0.9677419
+	SS	lary_productFeatureuctPropertyNumeric1	31	1.0
+	SS	lary_productFeatureuctPropertyNumeric2	6	0.19354838
+------
+lary_productFeature$$2$$	0	VP	lary_productFeature/
+	VP	lary_productFeature	31
+------
+uctPropertyNumeric2$$7$$	1	SS	uctPropertyNumeric2/01_rdf_schema_label
+	VP	uctPropertyNumeric2	2
+	SS	uctPropertyNumeric201_rdf_schema_label	1	0.5
+	SS	uctPropertyNumeric2lary_productFeature	2	1.0
+	SS	uctPropertyNumeric2uctPropertyNumeric1	2	1.0
+------
+uctPropertyNumeric2$$6$$	0	VP	uctPropertyNumeric2/
+	VP	uctPropertyNumeric2	2
+------
+>>>>>>sparql_qm0_q3--VP__restest2
+SELECT OPTIONAL0.product AS product , OPTIONAL0.label AS label 
+ FROM    (SELECT tab8.p1 AS p1 , tab8.product AS product , tab8.p3 AS p3 , tab11.testVar AS testVar , tab8.label AS label 
+ FROM    (SELECT tab3.p1 AS p1 , tab1.product AS product , tab4.p3 AS p3 , tab0.label AS label 
+ FROM    (SELECT sub AS product 
+	 FROM _rdf_syntax_ns_type$$2$$
+	 
+	 WHERE obj = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductType87>'
+	) tab1
+ JOIN    (SELECT sub AS product 
+	 FROM lary_productFeature$$3$$
+	 
+	 WHERE obj = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductFeature541>'
+	) tab2
+ ON(tab1.product=tab2.product)
+ JOIN    (SELECT sub AS product , obj AS p3 
+	 FROM uctPropertyNumeric3$$5$$
+	
+	) tab4
+ ON(tab2.product=tab4.product)
+ JOIN    (SELECT obj AS p1 , sub AS product 
+	 FROM uctPropertyNumeric1$$4$$
+	
+	) tab3
+ ON(tab4.product=tab3.product)
+ JOIN    (SELECT sub AS product , obj AS label 
+	 FROM 01_rdf_schema_label$$1$$
+	
+	) tab0
+ ON(tab3.product=tab0.product)
+
+) tab8
+ LEFT OUTER JOIN    (SELECT tab9.product AS product , tab10.testVar AS testVar 
+ FROM    (SELECT sub AS product 
+	 FROM lary_productFeature$$6$$
+	 
+	 WHERE obj = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductFeature553>'
+	) tab9
+ JOIN    (SELECT sub AS product , obj AS testVar 
+	 FROM 01_rdf_schema_label$$7$$
+	
+	) tab10
+ ON(tab9.product=tab10.product)
+
+) tab11
+ ON(tab8.product=tab11.product)
+ 
+ WHERE (tab8.p1 > 156) AND (tab8.p3 < 152) AND tab11.testVar is NULL
+  ORDER BY label
+ LIMIT 10
+) OPTIONAL0
+
+
+++++++Tables Statistic
+01_rdf_schema_label$$1$$	0	VP	01_rdf_schema_label/
+	VP	01_rdf_schema_label	20
+------
+uctPropertyNumeric1$$4$$	0	VP	uctPropertyNumeric1/
+	VP	uctPropertyNumeric1	15
+------
+uctPropertyNumeric3$$5$$	0	VP	uctPropertyNumeric3/
+	VP	uctPropertyNumeric3	1
+------
+_rdf_syntax_ns_type$$2$$	0	VP	_rdf_syntax_ns_type/
+	VP	_rdf_syntax_ns_type	21
+------
+01_rdf_schema_label$$7$$	0	VP	01_rdf_schema_label/
+	VP	01_rdf_schema_label	20
+------
+lary_productFeature$$3$$	0	VP	lary_productFeature/
+	VP	lary_productFeature	31
+------
+lary_productFeature$$6$$	0	VP	lary_productFeature/
+	VP	lary_productFeature	31
+------
+>>>>>>sparql_qm0_q3--SO-OS-SS-VP__restest2
+SELECT OPTIONAL0.product AS product , OPTIONAL0.label AS label 
+ FROM    (SELECT tab8.p1 AS p1 , tab8.product AS product , tab8.p3 AS p3 , tab11.testVar AS testVar , tab8.label AS label 
+ FROM    (SELECT tab3.p1 AS p1 , tab1.product AS product , tab4.p3 AS p3 , tab0.label AS label 
+ FROM    (SELECT sub AS product 
+	 FROM _rdf_syntax_ns_type$$2$$
+	 
+	 WHERE obj = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductType87>'
+	) tab1
+ JOIN    (SELECT sub AS product 
+	 FROM lary_productFeature$$3$$
+	 
+	 WHERE obj = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductFeature541>'
+	) tab2
+ ON(tab1.product=tab2.product)
+ JOIN    (SELECT sub AS product , obj AS p3 
+	 FROM uctPropertyNumeric3$$5$$
+	
+	) tab4
+ ON(tab2.product=tab4.product)
+ JOIN    (SELECT sub AS product , obj AS label 
+	 FROM 01_rdf_schema_label$$1$$
+	
+	) tab0
+ ON(tab4.product=tab0.product)
+ JOIN    (SELECT obj AS p1 , sub AS product 
+	 FROM uctPropertyNumeric1$$4$$
+	
+	) tab3
+ ON(tab0.product=tab3.product)
+
+) tab8
+ LEFT OUTER JOIN    (SELECT tab9.product AS product , tab10.testVar AS testVar 
+ FROM    (SELECT sub AS product 
+	 FROM lary_productFeature$$6$$
+	 
+	 WHERE obj = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductFeature553>'
+	) tab9
+ JOIN    (SELECT sub AS product , obj AS testVar 
+	 FROM 01_rdf_schema_label$$7$$
+	
+	) tab10
+ ON(tab9.product=tab10.product)
+
+) tab11
+ ON(tab8.product=tab11.product)
+ 
+ WHERE (tab8.p1 > 156) AND (tab8.p3 < 152) AND tab11.testVar is NULL
+  ORDER BY label
+ LIMIT 10
+) OPTIONAL0
+
+
+++++++Tables Statistic
+01_rdf_schema_label$$1$$	4	SS	01_rdf_schema_label/uctPropertyNumeric3
+	VP	01_rdf_schema_label	20
+	SS	01_rdf_schema_label_rdf_syntax_ns_type	15	0.75
+	SS	01_rdf_schema_labellary_productFeature	14	0.7
+	SS	01_rdf_schema_labeluctPropertyNumeric1	14	0.7
+	SS	01_rdf_schema_labeluctPropertyNumeric3	2	0.1
+------
+uctPropertyNumeric1$$4$$	4	SS	uctPropertyNumeric1/uctPropertyNumeric3
+	VP	uctPropertyNumeric1	15
+	SS	uctPropertyNumeric101_rdf_schema_label	14	0.93333334
+	SS	uctPropertyNumeric1_rdf_syntax_ns_type	14	0.93333334
+	SS	uctPropertyNumeric1lary_productFeature	15	1.0
+	SS	uctPropertyNumeric1uctPropertyNumeric3	2	0.13333334
+------
+uctPropertyNumeric3$$5$$	0	VP	uctPropertyNumeric3/
+	VP	uctPropertyNumeric3	1
+	SS	uctPropertyNumeric301_rdf_schema_label	1	1.0
+	SS	uctPropertyNumeric3_rdf_syntax_ns_type	1	1.0
+	SS	uctPropertyNumeric3lary_productFeature	1	1.0
+	SS	uctPropertyNumeric3uctPropertyNumeric1	1	1.0
+------
+_rdf_syntax_ns_type$$2$$	4	SS	_rdf_syntax_ns_type/uctPropertyNumeric3
+	VP	_rdf_syntax_ns_type	21
+	SS	_rdf_syntax_ns_type01_rdf_schema_label	17	0.8095238
+	SS	_rdf_syntax_ns_typelary_productFeature	16	0.7619048
+	SS	_rdf_syntax_ns_typeuctPropertyNumeric1	16	0.7619048
+	SS	_rdf_syntax_ns_typeuctPropertyNumeric3	4	0.1904762
+------
+01_rdf_schema_label$$7$$	1	SS	01_rdf_schema_label/lary_productFeature
+	VP	01_rdf_schema_label	20
+	SS	01_rdf_schema_labellary_productFeature	14	0.7
+------
+lary_productFeature$$3$$	4	SS	lary_productFeature/uctPropertyNumeric3
+	VP	lary_productFeature	31
+	SS	lary_productFeature01_rdf_schema_label	30	0.9677419
+	SS	lary_productFeature_rdf_syntax_ns_type	30	0.9677419
+	SS	lary_productFeatureuctPropertyNumeric1	31	1.0
+	SS	lary_productFeatureuctPropertyNumeric3	5	0.16129032
+------
+lary_productFeature$$6$$	1	SS	lary_productFeature/01_rdf_schema_label
+	VP	lary_productFeature	31
+	SS	lary_productFeature01_rdf_schema_label	30	0.9677419
+------
+>>>>>>sparql_qm0_q4--VP__restest2
+SELECT  DISTINCT tab10.product AS product , tab10.label AS label , tab10.propertyTextual AS propertyTextual 
+ FROM    (SELECT tab5.p1 AS p1 , tab1.product AS product , tab0.label AS label , tab4.propertyTextual AS propertyTextual 
+ FROM    (SELECT sub AS product 
+	 FROM _rdf_syntax_ns_type$$2$$
+	 
+	 WHERE obj = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductType138>'
+	) tab1
+ JOIN    (SELECT sub AS product 
+	 FROM lary_productFeature$$3$$
+	 
+	 WHERE obj = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductFeature4305>'
+	) tab2
+ ON(tab1.product=tab2.product)
+ JOIN    (SELECT sub AS product 
+	 FROM lary_productFeature$$4$$
+	 
+	 WHERE obj = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductFeature1427>'
+	) tab3
+ ON(tab2.product=tab3.product)
+ JOIN    (SELECT sub AS product , obj AS propertyTextual 
+	 FROM uctPropertyTextual1$$5$$
+	
+	) tab4
+ ON(tab3.product=tab4.product)
+ JOIN    (SELECT obj AS p1 , sub AS product 
+	 FROM uctPropertyNumeric1$$6$$
+	
+	) tab5
+ ON(tab4.product=tab5.product)
+ JOIN    (SELECT sub AS product , obj AS label 
+	 FROM 01_rdf_schema_label$$1$$
+	
+	) tab0
+ ON(tab5.product=tab0.product)
+ 
+ WHERE (tab5.p1 > 457)
+  ORDER BY label
+ LIMIT 100000000
+) tab10
+
+ LIMIT 10
+
+++++++Tables Statistic
+uctPropertyNumeric1$$6$$	0	VP	uctPropertyNumeric1/
+	VP	uctPropertyNumeric1	15
+------
+01_rdf_schema_label$$1$$	0	VP	01_rdf_schema_label/
+	VP	01_rdf_schema_label	20
+------
+_rdf_syntax_ns_type$$2$$	0	VP	_rdf_syntax_ns_type/
+	VP	_rdf_syntax_ns_type	21
+------
+uctPropertyTextual1$$5$$	0	VP	uctPropertyTextual1/
+	VP	uctPropertyTextual1	14
+------
+lary_productFeature$$4$$	0	VP	lary_productFeature/
+	VP	lary_productFeature	31
+------
+lary_productFeature$$3$$	0	VP	lary_productFeature/
+	VP	lary_productFeature	31
+------
+>>>>>>sparql_qm0_q4--SO-OS-SS-VP__restest2
+SELECT  DISTINCT tab10.product AS product , tab10.label AS label , tab10.propertyTextual AS propertyTextual 
+ FROM    (SELECT tab5.p1 AS p1 , tab2.product AS product , tab0.label AS label , tab4.propertyTextual AS propertyTextual 
+ FROM    (SELECT sub AS product 
+	 FROM lary_productFeature$$3$$
+	 
+	 WHERE obj = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductFeature4305>'
+	) tab2
+ JOIN    (SELECT sub AS product 
+	 FROM lary_productFeature$$4$$
+	 
+	 WHERE obj = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductFeature1427>'
+	) tab3
+ ON(tab2.product=tab3.product)
+ JOIN    (SELECT sub AS product 
+	 FROM _rdf_syntax_ns_type$$2$$
+	 
+	 WHERE obj = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductType138>'
+	) tab1
+ ON(tab3.product=tab1.product)
+ JOIN    (SELECT sub AS product , obj AS label 
+	 FROM 01_rdf_schema_label$$1$$
+	
+	) tab0
+ ON(tab1.product=tab0.product)
+ JOIN    (SELECT sub AS product , obj AS propertyTextual 
+	 FROM uctPropertyTextual1$$5$$
+	
+	) tab4
+ ON(tab0.product=tab4.product)
+ JOIN    (SELECT obj AS p1 , sub AS product 
+	 FROM uctPropertyNumeric1$$6$$
+	
+	) tab5
+ ON(tab4.product=tab5.product)
+ 
+ WHERE (tab5.p1 > 457)
+  ORDER BY label
+ LIMIT 100000000
+) tab10
+
+ LIMIT 10
+
+++++++Tables Statistic
+uctPropertyNumeric1$$6$$	1	SS	uctPropertyNumeric1/01_rdf_schema_label
+	VP	uctPropertyNumeric1	15
+	SS	uctPropertyNumeric101_rdf_schema_label	14	0.93333334
+	SS	uctPropertyNumeric1_rdf_syntax_ns_type	14	0.93333334
+	SS	uctPropertyNumeric1lary_productFeature	15	1.0
+	SS	uctPropertyNumeric1lary_productFeature	15	1.0
+	SS	uctPropertyNumeric1uctPropertyTextual1	14	0.93333334
+------
+01_rdf_schema_label$$1$$	2	SS	01_rdf_schema_label/lary_productFeature
+	VP	01_rdf_schema_label	20
+	SS	01_rdf_schema_label_rdf_syntax_ns_type	15	0.75
+	SS	01_rdf_schema_labellary_productFeature	14	0.7
+	SS	01_rdf_schema_labellary_productFeature	14	0.7
+	SS	01_rdf_schema_labeluctPropertyTextual1	14	0.7
+	SS	01_rdf_schema_labeluctPropertyNumeric1	14	0.7
+------
+_rdf_syntax_ns_type$$2$$	2	SS	_rdf_syntax_ns_type/lary_productFeature
+	VP	_rdf_syntax_ns_type	21
+	SS	_rdf_syntax_ns_type01_rdf_schema_label	17	0.8095238
+	SS	_rdf_syntax_ns_typelary_productFeature	16	0.7619048
+	SS	_rdf_syntax_ns_typelary_productFeature	16	0.7619048
+	SS	_rdf_syntax_ns_typeuctPropertyTextual1	16	0.7619048
+	SS	_rdf_syntax_ns_typeuctPropertyNumeric1	16	0.7619048
+------
+uctPropertyTextual1$$5$$	0	VP	uctPropertyTextual1/
+	VP	uctPropertyTextual1	14
+	SS	uctPropertyTextual101_rdf_schema_label	14	1.0
+	SS	uctPropertyTextual1_rdf_syntax_ns_type	14	1.0
+	SS	uctPropertyTextual1lary_productFeature	14	1.0
+	SS	uctPropertyTextual1lary_productFeature	14	1.0
+	SS	uctPropertyTextual1uctPropertyNumeric1	14	1.0
+------
+lary_productFeature$$4$$	3	SS	lary_productFeature/lary_productFeature
+	VP	lary_productFeature	31
+	SS	lary_productFeature01_rdf_schema_label	30	0.9677419
+	SS	lary_productFeature_rdf_syntax_ns_type	30	0.9677419
+	SS	lary_productFeaturelary_productFeature	0	0.0
+	SS	lary_productFeatureuctPropertyTextual1	30	0.9677419
+	SS	lary_productFeatureuctPropertyNumeric1	31	1.0
+------
+lary_productFeature$$3$$	3	SS	lary_productFeature/lary_productFeature
+	VP	lary_productFeature	31
+	SS	lary_productFeature01_rdf_schema_label	30	0.9677419
+	SS	lary_productFeature_rdf_syntax_ns_type	30	0.9677419
+	SS	lary_productFeaturelary_productFeature	0	0.0
+	SS	lary_productFeatureuctPropertyTextual1	30	0.9677419
+	SS	lary_productFeatureuctPropertyNumeric1	31	1.0
+------
+>>>>>>sparql_qm0_q8--VP__restest2
+SELECT OPTIONAL3.reviewerName AS reviewerName , OPTIONAL3.rating1 AS rating1 , OPTIONAL3.reviewDate AS reviewDate , OPTIONAL3.rating2 AS rating2 , OPTIONAL3.rating3 AS rating3 , OPTIONAL3.rating4 AS rating4 , OPTIONAL3.text AS text , OPTIONAL3.reviewer AS reviewer , OPTIONAL3.title AS title 
+ FROM    (SELECT OPTIONAL2.reviewerName AS reviewerName , OPTIONAL2.rating1 AS rating1 , OPTIONAL2.reviewDate AS reviewDate , OPTIONAL2.rating2 AS rating2 , OPTIONAL2.review AS review , OPTIONAL2.rating3 AS rating3 , tab14.rating4 AS rating4 , OPTIONAL2.text AS text , OPTIONAL2.reviewer AS reviewer , OPTIONAL2.title AS title 
+ FROM    (SELECT OPTIONAL1.reviewerName AS reviewerName , OPTIONAL1.rating1 AS rating1 , OPTIONAL1.reviewDate AS reviewDate , OPTIONAL1.rating2 AS rating2 , OPTIONAL1.review AS review , tab13.rating3 AS rating3 , OPTIONAL1.text AS text , OPTIONAL1.reviewer AS reviewer , OPTIONAL1.title AS title 
+ FROM    (SELECT OPTIONAL0.reviewerName AS reviewerName , OPTIONAL0.rating1 AS rating1 , OPTIONAL0.reviewDate AS reviewDate , tab12.rating2 AS rating2 , OPTIONAL0.review AS review , OPTIONAL0.text AS text , OPTIONAL0.reviewer AS reviewer , OPTIONAL0.title AS title 
+ FROM    (SELECT tab10.reviewerName AS reviewerName , tab11.rating1 AS rating1 , tab10.reviewDate AS reviewDate , tab10.review AS review , tab10.text AS text , tab10.reviewer AS reviewer , tab10.title AS title 
+ FROM    (SELECT tab5.reviewerName AS reviewerName , tab3.reviewDate AS reviewDate , tab0.review AS review , tab2.text AS text , tab4.reviewer AS reviewer , tab1.title AS title 
+ FROM    (SELECT sub AS review 
+	 FROM ocabulary_reviewFor$$1$$
+	 
+	 WHERE obj = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer13/Product632>'
+	) tab0
+ JOIN    (SELECT sub AS review , obj AS title 
+	 FROM _elements_1_1_title$$2$$
+	
+	) tab1
+ ON(tab0.review=tab1.review)
+ JOIN    (SELECT sub AS review , obj AS text 
+	 FROM _org_stuff_rev_text$$3$$
+	
+	) tab2
+ ON(tab1.review=tab2.review)
+ JOIN    (SELECT obj AS reviewDate , sub AS review 
+	 FROM cabulary_reviewDate$$4$$
+	
+	) tab3
+ ON(tab2.review=tab3.review)
+ JOIN    (SELECT sub AS review , obj AS reviewer 
+	 FROM _stuff_rev_reviewer$$5$$
+	
+	) tab4
+ ON(tab3.review=tab4.review)
+ JOIN    (SELECT obj AS reviewerName , sub AS reviewer 
+	 FROM s_com_foaf_0_1_name$$6$$
+	
+	) tab5
+ ON(tab4.reviewer=tab5.reviewer)
+
+) tab10
+ LEFT OUTER JOIN    (SELECT obj AS rating1 , sub AS review 
+	 FROM _vocabulary_rating1$$7$$
+	
+	) tab11
+ ON(tab10.review=tab11.review)
+
+) OPTIONAL0
+ LEFT OUTER JOIN    (SELECT obj AS rating2 , sub AS review 
+	 FROM _vocabulary_rating2$$8$$
+	
+	) tab12
+ ON(OPTIONAL0.review=tab12.review)
+
+) OPTIONAL1
+ LEFT OUTER JOIN    (SELECT sub AS review , obj AS rating3 
+	 FROM _vocabulary_rating3$$9$$
+	
+	) tab13
+ ON(OPTIONAL1.review=tab13.review)
+
+) OPTIONAL2
+ LEFT OUTER JOIN    (SELECT sub AS review , obj AS rating4 
+	 FROM _vocabulary_rating4$$10$$
+	
+	) tab14
+ ON(OPTIONAL2.review=tab14.review)
+ 
+ WHERE (OPTIONAL2.text LIKE '%@en')
+  ORDER BY reviewDate DESC
+ LIMIT 20
+) OPTIONAL3
+
+
+++++++Tables Statistic
+_elements_1_1_title$$2$$	0	VP	_elements_1_1_title/
+	VP	_elements_1_1_title	1
+------
+_vocabulary_rating1$$7$$	0	VP	_vocabulary_rating1/
+	VP	_vocabulary_rating1	1
+------
+_stuff_rev_reviewer$$5$$	0	VP	_stuff_rev_reviewer/
+	VP	_stuff_rev_reviewer	4
+------
+cabulary_reviewDate$$4$$	0	VP	cabulary_reviewDate/
+	VP	cabulary_reviewDate	1
+------
+_vocabulary_rating3$$9$$	0	VP	_vocabulary_rating3/
+	VP	_vocabulary_rating3	1
+------
+ocabulary_reviewFor$$1$$	0	VP	ocabulary_reviewFor/
+	VP	ocabulary_reviewFor	2
+------
+_org_stuff_rev_text$$3$$	0	VP	_org_stuff_rev_text/
+	VP	_org_stuff_rev_text	1
+------
+_vocabulary_rating2$$8$$	0	VP	_vocabulary_rating2/
+	VP	_vocabulary_rating2	1
+------
+s_com_foaf_0_1_name$$6$$	0	VP	s_com_foaf_0_1_name/
+	VP	s_com_foaf_0_1_name	1
+------
+_vocabulary_rating4$$10$$	0	VP	_vocabulary_rating4/
+	VP	_vocabulary_rating4	1
+------
+>>>>>>sparql_qm0_q8--SO-OS-SS-VP__restest2
+SELECT OPTIONAL3.reviewerName AS reviewerName , OPTIONAL3.rating1 AS rating1 , OPTIONAL3.reviewDate AS reviewDate , OPTIONAL3.rating2 AS rating2 , OPTIONAL3.rating3 AS rating3 , OPTIONAL3.rating4 AS rating4 , OPTIONAL3.text AS text , OPTIONAL3.reviewer AS reviewer , OPTIONAL3.title AS title 
+ FROM    (SELECT OPTIONAL2.reviewerName AS reviewerName , OPTIONAL2.rating1 AS rating1 , OPTIONAL2.reviewDate AS reviewDate , OPTIONAL2.rating2 AS rating2 , OPTIONAL2.review AS review , OPTIONAL2.rating3 AS rating3 , tab14.rating4 AS rating4 , OPTIONAL2.text AS text , OPTIONAL2.reviewer AS reviewer , OPTIONAL2.title AS title 
+ FROM    (SELECT OPTIONAL1.reviewerName AS reviewerName , OPTIONAL1.rating1 AS rating1 , OPTIONAL1.reviewDate AS reviewDate , OPTIONAL1.rating2 AS rating2 , OPTIONAL1.review AS review , tab13.rating3 AS rating3 , OPTIONAL1.text AS text , OPTIONAL1.reviewer AS reviewer , OPTIONAL1.title AS title 
+ FROM    (SELECT OPTIONAL0.reviewerName AS reviewerName , OPTIONAL0.rating1 AS rating1 , OPTIONAL0.reviewDate AS reviewDate , tab12.rating2 AS rating2 , OPTIONAL0.review AS review , OPTIONAL0.text AS text , OPTIONAL0.reviewer AS reviewer , OPTIONAL0.title AS title 
+ FROM    (SELECT tab10.reviewerName AS reviewerName , tab11.rating1 AS rating1 , tab10.reviewDate AS reviewDate , tab10.review AS review , tab10.text AS text , tab10.reviewer AS reviewer , tab10.title AS title 
+ FROM    (SELECT tab5.reviewerName AS reviewerName , tab3.reviewDate AS reviewDate , tab0.review AS review , tab2.text AS text , tab4.reviewer AS reviewer , tab1.title AS title 
+ FROM    (SELECT sub AS review 
+	 FROM ocabulary_reviewFor$$1$$
+	 
+	 WHERE obj = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer13/Product632>'
+	) tab0
+ JOIN    (SELECT sub AS review , obj AS title 
+	 FROM _elements_1_1_title$$2$$
+	
+	) tab1
+ ON(tab0.review=tab1.review)
+ JOIN    (SELECT sub AS review , obj AS text 
+	 FROM _org_stuff_rev_text$$3$$
+	
+	) tab2
+ ON(tab1.review=tab2.review)
+ JOIN    (SELECT obj AS reviewDate , sub AS review 
+	 FROM cabulary_reviewDate$$4$$
+	
+	) tab3
+ ON(tab2.review=tab3.review)
+ JOIN    (SELECT sub AS review , obj AS reviewer 
+	 FROM _stuff_rev_reviewer$$5$$
+	
+	) tab4
+ ON(tab3.review=tab4.review)
+ JOIN    (SELECT obj AS reviewerName , sub AS reviewer 
+	 FROM s_com_foaf_0_1_name$$6$$
+	
+	) tab5
+ ON(tab4.reviewer=tab5.reviewer)
+
+) tab10
+ LEFT OUTER JOIN    (SELECT obj AS rating1 , sub AS review 
+	 FROM _vocabulary_rating1$$7$$
+	
+	) tab11
+ ON(tab10.review=tab11.review)
+
+) OPTIONAL0
+ LEFT OUTER JOIN    (SELECT obj AS rating2 , sub AS review 
+	 FROM _vocabulary_rating2$$8$$
+	
+	) tab12
+ ON(OPTIONAL0.review=tab12.review)
+
+) OPTIONAL1
+ LEFT OUTER JOIN    (SELECT sub AS review , obj AS rating3 
+	 FROM _vocabulary_rating3$$9$$
+	
+	) tab13
+ ON(OPTIONAL1.review=tab13.review)
+
+) OPTIONAL2
+ LEFT OUTER JOIN    (SELECT sub AS review , obj AS rating4 
+	 FROM _vocabulary_rating4$$10$$
+	
+	) tab14
+ ON(OPTIONAL2.review=tab14.review)
+ 
+ WHERE (OPTIONAL2.text LIKE '%@en')
+  ORDER BY reviewDate DESC
+ LIMIT 20
+) OPTIONAL3
+
+
+++++++Tables Statistic
+_elements_1_1_title$$2$$	0	VP	_elements_1_1_title/
+	VP	_elements_1_1_title	1
+	SS	_elements_1_1_titleocabulary_reviewFor	1	1.0
+	SS	_elements_1_1_title_org_stuff_rev_text	1	1.0
+	SS	_elements_1_1_titlecabulary_reviewDate	1	1.0
+	SS	_elements_1_1_title_stuff_rev_reviewer	1	1.0
+------
+_vocabulary_rating1$$7$$	0	VP	_vocabulary_rating1/
+	VP	_vocabulary_rating1	1
+------
+_stuff_rev_reviewer$$5$$	1	SS	_stuff_rev_reviewer/ocabulary_reviewFor
+	VP	_stuff_rev_reviewer	4
+	SS	_stuff_rev_reviewerocabulary_reviewFor	1	0.25
+	SS	_stuff_rev_reviewer_elements_1_1_title	1	0.25
+	SS	_stuff_rev_reviewer_org_stuff_rev_text	1	0.25
+	SS	_stuff_rev_reviewercabulary_reviewDate	1	0.25
+	OS	_stuff_rev_reviewers_com_foaf_0_1_name	2	0.5
+------
+cabulary_reviewDate$$4$$	0	VP	cabulary_reviewDate/
+	VP	cabulary_reviewDate	1
+	SS	cabulary_reviewDateocabulary_reviewFor	1	1.0
+	SS	cabulary_reviewDate_elements_1_1_title	1	1.0
+	SS	cabulary_reviewDate_org_stuff_rev_text	1	1.0
+	SS	cabulary_reviewDate_stuff_rev_reviewer	1	1.0
+------
+_vocabulary_rating3$$9$$	0	VP	_vocabulary_rating3/
+	VP	_vocabulary_rating3	1
+------
+ocabulary_reviewFor$$1$$	0	VP	ocabulary_reviewFor/
+	VP	ocabulary_reviewFor	2
+	SS	ocabulary_reviewFor_elements_1_1_title	2	1.0
+	SS	ocabulary_reviewFor_org_stuff_rev_text	2	1.0
+	SS	ocabulary_reviewForcabulary_reviewDate	2	1.0
+	SS	ocabulary_reviewFor_stuff_rev_reviewer	2	1.0
+------
+_org_stuff_rev_text$$3$$	0	VP	_org_stuff_rev_text/
+	VP	_org_stuff_rev_text	1
+	SS	_org_stuff_rev_textocabulary_reviewFor	1	1.0
+	SS	_org_stuff_rev_text_elements_1_1_title	1	1.0
+	SS	_org_stuff_rev_textcabulary_reviewDate	1	1.0
+	SS	_org_stuff_rev_text_stuff_rev_reviewer	1	1.0
+------
+_vocabulary_rating2$$8$$	0	VP	_vocabulary_rating2/
+	VP	_vocabulary_rating2	1
+------
+s_com_foaf_0_1_name$$6$$	0	VP	s_com_foaf_0_1_name/
+	VP	s_com_foaf_0_1_name	1
+	SO	s_com_foaf_0_1_name_stuff_rev_reviewer	1	1.0
+------
+_vocabulary_rating4$$10$$	0	VP	_vocabulary_rating4/
+	VP	_vocabulary_rating4	1
+------
+>>>>>>sparql_qm0_q7--VP__restest2
+SELECT OPTIONAL3.offer AS offer , OPTIONAL3.productLabel AS productLabel , OPTIONAL3.rating1 AS rating1 , OPTIONAL3.rating2 AS rating2 , OPTIONAL3.price AS price , OPTIONAL3.vendor AS vendor , OPTIONAL3.review AS review , OPTIONAL3.reviewer AS reviewer , OPTIONAL3.revTitle AS revTitle , OPTIONAL3.revName AS revName , OPTIONAL3.vendorTitle AS vendorTitle 
+ FROM    (SELECT OPTIONAL0.offer AS offer , OPTIONAL0.date AS date , OPTIONAL0.productLabel AS productLabel , OPTIONAL2.rating1 AS rating1 , OPTIONAL2.rating2 AS rating2 , OPTIONAL0.price AS price , OPTIONAL0.vendor AS vendor , OPTIONAL2.review AS review , OPTIONAL2.reviewer AS reviewer , OPTIONAL2.revTitle AS revTitle , OPTIONAL2.revName AS revName , OPTIONAL0.vendorTitle AS vendorTitle 
+ FROM    (SELECT tab13.offer AS offer , tab13.date AS date , tab0.productLabel AS productLabel , tab13.price AS price , tab13.vendor AS vendor , tab13.vendorTitle AS vendorTitle 
+ FROM    (SELECT obj AS productLabel 
+	 FROM 01_rdf_schema_label$$1$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer18/Product828>'
+	) tab0
+ CROSS JOIN    (SELECT tab1.offer AS offer , tab7.date AS date , tab2.price AS price , tab3.vendor AS vendor , tab4.vendorTitle AS vendorTitle 
+ FROM    (SELECT sub AS offer 
+	 FROM _vocabulary_product$$2$$
+	 
+	 WHERE obj = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer18/Product828>'
+	) tab1
+ JOIN    (SELECT sub AS offer , obj AS price 
+	 FROM 01_vocabulary_price$$3$$
+	
+	) tab2
+ ON(tab1.offer=tab2.offer)
+ JOIN    (SELECT sub AS offer , obj AS vendor 
+	 FROM 1_vocabulary_vendor$$4$$
+	
+	) tab3
+ ON(tab2.offer=tab3.offer)
+ JOIN    (SELECT sub AS vendor 
+	 FROM _vocabulary_country$$6$$
+	 
+	 WHERE obj = '<http://downlode.org/rdf/iso-3166/countries#DE>'
+	) tab5
+ ON(tab3.vendor=tab5.vendor)
+ JOIN    (SELECT sub AS offer , obj AS date 
+	 FROM _vocabulary_validTo$$8$$
+	
+	) tab7
+ ON(tab3.offer=tab7.offer)
+ JOIN    (SELECT sub AS offer , obj AS vendor 
+	 FROM ments_1_1_publisher$$7$$
+	
+	) tab6
+ ON(tab7.offer=tab6.offer AND tab5.vendor=tab6.vendor)
+ JOIN    (SELECT sub AS vendor , obj AS vendorTitle 
+	 FROM 01_rdf_schema_label$$5$$
+	
+	) tab4
+ ON(tab6.vendor=tab4.vendor)
+
+) tab13
+ 
+ WHERE (tab13.date > '2008-06-20T00:00:00')
+) OPTIONAL0
+ CROSS JOIN    (SELECT OPTIONAL1.rating1 AS rating1 , tab22.rating2 AS rating2 , OPTIONAL1.review AS review , OPTIONAL1.reviewer AS reviewer , OPTIONAL1.revTitle AS revTitle , OPTIONAL1.revName AS revName 
+ FROM    (SELECT tab21.rating1 AS rating1 , tab20.review AS review , tab20.reviewer AS reviewer , tab20.revTitle AS revTitle , tab20.revName AS revName 
+ FROM    (SELECT tab14.review AS review , tab15.reviewer AS reviewer , tab17.revTitle AS revTitle , tab16.revName AS revName 
+ FROM    (SELECT sub AS review 
+	 FROM ocabulary_reviewFor$$9$$
+	 
+	 WHERE obj = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer18/Product828>'
+	) tab14
+ JOIN    (SELECT sub AS review , obj AS revTitle 
+	 FROM _elements_1_1_title$$12$$
+	
+	) tab17
+ ON(tab14.review=tab17.review)
+ JOIN    (SELECT sub AS review , obj AS reviewer 
+	 FROM _stuff_rev_reviewer$$10$$
+	
+	) tab15
+ ON(tab17.review=tab15.review)
+ JOIN    (SELECT sub AS reviewer , obj AS revName 
+	 FROM s_com_foaf_0_1_name$$11$$
+	
+	) tab16
+ ON(tab15.reviewer=tab16.reviewer)
+
+) tab20
+ LEFT OUTER JOIN    (SELECT obj AS rating1 , sub AS review 
+	 FROM _vocabulary_rating1$$13$$
+	
+	) tab21
+ ON(tab20.review=tab21.review)
+
+) OPTIONAL1
+ LEFT OUTER JOIN    (SELECT obj AS rating2 , sub AS review 
+	 FROM _vocabulary_rating2$$14$$
+	
+	) tab22
+ ON(OPTIONAL1.review=tab22.review)
+
+) OPTIONAL2
+
+) OPTIONAL3
+
+
+++++++Tables Statistic
+_stuff_rev_reviewer$$10$$	0	VP	_stuff_rev_reviewer/
+	VP	_stuff_rev_reviewer	4
+------
+01_vocabulary_price$$3$$	0	VP	01_vocabulary_price/
+	VP	01_vocabulary_price	2
+------
+ments_1_1_publisher$$7$$	0	VP	ments_1_1_publisher/
+	VP	ments_1_1_publisher	6
+------
+_vocabulary_product$$2$$	0	VP	_vocabulary_product/
+	VP	_vocabulary_product	3
+------
+_vocabulary_validTo$$8$$	0	VP	_vocabulary_validTo/
+	VP	_vocabulary_validTo	2
+------
+ocabulary_reviewFor$$9$$	0	VP	ocabulary_reviewFor/
+	VP	ocabulary_reviewFor	2
+------
+_elements_1_1_title$$12$$	0	VP	_elements_1_1_title/
+	VP	_elements_1_1_title	1
+------
+01_rdf_schema_label$$1$$	0	VP	01_rdf_schema_label/
+	VP	01_rdf_schema_label	20
+------
+01_rdf_schema_label$$5$$	0	VP	01_rdf_schema_label/
+	VP	01_rdf_schema_label	20
+------
+_vocabulary_country$$6$$	0	VP	_vocabulary_country/
+	VP	_vocabulary_country	3
+------
+_vocabulary_rating2$$14$$	0	VP	_vocabulary_rating2/
+	VP	_vocabulary_rating2	1
+------
+s_com_foaf_0_1_name$$11$$	0	VP	s_com_foaf_0_1_name/
+	VP	s_com_foaf_0_1_name	1
+------
+_vocabulary_rating1$$13$$	0	VP	_vocabulary_rating1/
+	VP	_vocabulary_rating1	1
+------
+1_vocabulary_vendor$$4$$	0	VP	1_vocabulary_vendor/
+	VP	1_vocabulary_vendor	2
+------
+>>>>>>sparql_qm0_q7--SO-OS-SS-VP__restest2
+SELECT OPTIONAL3.offer AS offer , OPTIONAL3.productLabel AS productLabel , OPTIONAL3.rating1 AS rating1 , OPTIONAL3.rating2 AS rating2 , OPTIONAL3.price AS price , OPTIONAL3.vendor AS vendor , OPTIONAL3.review AS review , OPTIONAL3.reviewer AS reviewer , OPTIONAL3.revTitle AS revTitle , OPTIONAL3.revName AS revName , OPTIONAL3.vendorTitle AS vendorTitle 
+ FROM    (SELECT OPTIONAL0.offer AS offer , OPTIONAL0.date AS date , OPTIONAL0.productLabel AS productLabel , OPTIONAL2.rating1 AS rating1 , OPTIONAL2.rating2 AS rating2 , OPTIONAL0.vendor AS vendor , OPTIONAL0.price AS price , OPTIONAL2.review AS review , OPTIONAL2.reviewer AS reviewer , OPTIONAL2.revName AS revName , OPTIONAL2.revTitle AS revTitle , OPTIONAL0.vendorTitle AS vendorTitle 
+ FROM    (SELECT tab13.offer AS offer , tab13.date AS date , tab0.productLabel AS productLabel , tab13.vendor AS vendor , tab13.price AS price , tab13.vendorTitle AS vendorTitle 
+ FROM    (SELECT obj AS productLabel 
+	 FROM 01_rdf_schema_label$$1$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer18/Product828>'
+	) tab0
+ CROSS JOIN    (SELECT tab3.offer AS offer , tab7.date AS date , tab5.vendor AS vendor , tab2.price AS price , tab4.vendorTitle AS vendorTitle 
+ FROM    (SELECT sub AS vendor 
+	 FROM _vocabulary_country$$6$$
+	 
+	 WHERE obj = '<http://downlode.org/rdf/iso-3166/countries#DE>'
+	) tab5
+ JOIN    (SELECT sub AS vendor , obj AS vendorTitle 
+	 FROM 01_rdf_schema_label$$5$$
+	
+	) tab4
+ ON(tab5.vendor=tab4.vendor)
+ JOIN    (SELECT sub AS offer , obj AS vendor 
+	 FROM 1_vocabulary_vendor$$4$$
+	
+	) tab3
+ ON(tab4.vendor=tab3.vendor)
+ JOIN    (SELECT sub AS offer 
+	 FROM _vocabulary_product$$2$$
+	 
+	 WHERE obj = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer18/Product828>'
+	) tab1
+ ON(tab3.offer=tab1.offer)
+ JOIN    (SELECT sub AS offer , obj AS price 
+	 FROM 01_vocabulary_price$$3$$
+	
+	) tab2
+ ON(tab1.offer=tab2.offer)
+ JOIN    (SELECT sub AS offer , obj AS vendor 
+	 FROM ments_1_1_publisher$$7$$
+	
+	) tab6
+ ON(tab2.offer=tab6.offer AND tab3.vendor=tab6.vendor)
+ JOIN    (SELECT sub AS offer , obj AS date 
+	 FROM _vocabulary_validTo$$8$$
+	
+	) tab7
+ ON(tab6.offer=tab7.offer)
+
+) tab13
+ 
+ WHERE (tab13.date > '2008-06-20T00:00:00')
+) OPTIONAL0
+ CROSS JOIN    (SELECT OPTIONAL1.rating1 AS rating1 , tab22.rating2 AS rating2 , OPTIONAL1.review AS review , OPTIONAL1.reviewer AS reviewer , OPTIONAL1.revName AS revName , OPTIONAL1.revTitle AS revTitle 
+ FROM    (SELECT tab21.rating1 AS rating1 , tab20.review AS review , tab20.reviewer AS reviewer , tab20.revName AS revName , tab20.revTitle AS revTitle 
+ FROM    (SELECT tab14.review AS review , tab15.reviewer AS reviewer , tab16.revName AS revName , tab17.revTitle AS revTitle 
+ FROM    (SELECT sub AS review 
+	 FROM ocabulary_reviewFor$$9$$
+	 
+	 WHERE obj = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer18/Product828>'
+	) tab14
+ JOIN    (SELECT sub AS review , obj AS reviewer 
+	 FROM _stuff_rev_reviewer$$10$$
+	
+	) tab15
+ ON(tab14.review=tab15.review)
+ JOIN    (SELECT sub AS reviewer , obj AS revName 
+	 FROM s_com_foaf_0_1_name$$11$$
+	
+	) tab16
+ ON(tab15.reviewer=tab16.reviewer)
+ JOIN    (SELECT sub AS review , obj AS revTitle 
+	 FROM _elements_1_1_title$$12$$
+	
+	) tab17
+ ON(tab15.review=tab17.review)
+
+) tab20
+ LEFT OUTER JOIN    (SELECT obj AS rating1 , sub AS review 
+	 FROM _vocabulary_rating1$$13$$
+	
+	) tab21
+ ON(tab20.review=tab21.review)
+
+) OPTIONAL1
+ LEFT OUTER JOIN    (SELECT obj AS rating2 , sub AS review 
+	 FROM _vocabulary_rating2$$14$$
+	
+	) tab22
+ ON(OPTIONAL1.review=tab22.review)
+
+) OPTIONAL2
+
+) OPTIONAL3
+
+
+++++++Tables Statistic
+_stuff_rev_reviewer$$10$$	1	SS	_stuff_rev_reviewer/ocabulary_reviewFor
+	VP	_stuff_rev_reviewer	4
+	SS	_stuff_rev_reviewerocabulary_reviewFor	1	0.25
+	OS	_stuff_rev_reviewers_com_foaf_0_1_name	2	0.5
+	SS	_stuff_rev_reviewer_elements_1_1_title	1	0.25
+------
+01_vocabulary_price$$3$$	0	VP	01_vocabulary_price/
+	VP	01_vocabulary_price	2
+	SS	01_vocabulary_price_vocabulary_product	2	1.0
+	SS	01_vocabulary_price1_vocabulary_vendor	2	1.0
+	SS	01_vocabulary_pricements_1_1_publisher	2	1.0
+	SS	01_vocabulary_price_vocabulary_validTo	2	1.0
+------
+ments_1_1_publisher$$7$$	1	SS	ments_1_1_publisher/_vocabulary_product
+	VP	ments_1_1_publisher	6
+	SS	ments_1_1_publisher_vocabulary_product	2	0.33333334
+	SS	ments_1_1_publisher01_vocabulary_price	2	0.33333334
+	SS	ments_1_1_publisher1_vocabulary_vendor	2	0.33333334
+	OS	ments_1_1_publisher01_rdf_schema_label	4	0.6666667
+	OS	ments_1_1_publisher_vocabulary_country	3	0.5
+	SS	ments_1_1_publisher_vocabulary_validTo	2	0.33333334
+------
+_vocabulary_product$$2$$	0	VP	_vocabulary_product/
+	VP	_vocabulary_product	3
+	SS	_vocabulary_product01_vocabulary_price	3	1.0
+	SS	_vocabulary_product1_vocabulary_vendor	3	1.0
+	SS	_vocabulary_productments_1_1_publisher	3	1.0
+	SS	_vocabulary_product_vocabulary_validTo	3	1.0
+------
+_vocabulary_validTo$$8$$	0	VP	_vocabulary_validTo/
+	VP	_vocabulary_validTo	2
+	SS	_vocabulary_validTo_vocabulary_product	2	1.0
+	SS	_vocabulary_validTo01_vocabulary_price	2	1.0
+	SS	_vocabulary_validTo1_vocabulary_vendor	2	1.0
+	SS	_vocabulary_validToments_1_1_publisher	2	1.0
+------
+ocabulary_reviewFor$$9$$	0	VP	ocabulary_reviewFor/
+	VP	ocabulary_reviewFor	2
+	SS	ocabulary_reviewFor_stuff_rev_reviewer	2	1.0
+	SS	ocabulary_reviewFor_elements_1_1_title	2	1.0
+------
+_elements_1_1_title$$12$$	0	VP	_elements_1_1_title/
+	VP	_elements_1_1_title	1
+	SS	_elements_1_1_titleocabulary_reviewFor	1	1.0
+	SS	_elements_1_1_title_stuff_rev_reviewer	1	1.0
+------
+01_rdf_schema_label$$1$$	0	VP	01_rdf_schema_label/
+	VP	01_rdf_schema_label	20
+------
+01_rdf_schema_label$$5$$	1	SO	01_rdf_schema_label/1_vocabulary_vendor
+	VP	01_rdf_schema_label	20
+	SO	01_rdf_schema_label1_vocabulary_vendor	1	0.05
+	SS	01_rdf_schema_label_vocabulary_country	1	0.05
+	SO	01_rdf_schema_labelments_1_1_publisher	2	0.1
+------
+_vocabulary_country$$6$$	1	SO	_vocabulary_country/1_vocabulary_vendor
+	VP	_vocabulary_country	3
+	SO	_vocabulary_country1_vocabulary_vendor	2	0.6666667
+	SS	_vocabulary_country01_rdf_schema_label	2	0.6666667
+	SO	_vocabulary_countryments_1_1_publisher	2	0.6666667
+------
+_vocabulary_rating2$$14$$	0	VP	_vocabulary_rating2/
+	VP	_vocabulary_rating2	1
+------
+s_com_foaf_0_1_name$$11$$	0	VP	s_com_foaf_0_1_name/
+	VP	s_com_foaf_0_1_name	1
+	SO	s_com_foaf_0_1_name_stuff_rev_reviewer	1	1.0
+------
+_vocabulary_rating1$$13$$	0	VP	_vocabulary_rating1/
+	VP	_vocabulary_rating1	1
+------
+1_vocabulary_vendor$$4$$	0	VP	1_vocabulary_vendor/
+	VP	1_vocabulary_vendor	2
+	SS	1_vocabulary_vendor_vocabulary_product	2	1.0
+	SS	1_vocabulary_vendor01_vocabulary_price	2	1.0
+	OS	1_vocabulary_vendor01_rdf_schema_label	2	1.0
+	OS	1_vocabulary_vendor_vocabulary_country	2	1.0
+	SS	1_vocabulary_vendorments_1_1_publisher	2	1.0
+	SS	1_vocabulary_vendor_vocabulary_validTo	2	1.0
+------
+>>>>>>sparql_qm0_q1--VP__restest2
+SELECT  DISTINCT tab8.product AS product , tab8.label AS label 
+ FROM    (SELECT tab1.product AS product , tab4.value1 AS value1 , tab0.label AS label 
+ FROM    (SELECT sub AS product 
+	 FROM _rdf_syntax_ns_type$$2$$
+	 
+	 WHERE obj = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductType66>'
+	) tab1
+ JOIN    (SELECT sub AS product 
+	 FROM lary_productFeature$$3$$
+	 
+	 WHERE obj = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductFeature3>'
+	) tab2
+ ON(tab1.product=tab2.product)
+ JOIN    (SELECT sub AS product 
+	 FROM lary_productFeature$$4$$
+	 
+	 WHERE obj = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductFeature1967>'
+	) tab3
+ ON(tab2.product=tab3.product)
+ JOIN    (SELECT sub AS product , obj AS value1 
+	 FROM uctPropertyNumeric1$$5$$
+	
+	) tab4
+ ON(tab3.product=tab4.product)
+ JOIN    (SELECT sub AS product , obj AS label 
+	 FROM 01_rdf_schema_label$$1$$
+	
+	) tab0
+ ON(tab4.product=tab0.product)
+ 
+ WHERE (tab4.value1 > 136)
+  ORDER BY label
+ LIMIT 100000000
+) tab8
+
+ LIMIT 10
+
+++++++Tables Statistic
+uctPropertyNumeric1$$5$$	0	VP	uctPropertyNumeric1/
+	VP	uctPropertyNumeric1	15
+------
+01_rdf_schema_label$$1$$	0	VP	01_rdf_schema_label/
+	VP	01_rdf_schema_label	20
+------
+_rdf_syntax_ns_type$$2$$	0	VP	_rdf_syntax_ns_type/
+	VP	_rdf_syntax_ns_type	21
+------
+lary_productFeature$$4$$	0	VP	lary_productFeature/
+	VP	lary_productFeature	31
+------
+lary_productFeature$$3$$	0	VP	lary_productFeature/
+	VP	lary_productFeature	31
+------
+>>>>>>sparql_qm0_q1--SO-OS-SS-VP__restest2
+SELECT  DISTINCT tab8.product AS product , tab8.label AS label 
+ FROM    (SELECT tab2.product AS product , tab4.value1 AS value1 , tab0.label AS label 
+ FROM    (SELECT sub AS product 
+	 FROM lary_productFeature$$3$$
+	 
+	 WHERE obj = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductFeature3>'
+	) tab2
+ JOIN    (SELECT sub AS product 
+	 FROM lary_productFeature$$4$$
+	 
+	 WHERE obj = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductFeature1967>'
+	) tab3
+ ON(tab2.product=tab3.product)
+ JOIN    (SELECT sub AS product 
+	 FROM _rdf_syntax_ns_type$$2$$
+	 
+	 WHERE obj = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/ProductType66>'
+	) tab1
+ ON(tab3.product=tab1.product)
+ JOIN    (SELECT sub AS product , obj AS label 
+	 FROM 01_rdf_schema_label$$1$$
+	
+	) tab0
+ ON(tab1.product=tab0.product)
+ JOIN    (SELECT sub AS product , obj AS value1 
+	 FROM uctPropertyNumeric1$$5$$
+	
+	) tab4
+ ON(tab0.product=tab4.product)
+ 
+ WHERE (tab4.value1 > 136)
+  ORDER BY label
+ LIMIT 100000000
+) tab8
+
+ LIMIT 10
+
+++++++Tables Statistic
+uctPropertyNumeric1$$5$$	1	SS	uctPropertyNumeric1/01_rdf_schema_label
+	VP	uctPropertyNumeric1	15
+	SS	uctPropertyNumeric101_rdf_schema_label	14	0.93333334
+	SS	uctPropertyNumeric1_rdf_syntax_ns_type	14	0.93333334
+	SS	uctPropertyNumeric1lary_productFeature	15	1.0
+	SS	uctPropertyNumeric1lary_productFeature	15	1.0
+------
+01_rdf_schema_label$$1$$	2	SS	01_rdf_schema_label/lary_productFeature
+	VP	01_rdf_schema_label	20
+	SS	01_rdf_schema_label_rdf_syntax_ns_type	15	0.75
+	SS	01_rdf_schema_labellary_productFeature	14	0.7
+	SS	01_rdf_schema_labellary_productFeature	14	0.7
+	SS	01_rdf_schema_labeluctPropertyNumeric1	14	0.7
+------
+_rdf_syntax_ns_type$$2$$	2	SS	_rdf_syntax_ns_type/lary_productFeature
+	VP	_rdf_syntax_ns_type	21
+	SS	_rdf_syntax_ns_type01_rdf_schema_label	17	0.8095238
+	SS	_rdf_syntax_ns_typelary_productFeature	16	0.7619048
+	SS	_rdf_syntax_ns_typelary_productFeature	16	0.7619048
+	SS	_rdf_syntax_ns_typeuctPropertyNumeric1	16	0.7619048
+------
+lary_productFeature$$4$$	3	SS	lary_productFeature/lary_productFeature
+	VP	lary_productFeature	31
+	SS	lary_productFeature01_rdf_schema_label	30	0.9677419
+	SS	lary_productFeature_rdf_syntax_ns_type	30	0.9677419
+	SS	lary_productFeaturelary_productFeature	0	0.0
+	SS	lary_productFeatureuctPropertyNumeric1	31	1.0
+------
+lary_productFeature$$3$$	3	SS	lary_productFeature/lary_productFeature
+	VP	lary_productFeature	31
+	SS	lary_productFeature01_rdf_schema_label	30	0.9677419
+	SS	lary_productFeature_rdf_syntax_ns_type	30	0.9677419
+	SS	lary_productFeaturelary_productFeature	0	0.0
+	SS	lary_productFeatureuctPropertyNumeric1	31	1.0
+------
+>>>>>>sparql_qm0_q2--VP__restest2
+SELECT OPTIONAL2.propertyNumeric2 AS propertyNumeric2 , OPTIONAL2.propertyNumeric1 AS propertyNumeric1 , OPTIONAL2.propertyNumeric4 AS propertyNumeric4 , OPTIONAL2.producer AS producer , OPTIONAL2.comment AS comment , OPTIONAL2.label AS label , OPTIONAL2.propertyTextual1 AS propertyTextual1 , OPTIONAL2.propertyTextual2 AS propertyTextual2 , OPTIONAL2.propertyTextual3 AS propertyTextual3 , OPTIONAL2.propertyTextual4 AS propertyTextual4 , OPTIONAL2.productFeature AS productFeature , OPTIONAL2.propertyTextual5 AS propertyTextual5 
+ FROM    (SELECT OPTIONAL1.f AS f , OPTIONAL1.label AS label , OPTIONAL1.productFeature AS productFeature , OPTIONAL1.p AS p , OPTIONAL1.propertyNumeric2 AS propertyNumeric2 , OPTIONAL1.propertyNumeric1 AS propertyNumeric1 , tab25.propertyNumeric4 AS propertyNumeric4 , OPTIONAL1.producer AS producer , OPTIONAL1.comment AS comment , OPTIONAL1.propertyTextual1 AS propertyTextual1 , OPTIONAL1.propertyTextual2 AS propertyTextual2 , OPTIONAL1.propertyTextual3 AS propertyTextual3 , OPTIONAL1.propertyTextual4 AS propertyTextual4 , OPTIONAL1.propertyTextual5 AS propertyTextual5 
+ FROM    (SELECT OPTIONAL0.f AS f , OPTIONAL0.label AS label , OPTIONAL0.productFeature AS productFeature , OPTIONAL0.p AS p , OPTIONAL0.propertyNumeric2 AS propertyNumeric2 , OPTIONAL0.propertyNumeric1 AS propertyNumeric1 , OPTIONAL0.producer AS producer , OPTIONAL0.comment AS comment , OPTIONAL0.propertyTextual1 AS propertyTextual1 , OPTIONAL0.propertyTextual2 AS propertyTextual2 , OPTIONAL0.propertyTextual3 AS propertyTextual3 , OPTIONAL0.propertyTextual4 AS propertyTextual4 , tab24.propertyTextual5 AS propertyTextual5 
+ FROM    (SELECT tab22.p AS p , tab22.propertyNumeric2 AS propertyNumeric2 , tab22.propertyNumeric1 AS propertyNumeric1 , tab22.f AS f , tab22.producer AS producer , tab22.comment AS comment , tab22.propertyTextual1 AS propertyTextual1 , tab22.label AS label , tab22.propertyTextual2 AS propertyTextual2 , tab22.propertyTextual3 AS propertyTextual3 , tab23.propertyTextual4 AS propertyTextual4 , tab22.productFeature AS productFeature 
+ FROM    (SELECT tab2.p AS p , tab11.propertyNumeric2 AS propertyNumeric2 , tab10.propertyNumeric1 AS propertyNumeric1 , tab5.f AS f , tab3.producer AS producer , tab1.comment AS comment , tab7.propertyTextual1 AS propertyTextual1 , tab0.label AS label , tab8.propertyTextual2 AS propertyTextual2 , tab9.propertyTextual3 AS propertyTextual3 , tab6.productFeature AS productFeature 
+ FROM    (SELECT obj AS p 
+	 FROM vocabulary_producer$$3$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product211>'
+	) tab2
+ JOIN    (SELECT obj AS p 
+	 FROM ments_1_1_publisher$$5$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product211>'
+	) tab4
+ ON(tab2.p=tab4.p)
+ JOIN    (SELECT sub AS p , obj AS producer 
+	 FROM 01_rdf_schema_label$$4$$
+	
+	) tab3
+ ON(tab4.p=tab3.p)
+ CROSS JOIN    (SELECT obj AS propertyTextual2 
+	 FROM uctPropertyTextual2$$9$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product211>'
+	) tab8
+ CROSS JOIN    (SELECT obj AS propertyTextual3 
+	 FROM uctPropertyTextual3$$10$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product211>'
+	) tab9
+ CROSS JOIN    (SELECT obj AS comment 
+	 FROM _rdf_schema_comment$$2$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product211>'
+	) tab1
+ CROSS JOIN    (SELECT obj AS propertyNumeric2 
+	 FROM uctPropertyNumeric2$$12$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product211>'
+	) tab11
+ CROSS JOIN    (SELECT obj AS propertyTextual1 
+	 FROM uctPropertyTextual1$$8$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product211>'
+	) tab7
+ CROSS JOIN    (SELECT obj AS propertyNumeric1 
+	 FROM uctPropertyNumeric1$$11$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product211>'
+	) tab10
+ CROSS JOIN    (SELECT obj AS label 
+	 FROM 01_rdf_schema_label$$1$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product211>'
+	) tab0
+ CROSS JOIN    (SELECT obj AS f 
+	 FROM lary_productFeature$$6$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product211>'
+	) tab5
+ JOIN    (SELECT sub AS f , obj AS productFeature 
+	 FROM 01_rdf_schema_label$$7$$
+	
+	) tab6
+ ON(tab5.f=tab6.f)
+
+) tab22
+ CROSS JOIN    (SELECT obj AS propertyTextual4 
+	 FROM uctPropertyTextual4$$13$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product211>'
+	) tab23
+
+) OPTIONAL0
+ CROSS JOIN    (SELECT obj AS propertyTextual5 
+	 FROM uctPropertyTextual5$$14$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product211>'
+	) tab24
+
+) OPTIONAL1
+ CROSS JOIN    (SELECT obj AS propertyNumeric4 
+	 FROM uctPropertyNumeric4$$15$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product211>'
+	) tab25
+
+) OPTIONAL2
+
+
+++++++Tables Statistic
+_rdf_schema_comment$$2$$	0	VP	_rdf_schema_comment/
+	VP	_rdf_schema_comment	2
+------
+uctPropertyTextual1$$8$$	0	VP	uctPropertyTextual1/
+	VP	uctPropertyTextual1	14
+------
+uctPropertyNumeric2$$12$$	0	VP	uctPropertyNumeric2/
+	VP	uctPropertyNumeric2	2
+------
+uctPropertyTextual5$$14$$	0	VP	uctPropertyTextual5/
+	VP	uctPropertyTextual5	1
+------
+vocabulary_producer$$3$$	0	VP	vocabulary_producer/
+	VP	vocabulary_producer	1
+------
+lary_productFeature$$6$$	0	VP	lary_productFeature/
+	VP	lary_productFeature	31
+------
+uctPropertyTextual2$$9$$	0	VP	uctPropertyTextual2/
+	VP	uctPropertyTextual2	1
+------
+01_rdf_schema_label$$1$$	0	VP	01_rdf_schema_label/
+	VP	01_rdf_schema_label	20
+------
+01_rdf_schema_label$$4$$	0	VP	01_rdf_schema_label/
+	VP	01_rdf_schema_label	20
+------
+uctPropertyTextual4$$13$$	0	VP	uctPropertyTextual4/
+	VP	uctPropertyTextual4	1
+------
+01_rdf_schema_label$$7$$	0	VP	01_rdf_schema_label/
+	VP	01_rdf_schema_label	20
+------
+uctPropertyTextual3$$10$$	0	VP	uctPropertyTextual3/
+	VP	uctPropertyTextual3	1
+------
+uctPropertyNumeric1$$11$$	0	VP	uctPropertyNumeric1/
+	VP	uctPropertyNumeric1	15
+------
+ments_1_1_publisher$$5$$	0	VP	ments_1_1_publisher/
+	VP	ments_1_1_publisher	6
+------
+uctPropertyNumeric4$$15$$	0	VP	uctPropertyNumeric4/
+	VP	uctPropertyNumeric4	1
+------
+>>>>>>sparql_qm0_q2--SO-OS-SS-VP__restest2
+SELECT OPTIONAL2.propertyNumeric2 AS propertyNumeric2 , OPTIONAL2.propertyNumeric1 AS propertyNumeric1 , OPTIONAL2.propertyNumeric4 AS propertyNumeric4 , OPTIONAL2.producer AS producer , OPTIONAL2.comment AS comment , OPTIONAL2.label AS label , OPTIONAL2.propertyTextual1 AS propertyTextual1 , OPTIONAL2.propertyTextual2 AS propertyTextual2 , OPTIONAL2.propertyTextual3 AS propertyTextual3 , OPTIONAL2.propertyTextual4 AS propertyTextual4 , OPTIONAL2.productFeature AS productFeature , OPTIONAL2.propertyTextual5 AS propertyTextual5 
+ FROM    (SELECT OPTIONAL1.f AS f , OPTIONAL1.label AS label , OPTIONAL1.productFeature AS productFeature , OPTIONAL1.p AS p , OPTIONAL1.propertyNumeric2 AS propertyNumeric2 , OPTIONAL1.propertyNumeric1 AS propertyNumeric1 , tab25.propertyNumeric4 AS propertyNumeric4 , OPTIONAL1.producer AS producer , OPTIONAL1.comment AS comment , OPTIONAL1.propertyTextual1 AS propertyTextual1 , OPTIONAL1.propertyTextual2 AS propertyTextual2 , OPTIONAL1.propertyTextual3 AS propertyTextual3 , OPTIONAL1.propertyTextual4 AS propertyTextual4 , OPTIONAL1.propertyTextual5 AS propertyTextual5 
+ FROM    (SELECT OPTIONAL0.f AS f , OPTIONAL0.label AS label , OPTIONAL0.productFeature AS productFeature , OPTIONAL0.p AS p , OPTIONAL0.propertyNumeric2 AS propertyNumeric2 , OPTIONAL0.propertyNumeric1 AS propertyNumeric1 , OPTIONAL0.producer AS producer , OPTIONAL0.comment AS comment , OPTIONAL0.propertyTextual1 AS propertyTextual1 , OPTIONAL0.propertyTextual2 AS propertyTextual2 , OPTIONAL0.propertyTextual3 AS propertyTextual3 , OPTIONAL0.propertyTextual4 AS propertyTextual4 , tab24.propertyTextual5 AS propertyTextual5 
+ FROM    (SELECT tab22.p AS p , tab22.propertyNumeric2 AS propertyNumeric2 , tab22.propertyNumeric1 AS propertyNumeric1 , tab22.f AS f , tab22.producer AS producer , tab22.comment AS comment , tab22.propertyTextual1 AS propertyTextual1 , tab22.label AS label , tab22.propertyTextual2 AS propertyTextual2 , tab22.propertyTextual3 AS propertyTextual3 , tab23.propertyTextual4 AS propertyTextual4 , tab22.productFeature AS productFeature 
+ FROM    (SELECT tab2.p AS p , tab11.propertyNumeric2 AS propertyNumeric2 , tab10.propertyNumeric1 AS propertyNumeric1 , tab5.f AS f , tab3.producer AS producer , tab1.comment AS comment , tab7.propertyTextual1 AS propertyTextual1 , tab0.label AS label , tab8.propertyTextual2 AS propertyTextual2 , tab9.propertyTextual3 AS propertyTextual3 , tab6.productFeature AS productFeature 
+ FROM    (SELECT obj AS p 
+	 FROM vocabulary_producer$$3$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product211>'
+	) tab2
+ JOIN    (SELECT obj AS p 
+	 FROM ments_1_1_publisher$$5$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product211>'
+	) tab4
+ ON(tab2.p=tab4.p)
+ JOIN    (SELECT sub AS p , obj AS producer 
+	 FROM 01_rdf_schema_label$$4$$
+	
+	) tab3
+ ON(tab4.p=tab3.p)
+ CROSS JOIN    (SELECT obj AS propertyTextual2 
+	 FROM uctPropertyTextual2$$9$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product211>'
+	) tab8
+ CROSS JOIN    (SELECT obj AS propertyTextual3 
+	 FROM uctPropertyTextual3$$10$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product211>'
+	) tab9
+ CROSS JOIN    (SELECT obj AS comment 
+	 FROM _rdf_schema_comment$$2$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product211>'
+	) tab1
+ CROSS JOIN    (SELECT obj AS propertyNumeric2 
+	 FROM uctPropertyNumeric2$$12$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product211>'
+	) tab11
+ CROSS JOIN    (SELECT obj AS f 
+	 FROM lary_productFeature$$6$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product211>'
+	) tab5
+ JOIN    (SELECT sub AS f , obj AS productFeature 
+	 FROM 01_rdf_schema_label$$7$$
+	
+	) tab6
+ ON(tab5.f=tab6.f)
+ CROSS JOIN    (SELECT obj AS propertyTextual1 
+	 FROM uctPropertyTextual1$$8$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product211>'
+	) tab7
+ CROSS JOIN    (SELECT obj AS propertyNumeric1 
+	 FROM uctPropertyNumeric1$$11$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product211>'
+	) tab10
+ CROSS JOIN    (SELECT obj AS label 
+	 FROM 01_rdf_schema_label$$1$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product211>'
+	) tab0
+
+) tab22
+ CROSS JOIN    (SELECT obj AS propertyTextual4 
+	 FROM uctPropertyTextual4$$13$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product211>'
+	) tab23
+
+) OPTIONAL0
+ CROSS JOIN    (SELECT obj AS propertyTextual5 
+	 FROM uctPropertyTextual5$$14$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product211>'
+	) tab24
+
+) OPTIONAL1
+ CROSS JOIN    (SELECT obj AS propertyNumeric4 
+	 FROM uctPropertyNumeric4$$15$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer6/Product211>'
+	) tab25
+
+) OPTIONAL2
+
+
+++++++Tables Statistic
+_rdf_schema_comment$$2$$	0	VP	_rdf_schema_comment/
+	VP	_rdf_schema_comment	2
+------
+uctPropertyTextual1$$8$$	0	VP	uctPropertyTextual1/
+	VP	uctPropertyTextual1	14
+------
+uctPropertyNumeric2$$12$$	0	VP	uctPropertyNumeric2/
+	VP	uctPropertyNumeric2	2
+------
+uctPropertyTextual5$$14$$	0	VP	uctPropertyTextual5/
+	VP	uctPropertyTextual5	1
+------
+vocabulary_producer$$3$$	0	VP	vocabulary_producer/
+	VP	vocabulary_producer	1
+	OS	vocabulary_producer01_rdf_schema_label	1	1.0
+------
+lary_productFeature$$6$$	1	OS	lary_productFeature/01_rdf_schema_label
+	VP	lary_productFeature	31
+	OS	lary_productFeature01_rdf_schema_label	3	0.09677419
+------
+uctPropertyTextual2$$9$$	0	VP	uctPropertyTextual2/
+	VP	uctPropertyTextual2	1
+------
+01_rdf_schema_label$$1$$	0	VP	01_rdf_schema_label/
+	VP	01_rdf_schema_label	20
+------
+01_rdf_schema_label$$4$$	1	SO	01_rdf_schema_label/vocabulary_producer
+	VP	01_rdf_schema_label	20
+	SO	01_rdf_schema_labelvocabulary_producer	1	0.05
+	SO	01_rdf_schema_labelments_1_1_publisher	2	0.1
+------
+uctPropertyTextual4$$13$$	0	VP	uctPropertyTextual4/
+	VP	uctPropertyTextual4	1
+------
+01_rdf_schema_label$$7$$	1	SO	01_rdf_schema_label/lary_productFeature
+	VP	01_rdf_schema_label	20
+	SO	01_rdf_schema_labellary_productFeature	2	0.1
+------
+uctPropertyTextual3$$10$$	0	VP	uctPropertyTextual3/
+	VP	uctPropertyTextual3	1
+------
+uctPropertyNumeric1$$11$$	0	VP	uctPropertyNumeric1/
+	VP	uctPropertyNumeric1	15
+------
+ments_1_1_publisher$$5$$	1	OS	ments_1_1_publisher/01_rdf_schema_label
+	VP	ments_1_1_publisher	6
+	OS	ments_1_1_publisher01_rdf_schema_label	4	0.6666667
+------
+uctPropertyNumeric4$$15$$	0	VP	uctPropertyNumeric4/
+	VP	uctPropertyNumeric4	1
+------
+>>>>>>sparql_qm0_q9--VP__restest2
+SELECT tab0.x AS x 
+ FROM    (SELECT obj AS x 
+	 FROM _stuff_rev_reviewer$$1$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromRatingSite1/Review8525>'
+	) tab0
+
+
+++++++Tables Statistic
+_stuff_rev_reviewer$$1$$	0	VP	_stuff_rev_reviewer/
+	VP	_stuff_rev_reviewer	4
+------
+>>>>>>sparql_qm0_q9--SO-OS-SS-VP__restest2
+SELECT tab0.x AS x 
+ FROM    (SELECT obj AS x 
+	 FROM _stuff_rev_reviewer$$1$$
+	 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromRatingSite1/Review8525>'
+	) tab0
+
+
+++++++Tables Statistic
+_stuff_rev_reviewer$$1$$	0	VP	_stuff_rev_reviewer/
+	VP	_stuff_rev_reviewer	4
+------
+>>>>>>sparql_qm0_q11--VP__restest2
+SELECT UNION1.isValueOf AS isValueOf , UNION1.property AS property , UNION1.hasValue AS hasValue 
+ FROM (SELECT null AS isValueOf , pred AS property , obj AS hasValue 
+	 FROM triples$$1$$ 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromVendor1/Offer1250>'
+	 UNION ALL SELECT sub AS isValueOf , pred AS property , null AS hasValue 
+	 FROM triples$$2$$ 
+	 WHERE obj = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromVendor1/Offer1250>'
+	) UNION1
+
+
+++++++Tables Statistic
+triples$$1$$	0	TT	triples
+	TT	triples	162
+------
+triples$$2$$	0	TT	triples
+	TT	triples	162
+------
+>>>>>>sparql_qm0_q11--SO-OS-SS-VP__restest2
+SELECT UNION1.isValueOf AS isValueOf , UNION1.property AS property , UNION1.hasValue AS hasValue 
+ FROM (SELECT null AS isValueOf , pred AS property , obj AS hasValue 
+	 FROM triples$$1$$ 
+	 WHERE sub = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromVendor1/Offer1250>'
+	 UNION ALL SELECT sub AS isValueOf , pred AS property , null AS hasValue 
+	 FROM triples$$2$$ 
+	 WHERE obj = '<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromVendor1/Offer1250>'
+	) UNION1
+
+
+++++++Tables Statistic
+triples$$1$$	0	TT	triples
+	TT	triples	162
+------
+triples$$2$$	0	TT	triples
+	TT	triples	162
+------

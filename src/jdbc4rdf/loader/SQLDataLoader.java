@@ -161,7 +161,7 @@ public abstract class SQLDataLoader extends SQLWrapper {
 					String extVPSql = getExtVpSQLcommand(pred1Table, pred2Table, relType);
 
 					// calculate size
-					extVpTableSize = runStaticSql(conn, extVPSql, true).size();
+					extVpTableSize = runStaticSql(conn, extVPSql, true).size() - 1;
 
 					Statement extVPStmt = conn.createStatement();
 					ResultSet extVPRes = extVPStmt.executeQuery(extVPSql);
@@ -175,7 +175,10 @@ public abstract class SQLDataLoader extends SQLWrapper {
 						String tableName =  relType + DELIM 
 									+ pred1Table + DELIM + pred2Table;
 						
-						//resultSetToTable(conn, extVPRes, tableName);
+						//Drop table
+						runStaticSql(conn, getDropSql(tableName), false);
+						
+						resultSetToTable(conn, extVPRes, tableName);
 						
 						stats.incSavedTables();
 
@@ -384,15 +387,15 @@ public abstract class SQLDataLoader extends SQLWrapper {
 			
 			// check if there is a precision value
 			int precision = rsmd.getPrecision(i);
-		    if ( precision != 0 ) {
-		    	createSql += "(" + precision + ")";
-		    }
+		    if (rsmd.getColumnTypeName(i).equalsIgnoreCase("VARCHAR"))
+				if ( precision != 0 ) {
+			    	createSql += "(" + precision + ")";
+			    }
 		}
 		
 		createSql += " )";
 		
 		// finally, create the table
-		
 		runStaticSql(conn, createSql, false);
 		
 		

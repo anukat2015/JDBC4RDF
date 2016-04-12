@@ -54,6 +54,8 @@ public class LoaderStatistics {
 			}
 		}
 		
+		writer.appendLine(statsFile, "\t" + statType.toUpperCase() + " Statistic \n");
+		writer.appendLine(statsFile, "---------------------------------------------------------\n");
 		
 		savedTables = 0;
 		unsavedNonEmptyTables = 0;

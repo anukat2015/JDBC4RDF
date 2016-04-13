@@ -20,7 +20,10 @@ public abstract class SQLExecutor extends SQLWrapper{
 		
 		this.compositeQueries = ((ExecutorConfig) confIn).getCompositeFile();
 	}
-	
+	/**
+	 * run the queries of the composite file.
+	 * Initiate database connection, run queries, close connection!
+	 */
 	public void runSql() {
 		
 		Connection conn = null;
@@ -42,40 +45,55 @@ public abstract class SQLExecutor extends SQLWrapper{
 		}
 	}
 
+	/**
+	 * Run the queries. Read the file and parse to a list of queries.
+	 * Write the results in a file.
+	 * @param Connection conn
+	 * @throws IOException
+	 * @throws SQLException
+	 */
 	private void queriesRun(Connection conn) throws IOException, SQLException {
 		
+		//parse file in List of queries
 		List<Query> queries = ParseFile.getQueries(compositeQueries);
 		ArrayList<String> result = new ArrayList<String>();
 		ResultWriter resWriter = new ResultWriter();
 		
 		//Result Header
-		String header = "Query Name; Result(s); Runtime";
+		String header = "Query Name; Result(s); Runtime (in ms)";
 		result.add(header);
 		
+		//Execute every query in list
 		for(int i = 0; i < queries.size(); i++){
 			Statement stmt = conn.createStatement();
 			
 			System.out.println("Executing query " + Integer.toString(i) + "...");
 			long startTime = System.currentTimeMillis();
+			// run query
 			ResultSet res = runQuery(stmt, queries.get(i).query);
 			long endTime = System.currentTimeMillis();
 			System.out.println("Done!");
 			
+			// calculate runtime
 			long executionTime = endTime - startTime;
 			int results = 0;
 			
+			// count results
 			if(!(res == null)){
 				while(res.next()) {
 				    results++;
 				}
 			}
 			
+			//adding line of results to ArrayList which will be wrote in to a file
 			String footer = queries.get(i).queryName + "; " + Integer.toString(results) + "; " + Long.toString(executionTime);
 			result.add(footer);
 			
 		}
 		
+		//create new File
 		resWriter.newFile();
+		// write results
 		resWriter.writeFile(result);
 		
 	}

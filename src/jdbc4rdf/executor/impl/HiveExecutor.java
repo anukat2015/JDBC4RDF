@@ -5,6 +5,11 @@ import java.sql.Connection;
 import jdbc4rdf.core.config.Config;
 import jdbc4rdf.executor.SQLExecutor;
 
+/**
+ * 
+ * Some hive specific code could be implemented here.
+ *
+ */
 public class HiveExecutor extends SQLExecutor{
 
 	public HiveExecutor(Config confIn) {

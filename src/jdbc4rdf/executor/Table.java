@@ -5,33 +5,16 @@ public class Table {
 	protected String tableName = "";
 	protected String tableType = "";
 	
-	
+	/**
+	 * 
+	 * Constructor to generate a table. Consist only of Name and Type
+	 * @param tableName String
+	 * @param tableType String
+	 */
 	public Table(String tableName, String tableType) {
 		super();
 		this.tableName = tableName;
 		this.tableType = tableType;
-	}
-
-
-	public String getTableName() {
-		return tableName;
-	}
-
-
-	public void setTableName(String tableName) {
-		this.tableName = tableName;
-	}
-
-
-	public String getTableType() {
-		return tableType;
-	}
-
-
-	public void setTableType(String tableType) {
-		this.tableType = tableType;
-	}
-	
-	
+	}	
 
 }

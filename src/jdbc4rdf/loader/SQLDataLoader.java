@@ -137,7 +137,9 @@ public abstract class SQLDataLoader extends SQLWrapper {
 		String pSql = getPredicatesSql();
 		Statement predStmt = conn.createStatement();
 		ResultSet plistRs = predStmt.executeQuery(pSql);
-
+		
+		System.out.println("Creating ExtVP tables...");
+		
 		// for each predicate
 		while (plistRs.next()) {
 			// String pred1 = Helper.getPartName(plistRs.getString(1));
@@ -204,6 +206,8 @@ public abstract class SQLDataLoader extends SQLWrapper {
 
 			close (relPredStmt);
 		}
+		
+		System.out.println("Done!");
 
 		close(plistRs);
 
@@ -238,6 +242,8 @@ public abstract class SQLDataLoader extends SQLWrapper {
 		// prepare filter SQL statements
 		String filterSql = getPredicateFilterSql();
 		PreparedStatement filterStmt = prepareStatement(conn, filterSql);
+		
+		System.out.println("Creating VP tables...");
 		
 		// for each predicate
 		while (plistRs.next()) {
@@ -320,6 +326,7 @@ public abstract class SQLDataLoader extends SQLWrapper {
 		
 		close(plistRs);
 		
+		System.out.println("Done!");
 		
 		// return amount of predicates / vp tables
 		
@@ -338,6 +345,8 @@ public abstract class SQLDataLoader extends SQLWrapper {
 	private int createTripleTable(Connection conn) throws SQLException {
 		
 		int rows = -1;
+		
+		System.out.println("Creating triple table...");
 		
 		// remove table first
 		String sql = getDropSql(TT_NAME);
@@ -358,6 +367,8 @@ public abstract class SQLDataLoader extends SQLWrapper {
 		sql = getRowCountSql(TT_NAME);
 		ArrayList<String[]> res = runStaticSql(conn, sql);
 		rows = Integer.parseInt(res.get(1)[0]);
+		
+		System.out.println("Done!");
 		
 		return rows;
 	}

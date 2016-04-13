@@ -55,9 +55,11 @@ public abstract class SQLExecutor extends SQLWrapper{
 		for(int i = 0; i < queries.size(); i++){
 			Statement stmt = conn.createStatement();
 			
+			System.out.println("Executing query " + Integer.toString(i) + "...");
 			long startTime = System.currentTimeMillis();
 			ResultSet res = runQuery(stmt, queries.get(i).query);
 			long endTime = System.currentTimeMillis();
+			System.out.println("Done!");
 			
 			long executionTime = endTime - startTime;
 			int results = 0;

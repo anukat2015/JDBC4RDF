@@ -56,7 +56,6 @@ public abstract class SQLDataLoader extends SQLWrapper {
 	public SQLDataLoader(Config loaderConf) {
 		super(loaderConf);
 		
-		
 		// treat it as a loaderConfig instance in order to get
 		// all arguments
 		
@@ -68,20 +67,41 @@ public abstract class SQLDataLoader extends SQLWrapper {
 	
 	
 	
+	private void printTime(long nanoSeconds) {
+		System.out.println("Time elapsed (h:m:s:ms)");
+		// 1*10^6
+		System.out.println("\t" + (nanoSeconds / 1000000.0) + " milliseconds, or:");
+		
+		long milliSec = (nanoSeconds / 1000000) % 1000;
+		// sec = nano / 1*10^9
+		// or sec = msec / 1000
+		long s = nanoSeconds / 1000000000;
+		long seconds = (s % 60);  
+		long minutes = (s % 3600) / 60;
+		long hours = s / 3600;
+		
+		String output = String.format("%02d:%02d:%02d:%02d", hours, minutes, seconds, milliSec);
+		System.out.println("\t" + output + "\n");
+		
+	}
+	
+	
 	@Override
 	protected void loadData(Connection conn) throws Exception {
-		/*
-		 * Create database if not exists
-		 */
-		
-		initDb(conn);
 		
 		/*
 		 * Triple Table
 		 */
 		
+		long start = System.nanoTime();
+		
 		// also work with prepareStatement method to improve performance
 		int tripleCount = createTripleTable(conn);
+		
+		long elapsed = System.nanoTime() - start;
+		printTime(elapsed);
+		
+		
 		
 		stats.setDatasetSize(tripleCount);
 		
@@ -89,9 +109,15 @@ public abstract class SQLDataLoader extends SQLWrapper {
 		 * Vertical Partitioning
 		 */
 		
+		start = System.nanoTime();
+		
 		// if dataset_type=vp
 		int predCount = createVP(conn);
 		// else: retrieve the predicate count differently
+		
+		elapsed = System.nanoTime() - start;
+		printTime(elapsed);
+		
 		
 		stats.setPredicateCount(predCount);
 		
@@ -103,11 +129,22 @@ public abstract class SQLDataLoader extends SQLWrapper {
 		
 		if (!SHORTEN_TABLENAMES) {
 			// if dt = so
+			start = System.nanoTime();
 			createExtVP(conn, RELTYPE_SO);
+			elapsed = System.nanoTime() - start;
+			printTime(elapsed);
+			
 			// if dt = os
+			start = System.nanoTime();
 			createExtVP(conn, RELTYPE_OS);
+			elapsed = System.nanoTime() - start;
+			printTime(elapsed);
+			
 			// if dt = ss
+			start = System.nanoTime();
 			createExtVP(conn, RELTYPE_SS);
+			elapsed = System.nanoTime() - start;
+			printTime(elapsed);
 		}
 		// createExtVP
 		// newFile
@@ -116,7 +153,7 @@ public abstract class SQLDataLoader extends SQLWrapper {
 	}
 
 
-	
+	/*
 	private void initDb(Connection conn) throws Exception {
 		final String dbName = this.conf.getDbName();
 		
@@ -126,6 +163,7 @@ public abstract class SQLDataLoader extends SQLWrapper {
 			runStaticSql(conn, sql, false);
 		}
 	}
+	*/
 
 	
 	
@@ -138,7 +176,7 @@ public abstract class SQLDataLoader extends SQLWrapper {
 		Statement predStmt = conn.createStatement();
 		ResultSet plistRs = predStmt.executeQuery(pSql);
 		
-		System.out.println("Creating ExtVP tables...");
+		System.out.println("Creating ExtVP (" + relType + ") tables...");
 		
 		// for each predicate
 		while (plistRs.next()) {

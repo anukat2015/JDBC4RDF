@@ -98,6 +98,8 @@
 		<commons.version>1.0.4</commons.version>
 
 		<log4j.version>1.2.16</log4j.version>
+		
+		<hadoop.version>2.6.0-cdh5.5.0</hadoop.version>
 	</properties>
 
 
@@ -122,6 +124,10 @@
 				<enabled>true</enabled>
 			</snapshots>
 		</repository>
+		<repository>
+    		<id>cloudera-repo-releases</id>
+    		<url>https://repository.cloudera.com/artifactory/repo/</url>
+  		</repository>
 	</repositories>
 
 
@@ -187,8 +193,19 @@
 			<artifactId>commons-logging</artifactId>
 			<version>${commons.version}</version>
 		</dependency>
-
-
+		
+		<dependency>
+        	<groupId>org.apache.hadoop</groupId>
+        	<artifactId>hadoop-hdfs</artifactId>
+        	<version>${hadoop.version}</version>
+    	</dependency>
+    	
+    	<dependency>
+        	<groupId>org.apache.hadoop</groupId>
+        	<artifactId>hadoop-common</artifactId>
+        	<version>${hadoop.version}</version>
+    	</dependency>
+	
 	</dependencies>
 
 

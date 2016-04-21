@@ -75,6 +75,9 @@ public abstract class TypeDetector {
 				typeStr += " (" + MAX_STR_SIZE + ")";
 			}
 		}
+		if((typeIdx == Types.INTEGER && stringSupported)){
+			return "INT";
+		}
 
 		return typeStr;
 	}

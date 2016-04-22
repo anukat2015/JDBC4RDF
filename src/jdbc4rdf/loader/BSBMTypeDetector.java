@@ -66,7 +66,8 @@ public class BSBMTypeDetector extends TypeDetector {
 		 * http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/rating1, 
 		 * http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/rating2, 
 		 * http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/rating3, 
-		 * http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/rating4"
+		 * http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/rating4'
+		 * http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/rating5"
 		 */
 		this.INTEGER_TYPES = new ArrayList<String>();
 		this.INTEGER_TYPES.add("http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/deliveryDays");
@@ -76,8 +77,8 @@ public class BSBMTypeDetector extends TypeDetector {
 			this.INTEGER_TYPES.add("http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/productPropertyNumeric" + i);
 			this.INTEGER_TYPES.add("<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/productPropertyNumeric" + i +">");
 		}
-		// add ratings from 1 - 4
-		for (int i = 1; i < 5; i++) {
+		// add ratings from 1 - 5
+		for (int i = 1; i < 6; i++) {
 			this.INTEGER_TYPES.add("http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/rating" + i);
 			this.INTEGER_TYPES.add("<http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/rating" + i + ">");
 		}

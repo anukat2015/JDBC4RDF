@@ -148,5 +148,12 @@ public class HiveDataLoader extends SQLDataLoader {
 
 
 
+	@Override
+	protected boolean isPrepareSupported() {
+		return false;
+	}
+
+
+
 	
 }

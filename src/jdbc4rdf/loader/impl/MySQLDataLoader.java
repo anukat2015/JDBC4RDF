@@ -130,6 +130,11 @@ public class MySQLDataLoader extends HiveDataLoader {
 		return "_";
 	}
 	
+	@Override
+	protected boolean isPrepareSupported() {
+		return true;
+	}
+	
 	
 
 }

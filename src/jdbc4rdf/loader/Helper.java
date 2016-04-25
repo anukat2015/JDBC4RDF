@@ -1,6 +1,5 @@
 package jdbc4rdf.loader;
 
-import jdbc4rdf.core.config.DBDRIVER;
 
 
 public class Helper {

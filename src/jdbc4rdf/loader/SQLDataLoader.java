@@ -203,22 +203,35 @@ public abstract class SQLDataLoader extends SQLWrapper {
 					// calculate size
 					extVpTableSize = runStaticSql(conn, extVPSql, true).size() - 1;
 
-					Statement extVPStmt = conn.createStatement();
-					ResultSet extVPRes = extVPStmt.executeQuery(extVPSql);
+					
 
 
 					if (extVpTableSize < (stats.getVPTableSize(pred1) * this.scaleUB) ) {
-
+						
 						// - omit directory check -
 
 						// save the extVP table
 						String tableName =  relType + DELIM 
-									+ pred1Table + DELIM + pred2Table;
-						
+								+ pred1Table + DELIM + pred2Table;
+
 						//Drop table
 						runStaticSql(conn, getDropSql(tableName), false);
 						
-						resultSetToTable(conn, extVPRes, tableName);
+						// create & insert
+						if (isPrepareSupported()) {
+							Statement extVPStmt = conn.createStatement();
+							ResultSet extVPRes = extVPStmt.executeQuery(extVPSql);
+
+							resultSetToTable(conn, extVPRes, tableName);
+
+							close(extVPRes);
+
+							close(extVPStmt);
+						} else {
+							// create table as select ...
+							sqlToTable(conn, tableName, extVPSql);
+						}
+						
 						
 						stats.incSavedTables();
 
@@ -226,9 +239,7 @@ public abstract class SQLDataLoader extends SQLWrapper {
 						stats.incUnsavedNonEmptyTables();
 					}
 
-					close(extVPRes);
-
-					close(extVPStmt);
+					
 				} else {
 					extVpTableSize = stats.getVPTableSize(pred1Table);
 				}
@@ -327,6 +338,10 @@ public abstract class SQLDataLoader extends SQLWrapper {
 			String insSql = this.getInsertSql(tname, 2);
 			PreparedStatement insertVP = prepareStatement(conn, insSql); 
 			
+			// if preparedStatement is not supported
+			String bigInsert = "INERT INTO " + tname + " VALUES ";
+			
+			boolean firstEntry = true;
 			int vpSize = 0;
 			while (filtered.next()) {
 				// filterStmt.setObject(pos, val type_AS_INT)
@@ -335,14 +350,37 @@ public abstract class SQLDataLoader extends SQLWrapper {
 				
 				obj = Helper.cleanObject(obj, isTimestamp);
 				
-				insertVP.setString(1, sub);
-				insertVP.setObject(2, obj, otype);
-				// there is also a length parameter which might be useful for decimal/numerical
-				// but these values do not exist here
-				
-				// insert the data
-				insertVP.executeUpdate();
+				if (isPrepareSupported()) {
+					insertVP.setString(1, sub);
+					insertVP.setObject(2, obj, otype);
+					// there is also a length parameter which might be useful for decimal/numerical
+					// but these values do not exist here
+
+					// insert the data
+					insertVP.executeUpdate();
+				} else {
+					// prepared statement is not supported
+					// build 1 big INSERT sql statement
+					String val = "('" + sub + "', ";
+					if (typeChecker.quotationRequired(otype)) {
+						val += "'" + obj + "')";
+					} else {
+						val = val + obj + ")";
+					}
+					if (firstEntry) {
+						firstEntry = false;
+					} else {
+						bigInsert += ", " + val;
+					}
+					
+				}
 				vpSize++;
+			}
+			
+			if (!isPrepareSupported()) {
+				Statement bigInsertStmt = conn.createStatement();
+				bigInsertStmt.executeUpdate(bigInsert);
+				close(bigInsertStmt);
 			}
 			
 			// close insertVP prepared statement
@@ -534,6 +572,13 @@ public abstract class SQLDataLoader extends SQLWrapper {
 	}
 
 	
+	private void sqlToTable(Connection conn, String tableName, String dataSql) throws SQLException {
+		String createSql = "CREATE TABLE " + tableName + " AS " + dataSql;
+		
+		runStaticSql(conn, createSql, false);
+	}
+	
+	
 	protected abstract String getCreateVPSql(String vpTableName, String subjType, String objType);
 	
 	
@@ -592,6 +637,13 @@ public abstract class SQLDataLoader extends SQLWrapper {
 	 * @return True iff the string datatype is supported
 	 */
 	protected abstract boolean isStringSupported();
+	
+	
+	/**
+	 * 
+	 * @return True iff prepared statements are supported by the DB driver
+	 */
+	protected abstract boolean isPrepareSupported();
 	
 	/**
 	 * 

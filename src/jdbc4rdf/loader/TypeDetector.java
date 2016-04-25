@@ -82,6 +82,23 @@ public abstract class TypeDetector {
 		return typeStr;
 	}
 
+	
+	/**
+	 * True iff quotation marks are required for values of
+	 * this type. Quotation marks are required for string types,
+	 * timestamp and date types
+	 * @param otype type id
+	 * @return True iff quotation marks are required
+	 */
+	public boolean quotationRequired(int otype) {
+		String tstr = typeMap.get(otype);
+		
+		return (tstr.equalsIgnoreCase("date") 
+				|| tstr.equalsIgnoreCase("timestamp") 
+				|| tstr.equalsIgnoreCase("datetime") 
+				|| tstr.equalsIgnoreCase("string") 
+				|| tstr.equalsIgnoreCase("varchar"));
+	}
 
 	
 	

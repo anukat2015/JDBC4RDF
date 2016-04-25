@@ -18,7 +18,7 @@ public abstract class SQLWrapper {
 	protected final Config conf;
 	
 	
-	protected final boolean AUTOCOMMIT = true;
+	protected final boolean AUTOCOMMIT = false;
 	
 	
 	/**

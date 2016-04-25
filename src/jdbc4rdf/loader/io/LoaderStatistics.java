@@ -27,9 +27,9 @@ public class LoaderStatistics {
 	
 	private int allPossibleTables = 0;
 	
-	private File statsFile;
+	private StatisticsContainer statsContainer;
 	
-	private FileAppender writer = new FileAppender();
+	
 	
 	/**
 	 * Stores the amount of rows per predicate-vp table
@@ -43,19 +43,24 @@ public class LoaderStatistics {
 	
 	
 	public void newFile(String statType) {
-		statsFile = new File("stat_" + statType.toLowerCase() + ".txt");
+		
+		statsContainer = new StatisticsContainer("stat_" + statType.toLowerCase() + ".txt");
+		
+		// statsFile = new File("stat_" + statType.toLowerCase() + ".txt");
 		
 		// create the file if it does not exist yet
-		if (!statsFile.exists()) {
+		/*if (!statsFile.exists()) {
 			try {
 				statsFile.createNewFile();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-		}
+		}*/
 		
-		writer.appendLine(statsFile, "\t" + statType.toUpperCase() + " Statistic \n");
-		writer.appendLine(statsFile, "---------------------------------------------------------\n");
+		statsContainer.addLine("\t" + statType.toUpperCase() + " Statistic \n");
+		statsContainer.addLine("---------------------------------------------------------\n");
+		//writer.appendLine(statsFile, "\t" + statType.toUpperCase() + " Statistic \n");
+		//writer.appendLine(statsFile, "---------------------------------------------------------\n");
 		
 		savedTables = 0;
 		unsavedNonEmptyTables = 0;
@@ -80,10 +85,23 @@ public class LoaderStatistics {
 		final int emptyTables = allPossibleTables - savedTables - unsavedNonEmptyTables;
 		
 		// write last view lines to file
-		writer.appendLine(statsFile, "---------------------------------------------------------\n");
+		/*writer.appendLine(statsFile, "---------------------------------------------------------\n");
 		writer.appendLine(statsFile, "Saved tabels ->" + savedTables + "\n");
 		writer.appendLine(statsFile, "Unsaved non-empty tables ->" + unsavedNonEmptyTables + "\n");
-		writer.appendLine(statsFile, "Empty tables ->" + emptyTables + "\n");
+		writer.appendLine(statsFile, "Empty tables ->" + emptyTables + "\n");*/
+		
+		statsContainer.addLine("---------------------------------------------------------\n");
+		statsContainer.addLine("Saved tabels ->" + savedTables + "\n");
+		statsContainer.addLine("Unsaved non-empty tables ->" + unsavedNonEmptyTables + "\n");
+		statsContainer.addLine("Empty tables ->" + emptyTables + "\n");
+		
+		// write to file in background
+		new Thread(new Runnable() {
+		    public void run() {
+		        statsContainer.writeFile();
+		    }
+		}).start();
+		
 	}
 	
 	
@@ -96,16 +114,16 @@ public class LoaderStatistics {
 	}
 	
 	
-	public void incSavedTables() {
+	public synchronized void incSavedTables() {
 		this.savedTables++;
 	}
 	
-	public void incUnsavedNonEmptyTables() {
+	public synchronized void incUnsavedNonEmptyTables() {
 		this.unsavedNonEmptyTables++;
 	}
 	
 	
-	public void addVPStatistic(String pred, int vpSize) {
+	public synchronized void addVPStatistic(String pred, int vpSize) {
 		String line = "<" + pred + ">";
 		
 		line += "\t" + vpSize;
@@ -114,14 +132,15 @@ public class LoaderStatistics {
 		line += "\t" + Helper.getRatio(vpSize, size);
 		
 		// Write to file!
-		writer.appendLine(statsFile, line + "\n");
+		//writer.appendLine(statsFile, line + "\n");
+		statsContainer.addLine(line + "\n");
 		
 		// store the information for later
 		this.vpPredSize.put(pred, vpSize);
 	}
 	
 	
-	public void addExtVPStatistic(String pred1, String pred2, int extVPSize) {
+	public synchronized void addExtVPStatistic(String pred1, String pred2, int extVPSize) {
 		
 		final int sizeVp = vpPredSize.get(pred1); 
 		
@@ -134,7 +153,8 @@ public class LoaderStatistics {
 		line += "\t" + Helper.getRatio(sizeVp, size);
 
 		
-		writer.appendLine(statsFile, line + "\n");
+		//writer.appendLine(statsFile, line + "\n");
+		statsContainer.addLine(line + "\n");
 	}
 	
 

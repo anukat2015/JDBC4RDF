@@ -12,11 +12,12 @@ import jdbc4rdf.core.config.Config;
 
 
 
-public abstract class SQLWrapper {
+public class SQLWrapper {
 
 
 	protected final Config conf;
 	
+	public Connection conn;
 	
 	protected final boolean AUTOCOMMIT = false;
 	
@@ -36,6 +37,12 @@ public abstract class SQLWrapper {
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
+		
+		try {
+			conn = init();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	
 	}
 
@@ -52,7 +59,7 @@ public abstract class SQLWrapper {
 	}
 	
 	
-	
+	/*
 	public void runSql() {
 		
 		Connection conn = null;
@@ -73,10 +80,13 @@ public abstract class SQLWrapper {
 			close(conn);
 		}
 	}
+	*/
 
 
-	protected abstract void loadData(Connection conn) throws Exception;
+	//protected abstract void loadData(Connection conn) throws Exception;
 
+	//public abstract void runSql();
+	
 	
 	protected Connection init() throws SQLException {
 
@@ -94,6 +104,9 @@ public abstract class SQLWrapper {
 			// jdbc:hive2://localhost:10000/default", "hive", ""
 			//conn = DriverManager.getConnection("jdbc:hive2://" + host + ":" + PORT + "/" + db, dbuser, dbpw);
 			conn = DriverManager.getConnection(connectionUrl, dbuser, dbpw);
+			
+			conn.setAutoCommit(AUTOCOMMIT);
+			
 		} catch (SQLException sqle) {
 			sqle.printStackTrace(System.out);
 		}

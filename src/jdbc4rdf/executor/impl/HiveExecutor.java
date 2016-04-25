@@ -17,10 +17,4 @@ public class HiveExecutor extends SQLExecutor{
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
-	protected void loadData(Connection conn) throws Exception {
-		// TODO Auto-generated method stub
-		
-	}
-
 }

@@ -60,8 +60,9 @@ public enum DBDRIVER {
 		} else if (this.equals(MYSQL)) {
 			// https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-usagenotes-connect-drivermanager.html
 			// https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-reference-configuration-properties.html
+			// http://stackoverflow.com/questions/26307760/mysql-and-jdbc-with-rewritebatchedstatements-true
 			// example: localhost:3310/dbxy
-			uri = "jdbc:mysql://" + host + ":" + 3306 + "/" + db;
+			uri = "jdbc:mysql://" + host + ":" + 3306 + "/" + db + "?useSSL=false&rewriteBatchedStatements=true";
 		}
 		
 		return uri;

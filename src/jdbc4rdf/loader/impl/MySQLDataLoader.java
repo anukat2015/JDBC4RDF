@@ -125,6 +125,11 @@ public class MySQLDataLoader extends HiveDataLoader {
 	}
 	
 	
+	@Override
+	protected String getDelimiter() {
+		return "_";
+	}
+	
 	
 
 }

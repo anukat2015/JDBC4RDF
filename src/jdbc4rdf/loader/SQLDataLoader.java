@@ -182,7 +182,7 @@ public abstract class SQLDataLoader extends SQLWrapper {
 		while (plistRs.next()) {
 			// String pred1 = Helper.getPartName(plistRs.getString(1));
 			String pred1 = plistRs.getString(1);
-			String pred1Table = Helper.getPartName(pred1);
+			String pred1Table = Helper.getPartName(pred1, getDelimiter());
 			
 			// get related predicates
 			Statement relPredStmt = conn.createStatement();
@@ -192,7 +192,7 @@ public abstract class SQLDataLoader extends SQLWrapper {
 			while(relPred.next()) {
 				//String pred2 = Helper.getPartName(relPred.getString(1));
 				String pred2 = relPred.getString(1);
-				String pred2Table = Helper.getPartName(pred2);
+				String pred2Table = Helper.getPartName(pred2, getDelimiter());
 
 				int extVpTableSize = -1;
 
@@ -287,7 +287,7 @@ public abstract class SQLDataLoader extends SQLWrapper {
 		while (plistRs.next()) {
 			String pred = plistRs.getString(1);
 			
-			String tname = Helper.getPartName(pred);
+			String tname = Helper.getPartName(pred, getDelimiter());
 			if (SHORTEN_TABLENAMES) {
 				tname = "vptable_" + tcount;
 				tcount++;
@@ -592,4 +592,12 @@ public abstract class SQLDataLoader extends SQLWrapper {
 	 * @return True iff the string datatype is supported
 	 */
 	protected abstract boolean isStringSupported();
+	
+	/**
+	 * 
+	 * @return Delimiter character for table names (mysql: _ hive: $)
+	 */
+	protected abstract String getDelimiter();
+	
+	
 }

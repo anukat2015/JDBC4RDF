@@ -1,28 +1,18 @@
 package jdbc4rdf.loader;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
+import jdbc4rdf.core.config.DBDRIVER;
 
 
 public class Helper {
 
 	
-		  
 	
-	/*
-	public static String cleanPredicate(String pred) {
-		pred = pred.replace(":", "__");
+	public static String getPartName(String p, String delim) {
 		
-		return pred;
-	}
-	*/
-	
-	
-	
-	public static String getPartName(String p) {
+		
+		
 		// special characters
-		p = p.replaceAll("[:]|[#]|[-]|[/]|[.]", "_");
+		p = p.replaceAll("[:]|[#]|[-]|[/]|[.]", delim);
 		// brackets
 		p = p.replaceAll("[<]|[>]", "");
 		

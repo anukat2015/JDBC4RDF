@@ -141,5 +141,12 @@ public class HiveDataLoader extends SQLDataLoader {
 
 
 
+	@Override
+	protected String getDelimiter() {
+		return "$";
+	}
+
+
+
 	
 }

@@ -135,6 +135,9 @@ public class MySQLDataLoader extends HiveDataLoader {
 		return true;
 	}
 	
-	
+	@Override
+	protected boolean isHive() {
+		return false;
+	}
 
 }

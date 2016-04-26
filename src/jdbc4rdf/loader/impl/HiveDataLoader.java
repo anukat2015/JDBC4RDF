@@ -143,7 +143,7 @@ public class HiveDataLoader extends SQLDataLoader {
 
 	@Override
 	protected String getDelimiter() {
-		return "$";
+		return "";
 	}
 
 
@@ -151,6 +151,13 @@ public class HiveDataLoader extends SQLDataLoader {
 	@Override
 	protected boolean isPrepareSupported() {
 		return false;
+	}
+
+
+
+	@Override
+	protected boolean isHive() {
+		return true;
 	}
 
 

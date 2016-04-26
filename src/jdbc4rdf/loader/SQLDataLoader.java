@@ -183,12 +183,22 @@ public abstract class SQLDataLoader extends SQLWrapper implements DataLoader {
 		String dbname = super.conf.getDbName();
 		try {
 			Statement st = conn.createStatement();
-			st.executeUpdate("DROP DATABASE IF EXISTS " + dbname);
-			conn.commit();
+			if(!isHive()){
+				st.executeUpdate("DROP DATABASE IF EXISTS " + dbname);
+			}else{
+				st.executeUpdate("DROP DATABASE IF EXISTS " + dbname + " CASCADE");
+			}
+			if(!isHive()){
+				conn.commit();
+			}
 			st.executeUpdate("CREATE DATABASE " + dbname);
-			conn.commit();
+			if(!isHive()){
+				conn.commit();
+			}
 			st.execute("use " + dbname);
-			conn.commit();
+			if(!isHive()){
+				conn.commit();
+			}
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();
 		}
@@ -541,18 +551,25 @@ public abstract class SQLDataLoader extends SQLWrapper implements DataLoader {
 		// remove table first
 		String sql = getDropSql(TT_NAME);
 		runStaticSql(conn, sql, false);
-		conn.commit();
+		if(!isHive()){
+			conn.commit();
+		}
+		
 		
 		// create triple table
 		sql = getCreateTTSql();
 		runStaticSql(conn, sql, false);
-		conn.commit();
+		if(!isHive()){
+			conn.commit();
+		}
 		
 		
 		// load TSV
 		sql = getLoadSql(dataFile, TT_NAME);
 		runStaticSql(conn, sql, false);
-		conn.commit();
+		if(!isHive()){
+			conn.commit();
+		}
 		
 		// count entries
 		sql = getRowCountSql(TT_NAME);
@@ -760,6 +777,12 @@ public abstract class SQLDataLoader extends SQLWrapper implements DataLoader {
 	 */
 	protected abstract String getDelimiter();
 	
+	/**
+	 * 
+	 * @return True if DB driver is Hive
+	 */
+	protected abstract boolean isHive();
+	
 	
 	
 	
@@ -805,7 +828,9 @@ public abstract class SQLDataLoader extends SQLWrapper implements DataLoader {
 			
 			// drop VP
 			runStaticSql(conn, getDropSql(tname), false);
-			conn.commit();
+			if(!isHive()){
+				conn.commit();
+			}
 			
 			// detect type
 			final int otype = typeChecker.detectObjectType(pred);
@@ -819,7 +844,9 @@ public abstract class SQLDataLoader extends SQLWrapper implements DataLoader {
 			
 			// create VP
 			runStaticSql(conn, getCreateVPSql(tname, stypeStr, otypeStr), false);
-			conn.commit();
+			if(!isHive()){
+				conn.commit();
+			}
 			
 			// get data which should be inserted
 			filterStmt.setString(1, pred);
@@ -830,7 +857,7 @@ public abstract class SQLDataLoader extends SQLWrapper implements DataLoader {
 			PreparedStatement insertVP = prepareStatement(conn, insSql); 
 			
 			// if preparedStatement is not supported
-						String bigInsert = "INERT INTO " + tname + " VALUES ";
+						String bigInsert = "INSERT INTO " + tname + " VALUES ";
 						
 						boolean firstEntry = true;
 						int vpSize = 0;
@@ -860,6 +887,7 @@ public abstract class SQLDataLoader extends SQLWrapper implements DataLoader {
 								}
 								if (firstEntry) {
 									firstEntry = false;
+									bigInsert += val;
 								} else {
 									bigInsert += ", " + val;
 								}
@@ -1012,7 +1040,9 @@ public abstract class SQLDataLoader extends SQLWrapper implements DataLoader {
 			
 			// finally, create the table
 			runStaticSql(conn, createSql, false);
-			conn.commit();
+			if(!isHive()){
+				conn.commit();
+			}
 			
 			/*
 			 * Step 2 - Insert data
@@ -1144,7 +1174,9 @@ public abstract class SQLDataLoader extends SQLWrapper implements DataLoader {
 							// System.out.println("Thread " + this.toString() + " stopping"); 
 							// commit all the inserts
 							try {
-								conn.commit();
+								if(!isHive()){
+									conn.commit();
+								}
 							} catch (SQLException e) {
 								e.printStackTrace();
 							}

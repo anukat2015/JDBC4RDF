@@ -11,7 +11,7 @@ import jdbc4rdf.core.config.Config;
 import jdbc4rdf.core.config.ExecutorConfig;
 import jdbc4rdf.core.sql.SQLWrapper;
 
-public abstract class SQLExecutor extends SQLWrapper{
+public class SQLExecutor extends SQLWrapper implements Executor {
 
 	private String compositeQueries = "";
 	
@@ -20,30 +20,22 @@ public abstract class SQLExecutor extends SQLWrapper{
 		
 		this.compositeQueries = ((ExecutorConfig) confIn).getCompositeFile();
 	}
-	/**
-	 * run the queries of the composite file.
-	 * Initiate database connection, run queries, close connection!
-	 */
-	public void runSql() {
-		
-		Connection conn = null;
-		//Statement stmt = null;
+	
+	@Override
+	public void executeQueries() {
 		try {
-			// init
-			conn = init();
-			
-			conn.setAutoCommit(AUTOCOMMIT);
-			
-			// do import
 			queriesRun(conn);
 			
-		} catch (Exception e) {
+		} catch (SQLException | IOException e) {
 			e.printStackTrace();
 			rollback(conn);
+			
 		} finally {
 			close(conn);
 		}
+		
 	}
+	
 
 	/**
 	 * Run the queries. Read the file and parse to a list of queries.
@@ -97,6 +89,10 @@ public abstract class SQLExecutor extends SQLWrapper{
 		resWriter.writeFile(result);
 		
 	}
+
+
+
+	
 	
 	
 

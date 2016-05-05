@@ -171,7 +171,7 @@ public abstract class SQLDataLoader extends SQLWrapper implements DataLoader {
 	}
 	
 	@Override
-	public void runSql() {
+	public void loadData() {
 		
 		/*
 		 * preparation

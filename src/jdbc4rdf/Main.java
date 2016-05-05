@@ -90,7 +90,7 @@ public class Main {
 					sql = new MySQLDataLoader(conf);
 				}
 				// run sql
-				sql.runSql();
+				sql.loadData();
 				
 			} else if (args[0].equals("exec")) {
 				
@@ -133,7 +133,7 @@ public class Main {
 				}
 				
 				// run sql
-				sql.runSql();				
+				sql.executeQueries();				
 				
 			}
 		} else {

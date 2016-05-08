@@ -23,7 +23,7 @@ public abstract class SQLDataLoader extends SQLWrapper implements DataLoader {
 	 * This delimiter should be used as an alternative
 	 * to the "/" delimiter in the original implementation
 	 */
-	private String DELIM  = "_X_";
+	private String DELIM  = ""; //"_X_";
 
 
 	
@@ -957,8 +957,8 @@ public abstract class SQLDataLoader extends SQLWrapper implements DataLoader {
 						// - omit directory check -
 
 						// save the extVP table
-						String tableName =  relType + DELIM 
-								+ pred1Table + DELIM + pred2Table;
+						String tableName = relType + DELIM + 
+								pred1Table + DELIM + pred2Table;
 
 						//Drop table
 						runStaticSql(conn, getDropSql(tableName), false);
@@ -1055,13 +1055,14 @@ public abstract class SQLDataLoader extends SQLWrapper implements DataLoader {
 			// for each row...
 			while(rs.next()) {
 				for (int i = 1; i <= COLUMNS; i++) {
-					insertStmt.setObject(i, rs.getObject(i), rsmd.getColumnType(1));
+					insertStmt.setObject(i, rs.getObject(i), rsmd.getColumnType(i));
 				}
 				// insert this row
 				//insertStmt.executeUpdate();
 				insertStmt.addBatch();
 			}
-			insertStmt.executeUpdate();
+			//insertStmt.executeUpdate();
+			insertStmt.executeBatch();
 			
 			insertStmt.close();
 		}

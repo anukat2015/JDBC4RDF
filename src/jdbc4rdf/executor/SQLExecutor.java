@@ -59,7 +59,9 @@ public class SQLExecutor extends SQLWrapper implements Executor {
 		for(int i = 0; i < queries.size(); i++){
 			Statement stmt = conn.createStatement();
 			
-			System.out.println("Executing query " + Integer.toString(i) + "...");
+			System.out.println("Executing query " + Integer.toString(i+1) + "...");
+			System.out.println(queries.get(i).queryName);
+			System.out.println(queries.get(i).query + "\n");
 			long startTime = System.currentTimeMillis();
 			// run query
 			ResultSet res = runQuery(stmt, queries.get(i).query);
@@ -76,6 +78,7 @@ public class SQLExecutor extends SQLWrapper implements Executor {
 				    results++;
 				}
 			}
+			System.out.println("> " + results + " results \n\n");
 			
 			//adding line of results to ArrayList which will be wrote in to a file
 			String footer = queries.get(i).queryName + "; " + Integer.toString(results) + "; " + Long.toString(executionTime);

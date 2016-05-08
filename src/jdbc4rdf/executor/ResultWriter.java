@@ -16,7 +16,7 @@ public class ResultWriter {
 	 * Open a new file called results.txt. If a file with that name already exists, old will be deleted!
 	 */
 	public void newFile() {
-		resultFile = new File("results.txt");
+		resultFile = new File("results.csv");
 		// create the file if it does not exist yet
 		if (!resultFile.exists()) {
 			try {

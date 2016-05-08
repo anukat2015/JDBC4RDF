@@ -37,7 +37,7 @@ public class ParseFile {
 				String queryName = sqlQuery.substring(0, sqlQuery.indexOf("\n"));
 				sqlQuery = sqlQuery.substring(sqlQuery.indexOf("\n")+1);
 				// Extract renaming of tables in FROM part for Spark 
-				sqlQuery = sqlQuery.replaceAll("(?=\\$\\$)(.*)(?<=\\$\\$)", "");
+				//sqlQuery = sqlQuery.replaceAll("(?=\\$\\$)(.*)(?<=\\$\\$)", "");
 				String qStats = parts[1].substring(parts[1].indexOf("\n")+1);
 				//every table statistic is seperarted by '------\n'
 				String[] tableStats = qStats.split("------\n");
@@ -47,12 +47,13 @@ public class ParseFile {
 					if(tableStats[j].length() > 0){
 						String[] bestTable = tableStats[j].substring(0, tableStats[j].indexOf("\n")).split("\t");
 						String tableName = bestTable[0];
-						String bestId = bestTable[1];
+						// Never used: 
+						// String bestId = bestTable[1];
 						String tableType = bestTable[2];
 						String tablePath = bestTable[3];
 						
 						//initiate table with the given information of the statistic (path and id isn't needed)
-						Table table = new Table(tableName, tableType);
+						Table table = new Table(tableName, tableType, tablePath);
 						tables.put(tableName, table);	
 					}
 				}
@@ -75,7 +76,6 @@ public class ParseFile {
 		BufferedReader bf = null;
 		FileInputStream fs = null;
 		
-		String line = "";
 		String file = "";
 		
 		try {
@@ -83,16 +83,6 @@ public class ParseFile {
 			bf = new BufferedReader(new InputStreamReader(fs));
 
 			file = FileUtils.readFileToString(new File(fpath));
-			/*
-			while ((line = bf.readLine()) != null) {
-				if (!line.isEmpty()){
-					file = file.concat(line);
-					if(!line.equals("")){
-						file.concat("\n");
-					}
-				}
-			}
-			*/
 			
 		} catch (IOException ioe) {
 			ioe.printStackTrace();

@@ -3,13 +3,14 @@ package jdbc4rdf.core.config;
 import java.util.logging.Logger;
 
 public enum DBDRIVER {
-	MYSQL, HIVE;
+	MYSQL, HIVE, SPARK;
 
 
 	private static Logger logger =  Logger.getLogger(String.valueOf(DBDRIVER.class));
 	
 	public static final String MYSQL_DRIVER = "com.mysql.jdbc.Driver";
 	public static final String HIVE_DRIVER = "org.apache.hive.jdbc.HiveDriver";
+	public static final String SPARK_DRIVER = "org.apache.hive.jdbc.HiveDriver";
 	
 	
 	public static DBDRIVER getDefaultDriver() {
@@ -24,7 +25,9 @@ public enum DBDRIVER {
 		} else if ((dstr.equalsIgnoreCase("hive")) ||
 				dstr.equalsIgnoreCase(HIVE_DRIVER)) {
 			return HIVE;
-		} else {
+		} else if (dstr.equalsIgnoreCase("spark")) {
+			return SPARK; 
+		}else {
 			logger.warning("Couldn't detect driver " + dstr);
 			return null;
 		}
@@ -40,6 +43,8 @@ public enum DBDRIVER {
 			return MYSQL_DRIVER; 
 		} else if (d.equals(HIVE)) {
 			return HIVE_DRIVER;
+		} else if (d.equals(SPARK)) {
+			return SPARK_DRIVER;
 		} else {
 			logger.warning("Unknown driver " + d.toString() + " - returning null");
 			return null;
@@ -63,6 +68,10 @@ public enum DBDRIVER {
 			// http://stackoverflow.com/questions/26307760/mysql-and-jdbc-with-rewritebatchedstatements-true
 			// example: localhost:3310/dbxy
 			uri = "jdbc:mysql://" + host + ":" + 3306 + "/" + db + "?useSSL=false&rewriteBatchedStatements=true";
+		} else if (this.equals(SPARK)) {
+			// default port of thrift server is 10000 changed here to 10001 so that hive and spark thrift server can
+			// be run in parallel!
+			uri = "jdbc:hive2://" + host + ":" + 10001 + "/" + db;
 		}
 		
 		return uri;

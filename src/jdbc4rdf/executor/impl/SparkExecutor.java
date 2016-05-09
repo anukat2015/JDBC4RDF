@@ -5,12 +5,12 @@ import jdbc4rdf.executor.SQLExecutor;
 
 /**
  * 
- * Some hive specific code could be implemented here.
+ * Some spark specific code could be implemented here.
  *
  */
-public class HiveExecutor extends SQLExecutor{
+public class SparkExecutor extends SQLExecutor{
 
-	public HiveExecutor(Config confIn) {
+	public SparkExecutor(Config confIn) {
 		super(confIn);
 		// TODO Auto-generated constructor stub
 	}

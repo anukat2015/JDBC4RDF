@@ -130,6 +130,8 @@ public class Main {
 					sql = new HiveExecutor(conf);
 				} else if (driver.equals(DBDRIVER.MYSQL)) {
 					sql = new MySQLExecutor(conf);
+				} else if (driver.equals(DBDRIVER.SPARK)) {
+					sql = new HiveExecutor(conf);
 				}
 				
 				// run sql

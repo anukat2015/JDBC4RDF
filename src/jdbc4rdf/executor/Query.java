@@ -37,7 +37,7 @@ public class Query {
 			// NOTE: These entries shouldnt be in the statisctis in the first place
 			// ALSO NOTE: Converting to VP might not be optimal
 			String[] tPath = t.tablePath.split("/");
-			String actualTable = t.tablePath.replace("/", "");
+			String actualTable = t.tablePath.replaceAll("[:]|[#]|[-]|[/]|[.]|[_]|[<]|[>]","");
 			String relType = t.tableType.toUpperCase();
 			if (tPath.length > 1) {
 				if (tPath[0].equals(tPath[1])) {

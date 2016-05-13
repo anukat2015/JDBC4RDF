@@ -107,14 +107,20 @@ public class Main {
 					db = args[4];
 					user = args[5];
 					pw = args[6];
-				}
-				else if (args.length == 6) {
+				} else if (args.length == 6) {
 					driver = DBDRIVER.detectDriver(args[1]);
 					file = args[2];
 					host = args[3];
 					db = "";
 					user = args[4];
 					pw = args[5];
+				} else if (args.length == 5) {
+					driver = DBDRIVER.detectDriver(args[1]);
+					file = args[2];
+					host = args[3];
+					db = "";
+					user = args[4];
+					pw = "";
 				} else {
 					logger.log(Level.SEVERE, "Not enough arguments given");
 					showHelp();

@@ -12,7 +12,6 @@ public class SparkExecutor extends SQLExecutor{
 
 	public SparkExecutor(Config confIn) {
 		super(confIn);
-		// TODO Auto-generated constructor stub
 	}
 
 }

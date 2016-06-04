@@ -4,12 +4,18 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import org.apache.log4j.Logger;
+
 import jdbc4rdf.loader.io.FileAppender;
+
+
 
 public class ResultWriter {
 	
 	private File resultFile;
 	private FileAppender writer = new FileAppender();
+	
+	final static Logger logger = Logger.getLogger(ResultWriter.class);
 	
 	/**
 	 * 
@@ -22,14 +28,14 @@ public class ResultWriter {
 			try {
 				resultFile.createNewFile();
 			} catch (IOException e) {
-				e.printStackTrace();
+				logger.error("Unable to create results file", e);
 			}
 		}else{
 			try {
 				resultFile.delete();
 				resultFile.createNewFile();
 			} catch (IOException e) {
-				e.printStackTrace();
+				logger.error("Unable to delete and re-create results file", e);
 			}
 		}		
 	}

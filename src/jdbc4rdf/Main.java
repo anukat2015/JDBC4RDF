@@ -1,43 +1,38 @@
 package jdbc4rdf;
 
-import java.util.logging.Logger;
+
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.logging.Level;
+
+import org.apache.log4j.Logger;
 
 import jdbc4rdf.core.config.Config;
 import jdbc4rdf.core.config.DBDRIVER;
 import jdbc4rdf.core.config.ExecutorConfig;
 import jdbc4rdf.core.config.LoaderConfig;
-import jdbc4rdf.executor.ParseFile;
-import jdbc4rdf.executor.Query;
-import jdbc4rdf.executor.ResultWriter;
 import jdbc4rdf.executor.SQLExecutor;
 import jdbc4rdf.executor.impl.HiveExecutor;
 import jdbc4rdf.executor.impl.MySQLExecutor;
 import jdbc4rdf.loader.DataLoader;
-import jdbc4rdf.loader.SQLDataLoader;
 import jdbc4rdf.loader.impl.HiveDataLoader;
 import jdbc4rdf.loader.impl.MySQLDataLoader;
 
 public class Main {
 
 
-	private static Logger logger =  Logger.getLogger(String.valueOf(Main.class));
+	final static Logger logger = Logger.getLogger(Main.class);
 	
 	
 	
 	public static void showHelp() {
-		logger.info("> Loder Syntax:"); 
-		logger.info("load DRIVER FILE HOST [DB] USER PW SCALEUB");
-		logger.info("Supported drivers: ");
-		logger.info(DBDRIVER.getDriverList() + "\n");
-		logger.info("SCALEUB should be a value between 0.0 and 1.0");
-		logger.info("> Executor Syntax:");
-		logger.info("exec DRIVER FILE HOST [DB] USER PW");
-		logger.info("Supported drivers: ");
-		logger.info(DBDRIVER.getDriverList() + "\n");
+		System.out.println("> Loder Syntax:"); 
+		System.out.println("load DRIVER FILE HOST [DB] USER PW SCALEUB");
+		System.out.println("Supported drivers: ");
+		System.out.println(DBDRIVER.getDriverList() + "\n");
+		System.out.println("SCALEUB should be a value between 0.0 and 1.0");
+		System.out.println("> Executor Syntax:");
+		System.out.println("exec DRIVER FILE HOST [DB] USER PW");
+		System.out.println("Supported drivers: ");
+		System.out.println(DBDRIVER.getDriverList() + "\n");
 	}	
 	
 	public static void main(String[] args) throws IOException {
@@ -74,7 +69,7 @@ public class Main {
 					pw = args[5];
 					scaleUb = Float.parseFloat(args[6]);
 				} else {
-					logger.log(Level.SEVERE, "Not enough arguments given");
+					logger.fatal("Not enough arguments given");
 					showHelp();
 					return;
 				}
@@ -122,7 +117,7 @@ public class Main {
 					user = args[4];
 					pw = "";
 				} else {
-					logger.log(Level.SEVERE, "Not enough arguments given");
+					logger.fatal("Not enough arguments given");
 					showHelp();
 					return;
 				}
@@ -145,7 +140,7 @@ public class Main {
 				
 			}
 		} else {
-			logger.log(Level.SEVERE, "Not enough arguments given");
+			logger.fatal("Not enough arguments given");
 			showHelp();
 		}
 		

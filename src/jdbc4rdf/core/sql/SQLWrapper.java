@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import org.apache.log4j.Logger;
+
 import jdbc4rdf.core.config.Config;
 
 
@@ -21,6 +23,8 @@ public class SQLWrapper {
 	
 	protected final boolean AUTOCOMMIT = false;
 	
+	
+	final static Logger logger = Logger.getLogger(SQLWrapper.class);
 	
 	/**
 	 * Initialize the SQL wrapper class
@@ -59,35 +63,6 @@ public class SQLWrapper {
 	}
 	
 	
-	/*
-	public void runSql() {
-		
-		Connection conn = null;
-		//Statement stmt = null;
-		try {
-			// init
-			conn = init();
-			
-			conn.setAutoCommit(AUTOCOMMIT);
-			
-			// do import
-			loadData(conn);
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-			rollback(conn);
-		} finally {
-			close(conn);
-		}
-	}
-	*/
-
-
-	//protected abstract void loadData(Connection conn) throws Exception;
-
-	//public abstract void runSql();
-	
-	
 	protected Connection init() throws SQLException {
 
 		final String host = conf.getHost();
@@ -95,7 +70,7 @@ public class SQLWrapper {
 		final String dbuser = conf.getUser();
 		final String dbpw = conf.getPw();
 		
-		System.out.println("Connection with values host=" + host + ", db=" + db + ", user=" + dbuser + ", pw=" + dbpw);
+		logger.info("Connection with values host=" + host + ", db=" + db + ", user=" + dbuser + ", pw=" + dbpw);
 		
 		String connectionUrl = conf.getDriver().getJDBCUri(host, db);
 		
@@ -108,7 +83,7 @@ public class SQLWrapper {
 			conn.setAutoCommit(AUTOCOMMIT);
 			
 		} catch (SQLException sqle) {
-			sqle.printStackTrace(System.out);
+			logger.error("Unable to create connection", sqle);
 		}
 
 
@@ -116,7 +91,7 @@ public class SQLWrapper {
 	}
 
 
-
+	@Deprecated
 	protected void rollback(Connection conn) {
 		
 		// rollback is not possible for autocommit=true
@@ -125,17 +100,17 @@ public class SQLWrapper {
 		try {
 			if (conn != null) {
 				if (!conn.isClosed()) {
-					System.out.println("calling rollback!");
+					logger.debug("Calling rollback");
 					conn.rollback();
 				} else {
-					System.out.println("Connection already closed");
+					logger.debug("Connection already closed");
 				}
 
 			} else {
-				System.out.println("Connection is null");
+				logger.debug("Can't rollback connection, because Connection object is null");
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Unable to rollback connection", e);
 		}
 
 	}
@@ -147,12 +122,12 @@ public class SQLWrapper {
 				// also commit here?
 				ac.close();
 			} else {
-				System.out.println("[WARNING] close() "
+				logger.warn("close() "
 						+ "AutoClosable \"ac\" can not be "
 						+ "closed because it is already null");
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Unable to close connection", e);
 		}
 	}
 

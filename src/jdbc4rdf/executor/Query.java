@@ -3,13 +3,36 @@ package jdbc4rdf.executor;
 import java.util.HashMap;
 import java.util.Iterator;
 
+import org.apache.log4j.Logger;
+
 
 public class Query {
 	
+	/**
+	 * Name of the query. This name is usually equal to the filename 
+	 * of the query before it was translated to SQL and added to a 
+	 * composite query file
+	 */
 	protected String queryName = "";
+	
+	/**
+	 * The complete SQL query as string (placeholders will be removed in the constructor)
+	 */
 	protected String query = "";
+	
+	/**
+	 * Statistics / Information about the tables which the query could use. The top-most
+	 * table is the optimal choice
+	 */
 	protected String statistic = "";
+	
+	/**
+	 * Mapping between placeholders and table names
+	 */
 	protected HashMap<String, Table> tables = null;
+	
+	
+	final static Logger logger = Logger.getLogger(Query.class);
 	
 	/**
 	 * General constructor of a query
@@ -24,6 +47,7 @@ public class Query {
 		this.statistic = statistic;
 		this.tables = tables;
 		
+		logger.debug("Processing query named " + this.queryName);
 		
 		// replace place holders in query with statistics entry
 		Iterator<String> keys = this.tables.keySet().iterator();
@@ -53,7 +77,7 @@ public class Query {
 			}
 			
 			this.query = this.query.replace(tName, actualTable);
-			System.out.println(" Replaced " + tName + " with " + actualTable);
+			logger.debug(" Replaced " + tName + " with " + actualTable);
 		}
 			
 		

@@ -5,12 +5,15 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import org.apache.log4j.Logger;
+
 public class StatisticsContainer {
 
 	public final String fileName;
 	
 	public final ArrayList<String> content = new ArrayList<String>();
 	
+	final static Logger logger = Logger.getLogger(StatisticsContainer.class);
 	
 	
 	public StatisticsContainer(String f) {
@@ -33,7 +36,7 @@ public class StatisticsContainer {
 			try {
 				statsFile.createNewFile();
 			} catch (IOException e) {
-				e.printStackTrace();
+				logger.error("An error occured while trying to create a new statistics file", e);
 			}
 		}
 		

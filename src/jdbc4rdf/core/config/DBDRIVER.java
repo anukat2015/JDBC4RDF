@@ -1,12 +1,17 @@
 package jdbc4rdf.core.config;
 
-import java.util.logging.Logger;
+
+
+import org.apache.log4j.Logger;
+
+
+
 
 public enum DBDRIVER {
 	MYSQL, HIVE, SPARK;
 
 
-	private static Logger logger =  Logger.getLogger(String.valueOf(DBDRIVER.class));
+	final static Logger logger = Logger.getLogger(DBDRIVER.class);
 	
 	public static final String MYSQL_DRIVER = "com.mysql.jdbc.Driver";
 	public static final String HIVE_DRIVER = "org.apache.hive.jdbc.HiveDriver";
@@ -28,7 +33,7 @@ public enum DBDRIVER {
 		} else if (dstr.equalsIgnoreCase("spark")) {
 			return SPARK; 
 		}else {
-			logger.warning("Couldn't detect driver " + dstr);
+			logger.warn("Couldn't detect driver " + dstr);
 			return null;
 		}
 		
@@ -46,7 +51,7 @@ public enum DBDRIVER {
 		} else if (d.equals(SPARK)) {
 			return SPARK_DRIVER;
 		} else {
-			logger.warning("Unknown driver " + d.toString() + " - returning null");
+			logger.warn("Unknown driver " + d.toString() + " - returning null");
 			return null;
 		}
 	}

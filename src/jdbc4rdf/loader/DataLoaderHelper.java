@@ -1,15 +1,17 @@
 package jdbc4rdf.loader;
 
+import jdbc4rdf.core.Helper;
 
+public class DataLoaderHelper extends Helper {
 
-public class Helper {
-
+	
+	/*
+	 * All of the following functions are only required for the dataLoader
+	 */
+	
 	
 	
 	public static String getPartName(String p, String delim) {
-		
-		
-		
 		// special characters
 		p = p.replaceAll("[:]|[#]|[-]|[/]|[.]", delim);
 		// brackets
@@ -51,4 +53,5 @@ public class Helper {
 		return res;
 		
 	}
+	
 }

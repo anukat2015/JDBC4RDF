@@ -12,7 +12,6 @@ public class HiveExecutor extends SQLExecutor{
 
 	public HiveExecutor(Config confIn) {
 		super(confIn);
-		// TODO Auto-generated constructor stub
 	}
 
 }

@@ -5,6 +5,8 @@ import java.sql.Types;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
+
 public abstract class TypeDetector {
 
 	/**
@@ -35,6 +37,9 @@ public abstract class TypeDetector {
 	
 	private final Map<Integer, String> typeMap = new HashMap<Integer, String>();
 
+	final static Logger logger = Logger.getLogger(TypeDetector.class);
+	
+	
 	
 	public TypeDetector() {
 		// initialize type map
@@ -44,9 +49,9 @@ public abstract class TypeDetector {
 	        try {
 				typeMap.put((Integer) field.get(null), field.getName());
 			} catch (IllegalArgumentException e) {
-				e.printStackTrace();
+				logger.error("Illegal Argument", e);
 			} catch (IllegalAccessException e) {
-				e.printStackTrace();
+				logger.error("Illegal Access", e);
 			}
 			
 	    }

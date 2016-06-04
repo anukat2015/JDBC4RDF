@@ -7,6 +7,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.apache.log4j.Logger;
+
+import jdbc4rdf.core.Helper;
 import jdbc4rdf.core.config.Config;
 import jdbc4rdf.core.config.ExecutorConfig;
 import jdbc4rdf.core.sql.SQLWrapper;
@@ -14,6 +18,8 @@ import jdbc4rdf.core.sql.SQLWrapper;
 public class SQLExecutor extends SQLWrapper implements Executor {
 
 	private String compositeQueries = "";
+	
+	final static Logger logger = Logger.getLogger(SQLExecutor.class);
 	
 	public SQLExecutor(Config confIn) {
 		super(confIn);
@@ -24,12 +30,12 @@ public class SQLExecutor extends SQLWrapper implements Executor {
 	@Override
 	public void executeQueries() {
 		try {
+			
 			queriesRun(conn);
 			
 		} catch (SQLException | IOException e) {
-			e.printStackTrace();
-			rollback(conn);
-			
+			logger.error("A problem occured while trying to execute the queries", e);
+			//rollback(conn);
 		} finally {
 			close(conn);
 		}
@@ -60,16 +66,23 @@ public class SQLExecutor extends SQLWrapper implements Executor {
 			Statement stmt = conn.createStatement();
 			
 			System.out.println("Executing query " + Integer.toString(i+1) + "...");
-			System.out.println(queries.get(i).queryName);
-			System.out.println(queries.get(i).query + "\n");
-			long startTime = System.currentTimeMillis();
+			
+			logger.info("Executing query " + Integer.toString(i+1) + "...");
+			logger.info(queries.get(i).queryName);
+			logger.debug(queries.get(i).query + "\n");
+			
+			long startTime = System.nanoTime();//System.currentTimeMillis();
 			// run query
 			ResultSet res = runQuery(stmt, queries.get(i).query);
-			long endTime = System.currentTimeMillis();
-			System.out.println("Done!");
+			long endTime = System.nanoTime(); //System.currentTimeMillis();
+			
 			
 			// calculate runtime
 			long executionTime = endTime - startTime;
+			
+			System.out.println("Done in " + executionTime + "ns");
+			Helper.printTime(executionTime);
+			
 			int results = 0;
 			
 			// count results
@@ -78,7 +91,9 @@ public class SQLExecutor extends SQLWrapper implements Executor {
 				    results++;
 				}
 			}
-			System.out.println("> " + results + " results \n\n");
+			
+			System.out.println("Query returned " + results + " results \n\n");
+			logger.info("Query returned " + results + " results \n\n");
 			
 			//adding line of results to ArrayList which will be wrote in to a file
 			String footer = queries.get(i).queryName + "; " + Integer.toString(results) + "; " + Long.toString(executionTime);

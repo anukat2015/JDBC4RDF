@@ -1,7 +1,6 @@
 package jdbc4rdf.loader;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
@@ -10,6 +9,8 @@ import java.sql.Statement;
 import java.sql.Types;
 import java.util.ArrayList;
 import java.util.concurrent.ConcurrentLinkedQueue;
+
+import org.apache.log4j.Logger;
 
 import jdbc4rdf.core.config.Config;
 import jdbc4rdf.core.config.LoaderConfig;
@@ -73,6 +74,10 @@ public abstract class SQLDataLoader extends SQLWrapper implements DataLoader {
 	private final ConcurrentLinkedQueue<Job> jobQueue = new ConcurrentLinkedQueue<Job>();
 	
 	
+	
+	final static Logger logger = Logger.getLogger(SQLDataLoader.class);
+	
+	
 	public SQLDataLoader(Config loaderConf) {
 		super(loaderConf);
 		
@@ -88,12 +93,12 @@ public abstract class SQLDataLoader extends SQLWrapper implements DataLoader {
 	
 	private synchronized void onThreadIdle() {
 		idleThreads++;
-		System.out.println(idleThreads + " worker(s) finished");
+		logger.debug(idleThreads + " worker(s) finished");
 		if (idleThreads >= workerList.size()) {
 			// all threads are in idle mode!
 			// print execution time!
 			long elapsed = System.nanoTime() - start;
-			printTime(elapsed);
+			DataLoaderHelper.printTime(elapsed);
 			
 			// close stats file
 			stats.closeFile(mode == MODE_VP);
@@ -118,12 +123,12 @@ public abstract class SQLDataLoader extends SQLWrapper implements DataLoader {
 					// stop all threads
 					for (int i = 0; i < workerList.size(); i++) {
 						workerList.get(i).stop();
-						System.out.println("Stopped " + (i+1) + " worker(s)");
+						logger.debug("Stopped " + (i+1) + " worker(s)");
 					}
 					mode = MODE_IDLE;
 					close(conn);
 					
-					System.out.println("\n\n> Done!");
+					logger.debug("\n\n> Done!");
 				}
 			}
 			
@@ -136,7 +141,7 @@ public abstract class SQLDataLoader extends SQLWrapper implements DataLoader {
 				// resume all
 				for (int i = 0; i < workerList.size(); i++) {
 					workerList.get(i).resume();
-					System.out.println("Resumed " + (i+1) + " worker(s)");
+					logger.debug("Resumed " + (i+1) + " worker(s)");
 				}
 				
 				try {
@@ -144,7 +149,7 @@ public abstract class SQLDataLoader extends SQLWrapper implements DataLoader {
 					start = System.nanoTime();
 					createExtVP();
 				} catch (SQLException e) {
-					e.printStackTrace();
+					logger.error("An error occured white creating a extvp table", e);
 				}
 			}
 			
@@ -152,23 +157,7 @@ public abstract class SQLDataLoader extends SQLWrapper implements DataLoader {
 		
 	}
 	
-	private void printTime(long nanoSeconds) {
-		System.out.println("Time elapsed (h:m:s:ms)");
-		// 1*10^6
-		System.out.println("\t" + (nanoSeconds / 1000000.0) + " milliseconds, or:");
-		
-		long milliSec = (nanoSeconds / 1000000) % 1000;
-		// sec = nano / 1*10^9
-		// or sec = msec / 1000
-		long s = nanoSeconds / 1000000000;
-		long seconds = (s % 60);  
-		long minutes = (s % 3600) / 60;
-		long hours = s / 3600;
-		
-		String output = String.format("%02d:%02d:%02d:%02d", hours, minutes, seconds, milliSec);
-		System.out.println("\t" + output + "\n");
-		
-	}
+	
 	
 	@Override
 	public void loadData() {
@@ -179,7 +168,7 @@ public abstract class SQLDataLoader extends SQLWrapper implements DataLoader {
 		
 		start = System.nanoTime();
 		
-		System.out.println("Preparing database");
+		logger.debug("Preparing database");
 		String dbname = super.conf.getDbName();
 		try {
 			Statement st = conn.createStatement();
@@ -200,10 +189,11 @@ public abstract class SQLDataLoader extends SQLWrapper implements DataLoader {
 				conn.commit();
 			}
 		} catch (SQLException sqle) {
+			logger.error("An error occured while trying to prepare the database", sqle);
 			sqle.printStackTrace();
 		}
 		long elapsed = System.nanoTime() - start;
-		printTime(elapsed);
+		DataLoaderHelper.printTime(elapsed);
 		
 		/*
 		 * Triple Table
@@ -215,11 +205,11 @@ public abstract class SQLDataLoader extends SQLWrapper implements DataLoader {
 		try {
 			tripleCount = createTripleTable();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.error("An error occured while trying to create the triple table", e);
 		}
 		
 		elapsed = System.nanoTime() - start;
-		printTime(elapsed);
+		DataLoaderHelper.printTime(elapsed);
 		
 		
 		
@@ -257,7 +247,7 @@ public abstract class SQLDataLoader extends SQLWrapper implements DataLoader {
 		try {
 			predCount = createVP();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.error("An error occured while trying to create the Vertical Partitioning tables", e);
 		}
 		
 		
@@ -266,50 +256,10 @@ public abstract class SQLDataLoader extends SQLWrapper implements DataLoader {
 		producerFinished = true;
 		// stats.closeFile(true);
 		
-		/*
-		 * Extended Vertical Partitioning
-		 */
-
-		/*
-		// if dt = so
-		start = System.nanoTime();
-		this.reltype = RELTYPE_SO;
-		createExtVP(conn);
-		elapsed = System.nanoTime() - start;
-		printTime(elapsed);
-
-		// if dt = os
-		start = System.nanoTime();
-		this.reltype = RELTYPE_OS;
-		createExtVP(conn);
-		elapsed = System.nanoTime() - start;
-		printTime(elapsed);
-
-		// if dt = ss
-		start = System.nanoTime();
-		this.reltype = RELTYPE_SS;
-		createExtVP(conn);
-		elapsed = System.nanoTime() - start;
-		printTime(elapsed);
-		*/
-		// createExtVP
-		// newFile
-		// closeFile(false)
 		
 	}
 
 
-	/*
-	private void initDb(Connection conn) throws Exception {
-		final String dbName = this.conf.getDbName();
-		
-		// default database is always there
-		if (!dbName.isEmpty()) {
-			String sql = getCreateDbSql(dbName);
-			runStaticSql(conn, sql, false);
-		}
-	}
-	*/
 
 	
 	
@@ -324,6 +274,7 @@ public abstract class SQLDataLoader extends SQLWrapper implements DataLoader {
 		Statement predStmt = conn.createStatement();
 		ResultSet plistRs = predStmt.executeQuery(pSql);
 		
+		logger.debug("Creating ExtVP (" + this.reltype + ") tables...");
 		System.out.println("Creating ExtVP (" + this.reltype + ") tables...");
 		
 		// for each predicate
@@ -398,7 +349,7 @@ public abstract class SQLDataLoader extends SQLWrapper implements DataLoader {
 		}
 		
 		
-		System.out.println("Created all ExtVP (" + this.reltype + ") jobs!");
+		logger.debug("Created all ExtVP (" + this.reltype + ") jobs!");
 
 		close(plistRs);
 
@@ -445,6 +396,7 @@ public abstract class SQLDataLoader extends SQLWrapper implements DataLoader {
 		//String filterSql = getPredicateFilterSql();
 		//PreparedStatement filterStmt = prepareStatement(conn, filterSql);
 		
+		logger.debug("Creating VP tables...");
 		System.out.println("Creating VP tables...");
 		
 		// for each predicate
@@ -528,7 +480,7 @@ public abstract class SQLDataLoader extends SQLWrapper implements DataLoader {
 		
 		close(plistRs);
 		
-		System.out.println("Created all VP jobs!");
+		logger.debug("Created all VP jobs!");
 		
 		// return amount of predicates / vp tables
 		
@@ -546,6 +498,8 @@ public abstract class SQLDataLoader extends SQLWrapper implements DataLoader {
 		
 		int rows = -1;
 		mode = MODE_TT;
+		
+		logger.debug("Creating triple table...");
 		System.out.println("Creating triple table...");
 		
 		// remove table first
@@ -576,7 +530,7 @@ public abstract class SQLDataLoader extends SQLWrapper implements DataLoader {
 		ArrayList<String[]> res = runStaticSql(conn, sql);
 		rows = Integer.parseInt(res.get(1)[0]);
 		
-		System.out.println("Done!");
+		logger.debug("(TT) Done!");
 		
 		return rows;
 	}
@@ -792,7 +746,7 @@ public abstract class SQLDataLoader extends SQLWrapper implements DataLoader {
 	
 	
 	
-	class VPJob extends Job {
+	class VPJob implements Job {
 
 		private final String pred;
 		
@@ -813,7 +767,7 @@ public abstract class SQLDataLoader extends SQLWrapper implements DataLoader {
 		 */
 		@Override
 		public void runJob(Connection conn) throws Exception {
-			String tname = Helper.getPartName(pred, getDelimiter());
+			String tname = DataLoaderHelper.getPartName(pred, getDelimiter());
 
 			
 			// get corresponding subj/obj and create a table
@@ -855,53 +809,53 @@ public abstract class SQLDataLoader extends SQLWrapper implements DataLoader {
 			// insert into table
 			String insSql = getInsertSql(tname, 2);
 			PreparedStatement insertVP = prepareStatement(conn, insSql); 
-			
-			// if preparedStatement is not supported
-						String bigInsert = "INSERT INTO " + tname + " VALUES ";
-						
-						boolean firstEntry = true;
-						int vpSize = 0;
-						while (filtered.next()) {
-							// filterStmt.setObject(pos, val type_AS_INT)
-							String sub = filtered.getString(1);
-							String obj = filtered.getString(2);
-							
-							obj = Helper.cleanObject(obj, isTimestamp);
-							
-							if (isPrepareSupported()) {
-								insertVP.setString(1, sub);
-								insertVP.setObject(2, obj, otype);
-								// there is also a length parameter which might be useful for decimal/numerical
-								// but these values do not exist here
 
-								// insert the data
-								insertVP.executeUpdate();
-							} else {
-								// prepared statement is not supported
-								// build 1 big INSERT sql statement
-								String val = "('" + sub + "', ";
-								if (typeChecker.quotationRequired(otype)) {
-									val += "'" + obj + "')";
-								} else {
-									val = val + obj + ")";
-								}
-								if (firstEntry) {
-									firstEntry = false;
-									bigInsert += val;
-								} else {
-									bigInsert += ", " + val;
-								}
-								
-							}
-							vpSize++;
-						}
-						
-						if (!isPrepareSupported()) {
-							Statement bigInsertStmt = conn.createStatement();
-							bigInsertStmt.executeUpdate(bigInsert);
-							close(bigInsertStmt);
-						}
-			
+			// if preparedStatement is not supported
+			String bigInsert = "INSERT INTO " + tname + " VALUES ";
+
+			boolean firstEntry = true;
+			int vpSize = 0;
+			while (filtered.next()) {
+				// filterStmt.setObject(pos, val type_AS_INT)
+				String sub = filtered.getString(1);
+				String obj = filtered.getString(2);
+
+				obj = DataLoaderHelper.cleanObject(obj, isTimestamp);
+
+				if (isPrepareSupported()) {
+					insertVP.setString(1, sub);
+					insertVP.setObject(2, obj, otype);
+					// there is also a length parameter which might be useful for decimal/numerical
+					// but these values do not exist here
+
+					// insert the data
+					insertVP.executeUpdate();
+				} else {
+					// prepared statement is not supported
+					// build 1 big INSERT sql statement
+					String val = "('" + sub + "', ";
+					if (typeChecker.quotationRequired(otype)) {
+						val += "'" + obj + "')";
+					} else {
+						val = val + obj + ")";
+					}
+					if (firstEntry) {
+						firstEntry = false;
+						bigInsert += val;
+					} else {
+						bigInsert += ", " + val;
+					}
+
+				}
+				vpSize++;
+			}
+
+			if (!isPrepareSupported()) {
+				Statement bigInsertStmt = conn.createStatement();
+				bigInsertStmt.executeUpdate(bigInsert);
+				close(bigInsertStmt);
+			}
+
 			// close insertVP prepared statement
 			close(insertVP);
 			
@@ -915,7 +869,7 @@ public abstract class SQLDataLoader extends SQLWrapper implements DataLoader {
 	}
 	
 	
-	class ExtVPJob extends Job {
+	class ExtVPJob implements Job {
 
 		private final String pred1;
 		
@@ -928,7 +882,7 @@ public abstract class SQLDataLoader extends SQLWrapper implements DataLoader {
 		
 		@Override
 		public void runJob(Connection conn) throws Exception {
-			String pred1Table = Helper.getPartName(pred1, getDelimiter());
+			String pred1Table = DataLoaderHelper.getPartName(pred1, getDelimiter());
 			
 			// get related predicates
 			Statement relPredStmt = conn.createStatement();
@@ -938,7 +892,7 @@ public abstract class SQLDataLoader extends SQLWrapper implements DataLoader {
 			while(relPred.next()) {
 				//String pred2 = Helper.getPartName(relPred.getString(1));
 				String pred2 = relPred.getString(1);
-				String pred2Table = Helper.getPartName(pred2, getDelimiter());
+				String pred2Table = DataLoaderHelper.getPartName(pred2, getDelimiter());
 
 				int extVpTableSize = -1;
 
@@ -1095,33 +1049,11 @@ public abstract class SQLDataLoader extends SQLWrapper implements DataLoader {
 			} catch (Exception e) {
 				// dont do anything if the connection could not be created
 				this.doJobs = false;
-				e.printStackTrace();
+				logger.error("An error occured while trying to execute a job", e);
 			}
 		}
-		
-		/*
-		private void init() throws SQLException {
 
-			final String host = conf.getHost();
-			final String db = conf.getDbName();
-			final String dbuser = conf.getUser();
-			final String dbpw = conf.getPw();
-			
-			System.out.println("Connection with values host=" + host + ", db=" + db + ", user=" + dbuser + ", pw=" + dbpw);
-			
-			String connectionUrl = conf.getDriver().getJDBCUri(host, db);
-			
-			try {
-				// jdbc:hive2://localhost:10000/default", "hive", ""
-				//conn = DriverManager.getConnection("jdbc:hive2://" + host + ":" + PORT + "/" + db, dbuser, dbpw);
-				this.conn = DriverManager.getConnection(connectionUrl, dbuser, dbpw);
-			} catch (SQLException sqle) {
-				sqle.printStackTrace(System.out);
-			}
-		}
-		
-		*/
-		
+
 		
 		public void resume() {
 			this.idle = false;
@@ -1156,7 +1088,7 @@ public abstract class SQLDataLoader extends SQLWrapper implements DataLoader {
 								try {
 									filterStmt = conn.prepareStatement(filterSql);
 								} catch (SQLException e) {
-									e.printStackTrace();
+									logger.error("An error occured while trying to prepare a filter statement", e);
 								}
 							}
 							// assign filter statement
@@ -1167,7 +1099,7 @@ public abstract class SQLDataLoader extends SQLWrapper implements DataLoader {
 						try {
 							j.runJob(conn);
 						} catch (Exception e) {
-							e.printStackTrace();
+							logger.error("An error occured while trying to execute a job", e);
 						}
 					} else {
 						// check if there might be new elements coming!
@@ -1179,7 +1111,7 @@ public abstract class SQLDataLoader extends SQLWrapper implements DataLoader {
 									conn.commit();
 								}
 							} catch (SQLException e) {
-								e.printStackTrace();
+								logger.error("Commit error", e);
 							}
 							idle = true;
 							onThreadIdle();
@@ -1190,10 +1122,10 @@ public abstract class SQLDataLoader extends SQLWrapper implements DataLoader {
 				try {
 					Thread.sleep(1);
 				} catch (InterruptedException e) {
-					e.printStackTrace();
+					logger.error("Thread interrupted", e);
 				}
 			}
-			
+
 			// when all the work is done: close the connection
 			close(conn);
 		}

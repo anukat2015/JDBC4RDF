@@ -1,11 +1,11 @@
 package jdbc4rdf.loader.io;
 
-import java.io.File;
-import java.io.IOException;
+
 import java.util.HashMap;
 import java.util.Map;
 
-import jdbc4rdf.loader.Helper;
+import jdbc4rdf.loader.DataLoaderHelper;
+
 
 public class LoaderStatistics {
 
@@ -129,7 +129,7 @@ public class LoaderStatistics {
 		line += "\t" + vpSize;
 		line += "\t" + size;
 		
-		line += "\t" + Helper.getRatio(vpSize, size);
+		line += "\t" + DataLoaderHelper.getRatio(vpSize, size);
 		
 		// Write to file!
 		//writer.appendLine(statsFile, line + "\n");
@@ -149,8 +149,8 @@ public class LoaderStatistics {
 		line += "\t" + extVPSize;
 		line += "\t" + sizeVp;
 		
-		line += "\t" + Helper.getRatio(extVPSize, sizeVp);
-		line += "\t" + Helper.getRatio(sizeVp, size);
+		line += "\t" + DataLoaderHelper.getRatio(extVPSize, sizeVp);
+		line += "\t" + DataLoaderHelper.getRatio(sizeVp, size);
 
 		
 		//writer.appendLine(statsFile, line + "\n");

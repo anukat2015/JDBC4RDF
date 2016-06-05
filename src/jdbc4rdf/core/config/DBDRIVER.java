@@ -74,9 +74,8 @@ public enum DBDRIVER {
 			// example: localhost:3310/dbxy
 			uri = "jdbc:mysql://" + host + ":" + 3306 + "/" + db + "?useSSL=false&rewriteBatchedStatements=true";
 		} else if (this.equals(SPARK)) {
-			// default port of thrift server is 10000 changed here to 10001 so that hive and spark thrift server can
-			// be run in parallel!
-			uri = "jdbc:hive2://" + host + ":" + 10001 + "/" + db;
+			// Caution if hive and spark thrift server should run in parallel (same port)
+			uri = "jdbc:hive2://" + host + ":" + 10000 + "/" + db;
 		}
 		
 		return uri;

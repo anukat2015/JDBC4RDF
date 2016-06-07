@@ -83,6 +83,7 @@ public enum DBDRIVER {
 	
 	
 	public static String getDriverList() {
-		return "mysql, hive";
+		return "hive, mysql, spark";
 	}
+	
 }

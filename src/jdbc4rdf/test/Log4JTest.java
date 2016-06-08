@@ -15,7 +15,9 @@ public class Log4JTest {
 		System.out.println();
 		
 		System.out.println("> Looking for config in:");
-		System.out.println(Thread.currentThread().getContextClassLoader().getResource("") + "\n");
+		System.out.println(Thread.currentThread().getContextClassLoader().getResource(""));
+		
+		System.out.println();
 		
 		logger.debug("Debug message");
 		logger.info("Info message");

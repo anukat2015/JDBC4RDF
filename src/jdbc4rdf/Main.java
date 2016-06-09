@@ -5,7 +5,6 @@ import java.io.IOException;
 
 import org.apache.log4j.Logger;
 
-import jdbc4rdf.core.config.Config;
 import jdbc4rdf.core.config.DBDRIVER;
 import jdbc4rdf.core.config.ExecutorConfig;
 import jdbc4rdf.core.config.LoaderConfig;
@@ -38,7 +37,6 @@ public class Main {
 	public static void main(String[] args) throws IOException {
 		// Parse all the arguments
 		
-		Config conf;
 		DBDRIVER driver;
 		
 		if (args.length > 0) {
@@ -75,14 +73,14 @@ public class Main {
 				}
 				
 				// DBDRIVER driver, String file, String user, String pw, String host, String db
-				conf = new LoaderConfig(driver, file, user, pw, host, db, scaleUb);
+				LoaderConfig loaderconf = new LoaderConfig(driver, file, user, pw, host, db, scaleUb);
 				
 				// load data
 				DataLoader sql = null;
 				if (driver.equals(DBDRIVER.HIVE)) {
-					sql = new HiveDataLoader(conf);
+					sql = new HiveDataLoader(loaderconf);
 				} else if (driver.equals(DBDRIVER.MYSQL)) {
-					sql = new MySQLDataLoader(conf);
+					sql = new MySQLDataLoader(loaderconf);
 				}
 				// run sql
 				sql.loadData();
@@ -122,17 +120,17 @@ public class Main {
 					return;
 				}
 				// Create config
-				conf = new ExecutorConfig(driver, file, user, pw, host, db);
+				ExecutorConfig execconf = new ExecutorConfig(driver, file, user, pw, host, db);
 				
 				// Detect driver
 				SQLExecutor sql = null;
 				
 				if (driver.equals(DBDRIVER.HIVE)) {
-					sql = new HiveExecutor(conf);
+					sql = new HiveExecutor(execconf);
 				} else if (driver.equals(DBDRIVER.MYSQL)) {
-					sql = new MySQLExecutor(conf);
+					sql = new MySQLExecutor(execconf);
 				} else if (driver.equals(DBDRIVER.SPARK)) {
-					sql = new HiveExecutor(conf);
+					sql = new HiveExecutor(execconf);
 				}
 				
 				// run sql

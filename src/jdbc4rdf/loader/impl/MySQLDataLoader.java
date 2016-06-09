@@ -1,6 +1,6 @@
 package jdbc4rdf.loader.impl;
 
-import jdbc4rdf.core.config.Config;
+import jdbc4rdf.core.config.LoaderConfig;
 import jdbc4rdf.loader.TypeDetector;
 
 
@@ -14,7 +14,7 @@ import jdbc4rdf.loader.TypeDetector;
  */
 public class MySQLDataLoader extends HiveDataLoader {
 
-	public MySQLDataLoader(Config loadConf) {
+	public MySQLDataLoader(LoaderConfig loadConf) {
 		super(loadConf);
 	}
 	

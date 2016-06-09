@@ -14,10 +14,10 @@ import jdbc4rdf.core.config.Config;
 
 
 
-public class SQLWrapper {
+public class SQLWrapper<T extends Config> {
 
 
-	protected final Config conf;
+	protected final T conf;
 	
 	public Connection conn;
 	
@@ -30,7 +30,7 @@ public class SQLWrapper {
 	 * Initialize the SQL wrapper class
 	 * @param conf Connection configuration container
 	 */
-	public SQLWrapper(Config confIn) {
+	public SQLWrapper(T confIn) {
 		
 		// store configuration
 		this.conf = confIn;

@@ -1,6 +1,6 @@
 package jdbc4rdf.executor.impl;
 
-import jdbc4rdf.core.config.Config;
+import jdbc4rdf.core.config.ExecutorConfig;
 import jdbc4rdf.executor.SQLExecutor;
 
 /**
@@ -10,7 +10,7 @@ import jdbc4rdf.executor.SQLExecutor;
  */
 public class SparkExecutor extends SQLExecutor{
 
-	public SparkExecutor(Config confIn) {
+	public SparkExecutor(ExecutorConfig confIn) {
 		super(confIn);
 	}
 

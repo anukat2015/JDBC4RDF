@@ -11,20 +11,18 @@ import java.util.List;
 import org.apache.log4j.Logger;
 
 import jdbc4rdf.core.Helper;
-import jdbc4rdf.core.config.Config;
 import jdbc4rdf.core.config.ExecutorConfig;
 import jdbc4rdf.core.sql.SQLWrapper;
 
-public class SQLExecutor extends SQLWrapper implements Executor {
+public class SQLExecutor extends SQLWrapper<ExecutorConfig> implements Executor {
 
-	private String compositeQueries = "";
+	//private String compositeQueries = "";
 	
 	final static Logger logger = Logger.getLogger(SQLExecutor.class);
 	
-	public SQLExecutor(Config confIn) {
+	public SQLExecutor(ExecutorConfig confIn) {
 		super(confIn);
-		
-		this.compositeQueries = ((ExecutorConfig) confIn).getCompositeFile();
+		// this.compositeQueries = ((ExecutorConfig) confIn).getCompositeFile();
 	}
 	
 	@Override
@@ -53,7 +51,7 @@ public class SQLExecutor extends SQLWrapper implements Executor {
 	private void queriesRun(Connection conn) throws IOException, SQLException {
 		
 		//parse file in List of queries
-		List<Query> queries = ParseFile.getQueries(compositeQueries);
+		List<Query> queries = ParseFile.getQueries(conf.getCompositeFile());
 		ArrayList<String> result = new ArrayList<String>();
 		ResultWriter resWriter = new ResultWriter();
 		

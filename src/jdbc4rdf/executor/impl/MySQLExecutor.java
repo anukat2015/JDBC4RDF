@@ -1,6 +1,6 @@
 package jdbc4rdf.executor.impl;
 
-import jdbc4rdf.core.config.Config;
+import jdbc4rdf.core.config.ExecutorConfig;
 import jdbc4rdf.executor.SQLExecutor;
 
 /**
@@ -11,7 +11,7 @@ import jdbc4rdf.executor.SQLExecutor;
 
 public class MySQLExecutor extends SQLExecutor{
 
-	public MySQLExecutor(Config confIn) {
+	public MySQLExecutor(ExecutorConfig confIn) {
 		super(confIn);
 	}
 

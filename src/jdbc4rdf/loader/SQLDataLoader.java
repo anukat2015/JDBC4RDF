@@ -18,7 +18,7 @@ import jdbc4rdf.core.sql.SQLWrapper;
 import jdbc4rdf.loader.io.LoaderStatistics;
 
 
-public abstract class SQLDataLoader extends SQLWrapper implements DataLoader {
+public abstract class SQLDataLoader extends SQLWrapper<LoaderConfig> implements DataLoader {
 
 	/*
 	 * This delimiter should be used as an alternative
@@ -28,9 +28,9 @@ public abstract class SQLDataLoader extends SQLWrapper implements DataLoader {
 
 
 	
-	private String dataFile = "";
+	//private String dataFile = "";
 	
-	private float scaleUB = 1;
+	//private float scaleUB = 1;
 	
 	/**
 	 * Storage for the stats which are required for the query
@@ -78,15 +78,15 @@ public abstract class SQLDataLoader extends SQLWrapper implements DataLoader {
 	final static Logger logger = Logger.getLogger(SQLDataLoader.class);
 	
 	
-	public SQLDataLoader(Config loaderConf) {
+	public SQLDataLoader(LoaderConfig loaderConf) {
 		super(loaderConf);
 		
 		// treat it as a loaderConfig instance in order to get
 		// all arguments
 		
-		this.dataFile = ((LoaderConfig) loaderConf).getDatafile();
+		//this.dataFile = ((LoaderConfig) loaderConf).getDatafile();
 
-		this.scaleUB = ((LoaderConfig) loaderConf).getScaleUB();
+		//this.scaleUB = ((LoaderConfig) loaderConf).getScaleUB();
 	}
 
 	
@@ -519,7 +519,7 @@ public abstract class SQLDataLoader extends SQLWrapper implements DataLoader {
 		
 		
 		// load TSV
-		sql = getLoadSql(dataFile, TT_NAME);
+		sql = getLoadSql(conf.getDatafile(), TT_NAME);
 		runStaticSql(conn, sql, false);
 		if(!isHive()){
 			conn.commit();
@@ -882,6 +882,8 @@ public abstract class SQLDataLoader extends SQLWrapper implements DataLoader {
 		
 		@Override
 		public void runJob(Connection conn) throws Exception {
+			
+			float scaleUB = conf.getScaleUB();
 			String pred1Table = DataLoaderHelper.getPartName(pred1, getDelimiter());
 			
 			// get related predicates
@@ -1027,7 +1029,7 @@ public abstract class SQLDataLoader extends SQLWrapper implements DataLoader {
 	
 	
 	
-	class JobExecuter extends SQLWrapper implements Runnable  {
+	class JobExecuter extends SQLWrapper<Config> implements Runnable  {
 
 		private Connection conn = null;
 		

@@ -1,4 +1,4 @@
-package jdbc4rdf.test;
+package test.java;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -7,7 +7,7 @@ import jdbc4rdf.core.Helper;
 
 
 
-public class TimestampTest {
+public class TimestampDemo {
 
 	public static void main(String[] args) {
 		

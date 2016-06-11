@@ -1,11 +1,11 @@
-package jdbc4rdf.test;
+package test.java;
 
 import org.apache.log4j.Logger;
 
-public class Log4JTest {
+public class Log4JDemo {
 
 	
-	final static Logger logger = Logger.getLogger(Log4JTest.class);
+	final static Logger logger = Logger.getLogger(Log4JDemo.class);
 	
 	
 	public void test() {
@@ -31,7 +31,7 @@ public class Log4JTest {
 	}
 	
 	public static void main(String[] args) {
-		Log4JTest l4j = new Log4JTest();
+		Log4JDemo l4j = new Log4JDemo();
 		l4j.test();
 	}
 

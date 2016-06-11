@@ -5,6 +5,8 @@ import java.io.IOException;
 
 import org.apache.log4j.Logger;
 
+import jdbc4rdf.core.Helper;
+import jdbc4rdf.core.config.ConfigReader;
 import jdbc4rdf.core.config.DBDRIVER;
 import jdbc4rdf.core.config.ExecutorConfig;
 import jdbc4rdf.core.config.LoaderConfig;
@@ -21,110 +23,65 @@ public class Main {
 	final static Logger logger = Logger.getLogger(Main.class);
 	
 	
+	public static long startMilli = 0;
+	
 	
 	public static void showHelp() {
-		System.out.println("> Loder Syntax:"); 
-		System.out.println("load DRIVER FILE HOST [DB] USER PW SCALEUB");
-		System.out.println("Supported drivers: ");
-		System.out.println(DBDRIVER.getDriverList() + "\n");
-		System.out.println("SCALEUB should be a value between 0.0 and 1.0");
-		System.out.println("> Executor Syntax:");
-		System.out.println("exec DRIVER FILE HOST [DB] USER PW");
+		System.out.println("\nSyntax:"); 
+		System.out.println("load|exec settingsFile [key=value[ key=value[ ...]]]");
+		System.out.println("Key/value pairs can be used for overwriting the settings inside the .properties file");
 		System.out.println("Supported drivers: ");
 		System.out.println(DBDRIVER.getDriverList() + "\n");
 	}	
 	
+	
+	
+	/*
+	 * Sample commands
+	 * # java -DLOG_DIR=/local/log/dir/ -jar jdbc4rdf_0.2.jar exec jdbc4rdf_vagrant.properties executor.queryfile=different/path/of/queries.txt
+	 * # $(get_java_home)/bin/java -jar $(get_local_apps_path)/jdbc4rdf_0.2.jar exec $(get_local_apps_path)/jdbc4rdf_vagrant.properties executor.queryfile=$(get_local_apps_path)/queries.txt
+	 */
+	
 	public static void main(String[] args) throws IOException {
 		// Parse all the arguments
+		Main.startMilli = System.currentTimeMillis();
+		String timestamp = Helper.getTimestamp(Main.startMilli);
+		
+		logger.debug("Application start: " + timestamp);
+		System.out.println("Application start: " + timestamp);
+		
+		
 		
 		DBDRIVER driver;
 		
-		if (args.length > 0) {
+		if (args.length > 1) {
+			
+			ConfigReader reader = new ConfigReader(args);
+			
 			if (args[0].equals("load")) {
 				
-				// Initialize a loadConfig instance
-				String file = "";
-				String host = "";
-				String db = "";
-				String user = "";
-				String pw = "";
-				float scaleUb = 1;
+				// load configuration
+				LoaderConfig loaderconf = reader.getConfig(LoaderConfig.class); 
+				driver = loaderconf.getDriver();
 				
-				if (args.length == 8) {
-					driver = DBDRIVER.detectDriver(args[1]);
-					file = args[2];
-					host = args[3];
-					db = args[4];
-					user = args[5];
-					pw = args[6];
-					scaleUb = Float.parseFloat(args[7]);
-				} else if (args.length == 7) {
-					driver = DBDRIVER.detectDriver(args[1]);
-					file = args[2];
-					host = args[3];
-					db = "";
-					user = args[4];
-					pw = args[5];
-					scaleUb = Float.parseFloat(args[6]);
-				} else {
-					logger.fatal("Not enough arguments given");
-					showHelp();
-					return;
-				}
-				
-				// DBDRIVER driver, String file, String user, String pw, String host, String db
-				LoaderConfig loaderconf = new LoaderConfig(driver, file, user, pw, host, db, scaleUb);
-				
-				// load data
+				// Initialize loader
 				DataLoader sql = null;
 				if (driver.equals(DBDRIVER.HIVE)) {
 					sql = new HiveDataLoader(loaderconf);
 				} else if (driver.equals(DBDRIVER.MYSQL)) {
 					sql = new MySQLDataLoader(loaderconf);
 				}
-				// run sql
+				// Load data
 				sql.loadData();
 				
 			} else if (args[0].equals("exec")) {
 				
-				String file = "";
-				String host = "";
-				String db = "";
-				String user = "";
-				String pw = "";
+				// load configuration
+				ExecutorConfig execconf = reader.getConfig(ExecutorConfig.class);
+				driver = execconf.getDriver();
 				
-				if(args.length == 7){
-					driver = DBDRIVER.detectDriver(args[1]);
-					file = args[2];
-					host = args[3];
-					db = args[4];
-					user = args[5];
-					pw = args[6];
-				} else if (args.length == 6) {
-					driver = DBDRIVER.detectDriver(args[1]);
-					file = args[2];
-					host = args[3];
-					db = "";
-					user = args[4];
-					pw = args[5];
-				} else if (args.length == 5) {
-					driver = DBDRIVER.detectDriver(args[1]);
-					file = args[2];
-					host = args[3];
-					db = "";
-					user = args[4];
-					pw = "";
-				} else {
-					logger.fatal("Not enough arguments given");
-					showHelp();
-					return;
-				}
-				// Create config
-				ExecutorConfig execconf = new ExecutorConfig(driver, file, user, pw, host, db);
-				
-				// Detect driver
+				// Initialize executor
 				SQLExecutor sql = null;
-				
 				if (driver.equals(DBDRIVER.HIVE)) {
 					sql = new HiveExecutor(execconf);
 				} else if (driver.equals(DBDRIVER.MYSQL)) {
@@ -133,7 +90,7 @@ public class Main {
 					sql = new HiveExecutor(execconf);
 				}
 				
-				// run sql
+				// Execute queries
 				sql.executeQueries();				
 				
 			}

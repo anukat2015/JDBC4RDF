@@ -1,10 +1,24 @@
 package jdbc4rdf.core;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import org.apache.log4j.Logger;
 
 public class Helper {
 
 	final static Logger logger = Logger.getLogger(Helper.class);
+	
+	
+	
+	
+	public static String getTimestamp(long milliseconds) {
+		SimpleDateFormat dformat = new SimpleDateFormat("YYYY:MM:dd:HH:mm:ss:SS");
+		Date d = new Date(milliseconds);
+		String dstr = dformat.format(d);
+		
+		return dstr;
+	}
 	
 	
 	

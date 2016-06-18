@@ -191,9 +191,10 @@ public class SQLExecutor extends SQLWrapper<ExecutorConfig> implements Executor 
 			logger.info("Query start timestamp: "
 					+ Helper.getTimestamp(startTime) );
 			
+			// make sure the milliseconds format gets converted to nanoseconds
 			System.out.println("Time passed between application start and query execution:");
 			logger.info("Time passed between application start and query execution:");
-			Helper.printTime(startTime - Main.startMilli);
+			Helper.printTime((startTime - Main.startMilli) * 1_000_000);
 			
 			// Calculate runtime
 			long executionTime = endTime - startTime;

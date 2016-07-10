@@ -66,7 +66,10 @@ public enum DBDRIVER {
 			// https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients
 			// example: jdbc:hive2://localhost:10000/dbxy
 			// user name , password needed in uri ?
-			uri = "jdbc:hive2://" + host + ":" + 10000 + "/" + db;
+			//uri = "jdbc:hive2://" + host + ":" + 10000 + "/" + db;
+			// OOM Errors: http://stackoverflow.com/questions/34873037/java-heap-size-memory-at-map-step-on-hive-sql, https://documentation.altiscale.com/heapsize-for-mappers-and-reducers
+			String heapError = "?mapreduce.map.memory.mb=6144;mapreduce.map.java.opts=-Xmx5500m;mapreduce.reduce.memory.mb=6144;mapreduce.reduce.java.opts=-Xmx5500m";
+			uri = "jdbc:hive2://" + host + ":" + 10000 + "/" + db + heapError;
 		} else if (this.equals(MYSQL)) {
 			// https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-usagenotes-connect-drivermanager.html
 			// https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-reference-configuration-properties.html

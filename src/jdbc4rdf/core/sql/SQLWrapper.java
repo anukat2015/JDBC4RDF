@@ -70,15 +70,17 @@ public class SQLWrapper<T extends Config> {
 		final String dbuser = conf.getUser();
 		final String dbpw = conf.getPw();
 		
-		logger.info("Connection with values host=" + host + ", db=" + db + ", user=" + dbuser + ", pw=" + dbpw);
+		String connectionUri = conf.getDriver().getJDBCUri(host, db, conf.getUriSuffix());
 		
-		String connectionUrl = conf.getDriver().getJDBCUri(host, db);
+		logger.info("Connecting with values host=" + host + ", db=" + db + ", user=" + dbuser + ", pw=" + dbpw);
+		logger.info("Connection URI:\n" + connectionUri);
+		
 		
 		Connection conn = null;
 		try {
 			// jdbc:hive2://localhost:10000/default", "hive", ""
 			//conn = DriverManager.getConnection("jdbc:hive2://" + host + ":" + PORT + "/" + db, dbuser, dbpw);
-			conn = DriverManager.getConnection(connectionUrl, dbuser, dbpw);
+			conn = DriverManager.getConnection(connectionUri, dbuser, dbpw);
 			
 			conn.setAutoCommit(AUTOCOMMIT);
 			

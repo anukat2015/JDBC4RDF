@@ -14,9 +14,9 @@ public class Config {
 
 	protected String dbName = "defaultdb";
 
-
+	protected String uriSuffix = "";
 	
-	public Config(DBDRIVER driver, String user, String pw, String host, String db) {
+	public Config(DBDRIVER driver, String user, String pw, String host, String db, String urisuffix) {
 		this.dbDriver = driver;
 
 		this.dbUser = user;
@@ -24,9 +24,15 @@ public class Config {
 
 		this.dbHost = host;
 		this.dbName = db;
+		
+		this.uriSuffix = urisuffix;
 	}
 	
 
+	public String getUriSuffix() {
+		return this.uriSuffix;
+	}
+	
 	public DBDRIVER getDriver() {
 		return this.dbDriver;
 	}

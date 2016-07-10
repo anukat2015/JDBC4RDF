@@ -4,13 +4,9 @@ package jdbc4rdf.core.config;
 public class LoaderConfig extends Config {
 
 	
-	
-	
 	private String dataFile = "";
 	
-	
 	private float scaleUB = 1.0f;
-	
 	
 	
 	/**
@@ -20,13 +16,14 @@ public class LoaderConfig extends Config {
 	 * dbUser = "root"; <br>
 	 * dbPw = "rootpw"; <br>
 	 * dbHost = "localhost"; <br>
-	 * dbName = "defaultdb"; 
+	 * dbName = "defaultdb"; <br> 
+	 * urisuffix = "";
 	 */
 	public LoaderConfig() {
 		
-		//super(dbDriver, dbUser, dbPw, dbHost, dbName);
+		// urisuffix (the last parameter) gets ignored for the loader config
 		
-		super(DBDRIVER.getDefaultDriver(), "root", "rootpw", "localhost", "");
+		super(DBDRIVER.getDefaultDriver(), "root", "rootpw", "localhost", "", "");
 		
 		
 		
@@ -41,10 +38,11 @@ public class LoaderConfig extends Config {
 			, String user, String pw, String host, String db
 			, float scaleUBIn) {
 		
-		super(driver, user, pw, host, db);
+		// urisuffix (the last parameter) gets ignored for the loader config 
+		
+		super(driver, user, pw, host, db, "");
 		
 		this.dataFile = file;
-		
 		this.scaleUB = scaleUBIn;
 	}
 	

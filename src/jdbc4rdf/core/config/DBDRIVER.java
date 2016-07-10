@@ -23,6 +23,7 @@ public enum DBDRIVER {
 	}
 	
 	
+	
 	public static DBDRIVER detectDriver(String dstr) {
 		if ((dstr.equalsIgnoreCase("mysql")) ||
 				dstr.equalsIgnoreCase(MYSQL_DRIVER)) {
@@ -32,16 +33,19 @@ public enum DBDRIVER {
 			return HIVE;
 		} else if (dstr.equalsIgnoreCase("spark")) {
 			return SPARK; 
-		}else {
+		
+		} else {
 			logger.warn("Couldn't detect driver " + dstr);
 			return null;
 		}
-		
+
 	}
+	
 	
 	public String getDriverClass() {
 		return DBDRIVER.getDriverClass(this);
 	}
+	
 	
 	public static String getDriverClass(DBDRIVER d) {
 		if (d.equals(MYSQL)) {
@@ -57,19 +61,13 @@ public enum DBDRIVER {
 	}
 	
 	
-	
-	public String getJDBCUri(String host, String db) {
+	public String getJDBCUri(String host, String db, String uriSuffix) {
 		String uri = "";
-		
 		
 		if (this.equals(HIVE)) {
 			// https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients
 			// example: jdbc:hive2://localhost:10000/dbxy
-			// user name , password needed in uri ?
-			//uri = "jdbc:hive2://" + host + ":" + 10000 + "/" + db;
-			// OOM Errors: http://stackoverflow.com/questions/34873037/java-heap-size-memory-at-map-step-on-hive-sql, https://documentation.altiscale.com/heapsize-for-mappers-and-reducers
-			String heapError = "?mapreduce.map.memory.mb=6144;mapreduce.map.java.opts=-Xmx5500m;mapreduce.reduce.memory.mb=6144;mapreduce.reduce.java.opts=-Xmx5500m";
-			uri = "jdbc:hive2://" + host + ":" + 10000 + "/" + db + heapError;
+			uri = "jdbc:hive2://" + host + ":" + 10000 + "/" + db;
 		} else if (this.equals(MYSQL)) {
 			// https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-usagenotes-connect-drivermanager.html
 			// https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-reference-configuration-properties.html
@@ -80,6 +78,9 @@ public enum DBDRIVER {
 			// Caution if hive and spark thrift server should run in parallel (same port)
 			uri = "jdbc:hive2://" + host + ":" + 10000 + "/" + db;
 		}
+		
+		// Append the JDBC URI suffix
+		uri += uriSuffix;
 		
 		return uri;
 	}

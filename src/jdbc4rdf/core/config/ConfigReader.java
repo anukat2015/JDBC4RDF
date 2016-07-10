@@ -26,7 +26,15 @@ public class ConfigReader {
 	private static final String DB_HOST = "db.host";
 	private static final String DB_DRIVER = "db.driver";
 	
+	/**
+	 * Query file name/path
+	 */
 	private static final String EXECUTOR_QUERYFILE = "executor.queryfile";
+	
+	/**
+	 * Optional additional JDBC URI suffix
+	 */
+	private static final String EXECUTOR_URISUFFIX = "executor.urisuffix";
 	
 	/**
 	 * Query name pattern (.contains)
@@ -61,6 +69,7 @@ public class ConfigReader {
 		
 		
 		settings.put(EXECUTOR_QUERYFILE, "queries.txt");
+		settings.put(EXECUTOR_URISUFFIX, "");
 		settings.put(EXECUTOR_QUERY_NAMEPATTERN, "");
 		settings.put(EXECUTOR_QUERY_IDX, "");
 		
@@ -88,15 +97,15 @@ public class ConfigReader {
 		
 		T conf = null;
 		
+		
 		DBDRIVER dbdriver = DBDRIVER.detectDriver(settings.get(DB_DRIVER).toString());
 		
 		if (type.equals(ExecutorConfig.class)) {
 			conf = type.cast(new ExecutorConfig(dbdriver
-					
 					, settings.get(EXECUTOR_QUERYFILE)
+					, settings.get(EXECUTOR_URISUFFIX)
 					, settings.get(EXECUTOR_QUERY_NAMEPATTERN)
 					, settings.get(EXECUTOR_QUERY_IDX)
-					
 					, settings.get(DB__AUTH_USER)
 					, settings.get(DB_AUTH_PW)
 					, settings.get(DB_HOST)
